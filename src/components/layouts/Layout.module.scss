@@ -1,0 +1,45 @@
+.sg--layouts {
+}
+.sg--layout {
+    &--auth {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+
+
+        &-content {
+            width: 410px;
+            flex: 0 0 410px;
+            display: flex;
+            flex-direction: column;
+
+            &-header {
+                padding: 26px 30px;
+
+                &--logo {
+                    height: 42px;
+                }
+            }
+            &-body {
+                padding: 26px 30px;
+                margin: auto 0;
+            }
+        }
+        &-image {
+            width: calc(100% - 410px);
+            flex: 0 0 calc(100% - 410px);
+
+            background: linear-gradient(161deg, rgba(96, 14, 88, 0.20) 7.95%, rgba(186, 49, 189, 0.00) 46.73%);
+
+            background-blend-mode: color-burn;
+            mix-blend-mode: color-burn;
+
+            &--img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+}

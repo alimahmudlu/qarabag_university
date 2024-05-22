@@ -1,0 +1,335 @@
+.sg--button {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 36px;
+  gap: 8px;
+  border: 1px solid currentColor;
+  border-radius: 40px;
+  text-align: center;
+  color: #3B3B3B;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  text-decoration: unset;
+}
+.sg--button::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "sg-icons" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  display: flex;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+}
+.sg--button:not(:disabled, .sg--button--disabled) {
+  cursor: pointer;
+}
+.sg--button:hover {
+  text-decoration: unset;
+}
+.sg--button--xs {
+  padding: 14px 18px;
+  font-size: 12px;
+  line-height: 14px;
+  border-radius: 30px;
+}
+.sg--button--xs::before {
+  font-size: 14px;
+}
+.sg--button--xs.sg--button--squared {
+  width: 44px;
+  height: 44px;
+  padding: 14px;
+}
+.sg--button--sm {
+  padding: 18px 24px;
+  font-size: 16px;
+  line-height: 18px;
+  border-radius: 30px;
+}
+.sg--button--sm::before {
+  font-size: 16px;
+}
+.sg--button--sm.sg--button--squared {
+  width: 54px;
+  height: 54px;
+  padding: 18px;
+}
+.sg--button--md {
+  padding: 24px 36px;
+  font-size: 18px;
+  line-height: 18px;
+  border-radius: 40px;
+}
+.sg--button--md::before {
+  font-size: 20px;
+}
+.sg--button--md.sg--button--squared {
+  width: 66px;
+  height: 66px;
+  padding: 24px;
+}
+.sg--button--lg {
+  padding: 28px 56px;
+  font-size: 20px;
+  line-height: 20px;
+}
+.sg--button--lg::before {
+  font-size: 17px;
+}
+.sg--button--lg.sg--button--squared {
+  width: 76px;
+  height: 76px;
+  padding: 28px;
+}
+.sg--button--primary {
+  background-color: var(--Dark-grey, #1B1B1B);
+  border-color: var(--Dark-grey, #1B1B1B);
+  color: var(--white, #FFFFFF);
+}
+.sg--button--primary:hover {
+  background-color: var(--Dark-grey, #1B1B1B);
+  border-color: var(--Dark-grey, #1B1B1B);
+  color: var(--white, #FFFFFF);
+}
+.sg--button--primary:focus {
+  box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+}
+.sg--button--primary:disabled {
+  background-color: var(--Dark-grey, #1B1B1B);
+  border-color: var(--Dark-grey, #1B1B1B);
+  color: var(--white, #FFFFFF);
+}
+.sg--button--primary-outline {
+  color: var(--Dark-grey, #1B1B1B);
+  border-color: var(--Dark-grey, #1B1B1B);
+  background-color: var(--white, #FFFFFF);
+}
+.sg--button--primary-outline:hover {
+  color: var(--Dark-grey, #1B1B1B);
+  border-color: var(--Dark-grey, #1B1B1B);
+  background-color: var(--white, #FFFFFF);
+}
+.sg--button--primary-outline:focus {
+  box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+}
+.sg--button--primary-outline:disabled {
+  color: var(--Dark-grey, #1B1B1B);
+  border-color: var(--Dark-grey, #1B1B1B);
+  background-color: var(--white, #FFFFFF);
+}
+.sg--button--secondary {
+  background-color: var(--primary-50, #E1EDF6);
+  border-color: var(--primary-50, #E1EDF6);
+  color: var(--primary-700, #0681BE);
+}
+.sg--button--secondary:hover {
+  background-color: var(--primary-100, #D0E6F7);
+  border-color: var(--primary-100, #D0E6F7);
+  color: var(--primary-700, #0681BE);
+}
+.sg--button--secondary:focus {
+  box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+}
+.sg--button--secondary:disabled {
+  background-color: var(--primary-25, #F1F4F5);
+  border-color: var(--primary-25, #F1F4F5);
+  color: var(--primary-300, #A4D3F5);
+}
+.sg--button--secondary-outline {
+  color: var(--primary-700, #0681BE);
+  border-color: var(--primary-50, #E1EDF6);
+  background-color: var(--white, #FFFFFF);
+}
+.sg--button--secondary-outline:hover {
+  color: var(--primary-700, #0681BE);
+  border-color: var(--primary-100, #D0E6F7);
+  background-color: var(--white, #FFFFFF);
+}
+.sg--button--secondary-outline:focus {
+  box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+}
+.sg--button--secondary-outline:disabled {
+  color: var(--primary-25, #F1F4F5);
+  border-color: var(--primary-25, #F1F4F5);
+  background-color: var(--white, #FFFFFF);
+}
+.sg--button--error {
+  background-color: var(--error-600, #D92D20);
+  border-color: var(--error-600, #D92D20);
+  color: var(--white, #FFFFFF);
+}
+.sg--button--error:hover {
+  background-color: var(--error-700, #B42318);
+  border-color: var(--error-700, #B42318);
+  color: var(--white, #FFFFFF);
+}
+.sg--button--error:focus {
+  box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+}
+.sg--button--error:disabled {
+  background-color: var(--error-200, #FECDCA);
+  border-color: var(--error-200, #FECDCA);
+  color: var(--white, #FFFFFF);
+}
+.sg--button--error-outline {
+  color: var(--error-600, #D92D20);
+  border-color: var(--error-600, #D92D20);
+  background-color: var(--white, #FFFFFF);
+}
+.sg--button--error-outline:hover {
+  color: var(--error-700, #B42318);
+  border-color: var(--error-700, #B42318);
+  background-color: var(--white, #FFFFFF);
+}
+.sg--button--error-outline:focus {
+  box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+}
+.sg--button--error-outline:disabled {
+  color: var(--error-200, #FECDCA);
+  border-color: var(--error-200, #FECDCA);
+  background-color: var(--white, #FFFFFF);
+}
+.sg--button--black {
+  background-color: var(--Dark-grey, #1B1B1B);
+  border-color: var(--Dark-grey, #1B1B1B);
+  color: var(--white, #FFFFFF);
+}
+.sg--button--black:hover {
+  background-color: var(--Dark-grey, #1B1B1B);
+  border-color: var(--Dark-grey, #1B1B1B);
+  color: var(--white, #FFFFFF);
+}
+.sg--button--black:focus {
+  box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+}
+.sg--button--black:disabled {
+  background-color: var(--Dark-grey, #1B1B1B);
+  border-color: var(--Dark-grey, #1B1B1B);
+  color: var(--white, #FFFFFF);
+}
+.sg--button--black-outline {
+  color: var(--Dark-grey, #1B1B1B);
+  border-color: var(--Dark-grey, #1B1B1B);
+  background-color: var(--white, #FFFFFF);
+}
+.sg--button--black-outline:hover {
+  color: var(--Dark-grey, #1B1B1B);
+  border-color: var(--Dark-grey, #1B1B1B);
+  background-color: var(--white, #FFFFFF);
+}
+.sg--button--black-outline:focus {
+  box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+}
+.sg--button--black-outline:disabled {
+  color: var(--Dark-grey, #1B1B1B);
+  border-color: var(--Dark-grey, #1B1B1B);
+  background-color: var(--white, #FFFFFF);
+}
+.sg--button--squared {
+  width: 66px;
+  height: 46px;
+  padding: 10px;
+}
+.sg--button--rounded {
+  border-radius: 50%;
+}
+.sg--button--sharp {
+  border-radius: 0;
+}
+.sg--button--full {
+  width: 100%;
+}
+.sg--button--reverse {
+  flex-direction: row-reverse;
+}
+.sg--button--underline {
+  text-decoration: underline;
+}
+.sg--button--underline:hover {
+  text-decoration: underline;
+}
+.sg--button--onlyIcon {
+  font-size: 0;
+  letter-spacing: 0;
+  line-height: 1;
+  gap: 0;
+}
+.sg--button--withOutBlock {
+  padding: 0 !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+}
+.sg--button--align-left {
+  justify-content: flex-start;
+  text-align: left;
+}
+.sg--button--align-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+.sg--button--align-center {
+  justify-content: center;
+  text-align: center;
+}
+
+@media (min-width: 992.02px) {
+  .sg--button--withOutBlock\:lg {
+    padding: 0;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    outline-color: transparent !important;
+  }
+  .sg--button--full\:lg {
+    width: 100%;
+  }
+  .sg--button--align-left\:lg {
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .sg--button--align-right\:lg {
+    justify-content: flex-end;
+    text-align: right;
+  }
+  .sg--button--align-center\:lg {
+    justify-content: center;
+    text-align: center;
+  }
+}
+@media (max-width: 992px) {
+  .sg--button--withOutBlock\:sm {
+    padding: 0;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    outline-color: transparent !important;
+  }
+  .sg--button--full\:sm {
+    width: 100%;
+  }
+  .sg--button--align-left\:sm {
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .sg--button--align-right\:sm {
+    justify-content: flex-end;
+    text-align: right;
+  }
+  .sg--button--align-center\:sm {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/*# sourceMappingURL=Button.module.css.map */

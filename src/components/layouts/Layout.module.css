@@ -1,0 +1,36 @@
+.sg--layout--auth {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+.sg--layout--auth-content {
+  width: 410px;
+  flex: 0 0 410px;
+  display: flex;
+  flex-direction: column;
+}
+.sg--layout--auth-content-header {
+  padding: 26px 30px;
+}
+.sg--layout--auth-content-header--logo {
+  height: 42px;
+}
+.sg--layout--auth-content-body {
+  padding: 26px 30px;
+  margin: auto 0;
+}
+.sg--layout--auth-image {
+  width: calc(100% - 410px);
+  flex: 0 0 calc(100% - 410px);
+  background: linear-gradient(161deg, rgba(96, 14, 88, 0.2) 7.95%, rgba(186, 49, 189, 0) 46.73%);
+  background-blend-mode: color-burn;
+  mix-blend-mode: color-burn;
+}
+.sg--layout--auth-image--img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/*# sourceMappingURL=Layout.module.css.map */
