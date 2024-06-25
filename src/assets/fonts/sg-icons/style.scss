@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?wqrnmm');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?wqrnmm#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?wqrnmm') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?wqrnmm') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?wqrnmm##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?7ekfn4');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?7ekfn4#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?7ekfn4') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?7ekfn4') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?7ekfn4##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -427,9 +427,9 @@
     content: $sg-icon-send; 
   }
 }
-.sg-icon-search {
+.sg-icon-search1 {
   &:before {
-    content: $sg-icon-search; 
+    content: $sg-icon-search1; 
   }
 }
 .sg-icon-scissors {
@@ -562,9 +562,9 @@
     content: $sg-icon-phone-call; 
   }
 }
-.sg-icon-phone {
+.sg-icon-phone1 {
   &:before {
-    content: $sg-icon-phone; 
+    content: $sg-icon-phone1; 
   }
 }
 .sg-icon-percent {
@@ -727,9 +727,9 @@
     content: $sg-icon-map; 
   }
 }
-.sg-icon-mail {
+.sg-icon-mail1 {
   &:before {
-    content: $sg-icon-mail; 
+    content: $sg-icon-mail1; 
   }
 }
 .sg-icon-log-out {
@@ -757,9 +757,9 @@
     content: $sg-icon-list; 
   }
 }
-.sg-icon-linkedin {
+.sg-icon-linkedin1 {
   &:before {
-    content: $sg-icon-linkedin; 
+    content: $sg-icon-linkedin1; 
   }
 }
 .sg-icon-link-2 {
@@ -792,9 +792,9 @@
     content: $sg-icon-italic; 
   }
 }
-.sg-icon-instagram {
+.sg-icon-instagram1 {
   &:before {
-    content: $sg-icon-instagram; 
+    content: $sg-icon-instagram1; 
   }
 }
 .sg-icon-info {
@@ -1292,9 +1292,9 @@
     content: $sg-icon-camera; 
   }
 }
-.sg-icon-calendar {
+.sg-icon-calendar1 {
   &:before {
-    content: $sg-icon-calendar; 
+    content: $sg-icon-calendar1; 
   }
 }
 .sg-icon-building-08 {
@@ -1505,6 +1505,127 @@
 .sg-icon-layers1 {
   &:before {
     content: $sg-icon-layers1; 
+  }
+}
+.sg-icon-calendar_2 {
+  &:before {
+    content: $sg-icon-calendar_2; 
+  }
+}
+.sg-icon-url {
+  &:before {
+    content: $sg-icon-url; 
+  }
+}
+.sg-icon-mail {
+  &:before {
+    content: $sg-icon-mail; 
+  }
+}
+.sg-icon-location {
+  &:before {
+    content: $sg-icon-location; 
+  }
+}
+.sg-icon-phone {
+  &:before {
+    content: $sg-icon-phone; 
+  }
+}
+.sg-icon-search {
+  &:before {
+    content: $sg-icon-search; 
+  }
+}
+.sg-icon-tg {
+  &:before {
+    content: $sg-icon-tg;     
+    color: #707070;
+  }
+}
+.sg-icon-tg_circle {
+  &:before {
+    content: $sg-icon-tg_circle; 
+  }
+}
+.sg-icon-vp {
+  &:before {
+    content: $sg-icon-vp; 
+  }
+}
+.sg-icon-vp_circle {
+  &:before {
+    content: $sg-icon-vp_circle; 
+  }
+}
+.sg-icon-arrow_right {
+  &:before {
+    content: $sg-icon-arrow_right; 
+  }
+}
+.sg-icon-arrow_top {
+  &:before {
+    content: $sg-icon-arrow_top; 
+  }
+}
+.sg-icon-arrow_left {
+  &:before {
+    content: $sg-icon-arrow_left; 
+  }
+}
+.sg-icon-arrow_bottom {
+  &:before {
+    content: $sg-icon-arrow_bottom; 
+  }
+}
+.sg-icon-arrow_chevron_right {
+  &:before {
+    content: $sg-icon-arrow_chevron_right; 
+  }
+}
+.sg-icon-arrow_left1 {
+  &:before {
+    content: $sg-icon-arrow_left1; 
+  }
+}
+.sg-icon-arrow_bottom1 {
+  &:before {
+    content: $sg-icon-arrow_bottom1; 
+  }
+}
+.sg-icon-arrow_right1 {
+  &:before {
+    content: $sg-icon-arrow_right1; 
+  }
+}
+.sg-icon-arrow_top1 {
+  &:before {
+    content: $sg-icon-arrow_top1; 
+  }
+}
+.sg-icon-calendar {
+  &:before {
+    content: $sg-icon-calendar; 
+  }
+}
+.sg-icon-instagram {
+  &:before {
+    content: $sg-icon-instagram; 
+  }
+}
+.sg-icon-instagram_circle {
+  &:before {
+    content: $sg-icon-instagram_circle; 
+  }
+}
+.sg-icon-linkedin {
+  &:before {
+    content: $sg-icon-linkedin; 
+  }
+}
+.sg-icon-linkedin_circle {
+  &:before {
+    content: $sg-icon-linkedin_circle; 
   }
 }
 
