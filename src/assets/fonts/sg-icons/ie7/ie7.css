@@ -886,6 +886,36 @@
 .sg-icon-layers1 {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea25;');
 }
+.sg-icon-download1 {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea43;');
+}
+.sg-icon-plus1 {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea47;');
+}
+.sg-icon-minus1 {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea2c;');
+}
+.sg-icon-facebook_fill {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea3f;');
+}
+.sg-icon-instagram_fill {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea40;');
+}
+.sg-icon-person {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea42;');
+}
+.sg-icon-skype_fill {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea44;');
+}
+.sg-icon-university {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea45;');
+}
+.sg-icon-work {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea46;');
+}
+.sg-icon-euro {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea48;');
+}
 .sg-icon-calendar_2 {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea27;');
 }
@@ -902,13 +932,13 @@
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea2b;');
 }
 .sg-icon-search {
-  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea2c;');
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea2e;');
 }
 .sg-icon-tg {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea2d;');
 }
 .sg-icon-tg_circle {
-  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea2e;');
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea3c;');
 }
 .sg-icon-vp {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea2f;');
@@ -928,19 +958,19 @@
 .sg-icon-arrow_bottom {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea34;');
 }
-.sg-icon-arrow_chevron_right {
+.sg-icon-arrow_chevron_right_top {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea35;');
 }
-.sg-icon-arrow_left1 {
+.sg-icon-arrow_chevron_left {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea36;');
 }
-.sg-icon-arrow_bottom1 {
+.sg-icon-arrow_chevron_bottom {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea37;');
 }
-.sg-icon-arrow_right1 {
+.sg-icon-arrow_chevron_right {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea38;');
 }
-.sg-icon-arrow_top1 {
+.sg-icon-arrow_chevron_top {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea39;');
 }
 .sg-icon-calendar {
@@ -950,7 +980,7 @@
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea3b;');
 }
 .sg-icon-instagram_circle {
-  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea3c;');
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea41;');
 }
 .sg-icon-linkedin {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea3d;');

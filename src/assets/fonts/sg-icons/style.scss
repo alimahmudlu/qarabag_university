@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?7ekfn4');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?7ekfn4#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?7ekfn4') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?7ekfn4') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?7ekfn4##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?er8c3l');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?er8c3l#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?er8c3l') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?er8c3l') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?er8c3l##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -1507,6 +1507,56 @@
     content: $sg-icon-layers1; 
   }
 }
+.sg-icon-download1 {
+  &:before {
+    content: $sg-icon-download1; 
+  }
+}
+.sg-icon-plus1 {
+  &:before {
+    content: $sg-icon-plus1; 
+  }
+}
+.sg-icon-minus1 {
+  &:before {
+    content: $sg-icon-minus1; 
+  }
+}
+.sg-icon-facebook_fill {
+  &:before {
+    content: $sg-icon-facebook_fill; 
+  }
+}
+.sg-icon-instagram_fill {
+  &:before {
+    content: $sg-icon-instagram_fill; 
+  }
+}
+.sg-icon-person {
+  &:before {
+    content: $sg-icon-person; 
+  }
+}
+.sg-icon-skype_fill {
+  &:before {
+    content: $sg-icon-skype_fill; 
+  }
+}
+.sg-icon-university {
+  &:before {
+    content: $sg-icon-university; 
+  }
+}
+.sg-icon-work {
+  &:before {
+    content: $sg-icon-work; 
+  }
+}
+.sg-icon-euro {
+  &:before {
+    content: $sg-icon-euro; 
+  }
+}
 .sg-icon-calendar_2 {
   &:before {
     content: $sg-icon-calendar_2; 
@@ -1578,29 +1628,29 @@
     content: $sg-icon-arrow_bottom; 
   }
 }
+.sg-icon-arrow_chevron_right_top {
+  &:before {
+    content: $sg-icon-arrow_chevron_right_top; 
+  }
+}
+.sg-icon-arrow_chevron_left {
+  &:before {
+    content: $sg-icon-arrow_chevron_left; 
+  }
+}
+.sg-icon-arrow_chevron_bottom {
+  &:before {
+    content: $sg-icon-arrow_chevron_bottom; 
+  }
+}
 .sg-icon-arrow_chevron_right {
   &:before {
     content: $sg-icon-arrow_chevron_right; 
   }
 }
-.sg-icon-arrow_left1 {
+.sg-icon-arrow_chevron_top {
   &:before {
-    content: $sg-icon-arrow_left1; 
-  }
-}
-.sg-icon-arrow_bottom1 {
-  &:before {
-    content: $sg-icon-arrow_bottom1; 
-  }
-}
-.sg-icon-arrow_right1 {
-  &:before {
-    content: $sg-icon-arrow_right1; 
-  }
-}
-.sg-icon-arrow_top1 {
-  &:before {
-    content: $sg-icon-arrow_top1; 
+    content: $sg-icon-arrow_chevron_top; 
   }
 }
 .sg-icon-calendar {
