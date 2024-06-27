@@ -1,0 +1,19 @@
+.sg--template--footer {
+  background: var(--black, #262626);
+}
+.sg--template--footer-block {
+  display: flex;
+  flex-direction: column;
+}
+.sg--template--footer-block-main {
+  padding: 70px 0 110px;
+  display: flex;
+  flex-direction: row;
+  gap: 86px;
+}
+.sg--template--footer-block-main-logo {
+  width: 122px;
+  flex: 0 0 122px;
+}
+
+/*# sourceMappingURL=Footer.module.css.map */

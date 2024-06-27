@@ -2,6 +2,8 @@ import App from 'next/app';
 import 'bootstrap/dist/css/bootstrap.css';
 import "@/assets/styles/globals.scss";
 import "@/assets/fonts/sg-icons/style.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 Site_App.getInitialProps = async (props) => {
   const initialProps = await App.getInitialProps(props)

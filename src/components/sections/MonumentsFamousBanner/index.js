@@ -1,0 +1,3 @@
+import SgSectionMonumentsFamousBanner from "@/components/sections/MonumentsFamousBanner/MonumentsFamousBanner";
+
+export default SgSectionMonumentsFamousBanner;

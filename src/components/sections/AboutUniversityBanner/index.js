@@ -1,0 +1,3 @@
+import SgSectionAboutUniversityBanner from "@/components/sections/AboutUniversityBanner/AboutUniversityBanner";
+
+export default SgSectionAboutUniversityBanner;

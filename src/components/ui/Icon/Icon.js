@@ -22,12 +22,12 @@ export default function SgIcon(props) {
     const { icon, size } = props;
 
     const getIcon = () => {
-        return `sg-${icon}`
+        return `sg-icon-${icon}`
     }
 
     return (
         <>
-            {icon ? <i style={{fontSize: size ?? ''}} className={['sg-icon', getIcon()].join(' ').trim()}></i> : ''}
+            {icon ? <i style={{fontSize: size ?? ''}} className={['sg-icons', getIcon()].join(' ').trim()}></i> : ''}
         </>
     )
 }
