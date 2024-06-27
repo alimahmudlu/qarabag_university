@@ -1,4 +1,4 @@
-import styles from '@/components/ui/ContentBanner/ContentBanner.module.css';
+import styles from '@/components/ui/ContentBanner/ContentBanner.module.scss';
 import Image from "next/image";
 import {SgButton} from "@/components/ui/Button";
 

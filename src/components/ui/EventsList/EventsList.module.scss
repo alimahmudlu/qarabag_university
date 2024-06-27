@@ -24,4 +24,28 @@
             object-fit: cover;
         }
     }
+
+    @media (max-width: 992px) {
+        & {
+            flex-direction: column-reverse;
+            gap: 20px;
+
+            &-body {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+                flex: 1 0 100%;
+                width: 100%;
+
+                &-item {
+
+                }
+            }
+
+            &-image {
+                flex: 1 0 100%;
+                width: 100%;
+            }
+        }
+    }
 }
