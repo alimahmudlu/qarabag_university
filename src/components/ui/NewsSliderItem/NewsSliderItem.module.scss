@@ -1,0 +1,63 @@
+.sg--newsSliderItem {
+  &-block {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border: 1px solid var(--stroke, #ccc);
+    padding: 20px;
+
+    &--img{
+      flex: 1 50%;
+    }
+
+    &-image {
+      height: 100%;
+      width: 100%;
+
+      &--img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 20px;
+
+      &-info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        &--date {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+
+          &--icon {
+            color: #902923;
+          }
+
+          &--text {
+            color: var(--gray-text, #707070);
+            font-size: 16px;
+            font-weight: 300;
+            padding: 0;
+            margin: 0;
+          }
+        }
+      }
+
+      &--header {
+        color: var(--black, #262626);
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 28px; /* 140% */
+        letter-spacing: 0.2px;
+      }
+    }
+  }
+}

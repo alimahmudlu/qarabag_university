@@ -1,0 +1,54 @@
+.sg--newsSliderItem-block {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border: 1px solid var(--stroke, #ccc);
+  padding: 20px;
+}
+.sg--newsSliderItem-block--img {
+  flex: 1 50%;
+}
+.sg--newsSliderItem-block-image {
+  height: 100%;
+  width: 100%;
+}
+.sg--newsSliderItem-block-image--img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.sg--newsSliderItem-block-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.sg--newsSliderItem-block-body-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.sg--newsSliderItem-block-body-info--date {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.sg--newsSliderItem-block-body-info--date--icon {
+  color: #902923;
+}
+.sg--newsSliderItem-block-body-info--date--text {
+  color: var(--gray-text, #707070);
+  font-size: 16px;
+  font-weight: 300;
+  padding: 0;
+  margin: 0;
+}
+.sg--newsSliderItem-block-body--header {
+  color: var(--black, #262626);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px; /* 140% */
+  letter-spacing: 0.2px;
+}/*# sourceMappingURL=NewsSliderItem.module.css.map */
