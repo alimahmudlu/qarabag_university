@@ -1,0 +1,24 @@
+.sg--template--footer {
+    background: var(--black, #262626);
+
+    &-block {
+        display: flex;
+        flex-direction: column;
+
+        &-main {
+            padding: 70px 0 110px;
+            display: flex;
+            flex-direction: row;
+            gap: 86px;
+
+            &-logo {
+                width: 122px;
+                flex: 0 0 122px;
+
+                &--img {
+
+                }
+            }
+        }
+    }
+}

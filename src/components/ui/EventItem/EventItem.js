@@ -1,0 +1,41 @@
+import styles from '@/components/ui/EventItem/EventItem.module.scss';
+import {SgIcon} from "@/components/ui/Icon";
+import moment from "moment";
+
+export default function SgEventItem(props) {
+    const {date, additions = [], title} = props;
+
+    return (
+        <>
+            <div className={[styles['sg--eventItem']].join(' ').trim()}>
+                <div className={[styles['sg--eventItem-date']].join(' ').trim()}>
+                    <div className={[styles['sg--eventItem-date--day']].join(' ').trim()}>
+                        {moment(date).format('DD')}
+                    </div>
+                    <div className={[styles['sg--eventItem-date--month']].join(' ').trim()}>
+                        {moment(date).format('MMMM')}
+                    </div>
+                </div>
+                <div className={[styles['sg--eventItem-body']].join(' ').trim()}>
+                    <div className={[styles['sg--eventItem-body--header']].join(' ').trim()}>
+                        {title}
+                    </div>
+                    <div className={[styles['sg--eventItem-body-additions']].join(' ').trim()}>
+                        {(additions || []).map((item, index) => {
+                            return (
+                                <div key={index} className={[styles['sg--eventItem-body-additions-item']].join(' ').trim()}>
+                                    <div className={[styles['sg--eventItem-body-additions-item--icon']].join(' ').trim()}>
+                                        <SgIcon icon={item?.icon}/>
+                                    </div>
+                                    <div className={[styles['sg--eventItem-body-additions-item--text']].join(' ').trim()}>
+                                        {item?.text}
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}

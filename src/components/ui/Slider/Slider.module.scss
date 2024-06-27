@@ -1,0 +1,17 @@
+.widget-slider-container-items {
+    margin: 0;
+
+    & > div {
+        padding: 0 32px;
+    }
+
+    &--withOutOverflow > div {
+        overflow: unset;
+    }
+}
+.widget-slider-container-item {
+    padding: 0 20px 0 0;
+    margin: 0 0 0 -60px;
+    width: 100%;
+    height: 100%;
+}

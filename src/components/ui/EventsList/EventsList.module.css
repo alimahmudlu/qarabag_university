@@ -1,0 +1,22 @@
+.sg--eventsList {
+  display: flex;
+  flex-direction: row;
+}
+.sg--eventsList-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 0 64%;
+  width: 64%;
+}
+.sg--eventsList-image {
+  flex: 1 0 36%;
+  width: 36%;
+}
+.sg--eventsList-image--img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*# sourceMappingURL=EventsList.module.css.map */

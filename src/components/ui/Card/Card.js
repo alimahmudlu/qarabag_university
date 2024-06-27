@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/components/ui/Card/Card.module.css";
-import fakeImage from "@/assets/images/post.png"
 
 export default function SgCard(props) {
     const { data } = props;
@@ -11,11 +10,11 @@ export default function SgCard(props) {
         <>
             <div className={styles['sg--card']}>
                 <div className={styles['sg--card-image']} data-post-type={type} data-post-duration={duration}>
-                        <Image
-                            src={fakeImage}
-                            className={styles['sg--card-image--img']}
-                            alt={header}
-                        />
+                    <Image
+                        src={image}
+                        className={styles['sg--card-image--img']}
+                        alt={header}
+                    />
                 </div>
                 <div className={styles['sg--card-body']}>
                     <Link href={link} className={styles['sg--card-body--header']}>

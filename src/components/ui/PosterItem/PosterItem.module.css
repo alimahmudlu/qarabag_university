@@ -1,0 +1,34 @@
+.sg--posterItem-head {
+  width: 100%;
+}
+.sg--posterItem-head-image {
+  width: 100%;
+  height: 100%;
+}
+.sg--posterItem-head-image--img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.sg--posterItem-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.sg--posterItem-body--header {
+  color: var(--black, #262626);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 111.111% */
+}
+.sg--posterItem-body--description {
+  color: var(--black, #262626);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+}
+
+/*# sourceMappingURL=PosterItem.module.css.map */
