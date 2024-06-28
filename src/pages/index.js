@@ -9,7 +9,6 @@ import SgSectionClubsBanner from "@/components/sections/ClubsBanner";
 import SgSectionMonumentsFamousBanner from "@/components/sections/MonumentsFamousBanner";
 import SgSectionKhankendiMapBanner from "@/components/sections/KhankendiMapBanner";
 import { SiteLayout } from "@/components/layouts";
-import SgCollaboratorsItem from "@/components/ui/CollaboratorsItem";
 
 export default function Index() {
     return (
@@ -168,16 +167,6 @@ export default function Index() {
                 header="Xankəndi"
                 description='Xankəndi Qarqar çayının sahilində, Qarabağ silsiləsinin şərq ətəyində, Bakıdan 385 km aralıda yerləşir. İnzibati cəhətdən Xankəndi şəhər əhatə dairəsinə Xankəndi şəhəri və Kərkicahan qəsəbəsi daxildir. Dağlıq Qarabağ Muxtar Vilayətinin mərkəzi olmuşdur. Sahəsi 8,8 km²-dir. Xankəndi şəhəri şimaldan Kəlbəcər, Tərtər, Ağdərə, Ağdam, cənubdan Şuşa, şərqdən Xocavənd, qərbdən Laçın, mərkəzdən isə Xocalı və Əsgəran rayonları ilə əhatə olunmuşdur.'
             />
-
-            <div className="row p-5">
-                <div className="col-lg-2">
-                    <SgCollaboratorsItem
-                        image={clubImage}
-                        header='Azər Bayramov'
-                        position='Köməkçi müəllim'
-                    />
-                </div>
-            </div>
         </>
     );
 }

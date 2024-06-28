@@ -1,7 +1,22 @@
 import styles from '@/components/ui/EventsSliderItem/EventsSliderItem.module.scss';
 import Image from "next/image";
-import { SgButton } from '../Button';
+import Link from 'next/link';
 import { SgRatio } from '../Ratio';
+
+{/* <SgEventsSliderItem
+    image={clubImage}
+    header='Seçim turunun mükafatlandırma tədbirinə ev sahibliyi edib'
+    ratio={
+        {
+            width: 473,
+            height: 268
+        }
+    }
+    date='Aprel 21, 2024'
+    time='11:30-12:30'
+    location='Bakı şəhəri'
+    path='#'
+/> */}
 
 export default function SgEventsSliderItem(props) {
     const { header, location, description, date, time, image, path, ratio } = props;
@@ -12,9 +27,9 @@ export default function SgEventsSliderItem(props) {
 
                 <div className={[styles['sg--eventsSliderItem-body']].join(' ').trim()}>
                     {header ?
-                        <h6 className={[styles['sg--eventsSliderItem-body--header']].join(' ').trim()}>
+                        <Link href={path} className={[styles['sg--eventsSliderItem-body--header']].join(' ').trim()}>
                             {header}
-                        </h6>
+                        </Link>
                         : ''
                     }
                     {description ?
@@ -50,10 +65,7 @@ export default function SgEventsSliderItem(props) {
 
                 <div className={[styles['sg--eventsSliderItem-head']].join(' ').trim()}>
                     <SgRatio
-                        ratio={{
-                            width: ratio?.width,
-                            height: ratio?.height,
-                        }}
+                        ratio={ratio}
                     >
                         <div className={[styles['sg--eventsSliderItem-head-image']].join(' ').trim()}>
                             <Image
