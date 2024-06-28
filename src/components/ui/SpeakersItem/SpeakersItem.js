@@ -1,9 +1,36 @@
+
 import styles from '@/components/ui/SpeakersItem/SpeakersItem.module.scss';
 import Image from "next/image";
+import { SgButton } from '../Button';
 import { SgRatio } from '../Ratio';
 
+{/* 
+    <SgSpeakersItem
+        image={speakersItemImg}
+        header='Azər Bayramov'
+        position='Köməkçi müəllim'
+        media={[
+            {
+                title:'facebook',
+                icon: 'facebook_fill',
+                path: '#'
+            },
+            {
+                title:'skype',
+                icon: 'skype_fill',
+                path: '#'
+            },
+            {
+                title:'instagram',
+                icon: 'instagram',
+                path:'#'
+            }
+        ]}
+    />
+*/}
+
 export default function SgSpeakersItem(props) {
-    const { header, position, image, path } = props;
+    const { header, position, image, path, media } = props;
 
     return (
         <>
@@ -21,9 +48,29 @@ export default function SgSpeakersItem(props) {
                                 alt={header}
                                 className={[styles['sg--speakersItem-head-image--img']].join(' ').trim()}
                             />
-                            
                         </div>
                     </SgRatio>
+
+                    <ul className={[styles['sg--speakersItem-head--media']].join(' ').trim()}>
+                        {
+                            media?.map((item) => (
+                                <li>
+                                    <SgButton
+                                        icon={item.icon}
+                                        variant='rounded'
+                                        color='black-outline'
+                                        onlyIcon={true}
+                                        squared={true}
+                                        type='link'
+                                        size='xs'
+                                        href={item.path}
+                                    >
+                                        Instagram
+                                    </SgButton>
+                                </li>
+                            ))
+                        }
+                    </ul>
                 </div>
                 <div className={[styles['sg--speakersItem-body']].join(' ').trim()}>
                     {header ?
