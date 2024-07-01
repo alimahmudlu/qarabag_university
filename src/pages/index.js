@@ -8,6 +8,7 @@ import SgSectionCampusBanner from "@/components/sections/CampusBanner";
 import SgSectionClubsBanner from "@/components/sections/ClubsBanner";
 import SgSectionMonumentsFamousBanner from "@/components/sections/MonumentsFamousBanner";
 import SgSectionKhankendiMapBanner from "@/components/sections/KhankendiMapBanner";
+
 import {SiteLayout} from "@/components/layouts";
 import SgSectionMainHero from "@/components/sections/MainHero";
 

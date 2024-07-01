@@ -1,6 +1,7 @@
 import {Section, SectionBlock, SectionBody, SectionFooter, SectionHead} from "@/components/ui/Section";
 import SgButtonGroup from "@/components/ui/ButtonGroup/ButtonGroup";
 import {SgButton} from "@/components/ui/Button";
+import SgNewsSliderItem from "@/components/ui/NewsSliderItem/NewsSliderItem";
 
 export default function SgSectionNewsBanner(props) {
     const {id, data, header} = props;
@@ -28,7 +29,21 @@ export default function SgSectionNewsBanner(props) {
                         </SgButtonGroup>
                     </SectionHead>
                     <SectionBody>
-                        Xeberler
+                    <div className='row'>
+                            {(data || []).map((item, index) => {
+                                return (
+                                    <div key={index} className='col-lg-6'>
+                                        <SgNewsSliderItem
+                                            image={item.image}
+                                            header={item.header}
+                                            path={item.path}
+                                            date={item.date}
+                                            duration={item.duration}
+                                        />
+                                    </div>
+                                )
+                            })}
+                        </div>
                     </SectionBody>
                     <SectionFooter>
                         <SgButtonGroup
