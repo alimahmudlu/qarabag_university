@@ -33,7 +33,7 @@ export default function SgSectionClubsBanner(props) {
                         </SgButtonGroup>
                     </SectionHead>
                     <SectionBody>
-                        <div className='row'>
+                        <div className='row gap-y-[20px]'>
                             {(data || []).map((item, index) => {
                                 return (
                                     <div key={index} className='col-lg-4'>

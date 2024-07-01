@@ -31,4 +31,25 @@
     &-icon {
 
     }
+
+    @media (max-width: 992px) {
+        & {
+            gap: 24px;
+            padding: 20px 16px;
+
+            &-body {
+                gap: 10px;
+
+                &--header {
+                    font-size: 16px;
+                    line-height: 22px; /* 137.5% */
+                    letter-spacing: 0.16px;
+                }
+                &--description {
+                    font-size: 14px;
+                    line-height: 26px; /* 185.714% */
+                }
+            }
+        }
+    }
 }

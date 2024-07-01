@@ -18,5 +18,22 @@
   height: 100%;
   object-fit: cover;
 }
+@media (max-width: 992px) {
+  .sg--eventsList {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+  .sg--eventsList-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1 0 100%;
+    width: 100%;
+  }
+  .sg--eventsList-image {
+    flex: 1 0 100%;
+    width: 100%;
+  }
+}
 
 /*# sourceMappingURL=EventsList.module.css.map */

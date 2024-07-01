@@ -69,5 +69,42 @@
   font-weight: 500;
   line-height: normal;
 }
+@media (max-width: 992px) {
+  .sg--eventItem-date {
+    width: 64px;
+  }
+  .sg--eventItem-date--day {
+    font-size: 32px;
+    line-height: 100%;
+  }
+  .sg--eventItem-date--month {
+    font-size: 16px;
+    line-height: 100%;
+  }
+  .sg--eventItem-body {
+    padding: 10px;
+    width: calc(100% - 64px);
+  }
+  .sg--eventItem-body--header {
+    font-size: 16px;
+    line-height: 22px; /* 137.5% */
+    letter-spacing: 0.16px;
+    -webkit-line-clamp: unset;
+  }
+  .sg--eventItem-body-additions {
+    flex-wrap: wrap;
+    row-gap: 8px;
+    column-gap: 16px;
+  }
+  .sg--eventItem-body-additions-item {
+    gap: 8px;
+  }
+  .sg--eventItem-body-additions-item--icon {
+    font-size: 14px;
+  }
+  .sg--eventItem-body-additions-item--text {
+    font-size: 14px;
+  }
+}
 
 /*# sourceMappingURL=EventItem.module.css.map */

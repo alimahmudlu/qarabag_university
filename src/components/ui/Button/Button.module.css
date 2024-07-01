@@ -63,6 +63,19 @@
   height: 48px;
   padding: 13px;
 }
+.sg--button--lg {
+  padding: 23px 48px;
+  font-size: 24px;
+  line-height: 24px;
+}
+.sg--button--lg::before {
+  font-size: 20px;
+}
+.sg--button--lg.sg--button--squared {
+  width: 72px;
+  height: 72px;
+  padding: 23px;
+}
 .sg--button--primary {
   background-color: var(--burgundy-color, #902923);
   border-color: var(--burgundy-color, #902923);
