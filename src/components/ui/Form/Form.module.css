@@ -87,7 +87,7 @@
 }
 .input-wrapper:not(.input-wrapper--checkbox, .input-wrapper--radio, .input-wrapper--switch, .input-wrapper--file) {
   padding: 0 24px;
-  border-radius: 50px;
+  border-radius: 0;
   background: var(--Light-gray, #F2F2F2);
   background-clip: padding-box;
   border: 1px solid var(--Light-gray, #F2F2F2);
@@ -109,24 +109,29 @@
   background-color: #F8F8F8;
   border-color: #F8F8F8;
 }
-.input .input--big .input-wrapper {
+
+textarea.input {
+  min-height: 98px;
+}
+
+.input--big .input-wrapper {
   padding: 0 24px;
 }
-.input .input--big .input {
-  padding: 16px 0;
+
+.input--big .input {
+  padding: 24px 0;
+  font-size: 20px;
 }
-.input .input--small .input-wrapper {
+
+.input--small .input-wrapper {
   padding: 0 12px;
 }
-.input .input--small .input {
+
+.input--small .input {
   padding: 8px 0;
   font-size: 14px;
   line-height: 20px;
   height: 36px;
-}
-
-textarea.input {
-  min-height: 98px;
 }
 
 .checkbox {

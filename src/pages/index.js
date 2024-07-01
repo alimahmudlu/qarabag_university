@@ -9,10 +9,31 @@ import SgSectionClubsBanner from "@/components/sections/ClubsBanner";
 import SgSectionMonumentsFamousBanner from "@/components/sections/MonumentsFamousBanner";
 import SgSectionKhankendiMapBanner from "@/components/sections/KhankendiMapBanner";
 import {SiteLayout} from "@/components/layouts";
+import SgSectionMainHero from "@/components/sections/MainHero";
 
 export default function Index() {
     return (
         <>
+            <SgSectionMainHero
+                id='mainHero'
+                inner={true}
+                header='Qarabağ Universiteti haqqında'
+                breadcrumb={[
+                    {
+                        name: 'Ana səhifə',
+                        to: '/'
+                    },
+                    {
+                        name: 'Ana səhifə',
+                        to: '/'
+                    },
+                    {
+                        name: 'Ana səhifə',
+                        to: '/'
+                    },
+                ]}
+            />
+
             <SgSectionAboutUniversityBanner
                 id="aboutUniversityBanner"
                 data={{

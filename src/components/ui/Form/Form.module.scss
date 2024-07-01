@@ -102,7 +102,7 @@
       )
     {
         padding: 0 24px;
-        border-radius: 50px;
+        border-radius: 0;
         background: var(--Light-gray, #F2F2F2);
         background-clip: padding-box;
         border: 1px solid var(--Light-gray, #F2F2F2);
@@ -153,29 +153,30 @@
         background-color: #F8F8F8;
         border-color: #F8F8F8;
     }
-
-    .input--big .input-wrapper {
-        padding: 0 24px;
-    }
-    .input--big .input {
-        padding: 16px 0;
-    }
-
-    .input--small .input-wrapper {
-        padding: 0 12px;
-    }
-    .input--small .input {
-        padding: 8px 0;
-        font-size: 14px;
-        line-height: 20px;
-        height: 36px;
-    }
 }
 
 textarea.input {
     min-height: 98px;
 }
 
+
+.input--big .input-wrapper {
+    padding: 0 24px;
+}
+.input--big .input {
+    padding: 24px 0;
+    font-size: 20px;
+}
+
+.input--small .input-wrapper {
+    padding: 0 12px;
+}
+.input--small .input {
+    padding: 8px 0;
+    font-size: 14px;
+    line-height: 20px;
+    height: 36px;
+}
 
 .checkbox {
     position: absolute;
