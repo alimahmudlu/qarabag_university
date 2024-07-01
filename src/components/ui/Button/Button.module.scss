@@ -70,6 +70,21 @@
             padding: 13px;
         }
     }
+    &--lg {
+        padding: 23px 48px;
+        font-size: 24px;
+        line-height: 24px;
+
+        &::before {
+            font-size: 20px;
+        }
+
+        &.sg--button--squared {
+            width: 72px;
+            height: 72px;
+            padding: 23px;
+        }
+    }
 
     &--primary {
         background-color: var(--burgundy-color, #902923);

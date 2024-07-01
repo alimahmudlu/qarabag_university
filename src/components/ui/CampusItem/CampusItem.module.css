@@ -26,5 +26,23 @@
   font-weight: 400;
   line-height: 28px; /* 175% */
 }
+@media (max-width: 992px) {
+  .sg--campusItem {
+    gap: 24px;
+    padding: 20px 16px;
+  }
+  .sg--campusItem-body {
+    gap: 10px;
+  }
+  .sg--campusItem-body--header {
+    font-size: 16px;
+    line-height: 22px; /* 137.5% */
+    letter-spacing: 0.16px;
+  }
+  .sg--campusItem-body--description {
+    font-size: 14px;
+    line-height: 26px; /* 185.714% */
+  }
+}
 
 /*# sourceMappingURL=CampusItem.module.css.map */
