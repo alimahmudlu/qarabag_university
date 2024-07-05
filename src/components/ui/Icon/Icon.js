@@ -19,7 +19,7 @@
 
 
 export default function SgIcon(props) {
-    const { icon, size } = props;
+    const { icon, size = '16px' } = props;
 
     const getIcon = () => {
         return `sg-icon-${icon}`

@@ -20,7 +20,8 @@ export default function SgMenuItem(props) {
                     toggleHeader={item.title}
                     list={(item?.children || []).map((el, i) => {
                         return {
-                            name: <Link href={el?.path || '/'}
+                            name: <Link href={`${item.slug}${el?.slug}` || '/'}
+                                        key={`main_${index}_${i}`}
                                         className={[styles[`${className}--link`]].join(' ').trim()}>{el?.title}</Link>,
                             disabled: false
                         }
@@ -29,7 +30,7 @@ export default function SgMenuItem(props) {
 
                 <SgCollapse
                     toggleHeader={item.title}
-                    id={makeID(5)}
+                    id={item.slug}
                     className={[styles[`${className}`], 'd-lg-none', 'd-block'].join(' ').trim()}
                     toggleClassName={[styles[`${className}--link`]].join(' ').trim()}
                     menuClassName={[styles[`${className}-subMenu`]].join(' ').trim()}
@@ -37,7 +38,7 @@ export default function SgMenuItem(props) {
                     {(item?.children || []).map((el, i) => {
                         return (
                             <SgMenuItem
-                                key={index}
+                                key={`main_c_${index}_${i}`}
                                 index={index}
                                 item={el}
                                 className='sg--template--header-block-body-main-menu-item'
@@ -47,10 +48,10 @@ export default function SgMenuItem(props) {
                 </SgCollapse>
             </>
             :
-            <div key={index}
+            <div key={`main_${index}`}
                  className={[styles[`${className}`]].join(' ').trim()}
             >
-                <Link href={item.path}
+                <Link href={item.slug}
                       className={[styles[`${className}--link`]].join(' ').trim()}
                 >
                     {item.title}

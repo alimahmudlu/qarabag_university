@@ -53,8 +53,8 @@ export default function SgSpeakersItem(props) {
 
                     <ul className={[styles['sg--speakersItem-head--media']].join(' ').trim()}>
                         {
-                            media?.map((item) => (
-                                <li>
+                            media?.map((item, index) => (
+                                <li key={index}>
                                     <SgButton
                                         icon={item.icon}
                                         variant='rounded'

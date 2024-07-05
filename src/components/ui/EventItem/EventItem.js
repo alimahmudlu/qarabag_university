@@ -1,9 +1,10 @@
 import styles from '@/components/ui/EventItem/EventItem.module.scss';
 import {SgIcon} from "@/components/ui/Icon";
 import moment from "moment";
+import {SgButton} from "@/components/ui/Button";
 
 export default function SgEventItem(props) {
-    const {date, additions = [], title} = props;
+    const {date, additions = [], title, path} = props;
 
     return (
         <>
@@ -33,6 +34,18 @@ export default function SgEventItem(props) {
                                 </div>
                             )
                         })}
+                    </div>
+                    <div>
+                        <SgButton
+                            type='link'
+                            to={path}
+                            color='black-outline'
+                            withOutBlock={true}
+                            icon={'arrow-up-right'}
+                            reverse={true}
+                        >
+                            Daha ətraflı
+                        </SgButton>
                     </div>
                 </div>
             </div>

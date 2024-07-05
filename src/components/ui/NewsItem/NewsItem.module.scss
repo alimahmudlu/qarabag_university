@@ -5,6 +5,7 @@
   &:hover{
     border: 1px solid var(--black, #262626);
   }
+
   &-head {
     width: 100%;
 
@@ -19,12 +20,17 @@
       }
     }
   }
+
   &-body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
+    padding: 16px;
     gap: 20px;
+
+    .sg--newsItem--xs & {
+      gap: 16px;
+    }
 
     &--date {
       display: flex;
@@ -42,7 +48,13 @@
       font-style: normal;
       font-weight: 600;
       line-height: 30px; /* 125% */
+
+      .sg--newsItem--xs & {
+        font-size: 16px;
+        line-height: 25px; /* 125% */
+      }
     }
+
     &--description {
       color: var(--gray-text, #707070);
       font-size: 16px;
