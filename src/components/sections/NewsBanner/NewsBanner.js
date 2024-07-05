@@ -2,6 +2,8 @@ import {Section, SectionBlock, SectionBody, SectionFooter, SectionHead} from "@/
 import SgButtonGroup from "@/components/ui/ButtonGroup/ButtonGroup";
 import {SgButton} from "@/components/ui/Button";
 import SgNewsSliderItem from "@/components/ui/NewsSliderItem/NewsSliderItem";
+import SgPosterItem from "@/components/ui/PosterItem";
+import {SgSlider} from "@/components/ui/Slider";
 
 export default function SgSectionNewsBanner(props) {
     const {id, data, header} = props;
@@ -30,45 +32,45 @@ export default function SgSectionNewsBanner(props) {
                     </SectionHead>
                     <SectionBody>
                     <div className='row'>
-                            {(data || []).map((item, index) => {
-                                return (
-                                    <div key={index} className='col-lg-6'>
+                        <div className='col-lg-12'>
+                            <SgSlider
+                                withOutOverflow={true}
+                                arrow={true}
+                                sliderSettings={{
+                                    "slidesToShow": 2,
+                                    "slidesToScroll": 1,
+
+                                    infinite: false,
+                                    arrows: false,
+                                    dots: false,
+                                    responsive:[
+                                        {
+                                            breakpoint: 992,
+                                            settings:
+                                                {
+                                                    slidesToShow: 1,
+                                                    slidesToScroll: 1
+                                                }
+                                        }
+                                    ]
+                                }}
+                                items={(data || []).map((item, index) => {
+                                    return (
                                         <SgNewsSliderItem
+                                            key={index}
                                             image={item.image}
                                             header={item.header}
                                             path={item.path}
                                             date={item.date}
                                             duration={item.duration}
                                         />
-                                    </div>
-                                )
-                            })}
+                                    )
+                                })}
+                            />
+                        </div>
+
                         </div>
                     </SectionBody>
-                    <SectionFooter>
-                        <SgButtonGroup
-                            gap={true}
-                        >
-                            <SgButton
-                                icon='arrow-left'
-                                variant='rounded'
-                                color='black-outline'
-                                onlyIcon={true}
-                                squared={true}
-                            >
-                                Prev
-                            </SgButton>
-                            <SgButton
-                                icon='arrow-right'
-                                variant='rounded'
-                                color='black-outline'
-                                onlyIcon={true}
-                                squared={true}
-                            >
-                                Prev
-                            </SgButton>
-                        </SgButtonGroup>
-                    </SectionFooter>
                 </SectionBlock>
             </Section>
         </>

@@ -106,8 +106,8 @@
   background-color: transparent;
 }
 .input--light .input-wrapper:not(.input--light .input-wrapper--checkbox, .input--light .input-wrapper--radio, .input--light .input-wrapper--switch, .input--light .input-wrapper--file) {
-  background-color: #F8F8F8;
-  border-color: #F8F8F8;
+  background-color: #FFF;
+  border-color: var(--stroke, #CCC);
 }
 
 textarea.input {
@@ -124,14 +124,19 @@ textarea.input {
 }
 
 .input--small .input-wrapper {
-  padding: 0 12px;
+  padding: 0 16px;
 }
 
 .input--small .input {
-  padding: 8px 0;
-  font-size: 14px;
+  padding: 12px 0;
+  font-size: 16px;
+  line-height: 24px;
+  height: 48px;
+}
+
+.input--small .label {
+  font-size: 16px;
   line-height: 20px;
-  height: 36px;
 }
 
 .checkbox {

@@ -15,8 +15,7 @@
 .sg--eventsSliderItem-head-image--img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .sg--eventsSliderItem-body {
   display: flex;
@@ -54,4 +53,12 @@
 }
 .sg--eventsSliderItem-head {
   padding: 20px;
-}/*# sourceMappingURL=EventsSliderItem.module.css.map */
+}
+
+@media (max-width: 992px) {
+  .sg--eventsSliderItem-body--info {
+    padding-top: 0;
+  }
+}
+
+/*# sourceMappingURL=EventsSliderItem.module.css.map */

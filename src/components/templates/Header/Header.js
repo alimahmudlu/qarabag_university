@@ -34,6 +34,7 @@ export default function SgTemplateHeader(props) {
                                 src={logo}
                                 alt='logo'
                                 className={[styles['sg--template--header-block-logo--img']].join(' ').trim()}
+                                priority fetchPriority='high'
                             />
                         </Link>
                         <div className={[styles['sg--template--header-block-body']].join(' ').trim()}>
@@ -44,7 +45,7 @@ export default function SgTemplateHeader(props) {
                                         return (
                                             item.children ?
                                                 <SgDropdown
-                                                    key={index}
+                                                    key={`minor_${index}`}
                                                     className={[styles['sg--template--header-block-body-minor-menu-item']].join(' ').trim()}
                                                     itemClassName={[styles['sg--template--header-block-body-minor-menu-item-subMenu-item']].join(' ').trim()}
                                                     toggleClassName={[styles['sg--template--header-block-body-minor-menu-item--link']].join(' ').trim()}
@@ -52,17 +53,18 @@ export default function SgTemplateHeader(props) {
                                                     toggleHeader={item.title}
                                                     list={(item?.children || []).map((el, i) => {
                                                         return {
-                                                            name: <Link href={el?.path || '/'}
+                                                            name: <Link href={el?.slug || '/'}
+                                                                        key={`minor_${index}_${i}`}
                                                                         className={[styles['sg--template--header-block-body-minor-menu-item--link']].join(' ').trim()}>{el?.title}</Link>,
                                                             disabled: false
                                                         }
                                                     })}
                                                 />
                                                 :
-                                                <div key={index}
+                                                <div key={`minor_${index}`}
                                                      className={[styles['sg--template--header-block-body-minor-menu-item']].join(' ').trim()}
                                                 >
-                                                    <Link href={item.path}
+                                                    <Link href={item.slug || '/'}
                                                           className={[styles['sg--template--header-block-body-minor-menu-item--link']].join(' ').trim()}
                                                     >
                                                         {item.title}
@@ -80,7 +82,8 @@ export default function SgTemplateHeader(props) {
                                         toggleHeader={'AZ'}
                                         list={(menus?.languages || []).map((el, i) => {
                                             return {
-                                                name: <Link href={el?.path || '/'}
+                                                name: <Link href={el?.slug || '/'}
+                                                            key={`lang_${i}`}
                                                             className={styles['sg--template--header-block-body-minor-menu-item--link']}>{el?.title}</Link>,
                                                 disabled: false
                                             }
@@ -93,7 +96,7 @@ export default function SgTemplateHeader(props) {
                                     {(menus.main || []).map((item, index) => {
                                         return (
                                             <SgMenuItem
-                                                key={index}
+                                                key={`main_${index}`}
                                                 index={index}
                                                 item={item}
                                                 className='sg--template--header-block-body-main-menu-item'
@@ -123,6 +126,7 @@ export default function SgTemplateHeader(props) {
                                     list={(menus?.languages || []).map((el, i) => {
                                         return {
                                             name: <Link href={el?.path || '/'}
+                                                        key={`lang_${i}`}
                                                         className={[styles['sg--template--header-block-mobile-menu-item--link']].join(' ').trim()}>{el?.title}</Link>,
                                             disabled: false
                                         }

@@ -5,20 +5,28 @@ import "@/assets/fonts/sg-icons/style.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-Site_App.getInitialProps = async (props) => {
-  const initialProps = await App.getInitialProps(props)
+import ApiService from "@/services/ApiService";
 
-  return {...initialProps}
+Site_App.getInitialProps = async (props) => {
+    const initialProps = await App.getInitialProps(props)
+
+    const menus = await ApiService.get('http://localhost:3000/api/menu/getAll')
+
+    return {
+        ...initialProps,
+        menus: menus.data.menus
+    }
 }
 
-export default function Site_App({ Component, pageProps: {session, ...pageProps}, configuration }) {
-  const getLayout = Component.getLayout || ((page) => page)
+export default function Site_App({ Component, pageProps: {session, ...pageProps}, menus }) {
+    const getLayout = Component.getLayout || ((page) => page)
 
-  return (
+    return (
         getLayout(
             <>
-              <Component {...pageProps} configuration={configuration}/>
-            </>, configuration
+                <Component {...pageProps} menus={menus}/>
+            </>
+            , menus
         )
-  )
+    )
 }

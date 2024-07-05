@@ -3,13 +3,13 @@ import Image from "next/image";
 import {SgButton} from "@/components/ui/Button";
 
 export default function SgContentBanner(props) {
-    const {image, title, description, button} = props;
+    const {image, title, description, button, style} = props;
     return (
         <>
-            <div className={[styles['sg--contentBanner']].join(' ').trim()}>
+            <div style={style} className={[styles['sg--contentBanner']].join(' ').trim()}>
                 <div className={[styles['sg--contentBanner-image']].join(' ').trim()}>
                     <Image
-                        src={image}
+                        src={image || ''}
                         alt={title}
                         className={[styles['sg--contentBanner-image--img']].join(' ').trim()}
                     />
@@ -18,9 +18,9 @@ export default function SgContentBanner(props) {
                     <div className={[styles['sg--contentBanner-body--header']].join(' ').trim()}>
                         {title}
                     </div>
-                    <div className={[styles['sg--contentBanner-body--description']].join(' ').trim()}>
-                        {description}
-                    </div>
+                    <div className={[styles['sg--contentBanner-body--description']].join(' ').trim()}
+                        dangerouslySetInnerHTML={{__html: description}}
+                    />
                     {button ?
                         <SgButton
                             type='link'
