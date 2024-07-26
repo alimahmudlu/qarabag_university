@@ -33,7 +33,7 @@ export default function SgTemplateHeader(props) {
                 <div className='container-fluid'>
                     <div className={[styles['sg--template--header-block']].join(' ').trim()}>
                         <Link href='/' className={[styles['sg--template--header-block-logo']].join(' ').trim()}>
-                            <Image
+                            <Image width='1000' height='1000'
                                 src={logo}
                                 alt='logo'
                                 className={[styles['sg--template--header-block-logo--img']].join(' ').trim()}
@@ -44,7 +44,7 @@ export default function SgTemplateHeader(props) {
                             <div className={[styles['sg--template--header-block-body-minor']].join(' ').trim()}>
                                 <div
                                     className={[styles['sg--template--header-block-body-minor-menu']].join(' ').trim()}>
-                                    {(menus.minor || []).map((item, index) => {
+                                    {(menus?.minor || []).map((item, index) => {
                                         return (
                                             item.children ?
                                                 <SgDropdown
@@ -82,7 +82,7 @@ export default function SgTemplateHeader(props) {
                                         itemClassName={styles['sg--template--header-block-body-minor-menu-item-subMenu-item']}
                                         toggleClassName={styles['sg--template--header-block-body-minor-menu-item--link']}
                                         caret={true}
-                                        toggleHeader={languages.find(el => el.locale === mainLanguage)?.name}
+                                        toggleHeader={(languages || [])?.find(el => el.locale === mainLanguage)?.name}
                                         list={(languages || []).map((el, i) => {
                                             return {
                                                 name: <Link href={el?.slug || '/'}
@@ -100,7 +100,7 @@ export default function SgTemplateHeader(props) {
                             </div>
                             <div className={[styles['sg--template--header-block-body-main']].join(' ').trim()}>
                                 <div className={[styles['sg--template--header-block-body-main-menu']].join(' ').trim()}>
-                                    {(menus.main || []).map((item, index) => {
+                                    {(menus?.main || []).map((item, index) => {
                                         return (
                                             <SgMenuItem
                                                 key={`main_${index}`}

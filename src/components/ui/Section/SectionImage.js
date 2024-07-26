@@ -7,7 +7,7 @@ export default function SectionImage(props) {
     return (
         <>
             <div className={[styles['sg--sections--block-image'], className].join(' ').trim()}>
-                <Image
+                <Image width='1000' height='1000'
                     className={styles['sg--sections--block-image--img']}
                     src={image}
                     alt={alternative}

@@ -24,9 +24,9 @@ export default function SgWidgetItem(props) {
 				/>
 				<div className={[styles['sg--widgetItem-head']].join(' ').trim()}>
 					<div className={[styles['sg--widgetItem-head-image']].join(' ').trim()}>
-						<Image
+						<Image width='1000' height='1000'
 							className={[styles['sg--widgetItem-head-image--img']].join(' ').trim()}
-							src={image}
+							src={encodeURI(image)}
 							alt={name}
 						/>
 					</div>

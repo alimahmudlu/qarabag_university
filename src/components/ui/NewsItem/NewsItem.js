@@ -33,7 +33,7 @@ export default function SgNewsItem(props) {
                         ratio={ratio}
                     >
                         <div className={[styles['sg--newsItem-head-image']].join(' ').trim()}>
-                            <Image
+                            <Image width='1000' height='1000'
                                 src={image}
                                 alt={header}
                                 className={[styles['sg--newsItem-head-image--img']].join(' ').trim()}

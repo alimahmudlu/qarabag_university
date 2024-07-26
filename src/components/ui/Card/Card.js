@@ -10,7 +10,7 @@ export default function SgCard(props) {
         <>
             <div className={styles['sg--card']}>
                 <div className={styles['sg--card-image']} data-post-type={type} data-post-duration={duration}>
-                    <Image
+                    <Image width='1000' height='1000'
                         src={image}
                         className={styles['sg--card-image--img']}
                         alt={header}

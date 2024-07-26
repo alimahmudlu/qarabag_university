@@ -23,9 +23,9 @@ export default function SgWidgetsFilter(props) {
 						return (
 							<div key={index} className={[styles['sg--widgetsFilter-body-item']].join(' ').trim()} onClick={() => handleAddWidget(id)}>
 								<div className={[styles['sg--widgetsFilter-body-item-image']].join(' ').trim()}>
-									<Image
+									<Image width='1000' height='1000'
 										className={[styles['sg--widgetsFilter-body-item-image--img']].join(' ').trim()}
-										src={image}
+										src={encodeURI(image)}
 										alt={name}
 									/>
 								</div>

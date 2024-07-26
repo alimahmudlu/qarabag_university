@@ -17,7 +17,6 @@ import {
     OPTIONS_WIDGET_LIST_ROUTE
 } from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
-import SgWidgetItem from "@/admin/components/ui/WidgetItem";
 import SortableList from "@/admin/components/templates/Sortable/SortableList";
 
 
@@ -59,8 +58,6 @@ export default function Index(props) {
     ]);
     const [widgets, setWidgets] = useState([])
     const [dataTypes, setDataTypes] = useState([])
-    const { query } = useRouter();
-    const { page_id, locale } = query;
 
     function handleChange(e) {
         changeData(e, data, setData, valueErrors, setValueErrors, e.target.name === 'slug' ? slugify(e.target.value) : null);

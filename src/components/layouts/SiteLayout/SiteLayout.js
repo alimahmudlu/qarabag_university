@@ -6,17 +6,13 @@ import SgTemplateHeader from "@/components/templates/Header";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
-import ApiService from "@/services/ApiService";
-import {SITE_LANGUAGE_LIST_ROUTE, SITE_MENU_TYPE_LIST_ROUTE} from "@/configs/apiRoutes";
 
 export default function SiteLayout(props) {
-    const { children } = props;
+    const { children, menus, languages } = props;
 
     const [sidebar, setSidebar] = useState(false)
     const [searchbar, setSearchbar] = useState(false)
     const [searchQuery, setSearchQuery] = useState('')
-    const [languages, setLanguages] = useState([])
-    const [menus, setMenus] = useState([])
     const [mainLanguage, setMainLanguage] = useState('')
 
     const router = useRouter()
@@ -49,22 +45,20 @@ export default function SiteLayout(props) {
         setSearchQuery('')
     }
 
-    function handleSetMainLanguage(language) {
+    function handleSetMainLanguage(language, reload = true) {
         localStorage.setItem('language', language)
         setMainLanguage(language)
         router.reload()
     }
 
     useEffect(() => {
+        console.log(localStorage.getItem('language'))
         if (localStorage.getItem('language')) {
             setMainLanguage(localStorage.getItem('language'))
         }
         else {
-            handleSetMainLanguage(menus?.languages.find(el => el.main).name)
+            handleSetMainLanguage(languages?.find(el => el.main).locale, false)
         }
-
-        console.log('salam')
-
     }, []);
 
     return (
@@ -203,14 +197,4 @@ export default function SiteLayout(props) {
             </main>
         </>
     );
-}
-
-export const getServerSideProps = async (context) => {
-
-
-    console.log(context, 'context');
-
-    return {
-        props: {}
-    }
 }

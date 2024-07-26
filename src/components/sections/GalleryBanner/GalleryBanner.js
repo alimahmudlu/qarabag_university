@@ -32,7 +32,7 @@ export default function SgSectionGalleryBanner(props) {
                                    return (
                                        <div className='col-lg-4' key={index}>
                                            <a data-fancybox="gallery" href={item.image}>
-                                               <Image
+                                               <Image width='1000' height='1000'
                                                    alt={item.title}
                                                    src={item.image}
                                                />

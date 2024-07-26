@@ -13,7 +13,7 @@ export default function SgTemplateFooter(props) {
                     <div className={[styles['sg--template--footer-block']].join(' ').trim()}>
                         <div className={[styles['sg--template--footer-block-main']].join(' ').trim()}>
                             <div className={[styles['sg--template--footer-block-main-logo']].join(' ').trim()}>
-                                <Image
+                                <Image width='1000' height='1000'
                                     src={logo}
                                     alt={'logo'}
                                     className={[styles['sg--template--footer-block-main-logo--img']].join(' ').trim()}

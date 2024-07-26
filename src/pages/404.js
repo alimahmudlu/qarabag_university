@@ -1,3 +1,22 @@
+import {SiteLayout} from "@/components/layouts";
+import Link from "next/link";
+
 export default function Index() {
-	return <h1>404 - Page Not Found</h1>
+	return (
+		<>
+			<div className='p-[150px]'>
+				<Link href='/'>40aasasas4 - Page Not Found</Link>
+			</div>
+		</>
+	)
+}
+
+Index.getLayout = function getLayout(page) {
+	return (
+		<>
+			<SiteLayout>
+				{page}
+			</SiteLayout>
+		</>
+	)
 }
