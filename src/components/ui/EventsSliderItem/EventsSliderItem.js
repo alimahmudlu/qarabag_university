@@ -68,7 +68,7 @@ export default function SgEventsSliderItem(props) {
                         ratio={ratio}
                     >
                         <div className={[styles['sg--eventsSliderItem-head-image']].join(' ').trim()}>
-                            <Image
+                            <Image width='1000' height='1000'
                                 src={image}
                                 alt={header}
                                 className={[styles['sg--eventsSliderItem-head-image--img']].join(' ').trim()}

@@ -43,7 +43,7 @@ export default function SgSpeakersItem(props) {
                         }}
                     >
                         <div className={[styles['sg--speakersItem-head-image']].join(' ').trim()}>
-                            <Image
+                            <Image width='1000' height='1000'
                                 src={image}
                                 alt={header}
                                 className={[styles['sg--speakersItem-head-image--img']].join(' ').trim()}
@@ -53,8 +53,8 @@ export default function SgSpeakersItem(props) {
 
                     <ul className={[styles['sg--speakersItem-head--media']].join(' ').trim()}>
                         {
-                            media?.map((item) => (
-                                <li>
+                            media?.map((item, index) => (
+                                <li key={index}>
                                     <SgButton
                                         icon={item.icon}
                                         variant='rounded'

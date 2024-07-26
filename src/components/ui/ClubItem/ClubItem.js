@@ -17,7 +17,7 @@ export default function SgClubItem(props) {
                 >
                     <div className={[styles['sg--clubItem-block']].join(' ').trim()}>
                         <div className={[styles['sg--clubItem-block-image']].join(' ').trim()}>
-                            <Image
+                            <Image width='1000' height='1000'
                                 src={image}
                                 alt={header}
                                 width={1000}

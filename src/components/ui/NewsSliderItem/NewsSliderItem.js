@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SgIcon } from '../Icon';
 import { SgRatio } from '../Ratio';
+import moment from "moment";
 
 export default function SgNewsSliderItem(props) {
     const { header, image, path, date, duration } = props;
@@ -28,7 +29,7 @@ export default function SgNewsSliderItem(props) {
                             }}
                         >
                             <div className={[styles['sg--newsSliderItem-block-image']].join(' ').trim()}>
-                                <Image
+                                <Image width='1000' height='1000'
                                     src={image}
                                     alt={header}
                                     width={1000}
@@ -50,7 +51,7 @@ export default function SgNewsSliderItem(props) {
                                     <SgIcon icon={'calendar'} />
                                 </span>
                                 <p className={[styles['sg--newsSliderItem-block-body-info--date--text']].join(' ').trim()}>
-                                    {date}
+                                    {moment(date).format('MMMM DD, YYYY')}
                                 </p>
                             </div>
                             <div className={[styles['sg--newsSliderItem-block-body-info--date']].join(' ').trim()}>

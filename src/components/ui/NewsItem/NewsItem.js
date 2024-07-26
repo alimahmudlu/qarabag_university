@@ -5,7 +5,7 @@ import { SgButton } from '../Button';
 import { SgRatio } from '../Ratio';
 
 export default function SgNewsItem(props) {
-    const { header, description, date, time, image, path, ratio } = props;
+    const { header, description, date, time, image, path, ratio, size } = props;
 
     // <SgNewsItem
     //     image={newsImage}
@@ -18,15 +18,22 @@ export default function SgNewsItem(props) {
     //     }}
     // />
 
+    const getSize = () => {
+        switch (size) {
+            case 'xs':
+                return styles['sg--newsItem--xs']
+        }
+    }
+
     return (
         <>
-            <div className={[styles['sg--newsItem']].join(' ').trim()}>
+            <div className={[styles['sg--newsItem'], getSize()].join(' ').trim()}>
                 <div className={[styles['sg--newsItem-head']].join(' ').trim()}>
                     <SgRatio
                         ratio={ratio}
                     >
                         <div className={[styles['sg--newsItem-head-image']].join(' ').trim()}>
-                            <Image
+                            <Image width='1000' height='1000'
                                 src={image}
                                 alt={header}
                                 className={[styles['sg--newsItem-head-image--img']].join(' ').trim()}
@@ -35,13 +42,12 @@ export default function SgNewsItem(props) {
                     </SgRatio>
                 </div>
                 <div className={[styles['sg--newsItem-body']].join(' ').trim()}>
-                    {
-                        date ?
-                            <ul className={[styles['sg--newsItem-body--date']].join(' ').trim()}>
-                                <li>{date}</li>
-                                <li>{time}</li>
-                            </ul>
-                            : ''
+                    {date ?
+                        <ul className={[styles['sg--newsItem-body--date']].join(' ').trim()}>
+                            <li>{date}</li>
+                            <li>{time}</li>
+                        </ul>
+                        : ''
                     }
                     {header ?
                         <Link href={path} className={[styles['sg--newsItem-body--header']].join(' ').trim()}>
@@ -66,10 +72,6 @@ export default function SgNewsItem(props) {
                     >
                         Daha ətraflı
                     </SgButton>
-
-
-
-
                 </div>
             </div>
         </>

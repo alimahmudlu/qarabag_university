@@ -35,7 +35,7 @@ export default function SgEventsList(props) {
                     })}
                 </div>
                 <div className={[styles['sg--eventsList-image']].join(' ').trim()}>
-                    <Image
+                    <Image width='1000' height='1000'
                         src={image}
                         alt={text}
                         className={[styles['sg--eventsList-image--img']].join(' ').trim()}

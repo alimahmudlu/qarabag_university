@@ -12,6 +12,10 @@
         justify-content: center;
         text-align: center;
 
+        .sg--eventItem:hover & {
+            background: var(--burgundy-color, #902923);
+        }
+
         &--day {
             color: var(--black, #262626);
             text-align: center;
@@ -19,6 +23,10 @@
             font-style: normal;
             font-weight: 400;
             line-height: 128.021%;
+
+            .sg--eventItem:hover & {
+                color: var(--white, #FFF);
+            }
         }
         &--month {
             color: var(--black, #262626);
@@ -26,6 +34,10 @@
             font-style: normal;
             font-weight: 400;
             line-height: 128.021%;
+
+            .sg--eventItem:hover & {
+                color: var(--white, #FFF);
+            }
         }
     }
 
@@ -36,6 +48,10 @@
         flex-direction: column;
         gap: 10px;
         width: calc(100% - 127px);
+
+        .sg--eventItem:hover & {
+            background: var(--burgundy-color, #902923);
+        }
 
         &--header {
             color: var(--black, #262626);
@@ -50,6 +66,10 @@
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 1;
             overflow: hidden;
+
+            .sg--eventItem:hover & {
+                color: var(--white, #FFF);
+            }
         }
 
         &-additions {
@@ -65,6 +85,11 @@
 
                 &--icon {
                     font-size: 16px;
+                    color: var(--black, #262626);
+
+                    .sg--eventItem:hover & {
+                        color: var(--white, #FFF);
+                    }
                 }
                 &--text {
                     color: var(--black, #262626);
@@ -72,10 +97,21 @@
                     font-style: normal;
                     font-weight: 500;
                     line-height: normal;
+
+                    .sg--eventItem:hover & {
+                        color: var(--white, #FFF);
+                    }
                 }
             }
         }
+
+
+        .sg--eventItem:hover & a {
+            color: var(--white, #FFF);
+        }
     }
+
+
 
     @media (max-width: 992px) {
         & {

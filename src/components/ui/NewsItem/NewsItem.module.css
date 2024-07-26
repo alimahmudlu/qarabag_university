@@ -15,15 +15,17 @@
 .sg--newsItem-head-image--img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .sg--newsItem-body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 20px;
+  padding: 16px;
   gap: 20px;
+}
+.sg--newsItem--xs .sg--newsItem-body {
+  gap: 16px;
 }
 .sg--newsItem-body--date {
   display: flex;
@@ -41,10 +43,16 @@
   font-weight: 600;
   line-height: 30px; /* 125% */
 }
+.sg--newsItem--xs .sg--newsItem-body--header {
+  font-size: 16px;
+  line-height: 25px; /* 125% */
+}
 .sg--newsItem-body--description {
   color: var(--gray-text, #707070);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 30px; /* 187.5% */
-}/*# sourceMappingURL=NewsItem.module.css.map */
+}
+
+/*# sourceMappingURL=NewsItem.module.css.map */

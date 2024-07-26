@@ -25,7 +25,7 @@ export default function SgCollaboratorsItem(props) {
                         }}
                     >
                         <div className={[styles['sg--collaboratorsItem-head-image']].join(' ').trim()}>
-                            <Image
+                            <Image width='1000' height='1000'
                                 src={image}
                                 alt={header}
                                 className={[styles['sg--collaboratorsItem-head-image--img']].join(' ').trim()}
