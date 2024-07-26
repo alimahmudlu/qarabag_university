@@ -233,10 +233,10 @@ export const getServerSideProps = async (context) => {
 
     if(pageData.status !== 200) {
         return {
-            // redirect: {
-            //     permanent: false,
-            //     destination: "/404",
-            // },
+            redirect: {
+                permanent: false,
+                destination: "/404",
+            },
             props: {
                 pageData: []
             }
@@ -251,10 +251,10 @@ export const getServerSideProps = async (context) => {
 }
 
 
-Index.getLayout = function getLayout(page, menus) {
+Index.getLayout = function getLayout(page) {
     return (
         <>
-            <SiteLayout menus={menus}>
+            <SiteLayout>
                 {page}
             </SiteLayout>
         </>

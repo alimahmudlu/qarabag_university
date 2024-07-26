@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e0b99d98-ff9f-439f-8b4d-f23db0db0992" name="livechat">
+        <fileTransfer rootFolder="/var/www/socket-server/public" accessType="SFTP" host="192.168.178.1" port="22" sshConfigId="1600cbb6-d64b-44b7-ac74-a241ef36618a" sshConfig="liveuser@192.168.178.1:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

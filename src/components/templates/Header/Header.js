@@ -14,13 +14,16 @@ export default function SgTemplateHeader(props) {
     const {
         logo,
         menus,
+        languages,
         handleSearchbar,
         handleSidebar,
         handleChange,
         handleSearch,
         sidebar,
         searchbar,
-        searchQuery
+        searchQuery,
+        handleSetMainLanguage,
+        mainLanguage
     } = props;
 
 
@@ -79,12 +82,16 @@ export default function SgTemplateHeader(props) {
                                         itemClassName={styles['sg--template--header-block-body-minor-menu-item-subMenu-item']}
                                         toggleClassName={styles['sg--template--header-block-body-minor-menu-item--link']}
                                         caret={true}
-                                        toggleHeader={'AZ'}
-                                        list={(menus?.languages || []).map((el, i) => {
+                                        toggleHeader={languages.find(el => el.locale === mainLanguage)?.name}
+                                        list={(languages || []).map((el, i) => {
                                             return {
                                                 name: <Link href={el?.slug || '/'}
+                                                            onClick={(e) => {
+                                                                e.preventDefault();
+                                                                handleSetMainLanguage(el?.locale)
+                                                            }}
                                                             key={`lang_${i}`}
-                                                            className={styles['sg--template--header-block-body-minor-menu-item--link']}>{el?.title}</Link>,
+                                                            className={styles['sg--template--header-block-body-minor-menu-item--link']}>{el?.name}</Link>,
                                                 disabled: false
                                             }
                                         })}
@@ -123,7 +130,7 @@ export default function SgTemplateHeader(props) {
                                     toggleClassName={[styles['sg--template--header-block-mobile-menu-item--link']].join(' ').trim()}
                                     caret={true}
                                     toggleHeader={'AZ'}
-                                    list={(menus?.languages || []).map((el, i) => {
+                                    list={(languages || []).map((el, i) => {
                                         return {
                                             name: <Link href={el?.path || '/'}
                                                         key={`lang_${i}`}

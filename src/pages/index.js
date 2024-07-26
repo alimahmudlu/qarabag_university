@@ -244,10 +244,10 @@ export default function Index() {
 }
 
 
-Index.getLayout = function getLayout(page, menus) {
+Index.getLayout = function getLayout(page) {
     return (
         <>
-            <SiteLayout menus={menus}>
+            <SiteLayout>
                 {page}
             </SiteLayout>
         </>

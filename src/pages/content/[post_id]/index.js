@@ -1,15 +1,35 @@
 import {SiteLayout} from "@/components/layouts";
 import ApiService from "@/services/ApiService";
 import SgSectionMainHero from "@/components/sections/MainHero";
+import SgPageNewsInner from "@/components/pages/NewsInner";
+import SgPageEventsInner from "@/components/pages/EventsInner";
 
 
 export default function Index(props) {
 	const {pageData} = props;
 	const {pageDetails, content} = pageData || {};
-	const {title, id} = pageDetails || {};
+	const {title, id, innerPageType} = pageDetails || {};
 
 	const renderInner = (type, data) => {
+		switch (type) {
+			case 'newsInner':
+				return (
+					<>
+						<SgPageNewsInner
+							data={data}
+						/>
+					</>
+				)
 
+			case 'eventsInner':
+				return (
+					<>
+						<SgPageEventsInner
+							data={data}
+						/>
+					</>
+				)
+		}
 	}
 
 	return (
@@ -35,6 +55,7 @@ export default function Index(props) {
 			/>
 
 
+			{renderInner(innerPageType, content)}
 		</>
 	);
 }
@@ -53,7 +74,7 @@ export const getServerSideProps = async (context) => {
 			//     destination: "/404",
 			// },
 			props: {
-				pageData: []
+				pageData: {}
 			}
 		};
 	}

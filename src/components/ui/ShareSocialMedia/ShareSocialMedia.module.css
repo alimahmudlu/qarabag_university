@@ -1,0 +1,15 @@
+.sg--shareSocialMedia {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+.sg--shareSocialMedia--column {
+  flex-direction: column;
+  gap: 40px;
+}
+.sg--shareSocialMedia-item--link {
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=ShareSocialMedia.module.css.map */

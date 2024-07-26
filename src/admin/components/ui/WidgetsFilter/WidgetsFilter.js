@@ -1,0 +1,47 @@
+import styles from '@/admin/components/ui/WidgetsFilter/WidgetsFilter.module.scss';
+import Image from "next/image";
+
+export default function SgWidgetsFilter(props) {
+	const { data = {}, handleAddWidget } = props;
+	const { list = [] } = data;
+
+	console.log(list);
+
+	return (
+		<>
+			<div className={[styles['sg--widgetsFilter']].join(' ').trim()}>
+				<div className={[styles['sg--widgetsFilter-head']].join(' ').trim()}>
+					<h5 className={[styles['sg--widgetsFilter-head--header']].join(' ').trim()}>
+						Widgets
+					</h5>
+				</div>
+
+				<div className={[styles['sg--widgetsFilter-body']].join(' ').trim()}>
+					{(list || []).map((item, index) => {
+						const { id, image, name, description } = item;
+
+						return (
+							<div key={index} className={[styles['sg--widgetsFilter-body-item']].join(' ').trim()} onClick={() => handleAddWidget(id)}>
+								<div className={[styles['sg--widgetsFilter-body-item-image']].join(' ').trim()}>
+									<Image
+										className={[styles['sg--widgetsFilter-body-item-image--img']].join(' ').trim()}
+										src={image}
+										alt={name}
+									/>
+								</div>
+								<div className={[styles['sg--widgetsFilter-body-item-body']].join(' ').trim()}>
+									<h6 className={[styles['sg--widgetsFilter-body-item-body--header']].join(' ').trim()}>
+										{name}
+									</h6>
+									<p className={[styles['sg--widgetsFilter-body-item-body--description']].join(' ').trim()}>
+										{description}
+									</p>
+								</div>
+							</div>
+						)
+					})}
+				</div>
+			</div>
+		</>
+	)
+}
