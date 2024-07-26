@@ -1,0 +1,13 @@
+.sg--sidebarItem.active .sg--sidebarItem--link{
+    border-left: 8px solid #902923;
+    font-weight: 600;
+    background-color: #EBEBEB;
+}
+.sg--sidebarItem--link{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+    padding: 26px 38px 26px 16px;
+    display: block;
+}

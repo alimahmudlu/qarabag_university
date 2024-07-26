@@ -1,0 +1,14 @@
+.sg--applyBLog{
+    background-color: #F6F6F6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.sg--applyBLog--description{
+    color: #707070;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 400;
+}

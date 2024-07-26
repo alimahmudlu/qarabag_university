@@ -1,0 +1,13 @@
+.sg--socialMediaIcons{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+@media (max-width: 992px){
+    .sg--socialMediaIcons{
+        flex-direction: row;
+        gap: 10px;
+    }
+}
