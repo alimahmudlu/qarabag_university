@@ -13,8 +13,15 @@ export default function handler(req, res) {
         content: contentList.filter(el => el.pageId === page?.id)
     }
 
-    res.status('200').json({
-        page: resp_page
-    })
+    console.log(page)
+
+    if (page) {
+        res.status('200').json({
+            page: resp_page
+        })
+    }
+    else {
+        res.status('204').json({})
+    }
 
 }

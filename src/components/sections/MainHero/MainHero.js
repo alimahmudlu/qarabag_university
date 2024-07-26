@@ -14,7 +14,7 @@ export default function SgSectionMainHero(props) {
                 className={[styles['sg--section--mainHero']].join(' ').trim()}
             >
                 <div className={[styles['sg--section--mainHero-absolute']].join(' ').trim()}>
-                    <Image
+                    <Image width='1000' height='1000'
                         src={heroImage}
                         alt={'hero'}
                         className={[styles['sg--section--mainHero-absolute--background']].join(' ').trim()}

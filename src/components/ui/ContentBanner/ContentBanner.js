@@ -8,7 +8,7 @@ export default function SgContentBanner(props) {
         <>
             <div style={style} className={[styles['sg--contentBanner']].join(' ').trim()}>
                 <div className={[styles['sg--contentBanner-image']].join(' ').trim()}>
-                    <Image
+                    <Image width='1000' height='1000'
                         src={image || ''}
                         alt={title}
                         className={[styles['sg--contentBanner-image--img']].join(' ').trim()}

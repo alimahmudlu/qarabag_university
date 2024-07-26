@@ -3,16 +3,17 @@ import logo from "@/assets/images/logo.svg";
 import logoWithText from "@/assets/images/logow.svg";
 import SgTemplateFooter from "@/components/templates/Footer";
 import SgTemplateHeader from "@/components/templates/Header";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 
 export default function SiteLayout(props) {
-    const { children, menus } = props;
+    const { children, menus, languages } = props;
 
     const [sidebar, setSidebar] = useState(false)
     const [searchbar, setSearchbar] = useState(false)
     const [searchQuery, setSearchQuery] = useState('')
+    const [mainLanguage, setMainLanguage] = useState('')
 
     const router = useRouter()
 
@@ -44,6 +45,22 @@ export default function SiteLayout(props) {
         setSearchQuery('')
     }
 
+    function handleSetMainLanguage(language, reload = true) {
+        localStorage.setItem('language', language)
+        setMainLanguage(language)
+        router.reload()
+    }
+
+    useEffect(() => {
+        console.log(localStorage.getItem('language'))
+        if (localStorage.getItem('language')) {
+            setMainLanguage(localStorage.getItem('language'))
+        }
+        else {
+            handleSetMainLanguage(languages?.find(el => el.main).locale, false)
+        }
+    }, []);
+
     return (
         <>
             <GetGenerateMetadata
@@ -55,21 +72,8 @@ export default function SiteLayout(props) {
                 <div className={[styles['sg--layout--site-content']].join(' ').trim()}>
                     <SgTemplateHeader
                         logo={logoWithText}
-                        menus={{
-                            ...menus,
-                            languages: [
-                                {
-                                    title: 'AZ',
-                                    path: '/az',
-                                    icon: '',
-                                },
-                                {
-                                    title: 'EN',
-                                    path: '/en',
-                                    icon: '',
-                                }
-                            ]
-                        }}
+                        menus={menus}
+                        languages={languages}
                         handleSearchbar={handleSearchbar}
                         handleSidebar={handleSidebar}
                         handleChange={handleChange}
@@ -77,6 +81,8 @@ export default function SiteLayout(props) {
                         sidebar={sidebar}
                         searchbar={searchbar}
                         searchQuery={searchQuery}
+                        handleSetMainLanguage={handleSetMainLanguage}
+                        mainLanguage={mainLanguage}
                     />
                     {children}
                     <SgTemplateFooter
