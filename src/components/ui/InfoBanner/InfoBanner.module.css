@@ -1,0 +1,62 @@
+.sg--infoBanner{
+    background-color: #902923;
+    padding: 90px 0;
+}
+.sg--infoBanner-content{
+    display: flex;
+}
+.sg--infoBanner-content-item{
+    flex: 0 1 33.333%;
+    width: 33.3333%;
+    text-align: center;
+    padding: 12px 65px;
+}
+.sg--infoBanner-content-item:not(:last-child){
+    border-right: 1px solid #FFFFFF;
+}
+.sg--infoBanner-content-item--header{
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 56px;
+    letter-spacing: -0.015em;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+.sg--infoBanner-content-item--description{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+
+@media (max-width: 992px){
+    .sg--infoBanner{
+        padding: 0;
+    }
+    .sg--infoBanner-content{
+        flex-direction: column;
+    }
+    .sg--infoBanner-content-item{
+        flex: 0 1 100%;
+        width: 100%;
+        padding: 30px 0;
+    }
+    .sg--infoBanner-content-item:not(:last-child){
+        border-right: none;
+        border-bottom: 1px solid #FFFFFF;
+    }
+    .sg--infoBanner-content-item--header{
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 40px;
+        margin-bottom: 20px;
+    }
+    .sg--infoBanner-content-item--description{
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 26px;
+    }
+}
