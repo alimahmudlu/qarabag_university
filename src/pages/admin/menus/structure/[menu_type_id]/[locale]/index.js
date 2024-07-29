@@ -9,7 +9,7 @@ import ApiService from "@/admin/services/ApiService";
 import {
     MENU_ITEM_LIST_ROUTE,
     MENU_ITEM_SAVE_ROUTE,
-    OPTIONS_PAGE_LIST_ROUTE,
+    OPTIONS_PAGE_LIST_ROUTE, OPTIONS_POST_LIST_ROUTE,
 } from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
 import {validate} from "@/admin/utils/validate";
@@ -173,7 +173,7 @@ export default function Index(props) {
 
     useEffect(() => {
         if (optionsData.menu_item_type || optionsData.menu_item_type === 'external') {
-            ApiService.get(optionsData.menu_item_type === 'page' ? `${OPTIONS_PAGE_LIST_ROUTE}` : `${OPTIONS_PAGE_LIST_ROUTE}`).then(resp => {
+            ApiService.get(optionsData.menu_item_type === 'page' ? `${OPTIONS_PAGE_LIST_ROUTE}` : `${OPTIONS_POST_LIST_ROUTE}`).then(resp => {
                 setItemsOptions((resp.data.data || []).map(el => ({...el, name: el.title})))
             }).catch(error => {
                 console.log(error)
@@ -228,7 +228,7 @@ export default function Index(props) {
                                     onChange={handleChangeOptionsData}
                                 />
                             </SgFormGroup>
-                            {itemsOptions.length ?
+                            {['page', 'post'].includes(optionsData?.menu_item_type)  ?
                                 <SgFormGroup>
                                     <SgInput
                                         id='url_id'
