@@ -7,20 +7,19 @@ import {changeData} from "@/admin/utils/changeData";
 import slugify from "slugify";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import SgWidgetsFilter from "@/admin/components/ui/WidgetsFilter";
-
-import simpleContentImage from "@/admin/assets/images/widgets/simpleContent.png"
-import SgContentBanner from "@/components/ui/ContentBanner";
 import ApiService from "@/admin/services/ApiService";
 import {
-    LANGUAGE_SHOW_ROUTE, OPTIONS_DATA_TYPE_LIST_ROUTE, OPTIONS_LANGUAGE_LIST_ROUTE,
+    OPTIONS_DATA_TYPE_LIST_ROUTE,
+    OPTIONS_LANGUAGE_LIST_ROUTE,
     OPTIONS_WIDGET_LIST_ROUTE,
-    PAGE_SHOW_ROUTE,
-    WIDGET_LIST_ROUTE
+    PAGE_EDIT_ROUTE,
+    PAGE_SHOW_ROUTE
 } from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
-import SgWidgetItem from "@/admin/components/ui/WidgetItem";
 import SortableList from "@/admin/components/templates/Sortable/SortableList";
 import ReactDOM from "react-dom";
+import {validate} from "@/admin/utils/validate";
+import {validationConstraints} from "@/admin/constants/constants";
 
 
 export default function Index(props) {
@@ -63,6 +62,7 @@ export default function Index(props) {
     const [dataTypes, setDataTypes] = useState([])
     const { query } = useRouter();
     const { page_id, locale } = query;
+    const router = useRouter();
 
     function handleChange(e) {
         changeData(e, data, setData, valueErrors, setValueErrors, e.target.name === 'slug' ? slugify(e.target.value) : null);
@@ -80,6 +80,26 @@ export default function Index(props) {
                 },
             ]
         })
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        let errors = validate(data, 'pageCreate', validationConstraints);
+
+
+        if (Object.keys(errors).length > 0) {
+            setValueErrors(errors)
+        }
+        else {
+            ApiService.put(PAGE_EDIT_ROUTE, data).then(resp => {
+                router.push({
+                    pathname: '/admin/pages/'
+                }, undefined, { scroll: true });
+            }).catch(error => {
+                console.log(error)
+            })
+        }
     }
 
     useEffect(() => {
@@ -163,6 +183,7 @@ export default function Index(props) {
                                     value={data.language || ''}
                                     onChange={handleChange}
                                     variant='select'
+                                    disabled={true}
                                     options={languagesOptions}
                                 />
                             </SgFormGroup>
@@ -251,6 +272,7 @@ export default function Index(props) {
                         <SgButton
                             color='primary'
                             size='sm'
+                            onClick={handleSubmit}
                         >
                             Create
                         </SgButton>
