@@ -402,28 +402,31 @@ export default function SgInput(props) {
                     </div>}
                     <div className={[styles["inner"], styles["show"], "inner show"].join(' ').trim()}>
                         <ul className={[styles['dropdown-menu'], styles['inner'], styles['show'], 'dropdown-menu inner show']}>
-                            <li
-                                className={selected.includes('') ? styles["selected"] : ""}
-                                onClick={() => toggleOption({id: '', value: '', name: 'Seçin'})}
-                            >
-                                <a
-                                    className={[styles["dropdown-item"], "dropdown-item", selected.includes('') ? styles["selected"] : ""].join(' ').trim()}>
-                                    <span>Seçin</span>
-                                </a>
-                            </li>
                             {filteredOptions.length ? (
-                                filteredOptions.map((option, index) => (
-                                    <li
-                                        className={selected.includes(option) ? styles["selected"] : ""}
-                                        onClick={() => toggleOption(option)}
-                                        key={index}
-                                    >
-                                        <a
-                                            className={[styles["dropdown-item"], "dropdown-item", (selected.includes(option.id) || selected.includes(option.id)) ? styles["selected"] : ""].join(' ').trim()}>
-                                            <span>{option.name}</span>
-                                        </a>
-                                    </li>
-                                ))
+                                    <>
+                                        <li
+                                            className={selected.includes('') ? styles["selected"] : ""}
+                                            onClick={() => toggleOption({id: '', value: '', name: 'Seçin'})}
+                                        >
+                                            <a
+                                                className={[styles["dropdown-item"], "dropdown-item", selected.includes('') ? styles["selected"] : ""].join(' ').trim()}>
+                                                <span>Seçin</span>
+                                            </a>
+                                        </li>
+                                        {filteredOptions.map((option, index) => (
+                                            <li
+                                                className={selected.includes(option) ? styles["selected"] : ""}
+                                                onClick={() => toggleOption(option)}
+                                                key={index}
+                                            >
+                                                <a
+                                                    className={[styles["dropdown-item"], "dropdown-item", (selected.includes(option.id) || selected.includes(option.id)) ? styles["selected"] : ""].join(' ').trim()}>
+                                                    <span>{option.name}</span>
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </>
+
                             ) : (
                                 <li>
                                     <span className={[styles["dropdown-item"], "dropdown-item"].join(' ').trim()}>
