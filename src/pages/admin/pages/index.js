@@ -3,10 +3,17 @@ import {SgPage, SgPageBody, SgPageHead} from "@/admin/components/ui/Page";
 import {SgButton} from "@/admin/components/ui/Button";
 import SgTable from "@/admin/components/ui/Table";
 import SgIcon from "@/admin/components/ui/Icon";
-import {LANGUAGE_LIST_ROUTE, PAGE_LIST_ROUTE, POST_DELETE_ROUTE, POST_LIST_ROUTE} from "@/admin/configs/apiRoutes";
+import {
+    LANGUAGE_LIST_ROUTE,
+    PAGE_DELETE_ROUTE,
+    PAGE_LIST_ROUTE,
+    POST_DELETE_ROUTE,
+    POST_LIST_ROUTE
+} from "@/admin/configs/apiRoutes";
 import {useEffect, useState} from "react";
 import ApiService from "@/admin/services/ApiService";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
+import {SgPopup} from "@/admin/components/ui/Popup";
 
 export default function Index(props) {
     const [selectedRow, setSelectedRow] = useState({});
@@ -29,7 +36,7 @@ export default function Index(props) {
     }
 
     function handleRemoveItem() {
-        ApiService.delete(`${POST_DELETE_ROUTE}/${selectedRow.id}`).then(response => {
+        ApiService.delete(`${PAGE_DELETE_ROUTE}/${selectedRow.id}`).then(response => {
             toggleRemoveItemModal()
             setFilters(filters)
         }).catch(error => {
@@ -156,6 +163,32 @@ export default function Index(props) {
                         onClick={(e, row, index) => {setSelectedRow(row)}}
                     />
                 </SgPageBody>
+                <SgPopup
+                    header='Remove Post'
+                    description='lol'
+                    size='md'
+                    setToggleModal={toggleRemoveItemModal}
+                    toggleModal={removeItemModal}
+                >
+                    <SgButtonGroup
+                        gap={true}
+                    >
+                        <SgButton
+                            size='lg'
+                            color='error'
+                            onClick={handleRemoveItem}
+                        >
+                            Remove
+                        </SgButton>
+                        <SgButton
+                            size='lg'
+                            color='primary'
+                            onClick={toggleRemoveItemModal}
+                        >
+                            Cancel
+                        </SgButton>
+                    </SgButtonGroup>
+                </SgPopup>
             </SgPage>
         </>
     )

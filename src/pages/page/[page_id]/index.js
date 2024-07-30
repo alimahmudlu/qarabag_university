@@ -11,11 +11,11 @@ import SgSectionNewsContentBanner from "@/components/sections/NewsContentBanner"
 import SgSectionNewsContent from "@/components/sections/NewsContent";
 import SgSectionEventsContentBanner from "@/components/sections/EventsContentBanner";
 import SgSectionEventsContent from "@/components/sections/EventsContent";
+import {SITE_PAGE_SHOW_ROUTE} from "@/configs/apiRoutes";
 
 export default function Index(props) {
     const {pageData} = props;
-    const {pageDetails, content} = pageData || {};
-    const {title, id} = pageDetails || {};
+    const {title, id, page_widgets} = pageData || {};
 
     return (
         <>
@@ -29,18 +29,14 @@ export default function Index(props) {
                         to: '/'
                     },
                     {
-                        name: 'Ana səhifə',
-                        to: '/'
-                    },
-                    {
-                        name: 'Ana səhifə',
-                        to: '/'
+                        name: title,
+                        to: `/page/${id}`
                     },
                 ]}
             />
 
-            {(content || []).sort((a, b) => a.order > b.order).map((item, index) => {
-                switch (item.boxType) {
+            {(page_widgets || []).sort((a, b) => a?.widget?.order > b?.widget?.order).map((item, index) => {
+                switch (item?.widget?.alias) {
                     case 'simpleContent':
                         return (
                             <SgSectionContentBanner
@@ -226,10 +222,10 @@ export default function Index(props) {
 export const getServerSideProps = async (context) => {
 
     const {query} = context;
-    const {pages} = query;
+    const {page_id} = query;
     let newQuery = {...query};
 
-    const pageData = await ApiService.get(`http://localhost:3000/api/pages/${pages.join('/')}`)
+    const pageData = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/${page_id}`)
 
     if(pageData.status !== 200) {
         return {
@@ -245,16 +241,16 @@ export const getServerSideProps = async (context) => {
 
     return {
         props: {
-            pageData: pageData.data.page
+            pageData: pageData.data.data
         }
     }
 }
 
 
-Index.getLayout = function getLayout(page) {
+Index.getLayout = function getLayout(page, menus, languages) {
     return (
         <>
-            <SiteLayout>
+            <SiteLayout menus={menus} languages={languages}>
                 {page}
             </SiteLayout>
         </>

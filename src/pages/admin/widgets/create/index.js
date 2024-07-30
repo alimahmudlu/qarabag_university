@@ -105,12 +105,12 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
-                                    name='key'
-                                    id='key'
+                                    name='alias'
+                                    id='alias'
                                     placeholder='Enter your key'
                                     label='Key'
-                                    value={data.key || ''}
-                                    isInvalid={valueErrors.key}
+                                    value={data.alias || ''}
+                                    isInvalid={valueErrors.alias}
                                     onChange={handleChange}
                                 />
                             </SgFormGroup>

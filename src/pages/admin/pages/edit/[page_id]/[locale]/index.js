@@ -7,26 +7,21 @@ import {changeData} from "@/admin/utils/changeData";
 import slugify from "slugify";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import SgWidgetsFilter from "@/admin/components/ui/WidgetsFilter";
-
-import simpleContentImage from "@/admin/assets/images/widgets/simpleContent.png"
-import SgContentBanner from "@/components/ui/ContentBanner";
 import ApiService from "@/admin/services/ApiService";
 import {
-    LANGUAGE_SHOW_ROUTE, OPTIONS_DATA_TYPE_LIST_ROUTE, OPTIONS_LANGUAGE_LIST_ROUTE,
+    OPTIONS_DATA_TYPE_LIST_ROUTE,
+    OPTIONS_LANGUAGE_LIST_ROUTE,
     OPTIONS_WIDGET_LIST_ROUTE,
     PAGE_SHOW_ROUTE,
-    WIDGET_LIST_ROUTE
 } from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
-import SgWidgetItem from "@/admin/components/ui/WidgetItem";
 import SortableList from "@/admin/components/templates/Sortable/SortableList";
 import ReactDOM from "react-dom";
+import {arrayMoveImmutable} from "array-move";
 
 
 export default function Index(props) {
-    const [data, setData] = useState({
-        page_widgets: []
-    });
+    const [data, setData] = useState({});
     const [valueErrors, setValueErrors] = useState({});
     const [languagesOptions, setLanguagesOptions] = useState([]);
     const [pageTypeOptions, setPageTypeOptions] = useState([
@@ -67,6 +62,11 @@ export default function Index(props) {
     function handleChange(e) {
         changeData(e, data, setData, valueErrors, setValueErrors, e.target.name === 'slug' ? slugify(e.target.value) : null);
     }
+
+    const onSortEnd = ({ oldIndex, newIndex }) => {
+        console.log(oldIndex, newIndex, 'salam', data.page_widgets)
+        setData({...data, page_widgets: arrayMoveImmutable(data.page_widgets, oldIndex, newIndex)});
+    };
 
     function handleAddWidget(id) {
         setData({...data, page_widgets: [
@@ -179,11 +179,11 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
-                                    name='description'
-                                    id='description'
+                                    name='content'
+                                    id='content'
                                     placeholder='Enter your description'
                                     label='Description'
-                                    value={data.description || ''}
+                                    value={data.content || ''}
                                     onChange={handleChange}
                                     variant='editor'
                                 />

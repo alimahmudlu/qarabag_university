@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {toast} from "react-toastify";
 
 const REQUEST_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_BASE_URL;
 const REQUEST_TIME_OUT = process.env.NEXT_PUBLIC_REQUEST_TIME_OUT;
@@ -12,7 +13,6 @@ let originalConfig = {url: ''};
 ApiService.interceptors.request.use(
     async (config) => {
         if (!config.headers['Content-Language']) {
-            // console.log(localStorage, localStorage.getItem('language'), 'localstorage')
             if (typeof window !== 'undefined' && window.localStorage && localStorage.getItem('language')) {
                 config.headers['Content-Language'] = localStorage.getItem('language');
             }
@@ -36,7 +36,18 @@ ApiService.interceptors.response.use(
         originalConfig = error.config || {};
 
         if (error.response) {
-            return Promise.reject(error);
+            toast(error.response.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            return Promise.reject(error.response);
+
         }
 
         return Promise.reject(error);

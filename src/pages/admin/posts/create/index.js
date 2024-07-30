@@ -171,7 +171,7 @@ export default function Index(props) {
 
                                     fileManager={{
                                         type: 'png',
-                                        multiple: false,
+                                        multiple: true,
                                         toggleFileManagerModal: toggleFileManagerModal,
                                         fileManagerModal: fileManagerModal,
                                         data: data,

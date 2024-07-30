@@ -17,12 +17,12 @@ export default function SgMenuItem(props) {
                     itemClassName={[styles[`${className}-subMenu-item`]].join(' ').trim()}
                     toggleClassName={[styles[`${className}--link`]].join(' ').trim()}
                     caret={true}
-                    toggleHeader={item.title}
+                    toggleHeader={item.name}
                     list={(item?.children || []).map((el, i) => {
                         return {
-                            name: <Link href={`${item.slug}${el?.slug}` || '/'}
+                            name: <Link href={`/${el?.menu_item_type === 'page' ? 'page' : 'content'}/${el?.url_id}` || '/'}
                                         key={`main_${index}_${i}`}
-                                        className={[styles[`${className}--link`]].join(' ').trim()}>{el?.title}</Link>,
+                                        className={[styles[`${className}--link`]].join(' ').trim()}>{el?.name}</Link>,
                             disabled: false
                         }
                     })}
@@ -30,7 +30,7 @@ export default function SgMenuItem(props) {
 
                 <SgCollapse
                     toggleHeader={item.title}
-                    id={item.slug}
+                    id={item.id}
                     className={[styles[`${className}`], 'd-lg-none', 'd-block'].join(' ').trim()}
                     toggleClassName={[styles[`${className}--link`]].join(' ').trim()}
                     menuClassName={[styles[`${className}-subMenu`]].join(' ').trim()}
@@ -51,10 +51,10 @@ export default function SgMenuItem(props) {
             <div key={`main_${index}`}
                  className={[styles[`${className}`]].join(' ').trim()}
             >
-                <Link href={item.slug}
+                <Link href={`/page/${item.url_id}`}
                       className={[styles[`${className}--link`]].join(' ').trim()}
                 >
-                    {item.title}
+                    {item.name}
                 </Link>
             </div>
 
