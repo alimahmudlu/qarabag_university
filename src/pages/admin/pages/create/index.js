@@ -92,8 +92,9 @@ export default function Index(props) {
                 {
                     id: 0,
                     pagination_limit: 10,
-                    row: data.page_widgets.length,
+                    row: data.page_widgets.length + 1,
                     status: 0,
+                    widget_id: widgets.find(el => el.id === id).id,
                     widget: widgets.find(el => el.id === id),
                 },
             ]
@@ -193,19 +194,19 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
-                                    name='description'
-                                    id='description'
+                                    name='content'
+                                    id='content'
                                     placeholder='Enter your description'
                                     label='Description'
-                                    value={data.description || ''}
+                                    value={data.content || ''}
                                     onChange={handleChange}
                                     variant='editor'
                                 />
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
-                                    name='page_type'
-                                    id='page_type'
+                                    name='page_type_id'
+                                    id='page_type_id'
                                     placeholder='Enter your page type'
                                     label='Page type'
                                     value={data?.page_type_id || ''}
@@ -227,6 +228,20 @@ export default function Index(props) {
                                 />
                             </SgFormGroup>
 
+                            <SgFormGroup>
+                                <SgInput
+                                    name='status'
+                                    id='status'
+                                    placeholder='Enter status'
+                                    label='Status'
+                                    value={data.status || ''}
+                                    onChange={handleChange}
+                                    isInvalid={valueErrors.status}
+                                    variant='select'
+                                    options={statusOptions}
+                                />
+                            </SgFormGroup>
+
 
                             <div className=''>
                                 <SortableList
@@ -234,8 +249,6 @@ export default function Index(props) {
                                     dataTypes={dataTypes}
                                     statusOptions={statusOptions}
                                     handleChange={handleChange}
-
-
                                     onSortEnd={onSortEnd}
                                     pressDelay={200}
                                     lockAxis={'y'}
