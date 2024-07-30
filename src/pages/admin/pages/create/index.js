@@ -14,10 +14,12 @@ import ApiService from "@/admin/services/ApiService";
 import {
     OPTIONS_DATA_TYPE_LIST_ROUTE,
     OPTIONS_LANGUAGE_LIST_ROUTE,
-    OPTIONS_WIDGET_LIST_ROUTE
+    OPTIONS_WIDGET_LIST_ROUTE, PAGE_CREATE_ROUTE, POST_CREATE_ROUTE
 } from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
 import SortableList from "@/admin/components/templates/Sortable/SortableList";
+import {validate} from "@/admin/utils/validate";
+import {validationConstraints} from "@/admin/constants/constants";
 
 
 export default function Index(props) {
@@ -58,9 +60,30 @@ export default function Index(props) {
     ]);
     const [widgets, setWidgets] = useState([])
     const [dataTypes, setDataTypes] = useState([])
+    const router = useRouter();
 
     function handleChange(e) {
         changeData(e, data, setData, valueErrors, setValueErrors, e.target.name === 'slug' ? slugify(e.target.value) : null);
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        let errors = validate(data, 'pageCreate', validationConstraints);
+
+
+        if (Object.keys(errors).length > 0) {
+            setValueErrors(errors)
+        }
+        else {
+            ApiService.post(PAGE_CREATE_ROUTE, data).then(resp => {
+                router.push({
+                    pathname: '/admin/pages/'
+                }, undefined, { scroll: true });
+            }).catch(error => {
+                console.log(error)
+            })
+        }
     }
 
     function handleAddWidget(id) {
@@ -154,6 +177,7 @@ export default function Index(props) {
                                     onChange={handleChange}
                                     variant='select'
                                     options={languagesOptions}
+                                    disabled={true}
                                 />
                             </SgFormGroup>
                             <SgFormGroup>
@@ -241,6 +265,7 @@ export default function Index(props) {
                         <SgButton
                             color='primary'
                             size='sm'
+                            onClick={handleSubmit}
                         >
                             Create
                         </SgButton>

@@ -1,0 +1,34 @@
+.sg--documentsListItem {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.sg--documentsListItem:nth-child(2n) {
+  background-color: #F6F6F6;
+}
+
+.sg--documentsListItem--header {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 40px;
+  color: #262626;
+}
+
+.sg--documentsListItem.active .sg--documentsListItem--header {
+  color: #902923;
+}
+
+@media (max-width: 992px) {
+  .sg--documentsListItem {
+    padding: 11px 6px;
+  }
+
+  .sg--documentsListItem--header {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+/*# sourceMappingURL=DocumentsListItem.module.css.map */

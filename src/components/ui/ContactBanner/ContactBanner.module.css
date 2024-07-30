@@ -1,0 +1,62 @@
+.sg--contactBanner{
+    padding: 40px 100px;
+    background-color: #F6F6F6;
+}
+.sg--contactBanner-head--header{
+    font-size: 32px;
+    line-height: 60px;
+    font-weight: 700;
+    color: #262626;
+}
+.sg--contactBanner-body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.sg--contactBanner-body-content--description{
+    font-size: 18px;
+    line-height: 35px;
+    font-weight: 400;
+    color: #262626;
+}
+.sg--contactBanner-body-links{
+    display: flex;
+    gap: 32px;
+}
+.sg--contactBanner-body-links--item{
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 500;
+    color: #262626;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+@media (max-width: 992px){
+    .sg--contactBanner{
+        padding: 20px;
+    }
+    .sg--contactBanner-head{
+        margin-bottom: 18px;
+    }
+    .sg--contactBanner-head--header{
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 25px;
+
+    }
+    .sg--contactBanner-body{
+        flex-direction: column;
+        gap: 18px;
+    }
+    .sg--contactBanner-body-content--description{
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 26px;
+    }
+    .sg--contactBanner-body-links{
+        flex-direction: column;
+        gap: 6px;
+    }
+}
