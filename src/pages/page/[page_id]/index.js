@@ -40,6 +40,7 @@ export default function Index(props) {
                     case 'simpleContent':
                         return (
                             <SgSectionContentBanner
+                                fluidContainer='left'
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
