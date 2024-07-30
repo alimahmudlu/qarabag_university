@@ -18,14 +18,13 @@ import {
 import {useRouter} from "next/router";
 import SortableList from "@/admin/components/templates/Sortable/SortableList";
 import ReactDOM from "react-dom";
+import {arrayMoveImmutable} from "array-move";
 import {validate} from "@/admin/utils/validate";
 import {validationConstraints} from "@/admin/constants/constants";
 
 
 export default function Index(props) {
-    const [data, setData] = useState({
-        page_widgets: []
-    });
+    const [data, setData] = useState({});
     const [valueErrors, setValueErrors] = useState({});
     const [languagesOptions, setLanguagesOptions] = useState([]);
     const [pageTypeOptions, setPageTypeOptions] = useState([
@@ -67,6 +66,11 @@ export default function Index(props) {
     function handleChange(e) {
         changeData(e, data, setData, valueErrors, setValueErrors, e.target.name === 'slug' ? slugify(e.target.value) : null);
     }
+
+    const onSortEnd = ({ oldIndex, newIndex }) => {
+        console.log(oldIndex, newIndex, 'salam', data.page_widgets)
+        setData({...data, page_widgets: arrayMoveImmutable(data.page_widgets, oldIndex, newIndex)});
+    };
 
     function handleAddWidget(id) {
         setData({...data, page_widgets: [

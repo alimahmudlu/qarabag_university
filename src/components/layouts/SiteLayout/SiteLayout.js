@@ -89,75 +89,33 @@ export default function SiteLayout(props) {
                         menus={[
                             {
                                 header: 'Menu',
-                                list: [
-                                    {
-                                        title: 'Haqqımızda',
-                                        path: '/about',
-                                        icon: ''
-                                    },
-                                    {
-                                        title: 'Akademik fəaliyyət',
-                                        path: '/academic_activity',
-                                        icon: ''
-                                    },
-                                    {
-                                        title: 'Fakültələr',
-                                        path: '/faculties',
-                                        icon: ''
-                                    },
-                                    {
-                                        title: 'Kampus',
-                                        path: '/campus',
-                                        icon: ''
-                                    },
-                                    {
-                                        title: 'Karyera',
-                                        path: '/career',
-                                        icon: ''
-                                    }
-                                ]
+                                list: (menus || []).find(el => el.alias === 'footerMain')?.menu_items || []
                             },
                             {
                                 header: 'Kömək',
-                                list: [
-                                    {
-                                        title: 'Xəbərlər',
-                                        path: '/news',
-                                        icon: ''
-                                    },
-                                    {
-                                        title: 'Tədbirlər',
-                                        path: '/events',
-                                        icon: ''
-                                    },
-                                    {
-                                        title: 'Qaydalar və sənədlər',
-                                        path: '/regulations_documents',
-                                        icon: ''
-                                    }
-                                ]
+                                list: (menus || []).find(el => el.alias === 'footerMinor')?.menu_items || []
                             },
                             {
                                 header: 'Əlaqə',
                                 list: [
                                     {
-                                        title: 'Lorem ipsum dolor sit amet consectetur. Cras odio at nisl facilisi porttitor est amet.',
-                                        path: 'https://maps.app.goo.gl/9QwGFagRk2ZH11SB7',
+                                        name: 'Lorem ipsum dolor sit amet consectetur. Cras odio at nisl facilisi porttitor est amet.',
+                                        url_id: 'https://maps.app.goo.gl/9QwGFagRk2ZH11SB7',
                                         icon: 'map-pin'
                                     },
                                     {
-                                        title: '(+994)55-555-55-55',
-                                        path: 'tel::+99455-555-55-55',
+                                        name: '(+994)55-555-55-55',
+                                        url_id: 'tel::+99455-555-55-55',
                                         icon: 'phone'
                                     },
                                     {
-                                        title: '(+994)55-555-55-55',
-                                        path: 'tel::+99455-555-55-55',
+                                        name: '(+994)55-555-55-55',
+                                        url_id: 'tel::+99455-555-55-55',
                                         icon: 'phone'
                                     },
                                     {
-                                        title: 'example@gmail.com',
-                                        path: 'mailto::example@gmail.com',
+                                        name: 'example@gmail.com',
+                                        url_id: 'mailto::example@gmail.com',
                                         icon: 'mail'
                                     }
                                 ]

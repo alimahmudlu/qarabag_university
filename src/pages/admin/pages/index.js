@@ -191,8 +191,6 @@ export default function Index(props) {
                     </SgButtonGroup>
                 </SgPopup>
             </SgPage>
-
-
         </>
     )
 }

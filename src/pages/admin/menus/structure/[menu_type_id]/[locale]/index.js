@@ -67,6 +67,7 @@ export default function Index(props) {
         delete object.children;
         object.parent_id = parentId
         object.row = i + 1
+        const ids = object.id
 
         if (object.new) {
             object.id = null;
@@ -75,7 +76,7 @@ export default function Index(props) {
         newData = [...newData, object];
 
         (datas.children || []).map((item, index) => {
-            nestableItem(item, object.id, index)
+            nestableItem(item, ids, index)
         })
     }
 
@@ -127,7 +128,7 @@ export default function Index(props) {
         array.splice(index, 1);
 
         setData(array)
-        generateNestable(array)
+        setNestableData(generateNestable(array))
     }
 
     function generateNestable(array) {
@@ -154,7 +155,7 @@ export default function Index(props) {
             return false;
         });
 
-        setNestableData(result)
+        return result
     }
 
     useEffect(() => {
@@ -165,7 +166,7 @@ export default function Index(props) {
         }).then(resp => {
             setData(resp.data.data);
 
-            generateNestable(resp.data.data)
+            setNestableData(generateNestable(resp.data.data))
         }).catch(error => {
             console.log(error)
         })
@@ -239,6 +240,7 @@ export default function Index(props) {
                                         options={itemsOptions}
                                         data_extraarraykey={`name`}
                                         value={optionsData.url_id || ''}
+                                        searchAble={true}
                                         onChange={(e) => {
                                             handleChangeOptionsData(e, `${itemsOptions.find(el => el.id === e.target.value)?.title}`);
                                         }}
