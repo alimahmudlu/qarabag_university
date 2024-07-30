@@ -1,0 +1,75 @@
+.sg--vacancyCard{
+    border: 1px solid #CCCCCC;
+    padding: 24px;
+    border-radius: 10px;
+    margin: 40px;
+}
+.sg--vacancyCard-content{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+.sg--vacancyCard-content--header{
+    color: #262626;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.sg--vacancyCard-content-info{
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.sg--vacancyCard-content-info--workTime{
+    color: #262626;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    padding: 8px 10px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    user-select: none;
+}
+.sg--vacancyCard-content-info--text{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #262626;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+
+@media (max-width: 992px){
+    .sg--vacancyCard-content{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .sg--vacancyCard-content--header{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .sg--vacancyCard-content--button{
+        order: 3;
+        width: 100%;
+    }
+    .sg--vacancyCard-content-info{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .sg--vacancyCard-content-info--workTime{
+        font-size: 12px;
+        line-height: 22px;
+    }
+    .sg--vacancyCard-content-info--text{
+        font-size: 14px;
+        line-height: 26px;
+    }
+}

@@ -1,0 +1,24 @@
+.sg--sidebar{
+    width: 400px;
+    background-color: #F6F6F6;
+}
+.sg--sidebar-mobile{
+    display: none;
+}
+
+@media (max-width:992px) {
+    .sg--sidebar{
+        display: none;
+    }
+    .sg--sidebar-mobile{
+        display: block;
+    }
+    .sg--sidebar-mobile-select{
+        border-left: 4px solid #902923;
+        font-weight: 600;
+        background-color: #EBEBEB;
+        padding: 11px 16px;
+        outline: none;
+        width: 100%;
+    }
+}
