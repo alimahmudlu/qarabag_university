@@ -44,7 +44,7 @@ export default function SgTemplateHeader(props) {
                             <div className={[styles['sg--template--header-block-body-minor']].join(' ').trim()}>
                                 <div
                                     className={[styles['sg--template--header-block-body-minor-menu']].join(' ').trim()}>
-                                    {(menus?.minor || []).map((item, index) => {
+                                    {((menus || []).find(el => el.alias === 'headerMinor')?.menu_items || []).map((item, index) => {
                                         return (
                                             item.children ?
                                                 <SgDropdown
@@ -53,10 +53,10 @@ export default function SgTemplateHeader(props) {
                                                     itemClassName={[styles['sg--template--header-block-body-minor-menu-item-subMenu-item']].join(' ').trim()}
                                                     toggleClassName={[styles['sg--template--header-block-body-minor-menu-item--link']].join(' ').trim()}
                                                     caret={true}
-                                                    toggleHeader={item.title}
+                                                    toggleHeader={item.name}
                                                     list={(item?.children || []).map((el, i) => {
                                                         return {
-                                                            name: <Link href={el?.slug || '/'}
+                                                            name: <Link href={`/${el?.menu_item_type === 'page' ? 'page' : 'content'}/${el?.id}` || '/'}
                                                                         key={`minor_${index}_${i}`}
                                                                         className={[styles['sg--template--header-block-body-minor-menu-item--link']].join(' ').trim()}>{el?.title}</Link>,
                                                             disabled: false
@@ -67,10 +67,10 @@ export default function SgTemplateHeader(props) {
                                                 <div key={`minor_${index}`}
                                                      className={[styles['sg--template--header-block-body-minor-menu-item']].join(' ').trim()}
                                                 >
-                                                    <Link href={item.slug || '/'}
+                                                    <Link href={`/${item?.menu_item_type === 'page' ? 'page' : 'content'}/${item.id}` || '/'}
                                                           className={[styles['sg--template--header-block-body-minor-menu-item--link']].join(' ').trim()}
                                                     >
-                                                        {item.title}
+                                                        {item.name}
                                                     </Link>
                                                 </div>
 
@@ -100,7 +100,7 @@ export default function SgTemplateHeader(props) {
                             </div>
                             <div className={[styles['sg--template--header-block-body-main']].join(' ').trim()}>
                                 <div className={[styles['sg--template--header-block-body-main-menu']].join(' ').trim()}>
-                                    {(menus?.main || []).map((item, index) => {
+                                    {((menus || []).find(el => el.alias === 'main')?.menu_items || []).map((item, index) => {
                                         return (
                                             <SgMenuItem
                                                 key={`main_${index}`}

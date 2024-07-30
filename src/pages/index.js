@@ -244,7 +244,7 @@ export default function Index() {
 }
 
 
-Index.getLayout = function getLayout(page, menus, languages, defaultLanguage) {
+Index.getLayout = function getLayout(page, menus, languages) {
     return (
         <>
             <SiteLayout menus={menus} languages={languages}>

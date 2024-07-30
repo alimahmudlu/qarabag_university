@@ -91,6 +91,7 @@ export default function Index(props) {
                 <SgPageBody>
                     <div className={['row'].join(' ').trim()}>
                         <div className='col-lg-12'>
+
                             <SgFormGroup>
                                 <SgInput
                                     name='status'
@@ -112,6 +113,29 @@ export default function Index(props) {
                                     label='Name'
                                     value={data.name || ''}
                                     isInvalid={valueErrors.name}
+                                    onChange={handleChange}
+                                />
+                            </SgFormGroup>
+                            <SgFormGroup>
+                                <SgInput
+                                    name='alias'
+                                    id='alias'
+                                    placeholder='Enter your key'
+                                    label='Key'
+                                    value={data.alias || ''}
+                                    isInvalid={valueErrors.alias}
+                                    onChange={handleChange}
+                                />
+                            </SgFormGroup>
+                            <SgFormGroup>
+                                <SgInput
+                                    name='description'
+                                    id='description'
+                                    placeholder='Enter your description'
+                                    label='Description'
+                                    value={data.description || ''}
+                                    isInvalid={valueErrors.description}
+                                    variant='textarea'
                                     onChange={handleChange}
                                 />
                             </SgFormGroup>

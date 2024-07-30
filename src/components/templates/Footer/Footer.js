@@ -34,14 +34,14 @@ export default function SgTemplateFooter(props) {
                                                         <div key={i}
                                                              className={[styles['sg--template--footer-block-main-menu-item-list-item']].join(' ').trim()}
                                                         >
-                                                            <Link href={item.path}
+                                                            <Link href={item?.menu_item_type ? `/${item?.menu_item_type === 'page' ? 'page' : 'content'}/${item.url_id}` :  `${item.url_id}`}
                                                                   className={[styles['sg--template--footer-block-main-menu-item-list-item--link']].join(' ').trim()}>
                                                                 {item.icon ?
                                                                     <SgIcon icon={item.icon} />
                                                                     : ''
                                                                 }
                                                                 <span>
-                                                                    {item.title}
+                                                                    {item.name}
                                                                 </span>
                                                             </Link>
                                                         </div>
