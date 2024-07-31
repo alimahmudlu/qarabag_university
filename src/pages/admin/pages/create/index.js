@@ -94,8 +94,9 @@ export default function Index(props) {
                     {
                         id: 0,
                         pagination_limit: 10,
-                        row: data.page_widgets.length,
+                        row: data.page_widgets.length + 1,
                         status: 0,
+                        widget_id: widgets.find(el => el.id === id).id,
                         widget: widgets.find(el => el.id === id),
                     },
                 ]
