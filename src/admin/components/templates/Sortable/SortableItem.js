@@ -7,7 +7,7 @@ const SortableItem = (props) => {
         indexz,
         widget,
         statusOptions,
-        dataTypes,
+        dataTypesOptions,
         handleChange
     } = props
 
@@ -18,7 +18,7 @@ const SortableItem = (props) => {
             data={widget?.widget}
             values={widget}
             statusOptions={statusOptions}
-            dataTypesOptions={dataTypes}
+            dataTypesOptions={dataTypesOptions}
             handleChange={handleChange}
         />
     )

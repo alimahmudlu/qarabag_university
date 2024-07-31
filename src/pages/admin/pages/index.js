@@ -163,8 +163,9 @@ export default function Index(props) {
                         onClick={(e, row, index) => {setSelectedRow(row)}}
                     />
                 </SgPageBody>
+
                 <SgPopup
-                    header='Remove Post'
+                    header='Remove Page'
                     description='lol'
                     size='md'
                     setToggleModal={toggleRemoveItemModal}

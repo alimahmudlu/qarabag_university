@@ -78,8 +78,9 @@ export default function Index(props) {
                 {
                     id: 0,
                     pagination_limit: 10,
-                    row: data.page_widgets.length,
+                    row: data.page_widgets.length+1,
                     status: 0,
+                    widget_id: widgets.find(el => el.id === id).id,
                     widget: widgets.find(el => el.id === id),
                 },
             ]
@@ -215,8 +216,8 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
-                                    name='page_type'
-                                    id='page_type'
+                                    name='page_type_id'
+                                    id='page_type_id'
                                     placeholder='Enter your page type'
                                     label='Page type'
                                     value={data?.page_type_id || ''}
@@ -235,6 +236,19 @@ export default function Index(props) {
                                     onChange={handleChange}
                                     variant='select'
                                     options={innerPageTemplateOptions}
+                                />
+                            </SgFormGroup>
+                            <SgFormGroup>
+                                <SgInput
+                                    name='status'
+                                    id='status'
+                                    placeholder='Enter status'
+                                    label='Status'
+                                    value={data.status || ''}
+                                    onChange={handleChange}
+                                    isInvalid={valueErrors.status}
+                                    variant='select'
+                                    options={statusOptions}
                                 />
                             </SgFormGroup>
 
