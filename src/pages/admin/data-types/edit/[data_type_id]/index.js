@@ -140,7 +140,7 @@ export default function Index(props) {
                 </SgPageHead>
 
                 <SgPageBody>
-                    <div className='flex flex-column gap-[32px]'>
+                    <div className='row gap-y-[32px]'>
                         {(data.meta_keys || []).map((item, index) => {
                             return (
                                 <div key={index} className='border-1 p-[16px] rounded-[8px]'>

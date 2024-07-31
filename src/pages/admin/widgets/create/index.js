@@ -1,14 +1,14 @@
 import {MainLayout} from "@/admin/components/layouts";
 import {SgPage, SgPageBody, SgPageFooter, SgPageHead} from "@/admin/components/ui/Page";
 import {SgButton} from "@/admin/components/ui/Button";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {SgFile, SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
 // import slugify from "slugify";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 
 import ApiService from "@/admin/services/ApiService";
-import { WIDGET_CREATE_ROUTE } from "@/admin/configs/apiRoutes";
+import {OPTIONS_DATA_TYPE_LIST_ROUTE, WIDGET_CREATE_ROUTE} from "@/admin/configs/apiRoutes";
 import {validate} from "@/admin/utils/validate";
 import {validationConstraints} from "@/admin/constants/constants";
 import {useRouter} from "next/router";
@@ -18,6 +18,7 @@ export default function Index(props) {
     const [data, setData] = useState({});
     const [valueErrors, setValueErrors] = useState({});
     const [fileManagerModal, setFileManagerModal] = useState(false);
+    const [dataTypes, setDataTypes] = useState([])
     const [statusOptions, setStatusOptions] = useState([
         {
             id: 1,
@@ -26,6 +27,16 @@ export default function Index(props) {
         {
             id: 0,
             name: 'Deactive'
+        }
+    ]);
+    const [pageTypeOptions, setPageTypeOptions] = useState([
+        {
+            id: 2,
+            name: 'Content'
+        },
+        {
+            id: 1,
+            name: 'List'
         }
     ]);
     const router = useRouter()
@@ -56,6 +67,14 @@ export default function Index(props) {
             })
         }
     }
+
+    useEffect(() => {
+        ApiService.get(`${OPTIONS_DATA_TYPE_LIST_ROUTE}`).then(resp => {
+            setDataTypes((resp.data.data || []).map(el => ({id: el.id, name: el.alias})))
+        }).catch(error => {
+            console.log(error)
+        })
+    }, []);
 
     return (
         <>
@@ -158,6 +177,32 @@ export default function Index(props) {
                                     }}
                                 />
                             </SgFormGroup>
+                            <SgFormGroup>
+                                <SgInput
+                                    name='page_type_id'
+                                    id='page_type_id'
+                                    placeholder='Enter your page type'
+                                    label='Page type'
+                                    value={data?.page_type_id || ''}
+                                    onChange={handleChange}
+                                    variant='select'
+                                    options={pageTypeOptions}
+                                />
+                            </SgFormGroup>
+                            {data?.page_type_id === 2 &&
+                                <SgFormGroup>
+                                    <SgInput
+                                        name='data_type_id'
+                                        id='data_type_id'
+                                        placeholder='Enter your data type'
+                                        label='Data type'
+                                        value={data?.data_type_id || ''}
+                                        onChange={handleChange}
+                                        variant='select'
+                                        options={dataTypes}
+                                    />
+                                </SgFormGroup>
+                            }
                         </div>
                     </div>
                 </SgPageBody>

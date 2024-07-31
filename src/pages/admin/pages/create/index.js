@@ -12,6 +12,7 @@ import {arrayMoveImmutable} from "array-move";
 
 import ApiService from "@/admin/services/ApiService";
 import {
+    DATA_TYPE_SHOW_ROUTE,
     OPTIONS_DATA_TYPE_LIST_ROUTE,
     OPTIONS_LANGUAGE_LIST_ROUTE,
     OPTIONS_WIDGET_LIST_ROUTE, PAGE_CREATE_ROUTE, POST_CREATE_ROUTE
@@ -87,16 +88,18 @@ export default function Index(props) {
     }
 
     function handleAddWidget(id) {
-        setData({...data, page_widgets: [
-                ...data.page_widgets,
-                {
-                    id: 0,
-                    pagination_limit: 10,
-                    row: data.page_widgets.length,
-                    status: 0,
-                    widget: widgets.find(el => el.id === id),
-                },
-            ]
+        ApiService.get(`${DATA_TYPE_SHOW_ROUTE}/${id}`).then(resp => {
+            setData({...data, page_widgets: [
+                    ...data.page_widgets,
+                    {
+                        id: 0,
+                        pagination_limit: 10,
+                        row: data.page_widgets.length,
+                        status: 0,
+                        widget: widgets.find(el => el.id === id),
+                    },
+                ]
+            })
         })
     }
 

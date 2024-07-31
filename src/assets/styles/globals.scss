@@ -189,6 +189,19 @@ body {
   color: var(--color-ffffff, #FFFFFF);
   border: 1px solid var(--color-f8f8f8, #f8f8f8);
 }
+.fm_item_view {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: var(--color-7a6426, #7a6426);
+  line-height: 1;
+  padding: 3px;
+  font-size: 12px;
+  z-index: 9;
+  color: var(--color-ffffff, #FFFFFF);
+  border: 1px solid var(--color-f8f8f8, #f8f8f8);
+}
 .fm_item_image {
   border: 1px solid var(--color-f8f8f8, #f8f8f8);
   background: var(--color-f8f8f8, #f8f8f8);
@@ -211,7 +224,7 @@ body {
   font-size: 12px;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 .fm_item--delete {
