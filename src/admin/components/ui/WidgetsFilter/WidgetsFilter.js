@@ -5,8 +5,6 @@ export default function SgWidgetsFilter(props) {
 	const { data = {}, handleAddWidget } = props;
 	const { list = [] } = data;
 
-	console.log(list);
-
 	return (
 		<>
 			<div className={[styles['sg--widgetsFilter']].join(' ').trim()}>

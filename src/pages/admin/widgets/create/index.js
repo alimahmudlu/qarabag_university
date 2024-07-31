@@ -46,7 +46,7 @@ export default function Index(props) {
     }
 
     function handleChange(e) {
-        changeData(e, data, setData, valueErrors, setValueErrors, e.target.name === 'slug' ? slugify(e.target.value) : null);
+        changeData(e, data, setData, valueErrors, setValueErrors);
     }
 
     function handleSubmit(e) {
@@ -189,7 +189,7 @@ export default function Index(props) {
                                     options={pageTypeOptions}
                                 />
                             </SgFormGroup>
-                            {data?.page_type_id === 2 &&
+                            {Number(data?.page_type_id) === 2 &&
                                 <SgFormGroup>
                                     <SgInput
                                         name='data_type_id'

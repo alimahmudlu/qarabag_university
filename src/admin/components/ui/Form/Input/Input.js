@@ -303,13 +303,12 @@ export default function SgInput(props) {
         <SunEditor
             onChange={(editorContent) =>
                 {
-                    console.log(editorContent, 'salammmmm');
-                    (onChange)?.(
+                    handleChange(
                         {
                             target: {
                                 id: id,
                                 name: name,
-                                value: editorContent,
+                                value: `"${editorContent}"`,
                                 validity: {},
                                 dataset: {
                                     key: data_key,

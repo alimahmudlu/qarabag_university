@@ -64,19 +64,19 @@ export default function SgFile(props) {
                                             <div key={index} className='col-lg-2'>
                                                 <div className={['input--fileList-item'].join(' ').trim()}>
                                                     <SgRatio>
-                                                        {['mp4'].includes(file.extension) ?
+                                                        {['mp4'].includes(file.split('.')[file.split('.').length - 1]) ?
                                                             <>
                                                                 <video className='fm_item_image--img'>
-                                                                    <source src={file.url} type="video/mp4"/>
+                                                                    <source src={file} type="video/mp4"/>
                                                                 </video>
                                                             </>
                                                             :
                                                             (
-                                                                ['png', 'jpg', 'jpeg', 'svg', 'gif'].includes(file) ?
+                                                                ['png', 'jpg', 'jpeg', 'svg', 'gif'].includes(file.split('.')[file.split('.').length - 1]) ?
                                                                     <img src={file} className='fm_item_image--img'
                                                                          alt={file}/>
                                                                     :
-                                                                    <span>{file.extension}</span>
+                                                                    <span>{file}</span>
                                                             )
                                                         }
                                                     </SgRatio>

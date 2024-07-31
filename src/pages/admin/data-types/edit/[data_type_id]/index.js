@@ -143,42 +143,44 @@ export default function Index(props) {
                     <div className='row gap-y-[32px]'>
                         {(data.meta_keys || []).map((item, index) => {
                             return (
-                                <div key={index} className='border-1 p-[16px] rounded-[8px]'>
-                                    <SgFormGroup>
-                                        <SgInput
-                                            id='title'
-                                            name='title'
-                                            data_key={`meta_keys.${index}`}
-                                            label='Title'
-                                            placeholder='Title'
-                                            onChange={handleChange}
-                                            value={item.title}
-                                        />
-                                    </SgFormGroup>
-                                    <SgFormGroup>
-                                        <SgInput
-                                            id='alias'
-                                            name='alias'
-                                            data_key={`meta_keys.${index}`}
-                                            label='Alias'
-                                            placeholder='Alias'
-                                            onChange={handleChange}
-                                            value={item.alias}
-                                        />
-                                    </SgFormGroup>
-                                    <SgFormGroup>
-                                        <SgInput
-                                            id='input_type_id'
-                                            name='input_type_id'
-                                            data_key={`meta_keys.${index}`}
-                                            label='Input type'
-                                            placeholder='Input type'
-                                            onChange={handleChange}
-                                            value={item.input_type_id}
-                                            variant='select'
-                                            options={inputTypes}
-                                        />
-                                    </SgFormGroup>
+                                <div key={index} className='col-lg-6'>
+                                    <div key={index} className='border-1 p-[16px] rounded-[8px]'>
+                                        <SgFormGroup>
+                                            <SgInput
+                                                id='title'
+                                                name='title'
+                                                data_key={`meta_keys.${index}`}
+                                                label='Title'
+                                                placeholder='Title'
+                                                onChange={handleChange}
+                                                value={item.title}
+                                            />
+                                        </SgFormGroup>
+                                        <SgFormGroup>
+                                            <SgInput
+                                                id='alias'
+                                                name='alias'
+                                                data_key={`meta_keys.${index}`}
+                                                label='Alias'
+                                                placeholder='Alias'
+                                                onChange={handleChange}
+                                                value={item.alias}
+                                            />
+                                        </SgFormGroup>
+                                        <SgFormGroup>
+                                            <SgInput
+                                                id='input_type_id'
+                                                name='input_type_id'
+                                                data_key={`meta_keys.${index}`}
+                                                label='Input type'
+                                                placeholder='Input type'
+                                                onChange={handleChange}
+                                                value={item.input_type_id}
+                                                variant='select'
+                                                options={inputTypes}
+                                            />
+                                        </SgFormGroup>
+                                    </div>
                                 </div>
                             )
                         })}

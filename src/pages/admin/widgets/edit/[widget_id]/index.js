@@ -8,6 +8,7 @@ import slugify from "slugify";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import ApiService from "@/admin/services/ApiService";
 import {
+    OPTIONS_DATA_TYPE_LIST_ROUTE,
     WIDGET_EDIT_ROUTE,
     WIDGET_SHOW_ROUTE
 } from "@/admin/configs/apiRoutes";
@@ -22,6 +23,7 @@ export default function Index(props) {
     const [fileManagerModal, setFileManagerModal] = useState(false);
     const { query } = useRouter();
     const { widget_id } = query;
+    const [dataTypes, setDataTypes] = useState([])
     const [statusOptions, setStatusOptions] = useState([
         {
             id: 1,
@@ -32,10 +34,20 @@ export default function Index(props) {
             name: 'Deactive'
         }
     ]);
+    const [pageTypeOptions, setPageTypeOptions] = useState([
+        {
+            id: 2,
+            name: 'Content'
+        },
+        {
+            id: 1,
+            name: 'List'
+        }
+    ]);
     const router = useRouter()
 
     function handleChange(e) {
-        changeData(e, data, setData, valueErrors, setValueErrors, e.target.name === 'slug' ? slugify(e.target.value) : null);
+        changeData(e, data, setData, valueErrors, setValueErrors);
     }
 
     function toggleFileManagerModal(e) {
@@ -62,6 +74,12 @@ export default function Index(props) {
     }
 
     useEffect(() => {
+        ApiService.get(`${OPTIONS_DATA_TYPE_LIST_ROUTE}`).then(resp => {
+            setDataTypes((resp.data.data || []).map(el => ({id: el.id, name: el.alias})))
+        }).catch(error => {
+            console.log(error)
+        })
+
         ApiService.get(`${WIDGET_SHOW_ROUTE}/${widget_id}`).then(resp => {
             setData(resp.data.data)
         }).catch(error => {
@@ -91,7 +109,6 @@ export default function Index(props) {
                 <SgPageBody>
                     <div className={['row'].join(' ').trim()}>
                         <div className='col-lg-12'>
-
                             <SgFormGroup>
                                 <SgInput
                                     name='status'
@@ -171,6 +188,32 @@ export default function Index(props) {
                                     }}
                                 />
                             </SgFormGroup>
+                            <SgFormGroup>
+                                <SgInput
+                                    name='page_type_id'
+                                    id='page_type_id'
+                                    placeholder='Enter your page type'
+                                    label='Page type'
+                                    value={data?.page_type_id || ''}
+                                    onChange={handleChange}
+                                    variant='select'
+                                    options={pageTypeOptions}
+                                />
+                            </SgFormGroup>
+                            {Number(data?.page_type_id) === 2 &&
+                                <SgFormGroup>
+                                    <SgInput
+                                        name='data_type_id'
+                                        id='data_type_id'
+                                        placeholder='Enter your data type'
+                                        label='Data type'
+                                        value={data?.data_type_id || ''}
+                                        onChange={handleChange}
+                                        variant='select'
+                                        options={dataTypes}
+                                    />
+                                </SgFormGroup>
+                            }
                         </div>
                     </div>
                 </SgPageBody>

@@ -6,8 +6,8 @@ import _ from 'lodash';
  */
 
 export const changeData = (e, _formData, setFormData, _valueErrors, setValueErrors, extraValue = '', extraKey = '', extraArrayExtraValue, extraArrayExtraKey) => {
-    let formData = _formData;
-    let valueErrors = _valueErrors;
+    let formData = {..._formData};
+    let valueErrors = {..._valueErrors};
 
     const {type, checked, id, dataset: {variant}} = e.target;
     const value = !extraValue ? (type === 'checkbox' ? (e.target.value || ((checked && 1) || 0)) : e.target.value) : extraValue
@@ -18,6 +18,8 @@ export const changeData = (e, _formData, setFormData, _valueErrors, setValueErro
 
 
     if (!key) {
+
+
         if (variant === 'array') {
             if (checked) {
                 formData[name] = formData?.[name] ? [...formData?.[name], value] : [value]

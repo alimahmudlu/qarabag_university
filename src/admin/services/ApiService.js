@@ -81,7 +81,7 @@ ApiService.interceptors.response.use(
                 }
             }
             else {
-                toast(error.response.message, {
+                toast(error.response.data.message || error.response.statusText, {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -90,6 +90,7 @@ ApiService.interceptors.response.use(
                     draggable: true,
                     progress: undefined,
                     theme: "light",
+                    type: "error"
                 });
             }
 

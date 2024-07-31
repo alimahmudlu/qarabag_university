@@ -26,6 +26,7 @@ import {validationConstraints} from "@/admin/constants/constants";
 export default function Index(props) {
     const [data, setData] = useState({});
     const [valueErrors, setValueErrors] = useState({});
+    const [fileManagerModal, setFileManagerModal] = useState(false);
     const [languagesOptions, setLanguagesOptions] = useState([]);
     const [pageTypeOptions, setPageTypeOptions] = useState([
         {
@@ -67,21 +68,28 @@ export default function Index(props) {
         changeData(e, data, setData, valueErrors, setValueErrors, e.target.name === 'slug' ? slugify(e.target.value) : null);
     }
 
+    function toggleFileManagerModal(e) {
+        setFileManagerModal(!fileManagerModal)
+    }
+
     const onSortEnd = ({ oldIndex, newIndex }) => {
         console.log(oldIndex, newIndex, 'salam', data.page_widgets)
         setData({...data, page_widgets: arrayMoveImmutable(data.page_widgets, oldIndex, newIndex)});
     };
 
     function handleAddWidget(id) {
+        const findWidgetObj = widgets.find(el => el.id === id) || {}
         setData({...data, page_widgets: [
-            ...data.page_widgets,
+                ...data.page_widgets,
                 {
                     id: 0,
                     pagination_limit: 10,
-                    row: data.page_widgets.length+1,
+                    row: data.page_widgets.length + 1,
                     status: 0,
-                    widget_id: widgets.find(el => el.id === id).id,
-                    widget: widgets.find(el => el.id === id),
+                    data_type_id: findWidgetObj?.data_type_id,
+                    widget_id: findWidgetObj.id,
+                    widget: findWidgetObj,
+                    page_widget_values: (dataTypes.find(el => el.id === findWidgetObj?.data_type_id)?.meta_keys || []).map(el => ({meta_key: el, meta_key_id: el.id}))
                 },
             ]
         })
@@ -125,7 +133,7 @@ export default function Index(props) {
         })
 
         ApiService.get(`${OPTIONS_DATA_TYPE_LIST_ROUTE}`).then(resp => {
-            setDataTypes((resp.data.data || []).map(el => ({id: el.id, name: el.alias})))
+            setDataTypes((resp.data.data || []).map(el => ({id: el.id, name: el.alias, meta_keys: el.meta_keys || []})))
         }).catch(error => {
             console.log(error)
         })
@@ -256,6 +264,10 @@ export default function Index(props) {
                             <div className=''>
                                 <SortableList
                                     data={data}
+                                    setData={setData}
+                                    valueErrors={valueErrors}
+                                    setValueErrors={setValueErrors}
+
                                     dataTypes={dataTypes}
                                     statusOptions={statusOptions}
                                     handleChange={handleChange}
@@ -269,6 +281,8 @@ export default function Index(props) {
                                     disableAutoscroll={false}
                                     getContainer={() => ReactDOM.findDOMNode(document.getElementById('bodyInstance'))}
                                     useWindowAsScrollContainer={true}
+                                    toggleFileManagerModal={toggleFileManagerModal}
+                                    fileManagerModal={fileManagerModal}
                                 />
                             </div>
                         </div>

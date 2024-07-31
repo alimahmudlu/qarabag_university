@@ -38,6 +38,8 @@ export default function Index(props) {
             {(page_widgets || []).sort((a, b) => a?.widget?.order > b?.widget?.order).map((item, index) => {
                 switch (item?.widget?.alias) {
                     case 'simpleContent':
+                        const itemContent = item.page_widget_values.reduce((a, v) => ({ ...a, [v.meta_key.alias]: v}), {}) ;
+                        console.log(itemContent, 'itemContent')
                         return (
                             <SgSectionContentBanner
                                 fluidContainer='left'
@@ -45,10 +47,13 @@ export default function Index(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 data={{
-                                    image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description,
-                                    button: item?.content?.button
+                                    image: itemContent?.image?.value,
+                                    title: itemContent?.title?.value,
+                                    description: itemContent?.description?.value,
+                                    button: itemContent?.buttonTitle ? {
+                                        name: itemContent?.buttonTitle?.value,
+                                        path: itemContent?.buttonUrl?.value,
+                                    } : {}
                                 }}
                             />
                         );

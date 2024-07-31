@@ -65,7 +65,6 @@ export default function Index(props) {
     const router = useRouter();
 
     function handleChange(e) {
-        console.log(data, e, 'salam')
         changeData(e, data, setData, valueErrors, setValueErrors);
     }
 
@@ -96,7 +95,7 @@ export default function Index(props) {
     function handleAddWidget(id) {
         const findWidgetObj = widgets.find(el => el.id === id) || {}
         setData({...data, page_widgets: [
-                ...data.page_widgets,
+                ...data.page_widgets || [],
                 {
                     id: 0,
                     pagination_limit: 10,
@@ -105,7 +104,7 @@ export default function Index(props) {
                     data_type_id: findWidgetObj?.data_type_id,
                     widget_id: findWidgetObj.id,
                     widget: findWidgetObj,
-                    page_widget_values: dataTypes.find(el => el.id === findWidgetObj?.data_type_id)?.meta_keys || []
+                    page_widget_values: (dataTypes.find(el => el.id === findWidgetObj?.data_type_id)?.meta_keys || []).map(el => ({meta_key: el, meta_key_id: el.id}))
                 },
             ]
         })
@@ -187,8 +186,8 @@ export default function Index(props) {
                                     value={data.language || ''}
                                     onChange={handleChange}
                                     variant='select'
-                                    options={languagesOptions}
                                     disabled={true}
+                                    options={languagesOptions}
                                 />
                             </SgFormGroup>
                             <SgFormGroup>
@@ -204,19 +203,19 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
-                                    name='description'
-                                    id='description'
+                                    name='content'
+                                    id='content'
                                     placeholder='Enter your description'
                                     label='Description'
-                                    value={data.description || ''}
+                                    value={data.content || ''}
                                     onChange={handleChange}
                                     variant='editor'
                                 />
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
-                                    name='page_type'
-                                    id='page_type'
+                                    name='page_type_id'
+                                    id='page_type_id'
                                     placeholder='Enter your page type'
                                     label='Page type'
                                     value={data?.page_type_id || ''}
@@ -235,6 +234,22 @@ export default function Index(props) {
                                     onChange={handleChange}
                                     variant='select'
                                     options={innerPageTemplateOptions}
+                                />
+                            </SgFormGroup>
+
+
+
+                            <SgFormGroup>
+                                <SgInput
+                                    name='status'
+                                    id='status'
+                                    placeholder='Enter status'
+                                    label='Status'
+                                    value={data.status || ''}
+                                    onChange={handleChange}
+                                    isInvalid={valueErrors.status}
+                                    variant='select'
+                                    options={statusOptions}
                                 />
                             </SgFormGroup>
 
