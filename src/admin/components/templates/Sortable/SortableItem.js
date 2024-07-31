@@ -8,7 +8,13 @@ const SortableItem = (props) => {
         widget,
         statusOptions,
         dataTypesOptions,
-        handleChange
+        handleChange,
+        toggleFileManagerModal,
+        fileManagerModal,
+        data,
+        setData,
+        valueErrors,
+        setValueErrors,
     } = props
 
     return (
@@ -20,6 +26,13 @@ const SortableItem = (props) => {
             statusOptions={statusOptions}
             dataTypesOptions={dataTypesOptions}
             handleChange={handleChange}
+            toggleFileManagerModal={toggleFileManagerModal}
+            fileManagerModal={fileManagerModal}
+
+            Fdata={data}
+            FsetData={setData}
+            FvalueErrors={valueErrors}
+            FsetValueErrors={setValueErrors}
         />
     )
 }

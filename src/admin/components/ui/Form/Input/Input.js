@@ -179,36 +179,61 @@ export default function SgInput(props) {
         (onKeyup)?.(e)
     }
 
-    const toggleOption = (option) => {
-        if (option.id) {
-            if (multiple) {
-                if (selected.includes(option.id)) {
-                    // setSelected(selected.filter((item) => item !== option));
-                    (onChange)?.(
-                        {
-                            target: {
-                                id: id,
-                                name: name,
-                                value: selected.filter((item) => item !== option.id),
-                                validity: {},
-                                dataset: {
-                                    key: data_key,
-                                    id: data_id,
-                                    extraarraykey: data_extraarraykey,
-                                    extraarrayvalue: data_extraarrayvalue
-                                },
+    const toggleOption = (e, option) => {
+        if (disabled || readonly || loading) {
+            e.preventDefault()
+            return
+        }
+        else {
+            if (option.id) {
+                if (multiple) {
+                    if (selected.includes(option.id)) {
+                        // setSelected(selected.filter((item) => item !== option));
+                        (onChange)?.(
+                            {
+                                target: {
+                                    id: id,
+                                    name: name,
+                                    value: selected.filter((item) => item !== option.id),
+                                    validity: {},
+                                    dataset: {
+                                        key: data_key,
+                                        id: data_id,
+                                        extraarraykey: data_extraarraykey,
+                                        extraarrayvalue: data_extraarrayvalue
+                                    },
+                                }
                             }
-                        }
-                    )
+                        )
+                    }
+                    else {
+                        // setSelected([...selected, option]);
+                        (onChange)?.(
+                            {
+                                target: {
+                                    id: id,
+                                    name: name,
+                                    value: [...selected, option.id],
+                                    validity: {},
+                                    dataset: {
+                                        key: data_key,
+                                        id: data_id,
+                                        extraarraykey: data_extraarraykey,
+                                        extraarrayvalue: data_extraarrayvalue
+                                    },
+                                }
+                            }
+                        )
+                    }
                 }
                 else {
-                    // setSelected([...selected, option]);
+                    // setSelected([option]);
                     (onChange)?.(
                         {
                             target: {
                                 id: id,
                                 name: name,
-                                value: [...selected, option.id],
+                                value: option.id,
                                 validity: {},
                                 dataset: {
                                     key: data_key,
@@ -219,10 +244,10 @@ export default function SgInput(props) {
                             }
                         }
                     )
+                    toggleOpen()
                 }
             }
             else {
-                // setSelected([option]);
                 (onChange)?.(
                     {
                         target: {
@@ -242,29 +267,10 @@ export default function SgInput(props) {
                 toggleOpen()
             }
         }
-        else {
-            (onChange)?.(
-                {
-                    target: {
-                        id: id,
-                        name: name,
-                        value: option.id,
-                        validity: {},
-                        dataset: {
-                            key: data_key,
-                            id: data_id,
-                            extraarraykey: data_extraarraykey,
-                            extraarrayvalue: data_extraarrayvalue
-                        },
-                    }
-                }
-            )
-            toggleOpen()
-        }
     };
 
     const toggleOpen = () => {
-        setOpened((!disabled || !readonly) ? !opened : false)
+        setOpened((disabled || readonly || loading) ? false : !opened)
     }
 
     const selectRef = useRef(null)
@@ -295,23 +301,26 @@ export default function SgInput(props) {
 
     const renderEditor = (
         <SunEditor
-            onChange={(data) =>
-                (onChange)?.(
-                    {
-                        target: {
-                            id: id,
-                            name: name,
-                            value: data,
-                            validity: {},
-                            dataset: {
-                                key: data_key,
-                                id: data_id,
-                                extraarraykey: data_extraarraykey,
-                                extraarrayvalue: data_extraarrayvalue
-                            },
+            onChange={(editorContent) =>
+                {
+                    console.log(editorContent, 'salammmmm');
+                    (onChange)?.(
+                        {
+                            target: {
+                                id: id,
+                                name: name,
+                                value: editorContent,
+                                validity: {},
+                                dataset: {
+                                    key: data_key,
+                                    id: data_id,
+                                    extraarraykey: data_extraarraykey,
+                                    extraarrayvalue: data_extraarrayvalue
+                                },
+                            }
                         }
-                    }
-                )
+                    )
+                }
             }
             setOptions={{
                 height: 700,
@@ -406,7 +415,7 @@ export default function SgInput(props) {
                                     <>
                                         <li
                                             className={selected.includes('') ? styles["selected"] : ""}
-                                            onClick={() => toggleOption({id: '', value: '', name: 'Seçin'})}
+                                            onClick={(e) => toggleOption(e, {id: '', value: '', name: 'Seçin'})}
                                         >
                                             <a
                                                 className={[styles["dropdown-item"], "dropdown-item", selected.includes('') ? styles["selected"] : ""].join(' ').trim()}>
@@ -416,7 +425,7 @@ export default function SgInput(props) {
                                         {filteredOptions.map((option, index) => (
                                             <li
                                                 className={selected.includes(option) ? styles["selected"] : ""}
-                                                onClick={() => toggleOption(option)}
+                                                onClick={(e) => toggleOption(e, option)}
                                                 key={index}
                                             >
                                                 <a

@@ -44,6 +44,7 @@ export default function SgFile(props) {
                 setData={fileManager?.setData}
                 errors={fileManager?.errors}
                 setErrors={fileManager?.setErrors}
+                data_key={data_key}
             >
                 <div className={[styles['input-container'], 'mb-1', getColor()].join(' ').trim()}>
                     <label className={styles["label"]} htmlFor={fileManager ? '' : id}>{label}</label>

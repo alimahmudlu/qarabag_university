@@ -6,9 +6,14 @@ import SgWidgetItem from "@/admin/components/ui/WidgetItem";
 const SortableList = (props) => {
     const {
         data,
+        setData,
+        valueErrors,
+        setValueErrors,
         dataTypes,
         statusOptions,
-        handleChange
+        handleChange,
+        toggleFileManagerModal,
+        fileManagerModal,
     } = props
 
     return (
@@ -24,6 +29,13 @@ const SortableList = (props) => {
                         statusOptions={statusOptions}
                         dataTypesOptions={dataTypes}
                         handleChange={handleChange}
+                        toggleFileManagerModal={toggleFileManagerModal}
+                        fileManagerModal={fileManagerModal}
+
+                        data={data}
+                        setData={setData}
+                        valueErrors={valueErrors}
+                        setValueErrors={setValueErrors}
                     />
                 )
             })}

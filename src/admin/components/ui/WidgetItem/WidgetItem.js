@@ -1,6 +1,6 @@
 import styles from '@/admin/components/ui/WidgetItem/WidgetItem.module.scss';
 import Image from "next/image";
-import {SgFormGroup, SgInput} from "@/admin/components/ui/Form";
+import {SgFile, SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import SgIcon from "@/admin/components/ui/Icon";
 import { sortableHandle } from "react-sortable-hoc";
 
@@ -12,9 +12,14 @@ const DragHandle = sortableHandle(({index}) => (
 ));
 
 export default function SgWidgetItem(props) {
-	const {id, index, data = {}, values = {}, errors = {}, handleChange, statusOptions, dataTypesOptions} = props;
-	const { image, name, description } = data;
-	const { widget_id, pagination_limit, data_type_id, row, status } = values
+	const {id, index, data = {}, values = {}, errors = {}, handleChange, statusOptions, dataTypesOptions, toggleFileManagerModal, fileManagerModal,
+		Fdata,
+		FsetData,
+		FvalueErrors,
+		FsetValueErrors
+	} = props;
+	const { image, name, description, page_type_id } = data;
+	const { widget_id, pagination_limit, data_type_id, row, status, page_widget_values } = values
 
 	return (
 		<>
@@ -52,6 +57,7 @@ export default function SgWidgetItem(props) {
 									label='Pagination Limit'
 									onChange={handleChange}
 									data_key={`page_widgets.${index}`}
+									disabled={Number(page_type_id) === 1}
 								/>
 							</SgFormGroup>
 						</div>
@@ -82,9 +88,67 @@ export default function SgWidgetItem(props) {
 									options={dataTypesOptions}
 									variant='select'
 									data_key={`page_widgets.${index}`}
+									disabled={Number(page_type_id) === 1}
 								/>
 							</SgFormGroup>
 						</div>
+					</div>
+					<hr />
+					<div className='row pt-3'>
+						{(page_widget_values || []).map((item, i) => {
+							switch (item.input_type.alias) {
+								case 'file':
+									return (
+										<div key={i} className='col-lg-12'>
+											<SgFormGroup>
+												<SgFile
+													id={`value--${i}`}
+													name='value'
+													value={item.value || ''}
+													// isInvalid={errors.data_type_id}
+													label={item.title}
+													onChange={toggleFileManagerModal}
+													options={dataTypesOptions}
+													data_key={`page_widgets.${index}.page_widget_values.${i}`}
+													type={item.input_type.alias}
+													variant={item.input_type.alias}
+
+													fileManager={{
+														type: 'png',
+														multiple: false,
+														toggleFileManagerModal: toggleFileManagerModal,
+														fileManagerModal: fileManagerModal,
+														data: Fdata,
+														setData: FsetData,
+														errors: FvalueErrors,
+														setErrors: FsetValueErrors,
+													}}
+												/>
+											</SgFormGroup>
+										</div>
+									)
+								default:
+									return (
+										<div key={i} className='col-lg-12'>
+											<SgFormGroup>
+												<SgInput
+													id={`value--${i}`}
+													name='value'
+													value={item.value || ''}
+													// isInvalid={errors.data_type_id}
+													label={item.title}
+													onChange={handleChange}
+													options={dataTypesOptions}
+													data_key={`page_widgets.${index}.page_widget_values.${i}`}
+													type={item.input_type.alias}
+													variant={item.input_type.alias}
+												/>
+											</SgFormGroup>
+										</div>
+									)
+							}
+
+						})}
 					</div>
 				</div>
 
