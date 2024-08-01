@@ -10,8 +10,7 @@ const nextConfig = {
         port: '',
         pathname: '/uploads/**',
       },
-    ],
-    domains: ['apikarabagh.testedumedia.com'],
+    ]
   },
 };
 

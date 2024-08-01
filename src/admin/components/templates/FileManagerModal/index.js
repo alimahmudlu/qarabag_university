@@ -41,15 +41,13 @@ export default function SgTemplateFileManagerModal(props) {
 	}
 
 	function fileSubmit() {
-
-		console.log(data_key);
 		if (files.find(n => n.selected)) {
 			if (multiple) {
 				changeData({
 					target: {
 						id: id,
 						name: name,
-						value: _.filter(files, n => n.selected).map(el => el.url),
+						value: _.filter(files, n => n.selected).map(el => el.url).join(','),
 						validity: {},
 						dataset: {
 							key: data_key,

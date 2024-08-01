@@ -9,8 +9,6 @@ const SortableItem = (props) => {
         statusOptions,
         dataTypesOptions,
         handleChange,
-        toggleFileManagerModal,
-        fileManagerModal,
         data,
         setData,
         valueErrors,
@@ -26,8 +24,6 @@ const SortableItem = (props) => {
             statusOptions={statusOptions}
             dataTypesOptions={dataTypesOptions}
             handleChange={handleChange}
-            toggleFileManagerModal={toggleFileManagerModal}
-            fileManagerModal={fileManagerModal}
 
             Fdata={data}
             FsetData={setData}

@@ -106,9 +106,13 @@ export default function Index(props) {
             setValueErrors(errors)
         }
         else {
-            ApiService.put(PAGE_EDIT_ROUTE, data).then(resp => {
+            ApiService.put(PAGE_EDIT_ROUTE, data, {
+                headers: {
+                    "Content-Language": locale
+                }
+            }).then(resp => {
                 router.push({
-                    pathname: '/admin/pages/'
+                    pathname: `/admin/pages/${page_id}`
                 }, undefined, { scroll: true });
             }).catch(error => {
                 console.log(error)

@@ -108,7 +108,6 @@ export default function SgWidgetItem(props) {
 													value={item.value || ''}
 													// isInvalid={errors.data_type_id}
 													label={item.meta_key.title}
-													onChange={toggleFileManagerModal}
 													options={dataTypesOptions}
 													data_key={`page_widgets.${index}.page_widget_values.${i}`}
 													type={item.meta_key.input_type.alias}
@@ -116,8 +115,6 @@ export default function SgWidgetItem(props) {
 
 													fileManager={{
 														multiple: false,
-														toggleFileManagerModal: toggleFileManagerModal,
-														fileManagerModal: fileManagerModal,
 														data: Fdata,
 														setData: FsetData,
 														errors: FvalueErrors,
@@ -164,7 +161,6 @@ export default function SgWidgetItem(props) {
 													value={item.value || ''}
 													// isInvalid={errors.data_type_id}
 													label={item.meta_key.title}
-													onChange={toggleFileManagerModal}
 													options={dataTypesOptions}
 													data_key={`page_widgets.${index}.page_widget_values.${i}`}
 													type={item.meta_key.input_type.alias}
@@ -173,8 +169,6 @@ export default function SgWidgetItem(props) {
 													fileManager={{
 														type: 'png',
 														multiple: true,
-														toggleFileManagerModal: toggleFileManagerModal,
-														fileManagerModal: fileManagerModal,
 														data: Fdata,
 														setData: FsetData,
 														errors: FvalueErrors,
