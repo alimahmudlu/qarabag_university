@@ -42,6 +42,7 @@ export default function Index(props) {
                         console.log(itemContent, 'itemContent')
                         return (
                             <SgSectionContentBanner
+                                reverse={!!itemContent?.imagePositionRightSide?.value}
                                 fluidContainer={itemContent?.fluidContainer?.value === '1' ? (itemContent?.imagePositionRightSide?.value === '1' ? 'right' : 'left') : null}
                                 style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
                                 key={index}

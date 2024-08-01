@@ -3,10 +3,10 @@ import Image from "next/image";
 import {SgButton} from "@/components/ui/Button";
 
 export default function SgContentBanner(props) {
-    const {image, title, description, button, style, fluidContainer, fluidContainerPadding} = props;
+    const {image, title, description, button, style, fluidContainer, fluidContainerPadding, reverse} = props;
     return (
         <>
-            <div style={style} className={[styles['sg--contentBanner']].join(' ').trim()}>
+            <div style={style} className={[styles['sg--contentBanner'], reverse ? styles['sg--contentBanner--reverse'] : ''].join(' ').trim()}>
                 <div style={fluidContainer === 'left' ? {paddingLeft: 0} : {paddingRight: 0}} className={[styles['sg--contentBanner-image']].join(' ').trim()}>
                     <Image width='1000' height='1000'
                         src={image || ''}

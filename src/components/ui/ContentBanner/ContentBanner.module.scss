@@ -5,6 +5,10 @@
     margin-left: -12px;
     margin-right: -12px;
 
+    &--reverse {
+        flex-direction: row-reverse;
+    }
+
     &-image {
         padding-left: 12px;
         padding-right: 12px;
