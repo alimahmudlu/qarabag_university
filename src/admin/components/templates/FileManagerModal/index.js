@@ -41,6 +41,8 @@ export default function SgTemplateFileManagerModal(props) {
 	}
 
 	function fileSubmit() {
+
+		console.log(data_key);
 		if (files.find(n => n.selected)) {
 			if (multiple) {
 				changeData({

@@ -74,7 +74,7 @@ export default function Index(props) {
                             />
                         )
 
-                    case 'complexContent':
+                    case 'complexContentBanner':
                         return (
                             <SgSectionComplexContentBanner
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}

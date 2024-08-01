@@ -1,11 +1,17 @@
 import styles from '@/admin/components/ui/Form/Form.module.scss';
 import SgTemplateFileManagerModal from "@/admin/components/templates/FileManagerModal";
 import {SgRatio} from "@/admin/components/ui/Ratio";
-import React from "react";
+import React, {useState} from "react";
 import {SgButton} from "@/admin/components/ui/Button";
 
 export default function SgFile(props) {
     const {label, name, externalRef, id, required, readonly, disabled, value, loading, isInvalid, onChange, color, data_key, multiple, fileManager = undefined} = props
+
+    const [fileManagerModal, setFileManagerModal] = useState(false);
+
+    function toggleFileManagerModal(e) {
+        setFileManagerModal(!fileManagerModal)
+    }
 
     const handleChange = (e) => {
         if (disabled || readonly || loading) {
@@ -38,8 +44,8 @@ export default function SgFile(props) {
                 name={name}
                 type={fileManager?.type}
                 multiple={fileManager?.multiple}
-                toggleFileManagerModal={fileManager?.toggleFileManagerModal}
-                fileManagerModal={fileManager?.fileManagerModal}
+                toggleFileManagerModal={toggleFileManagerModal}
+                fileManagerModal={fileManagerModal}
                 data={fileManager?.data}
                 setData={fileManager?.setData}
                 errors={fileManager?.errors}
@@ -52,7 +58,7 @@ export default function SgFile(props) {
                         <input className={styles["file"]} type="file" name={name} ref={externalRef} data-key={data_key}
                                id={id} onChange={handleChange} disabled={disabled} multiple={multiple}
                                readOnly={readonly} required={required}/>
-                        <label className={[styles["label"], styles["label--file"]].join(' ').trim()} htmlFor={fileManager ? '' : id} onClick={fileManager ? onChange : undefined}>
+                        <label className={[styles["label"], styles["label--file"]].join(' ').trim()} htmlFor={fileManager ? '' : id} onClick={fileManager ? toggleFileManagerModal : undefined}>
                             Fayl seçin
                         </label>
                     </div>
