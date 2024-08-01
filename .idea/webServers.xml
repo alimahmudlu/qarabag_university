@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="735df916-9804-4bd3-b4a0-70ad8651bcee" name="karabagh_testedumedia">
+        <fileTransfer accessType="SFTP" host="94.20.154.174" port="22" sshConfigId="60962257-c521-470b-9f10-11b9166526c2" sshConfig="nurlang@94.20.154.174:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" isUseSudo="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
