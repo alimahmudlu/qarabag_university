@@ -17,9 +17,10 @@
  *             />
  */
 
+import styles from '@/components/ui/Icon/Icon.module.scss'
 
 export default function SgIcon(props) {
-    const { icon, size } = props;
+    const { icon, size = '16px', name, color } = props;
 
     const getIcon = () => {
         return `sg-icon-${icon}`
@@ -27,7 +28,13 @@ export default function SgIcon(props) {
 
     return (
         <>
-            {icon ? <i style={{fontSize: size ?? ''}} className={['sg-icons', getIcon()].join(' ').trim()}></i> : ''}
+            {icon ?
+                <span>
+                    <i style={{fontSize: size ?? '', color: color ?? ''}} className={['sg-icons', getIcon()].join(' ').trim()}></i>
+                    <span className={styles['sg--icon--accessibility']}>{name ? name : icon} icon</span>
+                </span>
+                : ''
+            }
         </>
     )
 }

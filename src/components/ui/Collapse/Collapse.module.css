@@ -1,0 +1,26 @@
+.sg--collapse {
+  position: relative;
+}
+.sg--collapse-toggle {
+  display: inline-flex;
+  gap: 8px;
+}
+.sg--collapse-toggle::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  font-family: "sg-icons" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e9f4";
+  border: none !important;
+  font-size: 14px;
+  padding: 5px;
+}
+
+/*# sourceMappingURL=Collapse.module.css.map */

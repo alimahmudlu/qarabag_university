@@ -32,11 +32,12 @@ export default function SgSlider(props) {
 
             {arrow ?
                 <SgButtonGroup
+                    className='justify-content-end mt-[40px]'
                     gap={true}
                 >
                     <SgButton
-                        icon='chevron-left'
-                        color='minor'
+                        icon='arrow-left'
+                        color='black-outline'
                         onlyIcon={true}
                         squared={true}
                         variant='rounded'
@@ -45,8 +46,8 @@ export default function SgSlider(props) {
                         Prev slider
                     </SgButton>
                     <SgButton
-                        icon='chevron-right'
-                        color='minor'
+                        icon='arrow-right'
+                        color='black-outline'
                         onlyIcon={true}
                         squared={true}
                         variant='rounded'

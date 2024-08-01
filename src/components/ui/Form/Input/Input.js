@@ -1,8 +1,9 @@
 import makeID from "@/utils/makeID";
 import {useEffect, useState} from "react";
-import ReactDatetimeClass from "react-datetime";
-import "react-datetime/css/react-datetime.css";
+// import ReactDatetimeClass from "react-datetime";
+import ReactDatetimeClass from 'react-datetime';
 import moment from "moment";
+import "react-datetime/css/react-datetime.css";
 import styles from "@/components/ui/Form/Form.module.css"
 
 export default function SgInput(props) {
@@ -256,7 +257,7 @@ export default function SgInput(props) {
                 readOnly: readonly,
                 id: id,
                 name: name,
-                className: ["input", getSize()].join(" ").trim(),
+                className: [styles["input"], getSize()].join(" ").trim(),
                 placeholder: floating ? "" : placeholder,
                 onFocus: () => setOnFocus(true),
                 onBlur: () => setOnFocus(false)

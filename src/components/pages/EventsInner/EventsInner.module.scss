@@ -1,0 +1,71 @@
+.sg--page--eventsInner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+
+    &-head {
+        &--header {
+            color: var(--black, #262626);
+            text-align: center;
+            font-size: 44px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 58px; /* 131.818% */
+            letter-spacing: 0.44px;
+        }
+    }
+
+    &-details {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 170px;
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 9px;
+
+            &--icon {
+                font-size: 22px;
+                color: var(--burgundy-color, #902923);
+            }
+            &--title {
+                color: var(--black, #262626);
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 21px; /* 131.25% */
+                letter-spacing: 0.16px;
+            }
+            &--description {
+                color: var(--gray-text, #707070);
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 20px; /* 125% */
+                letter-spacing: 0.16px;
+            }
+        }
+    }
+
+    &-body {
+        color: var(--gray-text, #707070);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 35px; /* 194.444% */
+    }
+
+    &-body img {
+        max-width: 100%;
+    }
+
+    &-social {
+        position: absolute;
+        top: 0;
+        left: -30px;
+    }
+}

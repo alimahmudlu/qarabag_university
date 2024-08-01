@@ -8,6 +8,7 @@ import SgSectionCampusBanner from "@/components/sections/CampusBanner";
 import SgSectionClubsBanner from "@/components/sections/ClubsBanner";
 import SgSectionMonumentsFamousBanner from "@/components/sections/MonumentsFamousBanner";
 import SgSectionKhankendiMapBanner from "@/components/sections/KhankendiMapBanner";
+
 import {SiteLayout} from "@/components/layouts";
 import SgSectionMainHero from "@/components/sections/MainHero";
 
@@ -52,7 +53,57 @@ export default function Index() {
             <SgSectionNewsBanner
                 id="newsBanner"
                 header='Xəbərlər'
-                data={[]}
+                data={[
+                    {
+                        image: clubImage,
+                        header: 'Seçim turunun mükafatlandırma tədbirinə ev sahibliyi edib',
+                        date: new Date(),
+                        path: '/news/1',
+                        duration: '5 dəqiqə'
+                    },
+                    {
+                        image: clubImage,
+                        header: 'Seçim turunun mükafatlandırma tədbirinə ev sahibliyi edib 2',
+                        date: new Date(),
+                        path: '/news/1',
+                        duration: '5 dəqiqə'
+                    },
+                    {
+                        image: clubImage,
+                        header: 'Seçim turunun mükafatlandırma tədbirinə ev sahibliyi edib 3',
+                        date: new Date(),
+                        path: '/news/1',
+                        duration: '5 dəqiqə'
+                    },
+                    {
+                        image: clubImage,
+                        header: 'Seçim turunun mükafatlandırma tədbirinə ev sahibliyi edib 4',
+                        date: new Date(),
+                        path: '/news/1',
+                        duration: '5 dəqiqə'
+                    },
+                    {
+                        image: clubImage,
+                        header: 'Seçim turunun mükafatlandırma tədbirinə ev sahibliyi edib 5',
+                        date: new Date(),
+                        path: '/news/1',
+                        duration: '5 dəqiqə'
+                    },
+                    {
+                        image: clubImage,
+                        header: 'Seçim turunun mükafatlandırma tədbirinə ev sahibliyi edib 6',
+                        date: new Date(),
+                        path: '/news/1',
+                        duration: '5 dəqiqə'
+                    },
+                    {
+                        image: clubImage,
+                        header: 'Seçim turunun mükafatlandırma tədbirinə ev sahibliyi edib 7',
+                        date: new Date(),
+                        path: '/news/1',
+                        duration: '5 dəqiqə'
+                    }
+                ]}
             />
 
             <SgSectionEventsBanner
@@ -193,10 +244,10 @@ export default function Index() {
 }
 
 
-Index.getLayout = function getLayout(page) {
+Index.getLayout = function getLayout(page, menus, languages) {
     return (
         <>
-            <SiteLayout>
+            <SiteLayout menus={menus} languages={languages}>
                 {page}
             </SiteLayout>
         </>

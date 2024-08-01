@@ -1,0 +1,52 @@
+.sg--breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sg--breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sg--breadcrumb-item::after {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "sg-icons" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 11px;
+  color: var(--white, rgba(255, 255, 255, 0.74));
+}
+.sg--breadcrumb-item:not(:last-child)::after {
+  content: "\e9f2";
+}
+.sg--breadcrumb-item:last-child .sg--breadcrumb-item--link {
+  color: var(--white, #FFF);
+  pointer-events: none;
+}
+.sg--breadcrumb-item--link {
+  color: var(--white, rgba(255, 255, 255, 0.74));
+  font-size: 18px;
+  font-weight: 500;
+  word-wrap: break-word;
+  text-decoration: none;
+}
+
+@media (max-width: 992px) {
+  .sg--breadcrumb {
+    gap: 4px 8px;
+  }
+  .sg--breadcrumb-item--link {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+/*# sourceMappingURL=Breadcrumb.module.css.map */

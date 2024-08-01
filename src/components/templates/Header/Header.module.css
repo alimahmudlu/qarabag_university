@@ -1,0 +1,178 @@
+.sg--template--header {
+  padding: 30px 0;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+}
+.sg--template--header-block {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  position: relative;
+}
+.sg--template--header-block-logo {
+  height: 70px;
+}
+.sg--template--header-block-logo--img {
+  height: 100%;
+  width: 100%;
+}
+.sg--template--header-block-body {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  gap: 12px;
+}
+.sg--template--header-block-body-minor {
+  margin-left: auto;
+}
+.sg--template--header-block-body-minor-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+.sg--template--header-block-body-minor-menu-item--link {
+  display: flex !important;
+  justify-content: space-between;
+  color: var(--white, #FFF);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 171.429% */
+  cursor: pointer;
+}
+.sg--template--header-block-body-minor-menu-item-subMenu {
+  padding: 0 16px;
+}
+.sg--template--header-block-body-main-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+.sg--template--header-block-body-main-menu-item--link {
+  display: flex !important;
+  justify-content: space-between;
+  color: var(--white, #FFF);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  cursor: pointer;
+}
+.sg--template--header-block-body-main-menu-item-subMenu {
+  padding: 0 16px;
+}
+.sg--template--header-block-mobile {
+  display: none;
+}
+.sg--template--header-block-mobile-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.sg--template--header-block-mobile-menu-item--link {
+  display: block;
+  color: var(--white, #FFF);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 171.429% */
+  cursor: pointer;
+}
+.sg--template--header-block-searchBox {
+  position: absolute;
+  top: calc(100% + 50px);
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+@media (max-width: 992px) {
+  .sg--template--header {
+    padding: 24px 0;
+    position: sticky;
+    top: 0;
+  }
+  .sg--template--header--sidebar {
+    background: var(--burgundy-color, #902923);
+  }
+  .sg--template--header--searchbar {
+    background: var(--burgundy-color, #902923);
+  }
+  .sg--template--header-block {
+    gap: 24px;
+  }
+  .sg--template--header-block-logo {
+    height: 34px;
+  }
+  .sg--template--header-block-body {
+    border-top: 0.2px solid var(--stroke, #CCC);
+    flex-direction: column;
+    margin-left: auto;
+    gap: 12px;
+    position: absolute;
+    top: 82px;
+    width: 100%;
+    height: calc(100vh - 82px);
+    background: var(--burgundy-color, #902923);
+    left: -100%;
+    overflow: scroll;
+  }
+  .sg--template--header--sidebar .sg--template--header-block-body {
+    left: 0;
+  }
+  .sg--template--header--searchbar .sg--template--header-block-body {
+    left: 0;
+  }
+  .sg--template--header-block-body-minor {
+    order: 2;
+    margin-left: unset;
+    padding: 16px;
+    display: none;
+  }
+  .sg--template--header--sidebar .sg--template--header-block-body-minor {
+    display: block;
+  }
+  .sg--template--header-block-body-minor-menu {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .sg--template--header-block-body-minor-menu-item--link {
+    padding: 0;
+    color: var(--white, #FFF);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 171.429% */
+    cursor: pointer;
+  }
+  .sg--template--header-block-body-main {
+    order: 1;
+    display: none;
+  }
+  .sg--template--header--sidebar .sg--template--header-block-body-main {
+    display: block;
+  }
+  .sg--template--header-block-body-main-menu {
+    flex-direction: column;
+    gap: 0;
+  }
+  .sg--template--header-block-body-main-menu-item--link {
+    border-bottom: 0.2px solid var(--stroke, #CCC);
+    padding: 20px 16px;
+    color: var(--white, #FFF);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    cursor: pointer;
+  }
+  .sg--template--header-block-mobile {
+    display: block;
+    margin-left: auto;
+  }
+}
+
+/*# sourceMappingURL=Header.module.css.map */
