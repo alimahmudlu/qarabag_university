@@ -63,7 +63,7 @@ export default function SgWidgetItem(props) {
 									label='Pagination Limit'
 									onChange={handleChange}
 									data_key={`page_widgets.${index}`}
-									disabled={Number(page_type_id) === 1}
+									disabled={Number(page_type_id) === 2}
 								/>
 							</SgFormGroup>
 						</div>
@@ -94,7 +94,7 @@ export default function SgWidgetItem(props) {
 									options={dataTypesOptions}
 									variant='select'
 									data_key={`page_widgets.${index}`}
-									disabled={Number(page_type_id) === 1}
+									disabled={Number(page_type_id) === 2}
 								/>
 							</SgFormGroup>
 						</div>
