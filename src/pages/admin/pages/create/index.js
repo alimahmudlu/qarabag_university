@@ -1,8 +1,8 @@
 import {MainLayout} from "@/admin/components/layouts";
-import ReactDOM from 'react-dom'
+import {findDOMNode} from 'react-dom'
 import {SgPage, SgPageBody, SgPageFooter, SgPageHead} from "@/admin/components/ui/Page";
 import {SgButton} from "@/admin/components/ui/Button";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
 import slugify from "slugify";
@@ -63,6 +63,7 @@ export default function Index(props) {
     const [widgets, setWidgets] = useState([])
     const [dataTypes, setDataTypes] = useState([])
     const router = useRouter();
+    const bodyInstance = useRef(null);
 
     function handleChange(e) {
         changeData(e, data, setData, valueErrors, setValueErrors);
@@ -254,7 +255,7 @@ export default function Index(props) {
                             </SgFormGroup>
 
 
-                            <div className=''>
+                            <div className='bodyInstance' ref={bodyInstance}>
                                 <SortableList
                                     data={data}
                                     setData={setData}
@@ -272,7 +273,7 @@ export default function Index(props) {
                                     helperClass={'dragging'}
                                     useDragHandle={true}
                                     disableAutoscroll={false}
-                                    getContainer={() => ReactDOM.findDOMNode(document.getElementById('bodyInstance'))}
+                                    getContainer={() => bodyInstance}
                                     useWindowAsScrollContainer={true}
                                     toggleFileManagerModal={toggleFileManagerModal}
                                     fileManagerModal={fileManagerModal}

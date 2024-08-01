@@ -3,7 +3,7 @@ import {Section, SectionBlock, SectionBody} from "@/components/ui/Section";
 import {useEffect, useRef, useState} from "react";
 
 export default function SgSectionContentBanner(props) {
-    const {id, data, style, fluidContainer} = props;
+    const {id, data, style, fluidContainer, reverse} = props;
     const {image, title, description, button = {}} = data;
     const containerRef = useRef(null);
 
@@ -56,6 +56,7 @@ export default function SgSectionContentBanner(props) {
             >
                 <SectionBlock>
                     <SgContentBanner
+                        reverse={reverse}
                         image={image}
                         title={title}
                         description={description}

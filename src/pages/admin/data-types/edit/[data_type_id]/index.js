@@ -46,7 +46,7 @@ export default function Index(props) {
                     title: '',
                     alias: '',
                     input_type_id: '',
-                    rules: 'required|max:255',
+                    rules: 'required|max:2550',
                 },
             ]
         })

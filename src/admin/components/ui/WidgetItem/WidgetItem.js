@@ -21,11 +21,6 @@ export default function SgWidgetItem(props) {
 	} = props;
 	const { image, name, description, page_type_id } = data;
 	const { widget_id, pagination_limit, data_type_id, row, status, page_widget_values } = values
-	const [fileManagerModal, setFileManagerModal] = useState(false);
-
-	function toggleFileManagerModal(e) {
-		setFileManagerModal(!fileManagerModal)
-	}
 
 	return (
 		<>
@@ -63,7 +58,7 @@ export default function SgWidgetItem(props) {
 									label='Pagination Limit'
 									onChange={handleChange}
 									data_key={`page_widgets.${index}`}
-									disabled={Number(page_type_id) === 1}
+									disabled={Number(page_type_id) === 2}
 								/>
 							</SgFormGroup>
 						</div>
@@ -94,7 +89,7 @@ export default function SgWidgetItem(props) {
 									options={dataTypesOptions}
 									variant='select'
 									data_key={`page_widgets.${index}`}
-									disabled={Number(page_type_id) === 1}
+									disabled={Number(page_type_id) === 2}
 								/>
 							</SgFormGroup>
 						</div>
@@ -142,7 +137,6 @@ export default function SgWidgetItem(props) {
 													value={item.value || ''}
 													// isInvalid={errors.data_type_id}
 													label={item.meta_key.title}
-													onChange={toggleFileManagerModal}
 													options={dataTypesOptions}
 													data_key={`page_widgets.${index}.page_widget_values.${i}`}
 													type={item.meta_key.input_type.alias}
@@ -151,8 +145,6 @@ export default function SgWidgetItem(props) {
 													fileManager={{
 														type: 'png',
 														multiple: false,
-														toggleFileManagerModal: toggleFileManagerModal,
-														fileManagerModal: fileManagerModal,
 														data: Fdata,
 														setData: FsetData,
 														errors: FvalueErrors,

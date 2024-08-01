@@ -3,7 +3,7 @@ import {Section, SectionBlock, SectionBody} from "@/components/ui/Section";
 
 export default function SgSectionComplexContentBanner(props) {
     const {id, data, style} = props;
-    const {image, title, description, list = []} = data;
+    const {image1, title1, description1, image2, title2, description2} = data;
 
     return (
         <>
@@ -14,19 +14,24 @@ export default function SgSectionComplexContentBanner(props) {
                 <SectionBlock>
                     <SectionBody>
                         <div className='row'>
-                            {(list || []).map((item, index) => {
-                                return (
-                                    <div className='col-lg-12' key={index}>
-                                        <SgContentBanner
-                                            style={{backgroundColor: item?.backgroundColor || ''}}
-                                            image={item?.image}
-                                            title={item?.title}
-                                            description={item?.description}
-                                            button={null}
-                                        />
-                                    </div>
-                                )
-                            })}
+                            <div className='col-lg-12' key={1}>
+                                <SgContentBanner
+                                    // style={{backgroundColor: item?.backgroundColor || ''}}
+                                    image={image1}
+                                    title={title1}
+                                    description={description1}
+                                    button={null}
+                                />
+                            </div>
+                            <div className='col-lg-12' key={2}>
+                                <SgContentBanner
+                                    // style={{backgroundColor: item?.backgroundColor || ''}}
+                                    image={image2}
+                                    title={title2}
+                                    description={description2}
+                                    button={null}
+                                />
+                            </div>
                         </div>
                     </SectionBody>
                 </SectionBlock>

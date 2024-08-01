@@ -1,7 +1,7 @@
 import {MainLayout} from "@/admin/components/layouts";
 import {SgPage, SgPageBody, SgPageFooter, SgPageHead} from "@/admin/components/ui/Page";
 import {SgButton} from "@/admin/components/ui/Button";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
 import slugify from "slugify";
@@ -63,6 +63,7 @@ export default function Index(props) {
     const { query } = useRouter();
     const { page_id, locale } = query;
     const router = useRouter();
+    const bodyInstance = useRef(null);
 
     function handleChange(e) {
         changeData(e, data, setData, valueErrors, setValueErrors, e.target.name === 'slug' ? slugify(e.target.value) : null);
@@ -261,7 +262,7 @@ export default function Index(props) {
                             </SgFormGroup>
 
 
-                            <div className=''>
+                            <div className='bodyInstance' ref={bodyInstance}>
                                 <SortableList
                                     data={data}
                                     setData={setData}
@@ -279,7 +280,7 @@ export default function Index(props) {
                                     helperClass={'dragging'}
                                     useDragHandle={true}
                                     disableAutoscroll={false}
-                                    getContainer={() => ReactDOM.findDOMNode(document.getElementById('bodyInstance'))}
+                                    getContainer={() => bodyInstance}
                                     useWindowAsScrollContainer={true}
                                     toggleFileManagerModal={toggleFileManagerModal}
                                     fileManagerModal={fileManagerModal}
