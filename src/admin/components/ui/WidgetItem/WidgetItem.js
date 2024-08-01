@@ -108,7 +108,7 @@ export default function SgWidgetItem(props) {
 										<div key={i} className='col-lg-12'>
 											<SgFormGroup>
 												<SgFile
-													id={`value--${i}`}
+													id={`value--${index}--${i}`}
 													name='value'
 													value={item.value || ''}
 													// isInvalid={errors.data_type_id}
@@ -137,7 +137,7 @@ export default function SgWidgetItem(props) {
 										<div key={i} className='col-lg-12'>
 											<SgFormGroup>
 												<SgFile
-													id={`value--${i}`}
+													id={`value--${index}--${i}`}
 													name='value'
 													value={item.value || ''}
 													// isInvalid={errors.data_type_id}
@@ -167,7 +167,7 @@ export default function SgWidgetItem(props) {
 										<div key={i} className='col-lg-12'>
 											<SgFormGroup>
 												<SgFile
-													id={`value--${i}`}
+													id={`value--${index}--${i}`}
 													name='value'
 													value={item.value || ''}
 													// isInvalid={errors.data_type_id}
@@ -197,7 +197,7 @@ export default function SgWidgetItem(props) {
 										<div key={i} className='col-lg-12'>
 											<SgFormGroup>
 												<SgCheckbox
-													id={`value--${i}`}
+													id={`value--${index}--${i}`}
 													name='value'
 													value={item.value || ''}
 													// isInvalid={errors.data_type_id}
@@ -216,7 +216,7 @@ export default function SgWidgetItem(props) {
 										<div key={i} className='col-lg-12'>
 											<SgFormGroup>
 												<SgInput
-													id={`value--${i}`}
+													id={`value--${index}--${i}`}
 													name='value'
 													value={item.value || ''}
 													// isInvalid={errors.data_type_id}
