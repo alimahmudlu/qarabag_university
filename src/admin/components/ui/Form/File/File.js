@@ -65,8 +65,8 @@ export default function SgFile(props) {
                     <div className={['input--fileList'].join(' ').trim()}>
                         <div className='row'>
                             {value ?
-                                Array.isArray(value) ?
-                                        value.map((file, index) => (
+                                (value.split(',') && Array.isArray(value.split(','))) ?
+                                        (value.split(',') || []).map((file, index) => (
                                             <div key={index} className='col-lg-2'>
                                                 <div className={['input--fileList-item'].join(' ').trim()}>
                                                     <SgRatio>

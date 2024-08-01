@@ -11,9 +11,7 @@ const SortableList = (props) => {
         setValueErrors,
         dataTypes,
         statusOptions,
-        handleChange,
-        toggleFileManagerModal,
-        fileManagerModal,
+        handleChange
     } = props
 
     return (
@@ -29,8 +27,6 @@ const SortableList = (props) => {
                         statusOptions={statusOptions}
                         dataTypesOptions={dataTypes}
                         handleChange={handleChange}
-                        toggleFileManagerModal={toggleFileManagerModal}
-                        fileManagerModal={fileManagerModal}
 
                         data={data}
                         setData={setData}
