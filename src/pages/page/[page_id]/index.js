@@ -50,7 +50,7 @@ export default function Index(props) {
                                     image: itemContent?.image?.value,
                                     title: itemContent?.title?.value,
                                     description: itemContent?.description?.value,
-                                    button: itemContent?.buttonTitle ? {
+                                    button: (itemContent?.buttonTitle && itemContent?.buttonUrl) ? {
                                         name: itemContent?.buttonTitle?.value,
                                         path: itemContent?.buttonUrl?.value,
                                     } : {}

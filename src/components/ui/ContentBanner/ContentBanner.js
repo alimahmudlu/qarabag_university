@@ -21,7 +21,7 @@ export default function SgContentBanner(props) {
                     <div className={[styles['sg--contentBanner-body--description']].join(' ').trim()}
                         dangerouslySetInnerHTML={{__html: description}}
                     />
-                    {button ?
+                    {(button?.path && button?.name) ?
                         <SgButton
                             type='link'
                             to={button?.path}
