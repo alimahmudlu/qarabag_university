@@ -42,8 +42,8 @@ export default function Index(props) {
                         console.log(itemContent, 'itemContent')
                         return (
                             <SgSectionContentBanner
-                                fluidContainer='left'
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                fluidContainer={itemContent?.fluidContainer?.value === '1' ? (itemContent?.imagePositionRightSide?.value === '1' ? 'right' : 'left') : null}
+                                style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 data={{

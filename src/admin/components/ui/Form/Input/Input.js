@@ -308,7 +308,7 @@ export default function SgInput(props) {
                             target: {
                                 id: id,
                                 name: name,
-                                value: `"${editorContent}"`,
+                                value: `${editorContent}`,
                                 validity: {},
                                 dataset: {
                                     key: data_key,
@@ -496,7 +496,8 @@ export default function SgInput(props) {
                 return renderDateInput;
 
             case "editor":
-                return renderEditor;
+                // return renderEditor;
+                return renderTextarea
 
             default:
                 return renderInput
