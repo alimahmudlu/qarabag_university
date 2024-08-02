@@ -18,7 +18,6 @@ let originalConfig = {url: ''};
 ApiService.interceptors.request.use(
     async (config) => {
         const session = await getSession();
-        console.log(config.headers, config.headers['Content-Language'], 'configggggg')
         if (!config.headers['Content-Language']) {
             config.headers['Content-Language'] = 'az';
         }

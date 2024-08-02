@@ -266,7 +266,7 @@ export default function Index(props) {
                             </SgFormGroup>
 
 
-                            <div className='bodyInstance' ref={bodyInstance}>
+                            <div className='bodyInstance'>
                                 <SortableList
                                     data={data}
                                     setData={setData}
@@ -284,7 +284,7 @@ export default function Index(props) {
                                     helperClass={'dragging'}
                                     useDragHandle={true}
                                     disableAutoscroll={false}
-                                    getContainer={() => bodyInstance}
+                                    getContainer={() => ReactDOM.findDOMNode(document.getElementById('bodyInstance'))}
                                     useWindowAsScrollContainer={true}
                                     toggleFileManagerModal={toggleFileManagerModal}
                                     fileManagerModal={fileManagerModal}

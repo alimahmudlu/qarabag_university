@@ -159,7 +159,7 @@ export default function Index(props) {
                             />
                         )
 
-                    case 'newsBannerContent':
+                    case 'newsContentBanner':
                         return (
                             <SgSectionNewsContentBanner
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
@@ -174,7 +174,7 @@ export default function Index(props) {
                             />
                         )
 
-                    case 'newsContent':
+                    case 'newsFilterContent':
                         return (
                             <SgSectionNewsContent
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
