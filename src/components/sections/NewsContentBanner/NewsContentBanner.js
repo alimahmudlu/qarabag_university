@@ -11,7 +11,7 @@ export default function SgSectionNewsContentBanner(props) {
     const [postList, setPostList] = useState([])
 
     useEffect(() => {
-        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}`).then((response) => {
+        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`).then((response) => {
             setPostList(response.data.data)
         }).catch((error) => {
             console.log(error)
