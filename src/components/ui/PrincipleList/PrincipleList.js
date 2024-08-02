@@ -7,18 +7,18 @@ export default function SgPrincipleList(props) {
 		<>
 			<div className={[styles["sg--principleList"]].join(' ').trim()}>
 				{(data || []).map((item, index) => {
-					const {key, title, description} = item;
+					const {key, title, content} = item;
 
 					return (
 						<div key={index} className={[styles['sg--principleList-item']].join(' ').trim()}>
 							<div className={[styles["sg--principleList-item--key"]].join(' ').trim()}>
-								{key}
+								{index + 1}
 							</div>
 							<div className={[styles["sg--principleList-item--header"]].join(' ').trim()}>
 								{title}
 							</div>
 							<div className={[styles["sg--principleList-item--description"]].join(' ').trim()}>
-								{description}
+								{content}
 							</div>
 						</div>
 					)

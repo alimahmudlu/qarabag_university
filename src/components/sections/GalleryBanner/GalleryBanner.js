@@ -2,6 +2,7 @@ import SgContentBanner from "@/components/ui/ContentBanner";
 import {Section, SectionBlock, SectionBody, SectionHead} from "@/components/ui/Section";
 import Fancybox from "@/components/templates/Fancybox/Fancybox";
 import Image from "next/image";
+import {SgRatio} from "@/components/ui/Ratio";
 
 export default function SgSectionGalleryBanner(props) {
     const {id, data, style} = props;
@@ -31,11 +32,18 @@ export default function SgSectionGalleryBanner(props) {
                                {(galleries || []).map((item, index) => {
                                    return (
                                        <div className='col-lg-4' key={index}>
-                                           <a data-fancybox="gallery" href={item.image}>
-                                               <Image width='1000' height='1000'
-                                                   alt={item.title}
-                                                   src={item.image}
-                                               />
+                                           <a data-fancybox="gallery" href={item}>
+                                               <SgRatio
+                                                ratio={{
+                                                    width: 1,
+                                                    height: 1,
+                                                }}
+                                               >
+                                                   <Image width='1000' height='1000'
+                                                          alt={item.title}
+                                                          src={item}
+                                                   />
+                                               </SgRatio>
                                            </a>
                                        </div>
                                    )

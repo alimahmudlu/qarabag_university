@@ -7,10 +7,13 @@ import {SgButton} from "@/components/ui/Button";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import {changeData} from "@/utils/changeData";
+import ApiService from "@/services/ApiService";
+import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 
 export default function SgSectionNewsContent(props) {
-    const {id, data, style} = props;
-    const {image, title, description, filter = false, list = []} = data;
+    const {id, data, style, mainData} = props;
+    const {image, title, description, filter = true, list = []} = data;
+    const [postList, setPostList] = useState([])
 
 
     const { query } = useRouter()
@@ -75,7 +78,7 @@ export default function SgSectionNewsContent(props) {
             })
         }
         else {
-            changeForm({
+            changeData({
                 target: {
                     id: 'search',
                     name: 'search',
@@ -100,6 +103,14 @@ export default function SgSectionNewsContent(props) {
 
         setUserFilters({...userFilters, ...newQuery, ...modifiedQuery})
     }, []);
+
+    useEffect(() => {
+        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}`).then((response) => {
+            setPostList(response.data.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, [userFilters]);
 
     return (
         <>
@@ -168,13 +179,13 @@ export default function SgSectionNewsContent(props) {
                             }
                             <div className={filter ? 'col-lg-9' : 'col-lg-12'}>
                                 <div className='row gap-y-[50px]'>
-                                    {(list || []).map((item, index) => {
+                                    {(postList || []).map((item, index) => {
                                         return (
                                             <div className={filter ? 'col-lg-4' : 'col-lg-3'} key={index}>
                                                 <SgNewsItem
                                                     image={item?.image}
                                                     header={item?.title}
-                                                    path={item?.path}
+                                                    path={`/content/${item?.id}`}
                                                     size='xs'
                                                     date={moment(item?.date).format('MMMM DD, YYYY')}
                                                     time={moment(item?.date).format('HH:mm')}

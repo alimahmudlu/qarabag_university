@@ -36,10 +36,10 @@ export default function Index(props) {
             />
 
             {(page_widgets || []).sort((a, b) => a?.widget?.order > b?.widget?.order).map((item, index) => {
+                const itemContent = item.page_widget_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {}) ;
+                console.log(itemContent, 'itemContent', item)
                 switch (item?.widget?.alias) {
                     case 'simpleContent':
-                        const itemContent = item.page_widget_values.reduce((a, v) => ({ ...a, [v.meta_key.alias]: v}), {}) ;
-                        console.log(itemContent, 'itemContent')
                         return (
                             <SgSectionContentBanner
                                 reverse={!!itemContent?.imagePositionRightSide?.value}
@@ -47,6 +47,7 @@ export default function Index(props) {
                                 style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
+                                mainData={item}
                                 data={{
                                     image: itemContent?.image?.value,
                                     title: itemContent?.title?.value,
@@ -59,17 +60,18 @@ export default function Index(props) {
                             />
                         );
 
-                    case 'gallery':
+                    case 'galleryBanner':
                         return (
                             <SgSectionGalleryBanner
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
+                                mainData={item}
                                 data={{
-                                    image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description,
-                                    galleries: item?.content?.galleries || []
+                                    image: itemContent?.image?.value,
+                                    title: itemContent?.titleGallery?.value,
+                                    description: itemContent?.description?.value,
+                                    galleries: (itemContent?.images?.value && itemContent?.images?.value.split(',').length) ? itemContent?.images?.value.split(',') : []
                                 }}
                             />
                         )
@@ -80,26 +82,29 @@ export default function Index(props) {
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
+                                mainData={item}
                                 data={{
-                                    image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description,
-                                    list: item?.content?.list
+                                    image1: itemContent?.image1?.value,
+                                    title1: itemContent?.title1?.value,
+                                    description1: itemContent?.description1?.value,
+                                    image2: itemContent?.image2?.value,
+                                    title2: itemContent?.title2?.value,
+                                    description2: itemContent?.description2?.value,
                                 }}
                             />
                         );
 
-                    case 'principleList':
+                    case 'principleListBanner':
                         return (
                             <SgSectionPrincipleListBanner
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
+                                mainData={item}
                                 data={{
                                     image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description,
-                                    list: item?.content?.list
+                                    title: 'item?.content?.title',
+                                    description: item?.content?.description
                                 }}
                             />
                         )
@@ -135,6 +140,7 @@ export default function Index(props) {
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
+                                mainData={item}
                                 data={{
                                     image: item?.content?.image,
                                     title: item?.content?.title,
@@ -150,6 +156,7 @@ export default function Index(props) {
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
+                                mainData={item}
                                 data={{
                                     image: item?.content?.image,
                                     title: item?.content?.title,
@@ -165,6 +172,7 @@ export default function Index(props) {
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
+                                mainData={item}
                                 data={{
                                     image: item?.content?.image,
                                     title: item?.content?.title,
@@ -180,6 +188,7 @@ export default function Index(props) {
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
+                                mainData={item}
                                 data={{
                                     filter: item?.content?.filter,
                                     image: item?.content?.image,
@@ -196,6 +205,7 @@ export default function Index(props) {
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
+                                mainData={item}
                                 data={{
                                     image: item?.content?.image,
                                     title: item?.content?.title,
@@ -211,6 +221,7 @@ export default function Index(props) {
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
+                                mainData={item}
                                 data={{
                                     filter: item?.content?.filter,
                                     image: item?.content?.image,
@@ -232,7 +243,19 @@ export const getServerSideProps = async (context) => {
     const {page_id} = query;
     let newQuery = {...query};
 
+    console.log(`${SITE_PAGE_SHOW_ROUTE}/${page_id}`)
+
     const pageData = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/${page_id}`)
+
+    // console.log(pageData)
+    //
+    // console.log(pageData.data.data?.page_widgets.filter(el => el?.widget?.page_type_id == 1), 'ok')
+    //
+    // let ids = [];
+    //
+    // pageData.data.data?.page_widgets.filter(el => el?.widget?.page_type_id == 1).map(el => ids.includes(el.data_type_id) ? null : ids.push(el.data_type_id))
+    //
+    // const posts = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/${page_id}`)
 
     if(pageData.status !== 200) {
         return {
