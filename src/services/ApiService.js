@@ -46,7 +46,7 @@ ApiService.interceptors.response.use(
                 progress: undefined,
                 theme: "light",
             });
-            return Promise.reject(error.response);
+            return Promise.reject(error);
 
         }
 

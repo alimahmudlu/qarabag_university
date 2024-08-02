@@ -97,7 +97,7 @@ export default function SgWidgetItem(props) {
 					<hr />
 					<div className='row pt-3'>
 						{(page_widget_values || []).map((item, i) => {
-							switch (item.meta_key.input_type.alias) {
+							switch (item?.meta_key?.input_type?.alias) {
 								case 'file':
 									return (
 										<div key={i} className='col-lg-12'>
@@ -207,12 +207,12 @@ export default function SgWidgetItem(props) {
 													name='value'
 													value={item.value || ''}
 													// isInvalid={errors.data_type_id}
-													label={item.meta_key.title}
+													label={item?.meta_key?.title}
 													onChange={handleChange}
 													options={dataTypesOptions}
 													data_key={`page_widgets.${index}.page_widget_values.${i}`}
-													type={item.meta_key.input_type.alias}
-													variant={item.meta_key.input_type.alias}
+													type={item?.meta_key?.input_type?.alias}
+													variant={item?.meta_key?.input_type?.alias}
 												/>
 											</SgFormGroup>
 										</div>
