@@ -106,13 +106,13 @@ export default function Index(props) {
             setValueErrors(errors)
         }
         else {
-            ApiService.put(PAGE_EDIT_ROUTE, data, {
+            ApiService.put(`${PAGE_EDIT_ROUTE}/${page_id}`, data, {
                 headers: {
                     "Content-Language": locale
                 }
             }).then(resp => {
                 router.push({
-                    pathname: `/admin/pages/${page_id}`
+                    pathname: `/admin/pages/`
                 }, undefined, { scroll: true });
             }).catch(error => {
                 console.log(error)
@@ -266,7 +266,7 @@ export default function Index(props) {
                             </SgFormGroup>
 
 
-                            <div className='bodyInstance' ref={bodyInstance}>
+                            <div className='bodyInstance'>
                                 <SortableList
                                     data={data}
                                     setData={setData}
@@ -284,7 +284,7 @@ export default function Index(props) {
                                     helperClass={'dragging'}
                                     useDragHandle={true}
                                     disableAutoscroll={false}
-                                    getContainer={() => bodyInstance}
+                                    getContainer={() => ReactDOM.findDOMNode(document.getElementById('bodyInstance'))}
                                     useWindowAsScrollContainer={true}
                                     toggleFileManagerModal={toggleFileManagerModal}
                                     fileManagerModal={fileManagerModal}

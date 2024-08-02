@@ -104,6 +104,7 @@ export default function Index(props) {
 
     useEffect(() => {
         if (data.data_type_id) {
+            const _data = {...data};
             ApiService.get(`${DATA_TYPE_SHOW_ROUTE}/${data.data_type_id}`, {
                 headers: {
                     "Content-Language": locale
@@ -111,8 +112,9 @@ export default function Index(props) {
             }).then(resp => {
                 setData({
                     ...data,
-                    post_values: resp.data.data.meta_keys.map(el => ({...el, meta_key_id: el.id, default_value: '', ...data.post_values.find(i => i.id === el.id)}))
+                    // post_values: resp.data.data.meta_keys.map(el => ({...el, meta_key_id: el.id, value: _data.value, default_value: '', ..._data.post_values.find(i => i.id === el.id)}))
                 })
+                console.log(data.post_values.find(i => i.id === 8))
                 console.log(resp.data.data.meta_keys.map(el => ({...el, meta_key_id: el.id, default_value: '', ...data.post_values.find(i => i.id === el.id)})))
             }).catch(error => {
                 console.log(error)
