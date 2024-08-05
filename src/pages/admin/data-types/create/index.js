@@ -19,6 +19,16 @@ export default function Index(props) {
     });
     const [valueErrors, setValueErrors] = useState({});
     const [inputTypes, setInputTypes] = useState([]);
+    const [innerPageTemplateOptions, setInnerPageTemplateOptions] = useState([
+        {
+            id: 1,
+            name: 'News'
+        },
+        {
+            id: 2,
+            name: 'Events'
+        }
+    ]);
     const router = useRouter();
 
     function handleChange(e) {
@@ -96,6 +106,19 @@ export default function Index(props) {
                                     label='Alias'
                                     value={data.alias || ''}
                                     onChange={handleChange}
+                                />
+                            </SgFormGroup>
+
+                            <SgFormGroup>
+                                <SgInput
+                                    name='inner_layout'
+                                    id='inner_layout'
+                                    placeholder='Enter your inner page template'
+                                    label='Inner page template'
+                                    value={data.inner_layout || ''}
+                                    onChange={handleChange}
+                                    variant='select'
+                                    options={innerPageTemplateOptions}
                                 />
                             </SgFormGroup>
                         </div>

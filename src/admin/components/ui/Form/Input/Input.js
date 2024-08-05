@@ -428,7 +428,7 @@ export default function SgInput(props) {
                                                 key={index}
                                             >
                                                 <a
-                                                    className={[styles["dropdown-item"], "dropdown-item", (selected.includes(option.id) || selected.includes(option.id)) ? styles["selected"] : ""].join(' ').trim()}>
+                                                    className={[styles["dropdown-item"], "dropdown-item", (selected.includes(option.id) || selected.includes(Number(option.id))) ? styles["selected"] : ""].join(' ').trim()}>
                                                     <span>{option.name}</span>
                                                 </a>
                                             </li>
@@ -542,8 +542,9 @@ export default function SgInput(props) {
     useEffect(() => {
 
         const arrayValue = value ? (typeof value !== 'object' ? [value] : value) : [];
+        console.log(arrayValue, 'arrayValue', options)
 
-        setSelected(variant === 'select' ? (options.filter(el => arrayValue.includes(el.id)).map(el => el.id) || []) : [])
+        setSelected(variant === 'select' ? (options.filter(el => arrayValue.includes(el.id) || arrayValue.includes(el.id.toString())).map(el => el.id) || []) : [])
     }, [value]);
 
     return (

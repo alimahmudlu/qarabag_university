@@ -2,11 +2,23 @@ import {Section, SectionBlock, SectionBody, SectionFooter, SectionHead} from "@/
 import SgButtonGroup from "@/components/ui/ButtonGroup/ButtonGroup";
 import {SgButton} from "@/components/ui/Button";
 import SgNewsSliderItem from "@/components/ui/NewsSliderItem/NewsSliderItem";
-import SgPosterItem from "@/components/ui/PosterItem";
 import {SgSlider} from "@/components/ui/Slider";
+import {useEffect, useState} from "react";
+import ApiService from "@/services/ApiService";
+import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 
 export default function SgSectionNewsBanner(props) {
-    const {id, data, header} = props;
+    const {id, data, style, mainData, page_id} = props;
+    const {image, title, description, list = []} = data;
+    const [postList, setPostList] = useState([])
+
+    useEffect(() => {
+        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`).then((response) => {
+            setPostList(response.data.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, []);
 
     return (
         <>
@@ -15,7 +27,7 @@ export default function SgSectionNewsBanner(props) {
             >
                 <SectionBlock>
                     <SectionHead
-                        header={header}
+                        header={'header'}
                         filter={true}
                     >
                         <SgButtonGroup>
@@ -25,6 +37,8 @@ export default function SgSectionNewsBanner(props) {
                                 size='sm'
                                 withOutBlock={true}
                                 reverse={true}
+                                type='link'
+                                to={`/page/${page_id}`}
                             >
                                 Hamısına baxmaq
                             </SgButton>
@@ -54,13 +68,13 @@ export default function SgSectionNewsBanner(props) {
                                         }
                                     ]
                                 }}
-                                items={(data || []).map((item, index) => {
+                                items={(postList || []).map((item, index) => {
                                     return (
                                         <SgNewsSliderItem
                                             key={index}
                                             image={item.image}
-                                            header={item.header}
-                                            path={item.path}
+                                            header={item.title}
+                                            path={`/page/${page_id}/${item?.id}`}
                                             date={item.date}
                                             duration={item.duration}
                                         />

@@ -7,7 +7,7 @@
     padding: 20px;
 
     &--img{
-      flex: 1 50%;
+      flex: 1 0 50%;
     }
 
     &-image {
@@ -26,6 +26,7 @@
       flex-direction: column;
       justify-content: flex-end;
       gap: 20px;
+      flex: 1 0 50%;
 
       &-info {
         display: flex;

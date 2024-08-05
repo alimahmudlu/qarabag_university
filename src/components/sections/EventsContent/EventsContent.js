@@ -8,15 +8,26 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import {changeData} from "@/utils/changeData";
 import SgEventItem from "@/components/ui/EventItem";
+import ApiService from "@/services/ApiService";
+import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 
 export default function SgSectionEventsContent(props) {
-    const {id, data, style} = props;
-    const {image, title, description, filter = false, list = []} = data;
+    const {id, data, style, mainData, page_id} = props;
+    const {image, title, description, filter = true, list = []} = data;
 
     const { query } = useRouter()
     const router = useRouter()
     const [ userFilters, setUserFilters ] = useState({})
     const [ errors, setErrors ] = useState({})
+    const [postList, setPostList] = useState([])
+
+    useEffect(() => {
+        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`).then((response) => {
+            setPostList(response.data.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, []);
 
     function setUserFilterFn(e) {
         changeData(e, userFilters, setUserFilters, errors, setErrors)
@@ -168,12 +179,12 @@ export default function SgSectionEventsContent(props) {
                             }
                             <div className={filter ? 'col-lg-9' : 'col-lg-12'}>
                                 <div className='row gap-y-[2px]'>
-                                    {(list || []).map((item, index) => {
+                                    {(postList || []).map((item, index) => {
                                         return (
                                             <div className={'col-lg-12'} key={index}>
                                                 <SgEventItem
                                                     title={item?.title}
-                                                    path={item?.path}
+                                                    path={`/page/${page_id}/${item.id}`}
                                                     date={moment(item?.date).format('MMMM DD, YYYY')}
                                                     additions={[
                                                         {

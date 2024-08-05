@@ -40,16 +40,6 @@ export default function Index(props) {
             name: 'List'
         }
     ]);
-    const [innerPageTemplateOptions, setInnerPageTemplateOptions] = useState([
-        {
-            id: 1,
-            name: 'News'
-        },
-        {
-            id: 2,
-            name: 'Events'
-        }
-    ]);
     const [statusOptions, setStatusOptions] = useState([
         {
             id: 1,
@@ -222,18 +212,6 @@ export default function Index(props) {
                                     onChange={handleChange}
                                     variant='select'
                                     options={pageTypeOptions}
-                                />
-                            </SgFormGroup>
-                            <SgFormGroup>
-                                <SgInput
-                                    name='innerPageTemplate'
-                                    id='innerPageTemplate'
-                                    placeholder='Enter your inner page template'
-                                    label='Inner page template'
-                                    value={data.innerPageTemplate || ''}
-                                    onChange={handleChange}
-                                    variant='select'
-                                    options={innerPageTemplateOptions}
                                 />
                             </SgFormGroup>
 

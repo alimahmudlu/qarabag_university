@@ -11,8 +11,8 @@ import ApiService from "@/services/ApiService";
 import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 
 export default function SgSectionNewsContent(props) {
-    const {id, data, style, mainData} = props;
-    const {image, title, description, filter = true, list = []} = data;
+    const {id, data, style, mainData, page_id} = props;
+    const {image, title, description, filter = true, list = [], morePath} = data;
     const [postList, setPostList] = useState([])
 
 
@@ -120,6 +120,7 @@ export default function SgSectionNewsContent(props) {
             >
                 <SectionBlock>
                     <SectionHead
+                        variant={!filter ? 'center' : null}
                         header={title}
                     />
                     <SectionBody>
@@ -179,13 +180,13 @@ export default function SgSectionNewsContent(props) {
                             }
                             <div className={filter ? 'col-lg-9' : 'col-lg-12'}>
                                 <div className='row gap-y-[50px]'>
-                                    {(postList || []).map((item, index) => {
+                                    {(postList || []).filter((el, index) => index < 3).map((item, index) => {
                                         return (
-                                            <div className={filter ? 'col-lg-4' : 'col-lg-3'} key={index}>
+                                            <div className={'col-lg-4'} key={index}>
                                                 <SgNewsItem
                                                     image={item?.image}
                                                     header={item?.title}
-                                                    path={`/content/${item?.id}`}
+                                                    path={`/page/${page_id}/${item?.id}`}
                                                     size='xs'
                                                     date={moment(item?.date).format('MMMM DD, YYYY')}
                                                     time={moment(item?.date).format('HH:mm')}
@@ -197,6 +198,15 @@ export default function SgSectionNewsContent(props) {
                                             </div>
                                         )
                                     })}
+                                    <div className='col-lg-12 flex justify-center'>
+                                        <SgButton
+                                            color='primary'
+                                            type={filter ? null : 'link'}
+                                            to={morePath}
+                                        >
+                                            Daha çox
+                                        </SgButton>
+                                    </div>
                                 </div>
                             </div>
                         </div>
