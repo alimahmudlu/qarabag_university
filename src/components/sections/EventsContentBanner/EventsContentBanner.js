@@ -4,10 +4,22 @@ import moment from "moment";
 import {SgSlider} from "@/components/ui/Slider";
 import SgNewsSliderItem from "@/components/ui/NewsSliderItem";
 import SgEventsSliderItem from "@/components/ui/EventsSliderItem";
+import {useEffect, useState} from "react";
+import ApiService from "@/services/ApiService";
+import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 
 export default function SgSectionEventsContentBanner(props) {
-    const {id, data, style} = props;
+    const {id, data, style, mainData, page_id} = props;
     const {image, title, description, list = []} = data;
+    const [postList, setPostList] = useState([])
+
+    useEffect(() => {
+        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`).then((response) => {
+            setPostList(response.data.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, []);
 
     return (
         <>
@@ -43,7 +55,7 @@ export default function SgSectionEventsContentBanner(props) {
                                             }
                                         ]
                                     }}
-                                    items={(list || []).map((item, index) => {
+                                    items={(postList || []).map((item, index) => {
                                         return (
                                             <SgEventsSliderItem
                                                 key={index}
@@ -58,7 +70,7 @@ export default function SgSectionEventsContentBanner(props) {
                                                 date={moment(item?.date).format('MMMM DD, YYYY')}
                                                 time={moment(item?.date).format('HH:mm')}
                                                 location={item?.location}
-                                                path={item?.path}
+                                                path={`/page/${page_id}/${item?.id}`}
                                             />
                                         )
                                     })}

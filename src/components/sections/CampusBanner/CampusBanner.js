@@ -1,9 +1,22 @@
 import styles from '@/components/sections/CampusBanner/CampusBanner.module.css';
 import {Section, SectionBlock, SectionBody, SectionHead} from "@/components/ui/Section";
 import SgCampusItem from "@/components/ui/CampusItem";
+import {useEffect, useState} from "react";
+import ApiService from "@/services/ApiService";
+import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 
 export default function SgSectionCampusBanner(props) {
-    const {header, data, id} = props;
+    const {id, data, style, mainData, page_id} = props;
+    const {image, title, description, list = []} = data;
+    const [postList, setPostList] = useState([])
+
+    useEffect(() => {
+        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`).then((response) => {
+            setPostList(response.data.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, []);
 
 
     return (
@@ -13,7 +26,7 @@ export default function SgSectionCampusBanner(props) {
             >
                 <SectionBlock>
                     <SectionHead
-                        header={header}
+                        header={'header'}
                     />
                     <SectionBody>
                         <div className='row'>
@@ -23,12 +36,12 @@ export default function SgSectionCampusBanner(props) {
                                 />
                             </div>
                             <div className='col-lg-7'>
-                                {(data || []).map((item, index) => {
+                                {(postList || []).map((item, index) => {
                                     return (
                                         <SgCampusItem
-                                            header={item.header}
-                                            description={item.description}
-                                            path={item.path}
+                                            header={item.title}
+                                            description={item.content}
+                                            path={`/page/${page_id}/${item?.id}`}
                                             key={index}
                                         />
                                     )

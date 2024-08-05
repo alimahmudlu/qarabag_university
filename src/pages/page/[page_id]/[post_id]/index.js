@@ -13,7 +13,6 @@ export default function Index(props) {
 	const {post = {}, page = {}} = pageData || {};
 	const {title, data_type = {}} = post || {};
 	const {inner_layout} = data_type || {};
-	const {id} = page || {};
 
 	const renderInner = (type, data) => {
 		switch (type) {
@@ -51,19 +50,19 @@ export default function Index(props) {
 			<SgSectionMainHero
 				id='mainHero'
 				inner={true}
-				header={title || ''}
+				header={page?.title || title || ''}
 				breadcrumb={[
 					{
 						name: 'Ana səhifə',
 						to: '/'
 					},
 					{
-						name: 'Ana səhifə',
-						to: '/'
+						name: page?.title,
+						to: `/page/${page_id}`
 					},
 					{
-						name: 'Ana səhifə',
-						to: '/'
+						name: title,
+						to: `/page/${page_id}`
 					},
 				]}
 			/>
@@ -82,7 +81,7 @@ export default function Index(props) {
 					title: 'Daha çox',
 					description: '',
 					filter: false,
-					morePath: `/page/${id}`,
+					morePath: `/page/${page?.id}`,
 					list: []
 				}}
 			/>
@@ -95,9 +94,9 @@ export const getServerSideProps = async (context) => {
 	const {query} = context;
 	const {post_id, page_id} = query;
 
-	console.log(post_id)
+	console.log(page_id, 'page_id')
 
-	const data = await ApiService.get(`${SITE_POST_LIST_ROUTE}/${post_id}`)
+	const data = await ApiService.get(`${SITE_POST_LIST_ROUTE}/${post_id}?page_id=${page_id}`)
 
 	if(data.status !== 200) {
 		return {
@@ -106,8 +105,7 @@ export const getServerSideProps = async (context) => {
 			//     destination: "/404",
 			// },
 			props: {
-				pageData: {},
-				page_id: page_id
+				pageData: {}
 			}
 		};
 	}

@@ -3,9 +3,22 @@ import SgButtonGroup from "@/components/ui/ButtonGroup/ButtonGroup";
 import {SgButton} from "@/components/ui/Button";
 import SgEventsList from "@/components/ui/EventsList";
 import EventImage from "@/assets/images/eventImage.png"
+import {useEffect, useState} from "react";
+import ApiService from "@/services/ApiService";
+import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 
 export default function SgSectionEventsBanner(props) {
-    const {id, data, header} = props;
+    const {id, data, style, mainData, page_id} = props;
+    const {image, title, description, list = []} = data;
+    const [postList, setPostList] = useState([])
+
+    useEffect(() => {
+        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`).then((response) => {
+            setPostList(response.data.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, []);
 
     return (
         <>
@@ -14,7 +27,7 @@ export default function SgSectionEventsBanner(props) {
             >
                 <SectionBlock>
                     <SectionHead
-                        header={header}
+                        header={'header'}
                         filter={true}
                     >
                         <SgButtonGroup>
@@ -31,7 +44,7 @@ export default function SgSectionEventsBanner(props) {
                     </SectionHead>
                     <SectionBody>
                         <SgEventsList
-                            list={data}
+                            list={postList}
                             image={EventImage}
                             text='Tədbirlər'
                         />

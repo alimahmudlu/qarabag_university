@@ -12,9 +12,13 @@ import SgSectionNewsContent from "@/components/sections/NewsContent";
 import SgSectionEventsContentBanner from "@/components/sections/EventsContentBanner";
 import SgSectionEventsContent from "@/components/sections/EventsContent";
 import {SITE_PAGE_SHOW_ROUTE} from "@/configs/apiRoutes";
+import SgSectionNewsBanner from "@/components/sections/NewsBanner";
+import SgSectionEventsBanner from "@/components/sections/EventsBanner";
+import SgSectionCampusBanner from "@/components/sections/CampusBanner";
+import SgSectionClubsBanner from "@/components/sections/ClubsBanner";
 
 export default function Index(props) {
-    const {pageData} = props;
+    const {pageData, page_id} = props;
     const {title, id, page_widgets} = pageData || {};
 
     return (
@@ -48,6 +52,7 @@ export default function Index(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
+                                page_id={page_id}
                                 data={{
                                     image: itemContent?.image?.value,
                                     title: itemContent?.title?.value,
@@ -67,6 +72,7 @@ export default function Index(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
+                                page_id={page_id}
                                 data={{
                                     image: itemContent?.image?.value,
                                     title: itemContent?.titleGallery?.value,
@@ -83,6 +89,7 @@ export default function Index(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
+                                page_id={page_id}
                                 data={{
                                     image1: itemContent?.image1?.value,
                                     title1: itemContent?.title1?.value,
@@ -101,6 +108,7 @@ export default function Index(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
+                                page_id={page_id}
                                 data={{
                                     image: item?.content?.image,
                                     title: 'item?.content?.title',
@@ -141,6 +149,7 @@ export default function Index(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
+                                page_id={page_id}
                                 data={{
                                     image: item?.content?.image,
                                     title: item?.content?.title,
@@ -157,6 +166,7 @@ export default function Index(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
+                                page_id={page_id}
                                 data={{
                                     image: item?.content?.image,
                                     title: item?.content?.title,
@@ -173,6 +183,7 @@ export default function Index(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
+                                page_id={page_id}
                                 data={{
                                     image: item?.content?.image,
                                     title: item?.content?.title,
@@ -189,6 +200,7 @@ export default function Index(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
+                                page_id={page_id}
                                 data={{
                                     filter: item?.content?.filter,
                                     image: item?.content?.image,
@@ -199,13 +211,32 @@ export default function Index(props) {
                             />
                         )
 
-                    case 'eventsBannerContent':
+                    case 'newsBannerSlider':
+                        return (
+                            <SgSectionNewsBanner
+                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                key={index}
+                                id={`contentBanner__${item.id}`}
+                                mainData={item}
+                                page_id={page_id}
+                                data={{
+                                    filter: item?.content?.filter,
+                                    image: item?.content?.image,
+                                    title: item?.content?.title,
+                                    description: item?.content?.description,
+                                    list: item?.content?.list
+                                }}
+                            />
+                        )
+
+                    case 'eventsSliderBanner':
                         return (
                             <SgSectionEventsContentBanner
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
+                                page_id={page_id}
                                 data={{
                                     image: item?.content?.image,
                                     title: item?.content?.title,
@@ -215,13 +246,68 @@ export default function Index(props) {
                             />
                         )
 
-                    case 'eventsContent':
+                    case 'eventsFilterContent':
                         return (
                             <SgSectionEventsContent
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
+                                page_id={page_id}
+                                data={{
+                                    filter: item?.content?.filter,
+                                    image: item?.content?.image,
+                                    title: item?.content?.title,
+                                    description: item?.content?.description,
+                                    list: item?.content?.list
+                                }}
+                            />
+                        )
+
+                    case 'eventsListBanner':
+                        return (
+                            <SgSectionEventsBanner
+                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                key={index}
+                                id={`contentBanner__${item.id}`}
+                                mainData={item}
+                                page_id={page_id}
+                                data={{
+                                    filter: item?.content?.filter,
+                                    image: item?.content?.image,
+                                    title: item?.content?.title,
+                                    description: item?.content?.description,
+                                    list: item?.content?.list
+                                }}
+                            />
+                        )
+
+                    case 'clubsBanner':
+                        return (
+                            <SgSectionClubsBanner
+                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                key={index}
+                                id={`contentBanner__${item.id}`}
+                                mainData={item}
+                                page_id={page_id}
+                                data={{
+                                    filter: item?.content?.filter,
+                                    image: item?.content?.image,
+                                    title: item?.content?.title,
+                                    description: item?.content?.description,
+                                    list: item?.content?.list
+                                }}
+                            />
+                        )
+
+                    case 'campusBanner':
+                        return (
+                            <SgSectionCampusBanner
+                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                key={index}
+                                id={`contentBanner__${item.id}`}
+                                mainData={item}
+                                page_id={page_id}
                                 data={{
                                     filter: item?.content?.filter,
                                     image: item?.content?.image,
@@ -264,14 +350,16 @@ export const getServerSideProps = async (context) => {
                 destination: "/404",
             },
             props: {
-                pageData: []
+                pageData: [],
+                page_id: page_id
             }
         };
     }
 
     return {
         props: {
-            pageData: pageData.data.data
+            pageData: pageData.data.data,
+            page_id: page_id
         }
     }
 }

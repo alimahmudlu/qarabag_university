@@ -6,7 +6,7 @@ import ApiService from "@/services/ApiService";
 import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 
 export default function SgSectionNewsContentBanner(props) {
-    const {id, data, style, mainData} = props;
+    const {id, data, style, mainData, page_id} = props;
     const {image, title, description, list = []} = data;
     const [postList, setPostList] = useState([])
 
@@ -34,7 +34,7 @@ export default function SgSectionNewsContentBanner(props) {
                                 <SgNewsItem
                                     image={postList?.[0]?.image}
                                     header={postList?.[0]?.title}
-                                    path={`/content/${postList?.[0]?.id}`}
+                                    path={`/page/${page_id}/${postList?.[0]?.id}`}
                                     date={moment(postList?.[0]?.date).format('MMMM DD, YYYY')}
                                     time={moment(postList?.[0]?.date).format('HH:mm')}
                                     ratio={{
@@ -51,7 +51,7 @@ export default function SgSectionNewsContentBanner(props) {
                                                 <SgNewsItem
                                                     image={item?.image}
                                                     header={item?.title}
-                                                    path={`/content/${item?.id}`}
+                                                    path={`/page/${page_id}/${item?.id}`}
                                                     size='xs'
                                                     date={moment(item?.date).format('MMMM DD, YYYY')}
                                                     time={moment(item?.date).format('HH:mm')}

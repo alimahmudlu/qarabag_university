@@ -4,8 +4,8 @@ import SgShareSocialMedia from "@/components/ui/ShareSocialMedia/ShareSocialMedi
 import moment from "moment";
 
 export default function SgPageNewsInner(props) {
-	const { data } = props;
-	const { title, date, description } = data;
+	const { data = {}} = props;
+	const {id, image, title, status, data_type = {}, content, post_values = []} = data || {};
 
 	return (
 		<>
@@ -20,7 +20,7 @@ export default function SgPageNewsInner(props) {
 							</div>
 							<div className={[styles['sg--page--newsInner-details']].join(' ').trim()}>
 								<div className={[styles['sg--page--newsInner-details-item']].join(' ').trim()}>
-									{moment(date).format('MMMM DD, YYYY')}
+									{moment().format('MMMM DD, YYYY')}
 								</div>
 								<div className={[styles['sg--page--newsInner-details-item']].join(' ').trim()}>
 									<SgShareSocialMedia
@@ -57,7 +57,7 @@ export default function SgPageNewsInner(props) {
 								</div>
 							</div>
 							<div className={[styles['sg--page--newsInner-body']].join(' ').trim()}
-								 dangerouslySetInnerHTML={{__html: description}}
+								 dangerouslySetInnerHTML={{__html: content}}
 							/>
 						</div>
 					</SectionBody>

@@ -2,6 +2,12 @@
     height: 100vh;
     width: 100%;
     position: relative;
+    min-height: 500px;
+
+    &--inner {
+        height: 75vh;
+        min-height: 350px;
+    }
 
     &-absolute {
         position: absolute;
