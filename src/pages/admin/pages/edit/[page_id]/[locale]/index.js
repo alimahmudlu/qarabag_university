@@ -106,6 +106,7 @@ export default function Index(props) {
             setValueErrors(errors)
         }
         else {
+            const _data = {...data, page_widgets: data.page_widgets.filter(widget => !!widget.widget)};
             ApiService.put(`${PAGE_EDIT_ROUTE}/${page_id}`, data, {
                 headers: {
                     "Content-Language": locale
@@ -132,7 +133,7 @@ export default function Index(props) {
                 'Content-Language': locale
             }
         }).then(resp => {
-            setData(resp.data.data)
+            setData({...resp.data.data, page_widgets: resp.data.data.page_widgets.filter(widget => !!widget.widget)})
         }).catch(error => {
             console.log(error)
         })
