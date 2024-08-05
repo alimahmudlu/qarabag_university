@@ -58,6 +58,16 @@ export default function Index(props) {
             name: 'Deactive'
         }
     ]);
+    const [protectOptions, setProtectOptions] = useState([
+        {
+            id: 1,
+            name: 'Qorunur'
+        },
+        {
+            id: 0,
+            name: 'Qorunmur'
+        }
+    ]);
     const [widgets, setWidgets] = useState([])
     const [dataTypes, setDataTypes] = useState([])
     const { query } = useRouter();
@@ -74,8 +84,8 @@ export default function Index(props) {
     }
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
-        console.log(oldIndex, newIndex, 'salam', data.page_widgets)
-        setData({...data, page_widgets: arrayMoveImmutable(data.page_widgets, oldIndex, newIndex)});
+        console.log(arrayMoveImmutable(data.page_widgets, oldIndex, newIndex))
+        setData({...data, page_widgets: arrayMoveImmutable(data.page_widgets, oldIndex, newIndex).map((el, index) => ({...el, row: index + 1}))});
     };
 
     function handleAddWidget(id) {
@@ -119,6 +129,12 @@ export default function Index(props) {
                 console.log(error)
             })
         }
+    }
+
+    function handleRemove(index) {
+        const page_widgets = [...data.page_widgets];
+        page_widgets.splice(index, 1);
+        setData({...data, page_widgets: page_widgets});
     }
 
     useEffect(() => {
@@ -265,6 +281,19 @@ export default function Index(props) {
                                     options={statusOptions}
                                 />
                             </SgFormGroup>
+                            <SgFormGroup>
+                                <SgInput
+                                    name='protected'
+                                    id='protected'
+                                    placeholder='Enter protected'
+                                    label='Protected'
+                                    value={data.protected || ''}
+                                    onChange={handleChange}
+                                    isInvalid={valueErrors.protected}
+                                    variant='select'
+                                    options={protectOptions}
+                                />
+                            </SgFormGroup>
 
 
                             <div className='bodyInstance'>
@@ -277,6 +306,7 @@ export default function Index(props) {
                                     dataTypes={dataTypes}
                                     statusOptions={statusOptions}
                                     handleChange={handleChange}
+                                    handleRemove={handleRemove}
 
 
                                     onSortEnd={onSortEnd}

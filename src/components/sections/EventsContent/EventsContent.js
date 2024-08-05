@@ -180,6 +180,7 @@ export default function SgSectionEventsContent(props) {
                             <div className={filter ? 'col-lg-9' : 'col-lg-12'}>
                                 <div className='row gap-y-[2px]'>
                                     {(postList || []).map((item, index) => {
+                                        const itemContent = item?.post_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {});
                                         return (
                                             <div className={'col-lg-12'} key={index}>
                                                 <SgEventItem
@@ -189,15 +190,15 @@ export default function SgSectionEventsContent(props) {
                                                     additions={[
                                                         {
                                                             icon: 'calendar',
-                                                            text: moment(item.date).format('MMMM DD, YYYY')
+                                                            text: moment(itemContent?.date?.value).format('MMMM DD, YYYY')
                                                         },
                                                         {
                                                             icon: 'clock',
-                                                            text: moment(item.date).format('HH:mm')
+                                                            text: itemContent?.Time?.value
                                                         },
                                                         {
                                                             icon: 'map-pin',
-                                                            text: item?.location
+                                                            text: itemContent?.location?.value
                                                         }
                                                     ]}
                                                 />

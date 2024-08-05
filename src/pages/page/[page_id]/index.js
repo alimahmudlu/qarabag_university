@@ -16,6 +16,7 @@ import SgSectionNewsBanner from "@/components/sections/NewsBanner";
 import SgSectionEventsBanner from "@/components/sections/EventsBanner";
 import SgSectionCampusBanner from "@/components/sections/CampusBanner";
 import SgSectionClubsBanner from "@/components/sections/ClubsBanner";
+import SgSectionMonumentsFamousBannerList from "@/components/sections/MonumentsFamousBannerList";
 
 export default function Index(props) {
     const {pageData, page_id} = props;
@@ -41,7 +42,6 @@ export default function Index(props) {
 
             {(page_widgets || []).sort((a, b) => a?.widget?.order > b?.widget?.order).map((item, index) => {
                 const itemContent = item.page_widget_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {}) ;
-                console.log(itemContent, 'itemContent', item)
                 switch (item?.widget?.alias) {
                     case 'simpleContent':
                         return (
@@ -317,6 +317,23 @@ export default function Index(props) {
                                 }}
                             />
                         )
+
+                    case 'GallerySliderList':
+                        return (
+                            <SgSectionMonumentsFamousBannerList
+                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                key={index}
+                                id={`contentBanner__${item.id}`}
+                                mainData={item}
+                                page_id={page_id}
+                                data={{
+                                    image: item?.content?.image,
+                                    title: item?.content?.title,
+                                    description: item?.content?.description,
+                                    list: item?.content?.list
+                                }}
+                            />
+                        )
                 }
             })}
         </>
@@ -342,6 +359,7 @@ export const getServerSideProps = async (context) => {
     // pageData.data.data?.page_widgets.filter(el => el?.widget?.page_type_id == 1).map(el => ids.includes(el.data_type_id) ? null : ids.push(el.data_type_id))
     //
     // const posts = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/${page_id}`)
+    console.log(pageData.data.data)
 
     if(pageData.status !== 200) {
         return {
@@ -355,6 +373,7 @@ export const getServerSideProps = async (context) => {
             }
         };
     }
+
 
     return {
         props: {

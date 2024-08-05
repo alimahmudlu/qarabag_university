@@ -11,7 +11,8 @@ const SortableList = (props) => {
         setValueErrors,
         dataTypes,
         statusOptions,
-        handleChange
+        handleChange,
+        handleRemove
     } = props
 
     return (
@@ -27,6 +28,7 @@ const SortableList = (props) => {
                         statusOptions={statusOptions}
                         dataTypesOptions={dataTypes}
                         handleChange={handleChange}
+                        handleRemove={handleRemove}
 
                         data={data}
                         setData={setData}

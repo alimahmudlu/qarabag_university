@@ -4,16 +4,25 @@ import {SgCheckbox, SgFile, SgFormGroup, SgInput} from "@/admin/components/ui/Fo
 import SgIcon from "@/admin/components/ui/Icon";
 import { sortableHandle } from "react-sortable-hoc";
 import {useState} from "react";
+import {SgButton} from "@/components/ui/Button";
 
-const DragHandle = sortableHandle(({index}) => (
+const DragHandle = sortableHandle(({index, handleRemove}) => (
 	<div className={[styles['sg--widgetItem--key']].join(' ').trim()}>
 		<SgIcon icon='menu' size={20} />
 		{index + 1}
+		<SgButton
+			className='ms-auto'
+			size='sm'
+			onClick={() => handleRemove(index)}
+			withOutBlock={true}
+		>
+			DELETE
+		</SgButton>
 	</div>
 ));
 
 export default function SgWidgetItem(props) {
-	const {id, index, data = {}, values = {}, errors = {}, handleChange, statusOptions, dataTypesOptions,
+	const {id, index, data = {}, values = {}, errors = {}, handleChange, statusOptions, dataTypesOptions, handleRemove,
 		Fdata,
 		FsetData,
 		FvalueErrors,
@@ -26,6 +35,7 @@ export default function SgWidgetItem(props) {
 		<>
 			<div className={[styles['sg--widgetItem']].join(' ').trim()}>
 				<DragHandle
+					handleRemove={handleRemove}
 					index={index}
 				/>
 				<div className={[styles['sg--widgetItem-head']].join(' ').trim()}>
@@ -90,6 +100,51 @@ export default function SgWidgetItem(props) {
 									variant='select'
 									data_key={`page_widgets.${index}`}
 									disabled={Number(page_type_id) === 2}
+								/>
+							</SgFormGroup>
+						</div>
+						<div className='col-lg-6'>
+							<SgFormGroup>
+								<SgInput
+									id='widgetTitle'
+									name='title'
+									value={values?.title}
+									isInvalid={errors.title}
+									label='Title'
+									onChange={handleChange}
+									data_key={`page_widgets.${index}`}
+								/>
+							</SgFormGroup>
+						</div>
+						<div className='col-lg-6'>
+							<SgFormGroup>
+								<SgInput
+									id='widgetContent'
+									name='content'
+									value={values?.content}
+									isInvalid={errors.content}
+									label='Content'
+									onChange={handleChange}
+									data_key={`page_widgets.${index}`}
+								/>
+							</SgFormGroup>
+						</div>
+						<div className='col-lg-6'>
+							<SgFormGroup>
+								<SgFile
+									id='widgetImage'
+									name='image'
+									value={values?.image || ''}
+									label='Image'
+									data_key={`page_widgets.${index}`}
+
+									fileManager={{
+										multiple: false,
+										data: Fdata,
+										setData: FsetData,
+										errors: FvalueErrors,
+										setErrors: FsetValueErrors,
+									}}
 								/>
 							</SgFormGroup>
 						</div>

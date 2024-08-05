@@ -6,7 +6,8 @@ import {SgIcon} from "@/components/ui/Icon";
 
 export default function SgPageEventsInner(props) {
 	const { data } = props;
-	const { title, date, description, location } = data;
+	const { title, date, content, location, post_values } = data;
+	const itemContent = post_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {});
 
 	return (
 		<>
@@ -58,7 +59,7 @@ export default function SgPageEventsInner(props) {
 										Tarix
 									</div>
 									<div className={[styles['sg--page--eventsInner-details-item--description']].join(' ').trim()}>
-										{moment(date).format('MMMM DD, YYYY')}
+										{moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
 									</div>
 								</div>
 								<div className={[styles['sg--page--eventsInner-details-item']].join(' ').trim()}>
@@ -71,7 +72,7 @@ export default function SgPageEventsInner(props) {
 										Vaxt
 									</div>
 									<div className={[styles['sg--page--eventsInner-details-item--description']].join(' ').trim()}>
-										{moment(date).format('HH:mm')}
+										{itemContent?.Time?.value}
 									</div>
 								</div>
 								<div className={[styles['sg--page--eventsInner-details-item']].join(' ').trim()}>
@@ -84,7 +85,7 @@ export default function SgPageEventsInner(props) {
 										Yer
 									</div>
 									<div className={[styles['sg--page--eventsInner-details-item--description']].join(' ').trim()}>
-										{location}
+										{itemContent?.location?.value}
 									</div>
 								</div>
 							</div>
@@ -94,7 +95,7 @@ export default function SgPageEventsInner(props) {
 								</h2>
 							</div>
 							<div className={[styles['sg--page--eventsInner-body']].join(' ').trim()}
-								 dangerouslySetInnerHTML={{__html: description}}
+								 dangerouslySetInnerHTML={{__html: content}}
 							/>
 						</div>
 					</SectionBody>

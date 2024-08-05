@@ -69,10 +69,6 @@ export default function Index(props) {
         object.row = i + 1
         const ids = object.id
 
-        if (object.new) {
-            object.id = null;
-        }
-
         newData = [...newData, object];
 
         (datas.children || []).map((item, index) => {
@@ -108,8 +104,8 @@ export default function Index(props) {
             setValueErrors(errors)
         }
         else {
-            setData([...data, {...optionsData, id: GetMaxId(data, 'id') + 1, new: true}])
-            setNestableData([...nestableData, {...optionsData, id: GetMaxId(data, 'id') + 1, new: true}])
+            setData([...data, {...optionsData, id: GetMaxId(data, 'id') + 1, new: 1}])
+            setNestableData([...nestableData, {...optionsData, id: GetMaxId(data, 'id') + 1, new: 1}])
 
             cancelMenuItem();
         }
@@ -164,9 +160,11 @@ export default function Index(props) {
                 'Content-Language': locale
             }
         }).then(resp => {
-            setData(resp.data.data);
+            const _data = [...resp.data.data.map(elem => ({...elem, new: 0}))];
 
-            setNestableData(generateNestable(resp.data.data))
+            setData(_data);
+
+            setNestableData(generateNestable(_data))
         }).catch(error => {
             console.log(error)
         })
