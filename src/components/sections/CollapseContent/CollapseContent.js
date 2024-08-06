@@ -1,14 +1,12 @@
-import styles from '@/components/sections/ClubsBanner/ClubsBanner.module.scss';
-import {Section, SectionBlock, SectionBody, SectionHead} from "@/components/ui/Section";
-import SgButtonGroup from "@/components/ui/ButtonGroup/ButtonGroup";
-import {SgButton} from "@/components/ui/Button";
-import SgClubItem from "@/components/ui/ClubItem";
 import {useEffect, useState} from "react";
+import {changeData} from "@/utils/changeData";
 import ApiService from "@/services/ApiService";
 import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
-import {changeData} from "@/utils/changeData";
+import {Section, SectionBlock, SectionBody, SectionHead} from "@/components/ui/Section";
+import {SgCollapse} from "@/components/ui/Collapse";
+import styles from "@/components/sections/CollapseContent/CollapseContent.module.scss";
 
-export default function SgSectionClubsBanner(props) {
+export default function SgSectionCollapseContent( props ) {
     const {id, data, style, mainData, page_id} = props;
     const {image, title, description, filter = true, list = [], morePath} = data;
     const [postList, setPostList] = useState([])
@@ -52,42 +50,34 @@ export default function SgSectionClubsBanner(props) {
         })
     }, [page]);
 
+
     return (
         <>
             <Section
-                style={{
-                    backgroundColor: 'var(--background, #F6F6F6);'
-                }}
                 id={id}
             >
                 <SectionBlock>
                     <SectionHead
                         header={title}
-                        filter={true}
-                    >
-                        <SgButtonGroup>
-                            <SgButton
-                                color='primary-outline'
-                                icon='arrow-up-right'
-                                size='sm'
-                                withOutBlock={true}
-                                reverse={true}
-                            >
-                                Hamısına baxmaq
-                            </SgButton>
-                        </SgButtonGroup>
-                    </SectionHead>
+                    />
                     <SectionBody>
-                        <div className='row gap-y-[20px]'>
+                        <div className='row gap-[24px]'>
                             {(postList || []).map((item, index) => {
                                 return (
-                                    <div key={index} className='col-lg-4'>
-                                        <SgClubItem
-                                            image={item.image}
-                                            header={item.title}
-                                            path={`/page/${page_id}/${item?.id}`}
-                                        />
-                                    </div>
+                                    <>
+                                        <div className='col-lg-12'>
+                                            <SgCollapse
+                                                toggleHeader={item.title}
+                                                id={item.id}
+                                                className={[styles['sg--section--collapseContent-item']].join(' ').trim()}
+                                                openClassName={[styles['sg--section--collapseContent-item--open']].join(' ').trim()}
+                                                toggleClassName={[styles[`sg--section--collapseContent-item--link`]].join(' ').trim()}
+                                                menuClassName={[styles[`sg--section--collapseContent-item--content`]].join(' ').trim()}
+                                            >
+                                                <div dangerouslySetInnerHTML={{__html: item?.content}} />
+                                            </SgCollapse>
+                                        </div>
+                                    </>
                                 )
                             })}
                         </div>

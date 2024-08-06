@@ -50,6 +50,16 @@ export default function Index(props) {
             name: 'Deactive'
         }
     ]);
+    const [protectOptions, setProtectOptions] = useState([
+        {
+            id: 1,
+            name: 'Qorunur'
+        },
+        {
+            id: 0,
+            name: 'Qorunmur'
+        }
+    ]);
     const [widgets, setWidgets] = useState([])
     const [dataTypes, setDataTypes] = useState([])
     const router = useRouter();
@@ -221,9 +231,6 @@ export default function Index(props) {
                                     options={pageTypeOptions}
                                 />
                             </SgFormGroup>
-
-
-
                             <SgFormGroup>
                                 <SgInput
                                     name='status'
@@ -235,6 +242,19 @@ export default function Index(props) {
                                     isInvalid={valueErrors.status}
                                     variant='select'
                                     options={statusOptions}
+                                />
+                            </SgFormGroup>
+                            <SgFormGroup>
+                                <SgInput
+                                    name='protected'
+                                    id='protected'
+                                    placeholder='Enter protected'
+                                    label='Protected'
+                                    value={data.protected || ''}
+                                    onChange={handleChange}
+                                    isInvalid={valueErrors.protected}
+                                    variant='select'
+                                    options={protectOptions}
                                 />
                             </SgFormGroup>
 

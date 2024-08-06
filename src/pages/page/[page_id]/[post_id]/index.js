@@ -6,6 +6,8 @@ import SgPageEventsInner from "@/components/pages/EventsInner";
 import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 import SgSectionNewsContentBanner from "@/components/sections/NewsContentBanner";
 import SgSectionNewsContent from "@/components/sections/NewsContent";
+import SgSectionEventsBanner from "@/components/sections/EventsBanner";
+import SgSectionEventsContent from "@/components/sections/EventsContent";
 
 
 export default function Index(props) {
@@ -22,6 +24,21 @@ export default function Index(props) {
 						<SgPageNewsInner
 							data={data}
 						/>
+
+						<SgSectionNewsContent
+							key={0}
+							id={`contentBanner__${1}`}
+							mainData={{data_type_id: data_type?.id}}
+							page_id={page_id}
+							data={{
+								image: '',
+								title: `Daha çox ${page?.title}`,
+								description: '',
+								filter: false,
+								morePath: `/page/${page?.id}`,
+								list: []
+							}}
+						/>
 					</>
 				)
 
@@ -30,6 +47,21 @@ export default function Index(props) {
 					<>
 						<SgPageEventsInner
 							data={data}
+						/>
+
+						<SgSectionEventsContent
+							key={0}
+							id={`contentBanner__${1}`}
+							mainData={{data_type_id: data_type?.id}}
+							page_id={page_id}
+							data={{
+								image: '',
+								title: `Daha çox ${page?.title}`,
+								description: '',
+								filter: false,
+								morePath: `/page/${page?.id}`,
+								list: []
+							}}
 						/>
 					</>
 				)
@@ -40,10 +72,27 @@ export default function Index(props) {
 						<SgPageNewsInner
 							data={data}
 						/>
+
+						<SgSectionNewsContent
+							key={0}
+							id={`contentBanner__${1}`}
+							mainData={{data_type_id: data_type?.id}}
+							page_id={page_id}
+							data={{
+								image: '',
+								title: `Daha çox ${page?.title}`,
+								description: '',
+								filter: false,
+								morePath: `/page/${page?.id}`,
+								list: []
+							}}
+						/>
 					</>
 				)
 		}
 	}
+
+
 
 	return (
 		<>
@@ -69,22 +118,6 @@ export default function Index(props) {
 
 
 			{renderInner(inner_layout, post)}
-
-
-			<SgSectionNewsContent
-				key={0}
-				id={`contentBanner__${1}`}
-				mainData={{data_type_id: data_type?.id}}
-				page_id={page_id}
-				data={{
-					image: '',
-					title: 'Daha çox',
-					description: '',
-					filter: false,
-					morePath: `/page/${page?.id}`,
-					list: []
-				}}
-			/>
 		</>
 	);
 }

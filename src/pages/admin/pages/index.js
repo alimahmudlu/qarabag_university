@@ -59,16 +59,28 @@ export default function Index(props) {
                     description='View your site pages.'
                     filter={true}
                 >
-                    <SgButton
-                        type='link'
-                        isLinked={true}
-                        to='/admin/pages/create'
-                        color='primary'
-                        size='md'
-                        icon='plus'
-                    >
-                        New page
-                    </SgButton>
+                    <SgButtonGroup>
+                        <SgButton
+                            type='link'
+                            isLinked={true}
+                            to='/admin/pages/create'
+                            color='primary'
+                            size='md'
+                            icon='plus'
+                        >
+                            New page
+                        </SgButton>
+                        <SgButton
+                            type='link'
+                            isLinked={true}
+                            to='/admin/pages/relations'
+                            color='primary-outline'
+                            size='md'
+                            icon='menu'
+                        >
+                            Page relations
+                        </SgButton>
+                    </SgButtonGroup>
                 </SgPageHead>
                 <SgPageBody>
                     <SgTable

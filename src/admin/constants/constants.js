@@ -65,6 +65,24 @@ const MenuItemAddFormValidation = {
     },
 }
 
+
+const PageItemAddFormValidation = {
+    page_id: {
+        custom: function custom(page_id, data) {
+            if ((!page_id || page_id === 'null')) {
+                return {errors: {page_id: 'blank'}}
+            }
+            else {
+                return null
+            }
+        }
+    },
+    name: {
+        presence: true,
+        length: { minimum: 1 }
+    },
+}
+
 const SignInFormValidation = {
     email: {
         presence: true,
@@ -90,6 +108,11 @@ export const validationConstraints = (data, type) => {
     if (type === 'menuItemAdd') {
         return {
             ...MenuItemAddFormValidation,
+        };
+    }
+    if (type === 'pageItemAdd') {
+        return {
+            ...PageItemAddFormValidation,
         };
     }
     if (type === 'sign-in') {

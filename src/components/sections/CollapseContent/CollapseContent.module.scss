@@ -1,0 +1,33 @@
+.sg--section--collapseContent-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--stroke, #CCC);
+  padding: 12px 0;
+
+  &--open {
+    border-color: var(--black, #262626);
+  }
+
+  &--link {
+    padding: 12px 24px;
+    color: var(--black, #262626);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 155.556% */
+    letter-spacing: -0.216px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  &--content {
+    padding: 0 24px;
+    color: var(--gray-text, #707070);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px; /* 187.5% */
+  }
+}
