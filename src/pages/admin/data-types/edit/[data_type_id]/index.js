@@ -82,6 +82,12 @@ export default function Index(props) {
         }
     }
 
+    function handleRemove(index) {
+        const meta_keys = [...data.meta_keys];
+        meta_keys.splice(index, 1);
+        setData({...data, meta_keys: meta_keys});
+    }
+
     useEffect(() => {
         ApiService.get(`${DATA_TYPE_SHOW_ROUTE}/${data_type_id}`).then(resp => {
             setData(resp.data.data)
@@ -167,7 +173,19 @@ export default function Index(props) {
                         {(data.meta_keys || []).map((item, index) => {
                             return (
                                 <div key={index} className='col-lg-6'>
-                                    <div key={index} className='border-1 p-[16px] rounded-[8px]'>
+                                    <div key={index} className='border-1 p-[12px] rounded-[8px]'>
+                                        <div className='border-b pb-[12px] mb-3 flex gap-[8px] items-center'>
+                                            <h6 className='h6 mb-0'>Meta key {index + 1}{item.title ? `: '${item.title}'` : null}</h6>
+                                            <SgButton
+                                                className='ms-auto'
+                                                size='sm'
+                                                color='error-outline'
+                                                withOutBlock={true}
+                                                onClick={() => handleRemove(index)}
+                                            >
+                                                DELETE
+                                            </SgButton>
+                                        </div>
                                         <SgFormGroup>
                                             <SgInput
                                                 id='title'

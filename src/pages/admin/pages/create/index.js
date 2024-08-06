@@ -50,6 +50,16 @@ export default function Index(props) {
             name: 'Deactive'
         }
     ]);
+    const [protectOptions, setProtectOptions] = useState([
+        {
+            id: 1,
+            name: 'Qorunur'
+        },
+        {
+            id: 0,
+            name: 'Qorunmur'
+        }
+    ]);
     const [widgets, setWidgets] = useState([])
     const [dataTypes, setDataTypes] = useState([])
     const router = useRouter();
@@ -80,6 +90,13 @@ export default function Index(props) {
                 console.log(error)
             })
         }
+    }
+
+
+    function handleRemove(index) {
+        const page_widgets = [...data.page_widgets];
+        page_widgets.splice(index, 1);
+        setData({...data, page_widgets: page_widgets});
     }
 
     function handleAddWidget(id) {
@@ -214,9 +231,6 @@ export default function Index(props) {
                                     options={pageTypeOptions}
                                 />
                             </SgFormGroup>
-
-
-
                             <SgFormGroup>
                                 <SgInput
                                     name='status'
@@ -228,6 +242,19 @@ export default function Index(props) {
                                     isInvalid={valueErrors.status}
                                     variant='select'
                                     options={statusOptions}
+                                />
+                            </SgFormGroup>
+                            <SgFormGroup>
+                                <SgInput
+                                    name='protected'
+                                    id='protected'
+                                    placeholder='Enter protected'
+                                    label='Protected'
+                                    value={data.protected || ''}
+                                    onChange={handleChange}
+                                    isInvalid={valueErrors.protected}
+                                    variant='select'
+                                    options={protectOptions}
                                 />
                             </SgFormGroup>
 
@@ -242,6 +269,7 @@ export default function Index(props) {
                                     dataTypes={dataTypes}
                                     statusOptions={statusOptions}
                                     handleChange={handleChange}
+                                    handleRemove={handleRemove}
 
 
                                     onSortEnd={onSortEnd}

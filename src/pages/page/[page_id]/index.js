@@ -16,16 +16,18 @@ import SgSectionNewsBanner from "@/components/sections/NewsBanner";
 import SgSectionEventsBanner from "@/components/sections/EventsBanner";
 import SgSectionCampusBanner from "@/components/sections/CampusBanner";
 import SgSectionClubsBanner from "@/components/sections/ClubsBanner";
+import SgSectionMonumentsFamousBannerList from "@/components/sections/MonumentsFamousBannerList";
+import SgSectionCollapseContent from "@/components/sections/CollapseContent";
 
 export default function Index(props) {
-    const {pageData, page_id} = props;
+    const {pageData, page_id, inner = true} = props;
     const {title, id, page_widgets} = pageData || {};
 
     return (
         <>
             <SgSectionMainHero
                 id='mainHero'
-                inner={true}
+                inner={inner}
                 header={title || ''}
                 breadcrumb={[
                     {
@@ -41,7 +43,6 @@ export default function Index(props) {
 
             {(page_widgets || []).sort((a, b) => a?.widget?.order > b?.widget?.order).map((item, index) => {
                 const itemContent = item.page_widget_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {}) ;
-                console.log(itemContent, 'itemContent', item)
                 switch (item?.widget?.alias) {
                     case 'simpleContent':
                         return (
@@ -185,9 +186,9 @@ export default function Index(props) {
                                 mainData={item}
                                 page_id={page_id}
                                 data={{
-                                    image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description,
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.content,
                                     list: item?.content?.list
                                 }}
                             />
@@ -203,9 +204,9 @@ export default function Index(props) {
                                 page_id={page_id}
                                 data={{
                                     filter: item?.content?.filter,
-                                    image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description,
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.content,
                                     list: item?.content?.list
                                 }}
                             />
@@ -221,9 +222,9 @@ export default function Index(props) {
                                 page_id={page_id}
                                 data={{
                                     filter: item?.content?.filter,
-                                    image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description,
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.content,
                                     list: item?.content?.list
                                 }}
                             />
@@ -238,9 +239,9 @@ export default function Index(props) {
                                 mainData={item}
                                 page_id={page_id}
                                 data={{
-                                    image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description,
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.content,
                                     list: item?.content?.list
                                 }}
                             />
@@ -256,9 +257,9 @@ export default function Index(props) {
                                 page_id={page_id}
                                 data={{
                                     filter: item?.content?.filter,
-                                    image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description,
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.content,
                                     list: item?.content?.list
                                 }}
                             />
@@ -274,9 +275,9 @@ export default function Index(props) {
                                 page_id={page_id}
                                 data={{
                                     filter: item?.content?.filter,
-                                    image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description,
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.content,
                                     list: item?.content?.list
                                 }}
                             />
@@ -292,9 +293,9 @@ export default function Index(props) {
                                 page_id={page_id}
                                 data={{
                                     filter: item?.content?.filter,
-                                    image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description,
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.content,
                                     list: item?.content?.list
                                 }}
                             />
@@ -310,12 +311,49 @@ export default function Index(props) {
                                 page_id={page_id}
                                 data={{
                                     filter: item?.content?.filter,
-                                    image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description,
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.content,
                                     list: item?.content?.list
                                 }}
                             />
+                        )
+
+                    case 'GallerySliderList':
+                        return (
+                            <SgSectionMonumentsFamousBannerList
+                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                key={index}
+                                id={`contentBanner__${item.id}`}
+                                mainData={item}
+                                page_id={page_id}
+                                data={{
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.content,
+                                    list: item?.content?.list
+                                }}
+                            />
+                        )
+
+                    case 'collapseContent':
+                        return (
+                            <>
+                                <SgSectionCollapseContent
+                                    style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                    key={index}
+                                    id={`contentBanner__${item.id}`}
+                                    mainData={item}
+                                    page_id={page_id}
+                                    data={{
+                                        filter: item?.content?.filter,
+                                        image: item?.image,
+                                        title: item?.title,
+                                        description: item?.content,
+                                        list: item?.content?.list
+                                    }}
+                                />
+                            </>
                         )
                 }
             })}
@@ -324,24 +362,11 @@ export default function Index(props) {
 }
 
 export const getServerSideProps = async (context) => {
-
     const {query} = context;
     const {page_id} = query;
     let newQuery = {...query};
 
-    console.log(`${SITE_PAGE_SHOW_ROUTE}/${page_id}`)
-
     const pageData = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/${page_id}`)
-
-    // console.log(pageData)
-    //
-    // console.log(pageData.data.data?.page_widgets.filter(el => el?.widget?.page_type_id == 1), 'ok')
-    //
-    // let ids = [];
-    //
-    // pageData.data.data?.page_widgets.filter(el => el?.widget?.page_type_id == 1).map(el => ids.includes(el.data_type_id) ? null : ids.push(el.data_type_id))
-    //
-    // const posts = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/${page_id}`)
 
     if(pageData.status !== 200) {
         return {
@@ -355,6 +380,7 @@ export const getServerSideProps = async (context) => {
             }
         };
     }
+
 
     return {
         props: {

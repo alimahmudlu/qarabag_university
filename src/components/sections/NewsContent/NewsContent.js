@@ -15,9 +15,10 @@ export default function SgSectionNewsContent(props) {
     const {image, title, description, filter = true, list = [], morePath} = data;
     const [postList, setPostList] = useState([])
 
+    const [page, setPage] = useState(1);
+    const [perPage, setPerPage] = useState(mainData?.pagination_limit || 10);
+    const [lastPage, setLastPage] = useState(1);
 
-    const { query } = useRouter()
-    const router = useRouter()
     const [ userFilters, setUserFilters ] = useState({})
     const [ errors, setErrors ] = useState({})
 
@@ -26,91 +27,32 @@ export default function SgSectionNewsContent(props) {
     }
 
     const filterHandle = () => {
-        Object.keys(userFilters).map(el => {
-            router.query[el] = userFilters[el]
-        })
-
-        router.push({
-            pathname: router.pathname,
-            query: { ...router.query },
-        }, undefined, { scroll: false });
+        setPage(1)
     }
 
-    /**
-     * @param {string} name
-     * @param {string|Array} value
-     * @returns {string|Array}
-     */
-    function getModifiedQuery(name, value) {
-        if (!name.includes('[]')) {
-            return value
-        }
-
-        if (typeof value === 'string') {
-            return [value]
-        } else if (Array.isArray(value)) {
-            return value
-        }
-
-        return []
+    function handleChangePage() {
+        setPage(page + 1)
     }
 
-    function removeFilter(key, value) {
-        if (key === 'categories[]') {
-            changeForm({
-                target: {
-                    id: 'categories[]',
-                    name: 'categories[]',
-                    type: 'checkbox',
-                    checked: false,
-                    value: value,
-                    dataset: {
-                        variant: 'array'
-                    }
-                }
-            }, userFilters, setUserFilters, errors, setErrors)
-        }
-        else if (key === 'all') {
-            setUserFilters({
+    useEffect(() => {
+        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`, {
+            params: {
+                page: page,
+                per_page: perPage,
                 ...userFilters,
-                'categories[]': [],
-                search: ''
-            })
-        }
-        else {
-            changeData({
-                target: {
-                    id: 'search',
-                    name: 'search',
-                    type: 'text',
-                    checked: false,
-                    value: '',
-                    dataset: {}
-                }
-            }, userFilters, setUserFilters, errors, setErrors)
-        }
-    }
-
-    useEffect(() => {
-        const initialData = {}
-        const newQuery = {...initialData, ...query}
-        delete newQuery.page
-
-        let modifiedQuery = {}
-        for (const [name, value] of Object.entries(newQuery)) {
-            modifiedQuery[name] = getModifiedQuery(name, value)
-        }
-
-        setUserFilters({...userFilters, ...newQuery, ...modifiedQuery})
-    }, []);
-
-    useEffect(() => {
-        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`).then((response) => {
-            setPostList(response.data.data)
+            },
+        }).then((response) => {
+            if (page !== 1) {
+                setPostList([...postList, ...response.data.data.data])
+            }
+            else {
+                setPostList([...response.data.data.data])
+            }
+            setLastPage(response.data.data.last_page)
         }).catch((error) => {
             console.log(error)
         })
-    }, [userFilters]);
+    }, [page]);
 
     return (
         <>
@@ -180,7 +122,7 @@ export default function SgSectionNewsContent(props) {
                             }
                             <div className={filter ? 'col-lg-9' : 'col-lg-12'}>
                                 <div className='row gap-y-[50px]'>
-                                    {(postList || []).filter((el, index) => index < 3).map((item, index) => {
+                                    {(postList || []).filter((el, index) => !filter ? index < 3 : el).map((item, index) => {
                                         return (
                                             <div className={'col-lg-4'} key={index}>
                                                 <SgNewsItem
@@ -199,13 +141,17 @@ export default function SgSectionNewsContent(props) {
                                         )
                                     })}
                                     <div className='col-lg-12 flex justify-center'>
-                                        <SgButton
-                                            color='primary'
-                                            type={filter ? null : 'link'}
-                                            to={morePath}
-                                        >
-                                            Daha çox
-                                        </SgButton>
+                                        {lastPage > page ?
+                                            <SgButton
+                                                color='primary'
+                                                type={filter ? null : 'link'}
+                                                to={morePath}
+                                                onClick={handleChangePage}
+                                            >
+                                                Daha çox
+                                            </SgButton>
+                                            : ''
+                                        }
                                     </div>
                                 </div>
                             </div>

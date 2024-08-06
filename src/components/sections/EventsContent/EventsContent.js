@@ -13,104 +13,47 @@ import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 
 export default function SgSectionEventsContent(props) {
     const {id, data, style, mainData, page_id} = props;
-    const {image, title, description, filter = true, list = []} = data;
-
-    const { query } = useRouter()
-    const router = useRouter()
-    const [ userFilters, setUserFilters ] = useState({})
-    const [ errors, setErrors ] = useState({})
+    const {image, title, description, filter = true, list = [], morePath} = data;
     const [postList, setPostList] = useState([])
 
-    useEffect(() => {
-        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`).then((response) => {
-            setPostList(response.data.data)
-        }).catch((error) => {
-            console.log(error)
-        })
-    }, []);
+    const [page, setPage] = useState(1);
+    const [perPage, setPerPage] = useState(mainData?.pagination_limit || 10);
+    const [lastPage, setLastPage] = useState(1);
+
+    const [ userFilters, setUserFilters ] = useState({})
+    const [ errors, setErrors ] = useState({})
 
     function setUserFilterFn(e) {
         changeData(e, userFilters, setUserFilters, errors, setErrors)
     }
 
     const filterHandle = () => {
-        Object.keys(userFilters).map(el => {
-            router.query[el] = userFilters[el]
-        })
-
-        router.push({
-            pathname: router.pathname,
-            query: { ...router.query },
-        }, undefined, { scroll: false });
+        setPage(1)
     }
 
-    /**
-     * @param {string} name
-     * @param {string|Array} value
-     * @returns {string|Array}
-     */
-    function getModifiedQuery(name, value) {
-        if (!name.includes('[]')) {
-            return value
-        }
-
-        if (typeof value === 'string') {
-            return [value]
-        } else if (Array.isArray(value)) {
-            return value
-        }
-
-        return []
-    }
-
-    function removeFilter(key, value) {
-        if (key === 'categories[]') {
-            changeForm({
-                target: {
-                    id: 'categories[]',
-                    name: 'categories[]',
-                    type: 'checkbox',
-                    checked: false,
-                    value: value,
-                    dataset: {
-                        variant: 'array'
-                    }
-                }
-            }, userFilters, setUserFilters, errors, setErrors)
-        }
-        else if (key === 'all') {
-            setUserFilters({
-                ...userFilters,
-                'categories[]': [],
-                search: ''
-            })
-        }
-        else {
-            changeForm({
-                target: {
-                    id: 'search',
-                    name: 'search',
-                    type: 'text',
-                    checked: false,
-                    value: '',
-                    dataset: {}
-                }
-            }, userFilters, setUserFilters, errors, setErrors)
-        }
+    function handleChangePage() {
+        setPage(page + 1)
     }
 
     useEffect(() => {
-        const initialData = {}
-        const newQuery = {...initialData, ...query}
-        delete newQuery.page
-
-        let modifiedQuery = {}
-        for (const [name, value] of Object.entries(newQuery)) {
-            modifiedQuery[name] = getModifiedQuery(name, value)
-        }
-
-        setUserFilters({...userFilters, ...newQuery, ...modifiedQuery})
-    }, []);
+        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`, {
+            params: {
+                page: page,
+                per_page: perPage,
+                ...userFilters,
+            },
+        }).then((response) => {
+            if (page !== 1) {
+                setPostList([...postList, ...response.data.data.data])
+            }
+            else {
+                setPostList([...response.data.data.data])
+            }
+            setLastPage(response.data.data.last_page)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, [page]);
 
     return (
         <>
@@ -179,7 +122,11 @@ export default function SgSectionEventsContent(props) {
                             }
                             <div className={filter ? 'col-lg-9' : 'col-lg-12'}>
                                 <div className='row gap-y-[2px]'>
-                                    {(postList || []).map((item, index) => {
+                                    {(postList || []).filter((el, index) => !filter ? index < 3 : el).map((item, index) => {
+                                        const itemContent = item?.post_values.reduce((a, v) => ({
+                                            ...a,
+                                            [v.meta_key?.alias]: v
+                                        }), {});
                                         return (
                                             <div className={'col-lg-12'} key={index}>
                                                 <SgEventItem
@@ -189,21 +136,34 @@ export default function SgSectionEventsContent(props) {
                                                     additions={[
                                                         {
                                                             icon: 'calendar',
-                                                            text: moment(item.date).format('MMMM DD, YYYY')
+                                                            text: moment(itemContent?.date?.value).format('MMMM DD, YYYY')
                                                         },
                                                         {
                                                             icon: 'clock',
-                                                            text: moment(item.date).format('HH:mm')
+                                                            text: itemContent?.Time?.value
                                                         },
                                                         {
                                                             icon: 'map-pin',
-                                                            text: item?.location
+                                                            text: itemContent?.location?.value
                                                         }
                                                     ]}
                                                 />
                                             </div>
                                         )
                                     })}
+                                    <div className='col-lg-12 flex justify-center pt-[50px]'>
+                                        {lastPage > page ?
+                                            <SgButton
+                                                color='primary'
+                                                type={filter ? null : 'link'}
+                                                to={morePath}
+                                                onClick={handleChangePage}
+                                            >
+                                                Daha çox
+                                            </SgButton>
+                                            : ''
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>

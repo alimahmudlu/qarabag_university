@@ -1,20 +1,25 @@
 import makeID from "@/admin/utils/makeID";
 import {useEffect, useRef, useState} from "react";
 import ReactDatetimeClass from "react-datetime";
-import "react-datetime/css/react-datetime.css";
+// import "react-datetime/css/react-datetime.css";
 import moment from "moment";
 import styles from "@/admin/components/ui/Form/Form.module.css"
-// import SunEditor from "suneditor-react";
 
-import imageGallery from "@/admin/components/ui/Form/Input/plugins/imageGallery";
 import dynamic from "next/dynamic";
-
 const SunEditor = dynamic(() => import('suneditor-react'), {
     ssr: false
 });
+import imageGallery from "@/admin/components/ui/Form/Input/plugins/imageGallery";
+
+// const image = dynamic(() =>
+//     import('suneditor/src/plugins/dialog/image'), {
+//         ssr: false
+//     }
+// )
 
 
 export default function SgInput(props) {
+
     const {options = [], maxDate, minDate, data_id, counter, data_key, color, dateFormat = 'DD-MM-YYYY', timeFormat = 'HH:mm', data_extrakey, data_extraarraykey, data_extraarrayvalue, labelHidden, inline, multiple = false, searchAble = false, type, required, name, id = makeID(7), disabled, readonly, className, wrapperClassName, placeholder = '', size, label, variant, selectVariant, value, isInvalid, invalidMessage, loading, onChange = () => {}, onKeyup = () => {}, suffix, suffixType = 'icon', prefix, prefixType = 'icon', floating = false, children, ...rest} = props;
     const [showPassword, setShowPassword] = useState(false);
     const [selected, setSelected] = useState(variant === 'select' ? (value || []) : []);
@@ -299,6 +304,7 @@ export default function SgInput(props) {
         return min && max
     }
 
+// const image = await import("suneditor/src/plugins");
     const renderEditor = (
         <SunEditor
             onChange={(editorContent) =>
@@ -324,9 +330,10 @@ export default function SgInput(props) {
             setOptions={{
                 height: 700,
                 requestHeaders: {
-                    "X-Sample": "sample"
+                    "X-Sample": "sample",
+                    "Content-Language": "az",
                 },
-                imageGalleryLoadURL: "/api/upload/all",
+                imageGalleryLoadURL: "http://apikarabagh.testedumedia.com/api/v1/option/files",
                 "videoRatioList": [
                     {
                         "name": "Classic Film 3:2",
@@ -365,6 +372,10 @@ export default function SgInput(props) {
                         "name": "mainBtn",
                         "html": "<a class='customBtn mainBtn' href='#'>Main Button</a>"
                     }
+                ],
+                plugins: [
+                    // image,
+                    imageGallery,
                 ],
                 buttonList: [
                     ["undo", "redo"],
@@ -496,8 +507,8 @@ export default function SgInput(props) {
                 return renderDateInput;
 
             case "editor":
-                // return renderEditor;
-                return renderTextarea
+                return renderEditor;
+                // return renderTextarea
 
             default:
                 return renderInput

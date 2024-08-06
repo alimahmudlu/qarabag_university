@@ -26,6 +26,10 @@ export const PAGE_SHOW_ROUTE = '/admin/pages'
 export const PAGE_DELETE_ROUTE = '/admin/pages'
 
 
+export const PAGE_RELATION_LIST_ROUTE = '/admin/page_relations'
+export const PAGE_RELATION_SAVE_ROUTE = '/admin/page_relations/save'
+
+
 export const WIDGET_LIST_ROUTE = '/admin/widgets'
 export const WIDGET_CREATE_ROUTE = '/admin/widgets'
 export const WIDGET_EDIT_ROUTE = '/admin/widgets'
