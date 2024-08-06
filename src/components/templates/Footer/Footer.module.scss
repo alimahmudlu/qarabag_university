@@ -74,6 +74,74 @@
             }
         }
 
+        &-middle {
+            padding: 40px 0;
+            display: flex;
+            flex-direction: row;
+            gap: 86px;
+            border-bottom: 1px solid var(--gray-text, #707070);
+
+            &-logo {
+                width: 120px;
+                flex: 0 0 120px;
+
+                &--img {
+
+                }
+            }
+
+            &-menu {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 120px;
+
+                &-item {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 25px;
+
+                    &--header {
+                        color: var(--white, #FFF);
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 24px; /* 120% */
+                    }
+
+                    &-list {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 50px;
+
+                        &-item {
+                            &--link {
+                                display: flex;
+                                flex-direction: row;
+                                align-items: flex-start;
+                                gap: 8px;
+
+                                color: var(--footer-text, rgba(255, 255, 255, 0.50));
+                                font-size: 16px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 24px; /* 150% */
+
+                                &:hover {
+                                    color: var(--white, #FFF);
+                                }
+
+                                & i {
+                                    margin-top: 4px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
         &-minor {
             display: flex;
             flex-direction: row;
@@ -157,6 +225,61 @@
 
                             &-list {
                                 gap: 10px;
+
+                                &-item {
+                                    &--link {
+                                        gap: 12px;
+
+                                        font-size: 14px;
+                                        line-height: 22px; /* 157.143% */
+
+                                        &:hover {
+                                            color: var(--white, #FFF);
+                                        }
+
+                                        & i {
+                                            margin-top: 4px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &-middle {
+                    padding: 40px 0 20px;
+                    gap: 40px;
+                    flex-direction: column-reverse;
+                    align-items: center;
+
+                    &-logo {
+                        width: 140px;
+                        flex: 0 0 140px;
+                    }
+
+                    &-menu {
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        align-items: flex-start;
+                        gap: 46px;
+
+                        &-item {
+                            gap: 16px;
+                            width: 100%;
+                            flex: 1 0 calc(50% - 23px);
+                            max-width: unset;
+
+                            &--header {
+                                font-size: 20px;
+                                line-height: 24px; /* 120% */
+                                text-align: center;
+                            }
+
+                            &-list {
+                                gap: 10px;
+                                flex-direction: column;
+                                align-items: center;
 
                                 &-item {
                                     &--link {

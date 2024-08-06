@@ -95,28 +95,30 @@ export default function SiteLayout(props) {
                                 header: 'Kömək',
                                 list: (menus || []).find(el => el.alias === 'footerMinor')?.menu_items || []
                             },
+                        ]}
+                        contact={[
                             {
                                 header: 'Əlaqə',
                                 list: [
                                     {
-                                        name: 'Lorem ipsum dolor sit amet consectetur. Cras odio at nisl facilisi porttitor est amet.',
+                                        name: 'Lorem ipsum dolor sit amet consectetu',
                                         url_id: 'https://maps.app.goo.gl/9QwGFagRk2ZH11SB7',
                                         icon: 'map-pin'
-                                    },
-                                    {
-                                        name: '(+994)55-555-55-55',
-                                        url_id: 'tel::+99455-555-55-55',
-                                        icon: 'phone'
-                                    },
-                                    {
-                                        name: '(+994)55-555-55-55',
-                                        url_id: 'tel::+99455-555-55-55',
-                                        icon: 'phone'
                                     },
                                     {
                                         name: 'example@gmail.com',
                                         url_id: 'mailto::example@gmail.com',
                                         icon: 'mail'
+                                    },
+                                    {
+                                        name: '(+994)55-555-55-55',
+                                        url_id: 'tel::+99455-555-55-55',
+                                        icon: 'phone'
+                                    },
+                                    {
+                                        name: '(+994)55-555-55-55',
+                                        url_id: 'tel::+99455-555-55-55',
+                                        icon: 'phone'
                                     }
                                 ]
                             }
