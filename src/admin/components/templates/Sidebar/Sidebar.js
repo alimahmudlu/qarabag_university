@@ -36,6 +36,7 @@ export default function SgTemplateSidebar(props) {
                     <div className={[styles['sg--template--sidebar-body-menu']].join(' ').trim()}>
                         {(sidebarPrimaryMenu || []).map((item, index) =>
                             <SgSideBarMenuItem
+                                isOpen={isOpen}
                                 key={index}
                                 item={{...item, path: `/admin${item.path}`}}
                                 index={index}
@@ -50,21 +51,6 @@ export default function SgTemplateSidebar(props) {
                                 index={index}
                             />
                         )}
-                    </div>
-
-                    <hr />
-
-                    <div className={[styles['sg--template--sidebar-body-menu']].join(' ').trim()}>
-                        <SgTemplateUserDropdown
-                            user={{
-                                id: session?.user?.user?.id,
-                                name: session?.user?.user?.name,
-                                surname: session?.user?.user?.surname,
-                                email: session?.user?.user?.email,
-                                avatar: null
-                            }}
-                            signOut={handleSignOut}
-                        />
                     </div>
                 </div>
             </div>

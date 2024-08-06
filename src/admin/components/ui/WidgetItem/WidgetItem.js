@@ -13,6 +13,7 @@ const DragHandle = sortableHandle(({index, handleRemove}) => (
 		<SgButton
 			className='ms-auto'
 			size='sm'
+			color='error-outline'
 			onClick={() => handleRemove(index)}
 			withOutBlock={true}
 		>

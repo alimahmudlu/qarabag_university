@@ -5,6 +5,7 @@ export default function SgSectionComplexContentBanner(props) {
     const {id, data, style} = props;
     const {image1, title1, description1, image2, title2, description2} = data;
 
+    console.log(data)
     return (
         <>
             <Section

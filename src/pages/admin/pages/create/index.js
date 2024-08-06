@@ -82,6 +82,13 @@ export default function Index(props) {
         }
     }
 
+
+    function handleRemove(index) {
+        const page_widgets = [...data.page_widgets];
+        page_widgets.splice(index, 1);
+        setData({...data, page_widgets: page_widgets});
+    }
+
     function handleAddWidget(id) {
         const findWidgetObj = widgets.find(el => el.id === id) || {}
         setData({...data, page_widgets: [
@@ -242,6 +249,7 @@ export default function Index(props) {
                                     dataTypes={dataTypes}
                                     statusOptions={statusOptions}
                                     handleChange={handleChange}
+                                    handleRemove={handleRemove}
 
 
                                     onSortEnd={onSortEnd}

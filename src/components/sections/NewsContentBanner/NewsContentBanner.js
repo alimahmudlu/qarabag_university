@@ -4,19 +4,28 @@ import moment from "moment";
 import {useEffect, useState} from "react";
 import ApiService from "@/services/ApiService";
 import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
+import {log} from "next/dist/server/typescript/utils";
 
 export default function SgSectionNewsContentBanner(props) {
     const {id, data, style, mainData, page_id} = props;
     const {image, title, description, list = []} = data;
     const [postList, setPostList] = useState([])
 
+    const [page, setPage] = useState(1);
+    const [perPage, setPerPage] = useState(mainData?.pagination_limit || 10);
+
     useEffect(() => {
-        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`).then((response) => {
-            setPostList(response.data.data)
+        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`, {
+            params: {
+                page: page,
+                per_page: perPage,
+            },
+        }).then((response) => {
+            setPostList(response.data.data.data)
         }).catch((error) => {
             console.log(error)
         })
-    }, []);
+    }, [page, perPage]);
 
     return (
         <>
