@@ -1,0 +1,16 @@
+.sg--tabItem {
+  background: var(--background, #F6F6F6);
+  border-left: 8px solid transparent;
+
+  &--active {
+    background: var(--scroll-background, #EBEBEB);
+    border-color: var(--burgundy-color, #902923);
+  }
+  &--link {
+    display: flex;
+    padding: 28px 24px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+}
