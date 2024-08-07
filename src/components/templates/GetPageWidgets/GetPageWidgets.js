@@ -16,6 +16,8 @@ import SgSectionMonumentsFamousBannerList from "@/components/sections/MonumentsF
 import SgSectionCollapseContent from "@/components/sections/CollapseContent";
 import SgSectionTabContent from "@/components/sections/TabContent";
 import SgSectionTabLinkContent from "@/components/sections/TabLinkContent";
+import SgSectionContent from "@/components/sections/Content";
+import SgSectionApplyContent from "@/components/sections/ApplyContent";
 
 export default function SgTemplateGetPageWidgets(props) {
     const {page_widgets, page_id, firstSectionPadding = false} = props;
@@ -376,6 +378,47 @@ export default function SgTemplateGetPageWidgets(props) {
                                 />
                             </>
                         )
+                    case 'content':
+                        return (
+                            <SgSectionContent
+                                reverse={!!itemContent?.imagePositionRightSide?.value}
+                                style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
+                                key={index}
+                                id={`content__${item.id}`}
+                                mainData={item}
+                                page_id={page_id}
+                                data={{
+                                    title: itemContent?.title?.value,
+                                    description: itemContent?.description?.value,
+                                    button: (itemContent?.buttonTitle && itemContent?.buttonUrl) ? {
+                                        name: itemContent?.buttonTitle?.value,
+                                        path: itemContent?.buttonUrl?.value,
+                                    } : {}
+                                }}
+                            />
+                        );
+
+                    case 'applyContent':
+                        return (
+                            <SgSectionApplyContent
+                                reverse={!!itemContent?.imagePositionRightSide?.value}
+                                style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
+                                key={index}
+                                id={`applyContent__${item.id}`}
+                                mainData={item}
+                                page_id={page_id}
+                                data={{
+                                    title: itemContent?.title?.value,
+                                    description: itemContent?.description?.value,
+                                    applyTitle: itemContent?.applyTitle?.value,
+                                    applyDescription: itemContent?.applyDescription?.value,
+                                    button: (itemContent?.applyButtonText && itemContent?.applyButtonUrl) ? {
+                                        name: itemContent?.applyButtonText?.value,
+                                        path: itemContent?.applyButtonUrl?.value,
+                                    } : {}
+                                }}
+                            />
+                        );
                 }
             })}
         </div>

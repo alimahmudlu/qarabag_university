@@ -93,7 +93,7 @@ export default function Index(props) {
         setData({...data, page_widgets: [
                 ...data.page_widgets,
                 {
-                    id: 0,
+                    id: null,
                     pagination_limit: 10,
                     row: data.page_widgets.length + 1,
                     status: 0,
