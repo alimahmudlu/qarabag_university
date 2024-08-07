@@ -13,12 +13,12 @@ export const sidebarPrimaryMenu = [
         children: [
             {
                 name: "List",
-                path: "/pages",
+                path: "/files",
                 icon: <SgIcon icon='list' />,
             },
             {
                 name: "Add",
-                path: "/pages/create",
+                path: "/files/create",
                 icon: <SgIcon icon='plus' />,
             },
         ]

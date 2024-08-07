@@ -5,7 +5,7 @@ export default function SgPageFooter(props) {
 
     return (
         <>
-            <div className={styles["pages--block-footer"]}>
+            <div className={styles["files--block-footer"]}>
                 {children}
             </div>
         </>

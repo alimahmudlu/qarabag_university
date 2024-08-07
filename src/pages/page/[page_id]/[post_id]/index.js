@@ -92,8 +92,6 @@ export default function Index(props) {
 		}
 	}
 
-
-
 	return (
 		<>
 			<SgSectionMainHero
@@ -123,32 +121,32 @@ export default function Index(props) {
 }
 
 export const getServerSideProps = async (context) => {
-
 	const {query} = context;
 	const {post_id, page_id} = query;
 
-	console.log(page_id, 'page_id')
+	try {
+		const data = await ApiService.get(`${SITE_POST_LIST_ROUTE}/${post_id}?page_id=${page_id}`)
 
-	const data = await ApiService.get(`${SITE_POST_LIST_ROUTE}/${post_id}?page_id=${page_id}`)
-
-	if(data.status !== 200) {
 		return {
-			// redirect: {
-			//     permanent: false,
-			//     destination: "/404",
-			// },
+			props: {
+				pageData: data.data.data,
+				page_id: page_id
+			}
+		}
+	}
+	catch (error) {
+		return {
+			redirect: {
+			    permanent: false,
+			    destination: "/404",
+			},
 			props: {
 				pageData: {}
 			}
 		};
 	}
 
-	return {
-		props: {
-			pageData: data.data.data,
-			page_id: page_id
-		}
-	}
+
 }
 
 Index.getLayout = function getLayout(page, menus) {

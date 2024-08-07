@@ -34,7 +34,7 @@ export default function SgInput(props) {
                     return resp.message;
                 },
                 ajax: {
-                    url: 'http://localhost:3000/api/pages/getAllData',
+                    url: 'http://localhost:3000/api/files/getAllFiles',
                     method: 'GET',
                     data: {},
                     prepareData: function (data) {

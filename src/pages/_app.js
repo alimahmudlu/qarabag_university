@@ -14,45 +14,55 @@ import { SessionProvider } from 'next-auth/react';
 import ApiService from "@/services/ApiService";
 import {ToastContainer} from "react-toastify";
 import {SITE_LANGUAGE_LIST_ROUTE, SITE_MENU_TYPE_LIST_ROUTE} from "@/configs/apiRoutes";
+import {menus} from "@/data";
 
 Site_App.getInitialProps = async (props) => {
     const initialProps = await App.getInitialProps(props)
 
-    function generateNestable(array) {
-        const ids = array.map((x) => x.id);
-        const result = array.map((parent) => {
-            const children = array.filter((child) => {
-                if (child.id !== child.parent?.id && child.parent?.id === parent.id) {
+    try {
+        function generateNestable(array) {
+            const ids = array.map((x) => x.id);
+            const result = array.map((parent) => {
+                const children = array.filter((child) => {
+                    if (child.id !== child.parent?.id && child.parent?.id === parent.id) {
+                        return true;
+                    }
+
+                    return false;
+                });
+
+                if (children.length) {
+                    parent.children = children;
+                }
+
+                return parent;
+            }).filter((obj) => {
+                if (obj.id === obj.parent?.id || !ids.includes(obj.parent?.id)) {
                     return true;
                 }
 
                 return false;
             });
 
-            if (children.length) {
-                parent.children = children;
-            }
+            return result
+        }
 
-            return parent;
-        }).filter((obj) => {
-            if (obj.id === obj.parent?.id || !ids.includes(obj.parent?.id)) {
-                return true;
-            }
+        const menus = await ApiService.get(SITE_MENU_TYPE_LIST_ROUTE);
+        const newMenu = (menus.data.data || []).map((item) => ({...item, menu_items: generateNestable(item?.menu_items)}));
+        const languages = await ApiService.get(SITE_LANGUAGE_LIST_ROUTE)
 
-            return false;
-        });
-
-        return result
+        return {
+            ...initialProps,
+            menus: newMenu,
+            languages: languages.data.data,
+        }
     }
-
-    const menus = await ApiService.get(SITE_MENU_TYPE_LIST_ROUTE);
-    const newMenu = (menus.data.data || []).map((item) => ({...item, menu_items: generateNestable(item?.menu_items)}));
-    const languages = await ApiService.get(SITE_LANGUAGE_LIST_ROUTE)
-
-    return {
-        ...initialProps,
-        menus: newMenu,
-        languages: languages.data.data,
+    catch (error) {
+        return {
+            ...initialProps,
+            menus: {},
+            languages: []
+        }
     }
 }
 

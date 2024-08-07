@@ -84,7 +84,7 @@ export default function Index(props) {
         else {
             ApiService.post(PAGE_CREATE_ROUTE, data).then(resp => {
                 router.push({
-                    pathname: '/admin/pages/'
+                    pathname: '/admin/files/'
                 }, undefined, { scroll: true });
             }).catch(error => {
                 console.log(error)

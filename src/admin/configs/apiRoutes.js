@@ -19,11 +19,11 @@ export const POST_SHOW_ROUTE = '/admin/posts'
 export const POST_DELETE_ROUTE = '/admin/posts'
 
 
-export const PAGE_LIST_ROUTE = '/admin/pages'
-export const PAGE_CREATE_ROUTE = '/admin/pages'
-export const PAGE_EDIT_ROUTE = '/admin/pages'
-export const PAGE_SHOW_ROUTE = '/admin/pages'
-export const PAGE_DELETE_ROUTE = '/admin/pages'
+export const PAGE_LIST_ROUTE = '/admin/files'
+export const PAGE_CREATE_ROUTE = '/admin/files'
+export const PAGE_EDIT_ROUTE = '/admin/files'
+export const PAGE_SHOW_ROUTE = '/admin/files'
+export const PAGE_DELETE_ROUTE = '/admin/files'
 
 
 export const PAGE_RELATION_LIST_ROUTE = '/admin/page_relations'
@@ -63,7 +63,7 @@ export const FILE_LIST_ROUTE = '/option/files'
 // OPTIONS
 export const OPTIONS_DATA_TYPE_LIST_ROUTE = '/option/data_types'
 export const OPTIONS_LANGUAGE_LIST_ROUTE = '/option/languages'
-export const OPTIONS_PAGE_LIST_ROUTE = '/option/pages'
+export const OPTIONS_PAGE_LIST_ROUTE = '/option/files'
 export const OPTIONS_POST_LIST_ROUTE = '/option/posts'
 export const OPTIONS_PAGE_TYPE_LIST_ROUTE = '/option/page_types'
 export const OPTIONS_WIDGET_LIST_ROUTE = '/option/widgets'
