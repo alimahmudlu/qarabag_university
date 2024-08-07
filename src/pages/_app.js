@@ -6,7 +6,6 @@ import "@/admin/assets/fonts/sg-admin-icons/style.scss";
 import "@/admin/components/ui/Form/Input/plugins/imageGallery/styles.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import 'suneditor/src/assets/css/suneditor.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-nestable/dist/styles/index.css';
 

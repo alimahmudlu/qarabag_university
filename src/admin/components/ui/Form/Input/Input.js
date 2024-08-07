@@ -1,21 +1,13 @@
 import makeID from "@/admin/utils/makeID";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useMemo, useRef, useState} from "react";
 import ReactDatetimeClass from "react-datetime";
 // import "react-datetime/css/react-datetime.css";
 import moment from "moment";
 import styles from "@/admin/components/ui/Form/Form.module.css"
 
 import dynamic from "next/dynamic";
-const SunEditor = dynamic(() => import('suneditor-react'), {
-    ssr: false
-});
-import imageGallery from "@/admin/components/ui/Form/Input/plugins/imageGallery";
 
-// const image = dynamic(() =>
-//     import('suneditor/src/plugins/dialog/image'), {
-//         ssr: false
-//     }
-// )
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 
 export default function SgInput(props) {
@@ -26,6 +18,33 @@ export default function SgInput(props) {
     const [filter, setFilter] = useState("");
     const [opened, setOpened] = useState(false);
     const [onFocus, setOnFocus] = useState(false);
+    const editor = useRef(null);
+    const config = useMemo( //  Using of useMemo while make custom configuration is strictly recomended
+        () => ({              //  if you don't use it the editor will lose focus every time when you make any change to the editor, even an addition of one character
+            /* Custom image uploader button configuretion to accept image and convert it to base64 format */
+
+            uploader: {
+                url: 'http://apikarabagh.testedumedia.com/api/v1/admin/file/upload',
+            },
+            filebrowser: {
+                isSuccess: function (resp) {
+                    return resp.data.length !== 0;
+                },
+                getMessage: function (resp) {
+                    return resp.message;
+                },
+                ajax: {
+                    url: 'http://localhost:3000/api/pages/getAllData',
+                    method: 'GET',
+                    data: {},
+                    prepareData: function (data) {
+                        return data;
+                    },
+                }
+            }
+        }),
+        []
+    );
 
     const getSuffixType = () => {
         let returnType = ''
@@ -304,96 +323,33 @@ export default function SgInput(props) {
         return min && max
     }
 
-// const image = await import("suneditor/src/plugins");
     const renderEditor = (
-        <SunEditor
-            onChange={(editorContent) =>
-                {
-                    handleChange(
-                        {
-                            target: {
-                                id: id,
-                                name: name,
-                                value: `${editorContent}`,
-                                validity: {},
-                                dataset: {
-                                    key: data_key,
-                                    id: data_id,
-                                    extraarraykey: data_extraarraykey,
-                                    extraarrayvalue: data_extraarrayvalue
-                                },
+    <JoditEditor
+        ref={editor}            //This is important
+        value={value}         //This is important
+        config={config}         //Only use when you declare some custom configs
+        onChange={(editorContent) =>
+                    {
+                        handleChange(
+                            {
+                                target: {
+                                    id: id,
+                                    name: name,
+                                    value: `${editorContent}`,
+                                    validity: {},
+                                    dataset: {
+                                        key: data_key,
+                                        id: data_id,
+                                        extraarraykey: data_extraarraykey,
+                                        extraarrayvalue: data_extraarrayvalue
+                                    },
+                                }
                             }
-                        }
-                    )
-                }
-            }
-            setOptions={{
-                height: 700,
-                requestHeaders: {
-                    "X-Sample": "sample",
-                    "Content-Language": "az",
-                },
-                imageGalleryLoadURL: "http://apikarabagh.testedumedia.com/api/v1/option/files",
-                "videoRatioList": [
-                    {
-                        "name": "Classic Film 3:2",
-                        "value": 0.6666
-                    },
-                    {
-                        "name": "HD",
-                        "value": 0.5625
+                        )
                     }
-                ],
-                "textTags": {
-                    "bold": "b",
-                    "underline": "u",
-                    "italic": "i",
-                    "strike": "s"
-                },
-                "mode": "classic",
-                "rtl": false,
-                "tabDisable": false,
-                "charCounter": true,
-                "charCounterLabel": "Xarakter sayı",
-                "templates": [
-                    {
-                        "name": "CustomBtn",
-                        "html": "<a class='customBtn' href='#'>Custom Btn</a>"
-                    },
-                    {
-                        "name": "GoBtn",
-                        "html": "<a class='customBtn goBtn' href='#'>Go Button</a>"
-                    },
-                    {
-                        "name": "filterBtn",
-                        "html": "<a class='customBtn filterBtn' href='#'>Filter Button</a>"
-                    },
-                    {
-                        "name": "mainBtn",
-                        "html": "<a class='customBtn mainBtn' href='#'>Main Button</a>"
-                    }
-                ],
-                plugins: [
-                    // image,
-                    imageGallery,
-                ],
-                buttonList: [
-                    ["undo", "redo"],
-                    ["font", "fontSize", "formatBlock"],
-                    ["bold", "underline", "italic", "strike", "subscript", "superscript"],
-                    ["removeFormat"],
-                    "/",
-                    ["fontColor", "hiliteColor"],
-                    ["outdent", "indent"],
-                    ["align", "horizontalRule", "list", "table"],
-                    ["link", "imageGallery", "video"],
-                    ["fullScreen", "showBlocks", "codeView"],
-                    ["preview", "print"],
-                    ["save", "template"],
-                ]
-            }}
-            setContents={value}
-        />
+                } //handle the changes
+        className="w-full h-[70%] mt-10 bg-white"
+    />
     )
 
     const renderSelect = (
