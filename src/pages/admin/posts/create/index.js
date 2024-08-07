@@ -2,7 +2,7 @@ import { MainLayout } from "@/admin/components/layouts";
 import { SgPage, SgPageBody, SgPageHead } from "@/admin/components/ui/Page";
 import { SgButton } from "@/admin/components/ui/Button";
 import { useEffect, useState } from "react";
-import { SgFile, SgFormGroup, SgInput } from "@/admin/components/ui/Form";
+import { SgFile, SgFormGroup, SgInput, SgCheckbox } from "@/admin/components/ui/Form";
 import { changeData } from "@/admin/utils/changeData";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import { validate } from "@/admin/utils/validate";

@@ -16,6 +16,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="2415e4d8-df59-42a1-a817-37c216091bc6" name="karabagh_preview">
+        <fileTransfer accessType="SFTP" host="192.168.195.129" port="22" sshConfigId="bead8b86-66f5-4331-87df-e629c0d4caaf" sshConfig="edumedia@192.168.195.129:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

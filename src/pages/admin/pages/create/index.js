@@ -277,9 +277,9 @@ export default function Index(props) {
                                     lockAxis={'y'}
                                     helperClass={'dragging'}
                                     useDragHandle={true}
-                                    disableAutoscroll={false}
-                                    getContainer={() => ReactDOM.findDOMNode(document.getElementById('bodyInstance'))}
-                                    useWindowAsScrollContainer={true}
+                                    // disableAutoscroll={false}
+                                    // getContainer={() => ReactDOM.findDOMNode(document.getElementById('bodyInstance'))}
+                                    // useWindowAsScrollContainer={true}
                                     toggleFileManagerModal={toggleFileManagerModal}
                                     fileManagerModal={fileManagerModal}
                                 />
