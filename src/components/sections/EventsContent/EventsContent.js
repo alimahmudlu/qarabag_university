@@ -140,7 +140,7 @@ export default function SgSectionEventsContent(props) {
                                                         },
                                                         {
                                                             icon: 'clock',
-                                                            text: itemContent?.Time?.value
+                                                            text: itemContent?.time?.value
                                                         },
                                                         {
                                                             icon: 'map-pin',
