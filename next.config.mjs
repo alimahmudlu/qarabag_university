@@ -10,6 +10,12 @@ const nextConfig = {
         port: '',
         pathname: '/uploads/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'preview.karabakh.edu.az',
+        port: '',
+        pathname: '/uploads/**',
+      },
     ]
   },
 };
