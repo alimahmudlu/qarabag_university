@@ -21,7 +21,7 @@ export default NextAuth({
                     ttl: credentials.ttl || 100000
                 }
 
-                const res = await fetch('http://apikarabagh.testedumedia.com/api/v1/admin/login', {
+                const res = await fetch('https://preview.karabakh.edu.az/api/v1/admin/login', {
                     method: 'POST',
                     body: JSON.stringify(payload),
                     headers: {
