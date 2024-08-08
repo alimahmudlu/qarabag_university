@@ -94,9 +94,9 @@ export default function SgTemplateGetPageWidgets(props) {
                                 mainData={item}
                                 page_id={page_id}
                                 data={{
-                                    image: item?.content?.image,
-                                    title: item?.content?.title,
-                                    description: item?.content?.description
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.description
                                 }}
                             />
                         )
