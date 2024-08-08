@@ -118,22 +118,22 @@ export default function SiteLayout(props) {
                             {
                                 title: 'Facebook',
                                 path: 'https://www.facebook.com/',
-                                icon: 'facebook'
+                                icon: 'fb_fill_n'
                             },
                             {
                                 title: 'Instagram',
                                 path: 'https://www.instagram.com/',
-                                icon: 'instagram'
+                                icon: 'insta_fill_n'
                             },
                             {
                                 title: 'Whatsapp',
                                 path: 'https://www.whatsapp.com/',
-                                icon: 'whatsapp'
+                                icon: 'wp'
                             },
                             {
                                 title: 'Telegram',
                                 path: 'https://www.telegram.com/',
-                                icon: 'telegram'
+                                icon: 'tg'
                             },
                             {
                                 title: 'Linkedin',
