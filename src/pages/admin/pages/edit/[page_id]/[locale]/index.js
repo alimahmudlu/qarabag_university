@@ -223,11 +223,11 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
-                                    name='shortDescription'
-                                    id='shortDescription'
+                                    name='short_description'
+                                    id='short_description'
                                     placeholder='Enter your short description'
                                     label='Short description'
-                                    value={data.shortDescription || ''}
+                                    value={data.short_description || ''}
                                     onChange={handleChange}
                                     variant='textarea'
                                 />
