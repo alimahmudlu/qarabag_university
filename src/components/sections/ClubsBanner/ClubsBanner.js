@@ -72,6 +72,8 @@ export default function SgSectionClubsBanner(props) {
                                 size='sm'
                                 withOutBlock={true}
                                 reverse={true}
+                                type='link'
+                                to={`/page/${page_id}`}
                             >
                                 Hamısına baxmaq
                             </SgButton>

@@ -14,8 +14,8 @@ export default function GetGenerateMetadata({meta}) {
             <meta name="msapplication-TileImage" content="/favicon/mstile-144x144.png"/>
             <meta name="theme-color" content="#902923"/>
 
-            <title>{'meta.title'}</title>
-            <meta name="description" content={'meta.description'}/>
+            <title>{meta.title}</title>
+            <meta name="description" content={meta.description}/>
         </Head>
     )
 }

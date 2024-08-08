@@ -8,6 +8,7 @@ import SgSectionNewsContentBanner from "@/components/sections/NewsContentBanner"
 import SgSectionNewsContent from "@/components/sections/NewsContent";
 import SgSectionEventsBanner from "@/components/sections/EventsBanner";
 import SgSectionEventsContent from "@/components/sections/EventsContent";
+import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 
 
 export default function Index(props) {
@@ -94,6 +95,12 @@ export default function Index(props) {
 
 	return (
 		<>
+			<GetGenerateMetadata
+				meta={{
+					title: title,
+					description: '',
+				}}
+			/>
 			<SgSectionMainHero
 				id='mainHero'
 				inner={true}

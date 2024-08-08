@@ -3,6 +3,7 @@ import ApiService from "@/services/ApiService";
 import {SITE_PAGE_SHOW_ROUTE} from "@/configs/apiRoutes";
 import SgSectionMainHero from "@/components/sections/MainHero";
 import SgTemplateGetPageWidgets from "@/components/templates/GetPageWidgets/GetPageWidgets";
+import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 
 export default function Index(props) {
     const {pageData, page_id, inner = true} = props;
@@ -10,6 +11,12 @@ export default function Index(props) {
 
     return (
         <>
+            <GetGenerateMetadata
+                meta={{
+                    title: title,
+                    description: 'asas',
+                }}
+            />
             <SgSectionMainHero
                 id='mainHero'
                 inner={inner}

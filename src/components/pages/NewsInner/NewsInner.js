@@ -21,7 +21,7 @@ export default function SgPageNewsInner(props) {
 							</div>
 							<div className={[styles['sg--page--newsInner-details']].join(' ').trim()}>
 								<div className={[styles['sg--page--newsInner-details-item']].join(' ').trim()}>
-									{moment(itemContent?.Date?.value).format('MMMM DD, YYYY')}
+									{moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
 								</div>
 								<div className={[styles['sg--page--newsInner-details-item']].join(' ').trim()}>
 									<SgShareSocialMedia

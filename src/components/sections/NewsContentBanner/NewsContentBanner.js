@@ -63,23 +63,35 @@ export default function SgSectionNewsContentBanner(props) {
                     />
                     <SectionBody>
                         <div className='row gap-y-[16px]'>
-                            <div className='col-lg-6'>
-                                <SgNewsItem
-                                    image={postList?.[0]?.image}
-                                    header={postList?.[0]?.title}
-                                    path={`/page/${page_id}/${postList?.[0]?.id}`}
-                                    date={moment(postList?.[0]?.date).format('MMMM DD, YYYY')}
-                                    time={moment(postList?.[0]?.date).format('HH:mm')}
-                                    ratio={{
-                                        width: 588,
-                                        height: 419
-                                    }}
-                                />
-                            </div>
+                            {postList?.[0]?.id ?
+                                <div className='col-lg-6'>
+                                    <SgNewsItem
+                                        image={postList?.[0]?.image}
+                                        header={postList?.[0]?.title}
+                                        path={`/page/${page_id}/${postList?.[0]?.id}`}
+                                        date={moment(postList?.[0]?.post_values.reduce((a, v) => ({
+                                            ...a,
+                                            [v.meta_key?.alias]: v
+                                        }), {})?.date?.value).format('MMMM DD, YYYY')}
+                                        time={moment(postList?.[0]?.post_values.reduce((a, v) => ({
+                                            ...a,
+                                            [v.meta_key?.alias]: v
+                                        }), {})?.date?.value).format('HH:mm')}
+                                        ratio={{
+                                            width: 588,
+                                            height: 419
+                                        }}
+                                    />
+                                </div>
+                                : ''
+                            }
                             <div className='col-lg-6'>
                                 <div className='row gap-y-[16px]'>
                                     {(postList || []).filter((item, index) => index !== 0).map((item, index) => {
-                                        const itemContent = item?.post_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {});
+                                        const itemContent = item?.post_values.reduce((a, v) => ({
+                                            ...a,
+                                            [v.meta_key?.alias]: v
+                                        }), {});
                                         return (
                                             <div className='col-lg-6' key={index}>
                                                 <SgNewsItem
@@ -87,8 +99,8 @@ export default function SgSectionNewsContentBanner(props) {
                                                     header={item?.title}
                                                     path={`/page/${page_id}/${item?.id}`}
                                                     size='xs'
-                                                    date={moment(itemContent?.Date?.value).format('MMMM DD, YYYY')}
-                                                    time={moment(itemContent?.Date?.value).format('HH:mm')}
+                                                    date={moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
+                                                    time={moment(itemContent?.date?.value).format('HH:mm')}
                                                     ratio={{
                                                         width: 284,
                                                         height: 137

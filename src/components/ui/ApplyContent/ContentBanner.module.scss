@@ -1,4 +1,3 @@
-
 .sg--contentBanner {
     display: flex;
     flex-direction: row;
@@ -14,10 +13,11 @@
     &-applyBox{
         background-color: #F6F6F6;
         padding: 24px;
-      max-width: 300px;
+        max-width: 300px;
         display: flex;
         gap: 24px;
         flex-direction: column;
+        flex: 1 0 50%;
 
         &--header {
             color: var(--black, #262626);

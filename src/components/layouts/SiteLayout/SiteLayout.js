@@ -62,10 +62,6 @@ export default function SiteLayout(props) {
 
     return (
         <>
-            <GetGenerateMetadata
-                meta={{}}
-            />
-
             <main
                 className={[styles['sg--layouts'], styles['sg--layout--site'], sidebar ? styles['sg--layout--site--sidebar'] : ''].join(' ').trim()}>
                 <div className={[styles['sg--layout--site-content']].join(' ').trim()}>
@@ -85,16 +81,10 @@ export default function SiteLayout(props) {
                     />
                     {children}
                     <SgTemplateFooter
-                        menus={[
-                            {
-                                header: 'Menu',
-                                list: (menus || []).find(el => el.alias === 'footerMain')?.menu_items || []
-                            },
-                            {
-                                header: 'Kömək',
-                                list: (menus || []).find(el => el.alias === 'footerMinor')?.menu_items || []
-                            },
-                        ]}
+                        menus={((menus || []).find(el => el.alias === 'header')?.menu_items || []).map(el => ({
+                            header: el.name,
+                            list: el?.children,
+                        }))}
                         contact={[
                             {
                                 header: 'Əlaqə',
