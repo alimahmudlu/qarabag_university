@@ -21,6 +21,7 @@ import {useRouter} from "next/router";
 import SortableList from "@/admin/components/templates/Sortable/SortableList";
 import {validate} from "@/admin/utils/validate";
 import {validationConstraints} from "@/admin/constants/constants";
+import {SgPopup} from "@/admin/components/ui/Popup";
 
 
 export default function Index(props) {
@@ -30,6 +31,11 @@ export default function Index(props) {
     const [valueErrors, setValueErrors] = useState({});
     const [fileManagerModal, setFileManagerModal] = useState(false);
     const [languagesOptions, setLanguagesOptions] = useState([]);
+
+    const [selectedWidgetDataType, setSelectedWidgetDataType] = useState({});
+    const [selectedWidgetDataTypeData, setSelectedWidgetDataTypeData] = useState({});
+    const [widgetDataTypeModal, setWidgetDataTypeModal] = useState(false);
+
     const [pageTypeOptions, setPageTypeOptions] = useState([
         {
             id: 2,
@@ -71,6 +77,30 @@ export default function Index(props) {
     function toggleFileManagerModal(e) {
         setFileManagerModal(!fileManagerModal)
     }
+
+    function toggleWidgetDataTypeModal(e, selectedRow) {
+        setSelectedWidgetDataType(selectedRow || {})
+        setWidgetDataTypeModal(!widgetDataTypeModal)
+    }
+
+    function handleEditWidgetDataType() {
+        console.log(selectedWidgetDataTypeData)
+    }
+
+    useEffect(() => {
+        if (selectedWidgetDataType.id) {
+            ApiService.get(`${DATA_TYPE_SHOW_ROUTE}/${selectedWidgetDataType?.id}`).then(resp => {
+                setSelectedWidgetDataTypeData(resp.data.data)
+            }).catch(error => {
+                console.log(error)
+            })
+        }
+        else {
+            setSelectedWidgetDataTypeData({})
+        }
+
+        // if ()
+    }, [selectedWidgetDataType]);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -281,6 +311,9 @@ export default function Index(props) {
                                     // useWindowAsScrollContainer={true}
                                     toggleFileManagerModal={toggleFileManagerModal}
                                     fileManagerModal={fileManagerModal}
+
+                                    toggleWidgetDataTypeModal={toggleWidgetDataTypeModal}
+                                    widgetDataTypeModal={widgetDataTypeModal}
                                 />
                             </div>
                         </div>
@@ -315,6 +348,58 @@ export default function Index(props) {
                     </SgButtonGroup>
                 </SgPageFooter>
             </SgPage>
+            <SgPopup
+                header='Edit Data Type main page'
+                description='lol'
+                size='md'
+                setToggleModal={toggleWidgetDataTypeModal}
+                toggleModal={widgetDataTypeModal}
+            >
+
+                <SgFormGroup>
+                    <SgInput
+                        id='alias'
+                        name='alias'
+                        label='Alias'
+                        placeholder='Alias'
+                        value={selectedWidgetDataTypeData.alias}
+                        onChange={handleChange}
+                        disabled={true}
+                    />
+                </SgFormGroup>
+
+                <SgFormGroup>
+                    <SgInput
+                        id='main_page_id'
+                        name='main_page_id'
+                        label='Main Page'
+                        placeholder='Main Page'
+                        value={selectedWidgetDataTypeData.main_page_id}
+                        onChange={handleChange}
+                        variant='select'
+                        // options={}
+                    />
+                </SgFormGroup>
+
+                <SgButtonGroup
+                    gap={true}
+                >
+                    <SgButton
+                        size='lg'
+                        color='primary'
+                        onClick={handleEditWidgetDataType}
+                    >
+                        Edit
+                    </SgButton>
+                    <SgButton
+                        size='lg'
+                        color='error'
+                        onClick={(e) => toggleWidgetDataTypeModal(e, {})}
+                    >
+                        Cancel
+                    </SgButton>
+                </SgButtonGroup>
+            </SgPopup>
         </>
     )
 }
