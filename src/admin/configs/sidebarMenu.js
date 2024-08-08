@@ -8,7 +8,7 @@ export const sidebarPrimaryMenu = [
     },
     {
         name: "Pages",
-        path: "/",
+        path: "/pages",
         icon: <SgIcon icon='layers-3' />,
         children: [
             {

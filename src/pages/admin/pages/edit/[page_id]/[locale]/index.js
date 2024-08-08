@@ -84,7 +84,6 @@ export default function Index(props) {
     }
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
-        console.log(arrayMoveImmutable(data.page_widgets, oldIndex, newIndex))
         setData({...data, page_widgets: arrayMoveImmutable(data.page_widgets, oldIndex, newIndex).map((el, index) => ({...el, row: index + 1}))});
     };
 
@@ -93,7 +92,7 @@ export default function Index(props) {
         setData({...data, page_widgets: [
                 ...data.page_widgets,
                 {
-                    id: 0,
+                    id: null,
                     pagination_limit: 10,
                     row: data.page_widgets.length + 1,
                     status: 0,
@@ -224,11 +223,11 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
-                                    name='shortDescription'
-                                    id='shortDescription'
+                                    name='short_description'
+                                    id='short_description'
                                     placeholder='Enter your short description'
                                     label='Short description'
-                                    value={data.shortDescription || ''}
+                                    value={data.short_description || ''}
                                     onChange={handleChange}
                                     variant='textarea'
                                 />
@@ -314,9 +313,9 @@ export default function Index(props) {
                                     lockAxis={'y'}
                                     helperClass={'dragging'}
                                     useDragHandle={true}
-                                    disableAutoscroll={false}
-                                    getContainer={() => ReactDOM.findDOMNode(document.getElementById('bodyInstance'))}
-                                    useWindowAsScrollContainer={true}
+                                    // disableAutoscroll={false}
+                                    // getContainer={() => ReactDOM.findDOMNode(document.getElementById('bodyInstance'))}
+                                    // useWindowAsScrollContainer={true}
                                     toggleFileManagerModal={toggleFileManagerModal}
                                     fileManagerModal={fileManagerModal}
                                 />

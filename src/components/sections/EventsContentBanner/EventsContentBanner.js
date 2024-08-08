@@ -101,7 +101,7 @@ export default function SgSectionEventsContentBanner(props) {
                                                     }
                                                 }
                                                 date={moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
-                                                time={itemContent?.Time?.value}
+                                                time={itemContent?.time?.value}
                                                 location={itemContent?.location?.value}
                                                 path={`/page/${page_id}/${item?.id}`}
                                             />

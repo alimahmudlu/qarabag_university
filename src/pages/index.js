@@ -12,10 +12,16 @@ export default function Index(props) {
 }
 
 export const getServerSideProps = async (context) => {
-
-    const pageData = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/27`)
-
-    if(pageData.status !== 200) {
+    try {
+        const pageData = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/27`)
+        return {
+            props: {
+                pageData: pageData.data.data,
+                page_id: 27
+            }
+        }
+    }
+    catch (error) {
         return {
             redirect: {
                 permanent: false,
@@ -26,14 +32,6 @@ export const getServerSideProps = async (context) => {
                 page_id: 27
             }
         };
-    }
-
-
-    return {
-        props: {
-            pageData: pageData.data.data,
-            page_id: 27
-        }
     }
 }
 

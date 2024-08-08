@@ -109,8 +109,6 @@ export default function SgTable(props) {
     }
 
     useEffect(() => {
-        console.log(page, tableData.filters, perPage, 'll')
-        console.log('-----------------')
         if (!tableData?.customData) {
             ApiService({
                 url: tableData?.api,

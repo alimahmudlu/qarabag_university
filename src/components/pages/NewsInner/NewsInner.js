@@ -8,8 +8,6 @@ export default function SgPageNewsInner(props) {
 	const {id, image, title, status, data_type = {}, content, post_values = []} = data || {};
 	const itemContent = post_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {});
 
-	console.log(itemContent)
-
 	return (
 		<>
 			<Section>
@@ -23,7 +21,7 @@ export default function SgPageNewsInner(props) {
 							</div>
 							<div className={[styles['sg--page--newsInner-details']].join(' ').trim()}>
 								<div className={[styles['sg--page--newsInner-details-item']].join(' ').trim()}>
-									{moment(itemContent?.Date?.value).format('MMMM DD, YYYY')}
+									{moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
 								</div>
 								<div className={[styles['sg--page--newsInner-details-item']].join(' ').trim()}>
 									<SgShareSocialMedia

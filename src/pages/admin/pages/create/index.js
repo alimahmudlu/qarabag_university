@@ -118,7 +118,6 @@ export default function Index(props) {
     }
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
-        console.log(oldIndex, newIndex, 'salam', data.page_widgets)
         setData({...data, page_widgets: arrayMoveImmutable(data.page_widgets, oldIndex, newIndex)});
     };
 
@@ -199,11 +198,11 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
-                                    name='shortDescription'
-                                    id='shortDescription'
+                                    name='short_description'
+                                    id='short_description'
                                     placeholder='Enter your short description'
                                     label='Short description'
-                                    value={data.shortDescription || ''}
+                                    value={data.short_description || ''}
                                     onChange={handleChange}
                                     variant='textarea'
                                 />
@@ -277,9 +276,9 @@ export default function Index(props) {
                                     lockAxis={'y'}
                                     helperClass={'dragging'}
                                     useDragHandle={true}
-                                    disableAutoscroll={false}
-                                    getContainer={() => ReactDOM.findDOMNode(document.getElementById('bodyInstance'))}
-                                    useWindowAsScrollContainer={true}
+                                    // disableAutoscroll={false}
+                                    // getContainer={() => ReactDOM.findDOMNode(document.getElementById('bodyInstance'))}
+                                    // useWindowAsScrollContainer={true}
                                     toggleFileManagerModal={toggleFileManagerModal}
                                     fileManagerModal={fileManagerModal}
                                 />

@@ -1,31 +1,94 @@
 import makeID from "@/admin/utils/makeID";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useMemo, useRef, useState} from "react";
 import ReactDatetimeClass from "react-datetime";
-// import "react-datetime/css/react-datetime.css";
 import moment from "moment";
 import styles from "@/admin/components/ui/Form/Form.module.css"
 
 import dynamic from "next/dynamic";
-const SunEditor = dynamic(() => import('suneditor-react'), {
-    ssr: false
-});
-import imageGallery from "@/admin/components/ui/Form/Input/plugins/imageGallery";
+import {FILE_UPLOAD_ROUTE, NEXT_FILE_LIST_ROUTE} from "@/admin/configs/apiRoutes";
 
-// const image = dynamic(() =>
-//     import('suneditor/src/plugins/dialog/image'), {
-//         ssr: false
-//     }
-// )
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 
 export default function SgInput(props) {
-
-    const {options = [], maxDate, minDate, data_id, counter, data_key, color, dateFormat = 'DD-MM-YYYY', timeFormat = 'HH:mm', data_extrakey, data_extraarraykey, data_extraarrayvalue, labelHidden, inline, multiple = false, searchAble = false, type, required, name, id = makeID(7), disabled, readonly, className, wrapperClassName, placeholder = '', size, label, variant, selectVariant, value, isInvalid, invalidMessage, loading, onChange = () => {}, onKeyup = () => {}, suffix, suffixType = 'icon', prefix, prefixType = 'icon', floating = false, children, ...rest} = props;
+    const {
+        options = [],
+        maxDate,
+        minDate,
+        data_id,
+        counter,
+        data_key,
+        color,
+        dateFormat = 'DD-MM-YYYY',
+        timeFormat = 'HH:mm',
+        data_extrakey,
+        data_extraarraykey,
+        data_extraarrayvalue,
+        labelHidden,
+        inline,
+        multiple = false,
+        searchAble = false,
+        type,
+        required,
+        name,
+        id = makeID(7),
+        disabled,
+        readonly,
+        className,
+        wrapperClassName,
+        placeholder = '',
+        size,
+        label,
+        variant,
+        selectVariant,
+        value,
+        isInvalid,
+        invalidMessage,
+        loading,
+        onChange = () => {},
+        onKeyup = () => {},
+        suffix,
+        suffixType = 'icon',
+        prefix,
+        prefixType = 'icon',
+        floating = false,
+        children,
+        ...rest
+    } = props;
     const [showPassword, setShowPassword] = useState(false);
     const [selected, setSelected] = useState(variant === 'select' ? (value || []) : []);
     const [filter, setFilter] = useState("");
     const [opened, setOpened] = useState(false);
     const [onFocus, setOnFocus] = useState(false);
+    const editor = useRef(null);
+    const REQUEST_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_BASE_URL;
+    const REQUEST_NEXT_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_NEXT_BASE_URL;
+    const config = useMemo( //  Using of useMemo while make custom configuration is strictly recomended
+        () => ({              //  if you don't use it the editor will lose focus every time when you make any change to the editor, even an addition of one character
+            /* Custom image uploader button configuretion to accept image and convert it to base64 format */
+
+            uploader: {
+                url: `${REQUEST_BASE_URL}${FILE_UPLOAD_ROUTE}`,
+            },
+            filebrowser: {
+                isSuccess: function (resp) {
+                    return resp.data.length !== 0;
+                },
+                getMessage: function (resp) {
+                    return resp.message;
+                },
+                ajax: {
+                    url: `${REQUEST_NEXT_BASE_URL}${NEXT_FILE_LIST_ROUTE}`,
+                    method: 'GET',
+                    data: {},
+                    prepareData: function (data) {
+                        return data;
+                    },
+                }
+            }
+        }),
+        []
+    );
 
     const getSuffixType = () => {
         let returnType = ''
@@ -252,6 +315,25 @@ export default function SgInput(props) {
                     toggleOpen()
                 }
             }
+            else if (option.id === 0) {
+                (onChange)?.(
+                    {
+                        target: {
+                            id: id,
+                            name: name,
+                            value: option.id.toString(),
+                            validity: {},
+                            dataset: {
+                                key: data_key,
+                                id: data_id,
+                                extraarraykey: data_extraarraykey,
+                                extraarrayvalue: data_extraarrayvalue
+                            },
+                        }
+                    }
+                )
+                toggleOpen()
+            }
             else {
                 (onChange)?.(
                     {
@@ -304,96 +386,33 @@ export default function SgInput(props) {
         return min && max
     }
 
-// const image = await import("suneditor/src/plugins");
     const renderEditor = (
-        <SunEditor
-            onChange={(editorContent) =>
-                {
-                    handleChange(
-                        {
-                            target: {
-                                id: id,
-                                name: name,
-                                value: `${editorContent}`,
-                                validity: {},
-                                dataset: {
-                                    key: data_key,
-                                    id: data_id,
-                                    extraarraykey: data_extraarraykey,
-                                    extraarrayvalue: data_extraarrayvalue
-                                },
+    <JoditEditor
+        ref={editor}            //This is important
+        value={value}         //This is important
+        config={config}         //Only use when you declare some custom configs
+        onChange={(editorContent) =>
+                    {
+                        handleChange(
+                            {
+                                target: {
+                                    id: id,
+                                    name: name,
+                                    value: `${editorContent}`,
+                                    validity: {},
+                                    dataset: {
+                                        key: data_key,
+                                        id: data_id,
+                                        extraarraykey: data_extraarraykey,
+                                        extraarrayvalue: data_extraarrayvalue
+                                    },
+                                }
                             }
-                        }
-                    )
-                }
-            }
-            setOptions={{
-                height: 700,
-                requestHeaders: {
-                    "X-Sample": "sample",
-                    "Content-Language": "az",
-                },
-                imageGalleryLoadURL: "http://apikarabagh.testedumedia.com/api/v1/option/files",
-                "videoRatioList": [
-                    {
-                        "name": "Classic Film 3:2",
-                        "value": 0.6666
-                    },
-                    {
-                        "name": "HD",
-                        "value": 0.5625
+                        )
                     }
-                ],
-                "textTags": {
-                    "bold": "b",
-                    "underline": "u",
-                    "italic": "i",
-                    "strike": "s"
-                },
-                "mode": "classic",
-                "rtl": false,
-                "tabDisable": false,
-                "charCounter": true,
-                "charCounterLabel": "Xarakter sayı",
-                "templates": [
-                    {
-                        "name": "CustomBtn",
-                        "html": "<a class='customBtn' href='#'>Custom Btn</a>"
-                    },
-                    {
-                        "name": "GoBtn",
-                        "html": "<a class='customBtn goBtn' href='#'>Go Button</a>"
-                    },
-                    {
-                        "name": "filterBtn",
-                        "html": "<a class='customBtn filterBtn' href='#'>Filter Button</a>"
-                    },
-                    {
-                        "name": "mainBtn",
-                        "html": "<a class='customBtn mainBtn' href='#'>Main Button</a>"
-                    }
-                ],
-                plugins: [
-                    // image,
-                    imageGallery,
-                ],
-                buttonList: [
-                    ["undo", "redo"],
-                    ["font", "fontSize", "formatBlock"],
-                    ["bold", "underline", "italic", "strike", "subscript", "superscript"],
-                    ["removeFormat"],
-                    "/",
-                    ["fontColor", "hiliteColor"],
-                    ["outdent", "indent"],
-                    ["align", "horizontalRule", "list", "table"],
-                    ["link", "imageGallery", "video"],
-                    ["fullScreen", "showBlocks", "codeView"],
-                    ["preview", "print"],
-                    ["save", "template"],
-                ]
-            }}
-            setContents={value}
-        />
+                } //handle the changes
+        className="w-full h-[70%] mt-10 bg-white"
+    />
     )
 
     const renderSelect = (
@@ -478,7 +497,7 @@ export default function SgInput(props) {
                 onFocus: () => setOnFocus(true),
                 onBlur: () => setOnFocus(false)
             }}
-            value={value}
+            value={value ? moment(value).format('DD-MM-YYYY') : ''}
             type={getInputType()}
             isValidDate={validDate}
         />
@@ -552,8 +571,9 @@ export default function SgInput(props) {
 
     useEffect(() => {
 
-        const arrayValue = value ? (typeof value !== 'object' ? [value] : value) : [];
-        console.log(arrayValue, 'arrayValue', options)
+        console.log(value, name, 'lols')
+
+        const arrayValue = (value || value === 0) ? (typeof value !== 'object' ? [value] : value) : [];
 
         setSelected(variant === 'select' ? (options.filter(el => arrayValue.includes(el.id) || arrayValue.includes(el.id.toString())).map(el => el.id) || []) : [])
     }, [value]);

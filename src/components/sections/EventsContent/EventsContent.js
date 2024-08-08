@@ -132,7 +132,7 @@ export default function SgSectionEventsContent(props) {
                                                 <SgEventItem
                                                     title={item?.title}
                                                     path={`/page/${page_id}/${item.id}`}
-                                                    date={moment(item?.date).format('MMMM DD, YYYY')}
+                                                    date={moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
                                                     additions={[
                                                         {
                                                             icon: 'calendar',
@@ -140,7 +140,7 @@ export default function SgSectionEventsContent(props) {
                                                         },
                                                         {
                                                             icon: 'clock',
-                                                            text: itemContent?.Time?.value
+                                                            text: itemContent?.time?.value
                                                         },
                                                         {
                                                             icon: 'map-pin',

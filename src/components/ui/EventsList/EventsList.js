@@ -10,6 +10,10 @@ export default function SgEventsList(props) {
             <div className={[styles['sg--eventsList']].join(' ').trim()}>
                 <div className={[styles['sg--eventsList-body']].join(' ').trim()}>
                     {(list || []).map((item, index) => {
+                        const itemContent = item?.post_values.reduce((a, v) => ({
+                            ...a,
+                            [v.meta_key?.alias]: v
+                        }), {});
                         return (
                             <div key={index} className={[styles['sg--eventsList-body-item']].join(' ').trim()}>
                                 <SgEventItem
@@ -18,15 +22,15 @@ export default function SgEventsList(props) {
                                     additions={[
                                         {
                                             icon: 'calendar',
-                                            text: moment(item.date).format('MMMM DD, YYYY')
+                                            text: moment(itemContent?.date?.value).format('MMMM DD, YYYY')
                                         },
                                         {
                                             icon: 'clock',
-                                            text: moment(item.date).format('HH:mm')
+                                            text: moment(itemContent?.time?.value).format('HH:mm')
                                         },
                                         {
                                             icon: 'map-pin',
-                                            text: item.city
+                                            text: itemContent?.location?.value
                                         }
                                     ]}
                                 />

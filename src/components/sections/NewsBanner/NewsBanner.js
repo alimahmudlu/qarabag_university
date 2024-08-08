@@ -101,14 +101,18 @@ export default function SgSectionNewsBanner(props) {
                                     ]
                                 }}
                                 items={(postList || []).map((item, index) => {
+                                    const itemContent = item?.post_values.reduce((a, v) => ({
+                                        ...a,
+                                        [v.meta_key?.alias]: v
+                                    }), {});
                                     return (
                                         <SgNewsSliderItem
                                             key={index}
                                             image={item.image}
                                             header={item.title}
                                             path={`/page/${page_id}/${item?.id}`}
-                                            date={item.date}
-                                            duration={item.duration}
+                                            date={itemContent?.date?.value}
+                                            duration={itemContent?.time?.value}
                                         />
                                     )
                                 })}

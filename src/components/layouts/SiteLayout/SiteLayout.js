@@ -52,7 +52,6 @@ export default function SiteLayout(props) {
     }
 
     useEffect(() => {
-        console.log(localStorage.getItem('language'))
         if (localStorage.getItem('language')) {
             setMainLanguage(localStorage.getItem('language'))
         }
@@ -63,10 +62,6 @@ export default function SiteLayout(props) {
 
     return (
         <>
-            <GetGenerateMetadata
-                meta={{}}
-            />
-
             <main
                 className={[styles['sg--layouts'], styles['sg--layout--site'], sidebar ? styles['sg--layout--site--sidebar'] : ''].join(' ').trim()}>
                 <div className={[styles['sg--layout--site-content']].join(' ').trim()}>
@@ -86,37 +81,33 @@ export default function SiteLayout(props) {
                     />
                     {children}
                     <SgTemplateFooter
-                        menus={[
-                            {
-                                header: 'Menu',
-                                list: (menus || []).find(el => el.alias === 'footerMain')?.menu_items || []
-                            },
-                            {
-                                header: 'Kömək',
-                                list: (menus || []).find(el => el.alias === 'footerMinor')?.menu_items || []
-                            },
+                        menus={((menus || []).find(el => el.alias === 'header')?.menu_items || []).map(el => ({
+                            header: el.name,
+                            list: el?.children,
+                        }))}
+                        contact={[
                             {
                                 header: 'Əlaqə',
                                 list: [
                                     {
-                                        name: 'Lorem ipsum dolor sit amet consectetur. Cras odio at nisl facilisi porttitor est amet.',
+                                        name: 'Lorem ipsum dolor sit amet consectetu',
                                         url_id: 'https://maps.app.goo.gl/9QwGFagRk2ZH11SB7',
                                         icon: 'map-pin'
-                                    },
-                                    {
-                                        name: '(+994)55-555-55-55',
-                                        url_id: 'tel::+99455-555-55-55',
-                                        icon: 'phone'
-                                    },
-                                    {
-                                        name: '(+994)55-555-55-55',
-                                        url_id: 'tel::+99455-555-55-55',
-                                        icon: 'phone'
                                     },
                                     {
                                         name: 'example@gmail.com',
                                         url_id: 'mailto::example@gmail.com',
                                         icon: 'mail'
+                                    },
+                                    {
+                                        name: '(+994)55-555-55-55',
+                                        url_id: 'tel::+99455-555-55-55',
+                                        icon: 'phone'
+                                    },
+                                    {
+                                        name: '(+994)55-555-55-55',
+                                        url_id: 'tel::+99455-555-55-55',
+                                        icon: 'phone'
                                     }
                                 ]
                             }

@@ -123,6 +123,10 @@ export default function SgSectionNewsContent(props) {
                             <div className={filter ? 'col-lg-9' : 'col-lg-12'}>
                                 <div className='row gap-y-[50px]'>
                                     {(postList || []).filter((el, index) => !filter ? index < 3 : el).map((item, index) => {
+                                        const itemContent = item?.post_values.reduce((a, v) => ({
+                                            ...a,
+                                            [v.meta_key?.alias]: v
+                                        }), {});
                                         return (
                                             <div className={'col-lg-4'} key={index}>
                                                 <SgNewsItem
@@ -130,8 +134,8 @@ export default function SgSectionNewsContent(props) {
                                                     header={item?.title}
                                                     path={`/page/${page_id}/${item?.id}`}
                                                     size='xs'
-                                                    date={moment(item?.date).format('MMMM DD, YYYY')}
-                                                    time={moment(item?.date).format('HH:mm')}
+                                                    date={moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
+                                                    time={moment(itemContent?.time?.value).format('HH:mm')}
                                                     ratio={{
                                                         width: 284,
                                                         height: 137

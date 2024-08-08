@@ -114,8 +114,6 @@ export default function Index(props) {
                     ...data,
                     // post_values: resp.data.data.meta_keys.map(el => ({...el, meta_key_id: el.id, value: _data.value, default_value: '', ..._data.post_values.find(i => i.id === el.id)}))
                 })
-                console.log(data.post_values.find(i => i.id === 8))
-                console.log(resp.data.data.meta_keys.map(el => ({...el, meta_key_id: el.id, default_value: '', ...data.post_values.find(i => i.id === el.id)})))
             }).catch(error => {
                 console.log(error)
             })
@@ -184,6 +182,17 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
+                                    name='short_description'
+                                    id='short_description'
+                                    placeholder='Enter your short description'
+                                    label='Short description'
+                                    value={data.short_description || ''}
+                                    onChange={handleChange}
+                                    variant='textarea'
+                                />
+                            </SgFormGroup>
+                            <SgFormGroup>
+                                <SgInput
                                     name='content'
                                     id='content'
                                     placeholder='Enter your content'
@@ -232,13 +241,13 @@ export default function Index(props) {
                                         <SgInput
                                             name='value'
                                             id={`value--${index}`}
-                                            placeholder={item.title}
-                                            label={item.title}
+                                            placeholder={item.title || item?.meta_key?.title}
+                                            label={item.title || item?.meta_key?.title}
                                             value={item.value || ''}
                                             onChange={handleChange}
                                             data_key={`post_values.${index}`}
-                                            type={item?.input_type?.alias}
-                                            variant={item?.input_type?.alias}
+                                            type={item?.input_type?.alias || item?.meta_key?.input_type?.alias}
+                                            variant={item?.input_type?.alias || item?.meta_key?.input_type?.alias}
                                             options={dataTypes}
                                         />
                                     </SgFormGroup>

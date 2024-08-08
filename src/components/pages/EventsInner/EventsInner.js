@@ -72,7 +72,7 @@ export default function SgPageEventsInner(props) {
 										Vaxt
 									</div>
 									<div className={[styles['sg--page--eventsInner-details-item--description']].join(' ').trim()}>
-										{itemContent?.Time?.value}
+										{itemContent?.time?.value}
 									</div>
 								</div>
 								<div className={[styles['sg--page--eventsInner-details-item']].join(' ').trim()}>
