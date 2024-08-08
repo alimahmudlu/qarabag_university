@@ -79,7 +79,7 @@ export default function SgInput(props) {
                     return resp.message;
                 },
                 ajax: {
-                    url: `http://localhost:3000${NEXT_FILE_LIST_ROUTE}`,
+                    url: `${REQUEST_NEXT_BASE_URL}${NEXT_FILE_LIST_ROUTE}`,
                     method: 'GET',
                     data: {},
                     prepareData: function (data) {
