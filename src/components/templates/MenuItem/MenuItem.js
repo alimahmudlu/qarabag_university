@@ -29,7 +29,7 @@ export default function SgMenuItem(props) {
                 />
 
                 <SgCollapse
-                    toggleHeader={item.title}
+                    toggleHeader={item.name}
                     id={item.id}
                     className={[styles[`${className}`], 'd-lg-none', 'd-block'].join(' ').trim()}
                     toggleClassName={[styles[`${className}--link`]].join(' ').trim()}
