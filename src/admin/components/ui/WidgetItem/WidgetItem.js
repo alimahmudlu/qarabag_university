@@ -27,7 +27,10 @@ export default function SgWidgetItem(props) {
 		Fdata,
 		FsetData,
 		FvalueErrors,
-		FsetValueErrors
+		FsetValueErrors,
+
+		toggleWidgetDataTypeModal,
+		widgetDataTypeModal
 	} = props;
 	const { image, name, description, page_type_id } = data;
 	const { widget_id, pagination_limit, data_type_id, row, status, page_widget_values } = values
@@ -101,6 +104,15 @@ export default function SgWidgetItem(props) {
 									variant='select'
 									data_key={`page_widgets.${index}`}
 									disabled={Number(page_type_id) === 2}
+									suffix={
+										<SgButton
+											size='sm'
+											withOutBlock={true}
+											onClick={(e) => toggleWidgetDataTypeModal(e, {id: data_type_id})}
+										>
+											Main Page
+										</SgButton>
+									}
 								/>
 							</SgFormGroup>
 						</div>
@@ -281,7 +293,6 @@ export default function SgWidgetItem(props) {
 						})}
 					</div>
 				</div>
-
 			</div>
 		</>
 	)
