@@ -45,7 +45,7 @@ export default function SgNewsItem(props) {
                     {date ?
                         <ul className={[styles['sg--newsItem-body--date']].join(' ').trim()}>
                             <li>{date}</li>
-                            <li>{time}</li>
+                            {time ? <li>{time}</li> : ''}
                         </ul>
                         : ''
                     }

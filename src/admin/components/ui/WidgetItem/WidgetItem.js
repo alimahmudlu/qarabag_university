@@ -117,7 +117,7 @@ export default function SgWidgetItem(props) {
 								/>
 							</SgFormGroup>
 						</div>
-						<div className='col-lg-6'>
+						<div className='col-lg-12'>
 							<SgFormGroup>
 								<SgInput
 									id='widgetContent'
@@ -127,10 +127,11 @@ export default function SgWidgetItem(props) {
 									label='Content'
 									onChange={handleChange}
 									data_key={`page_widgets.${index}`}
+									variant='editor'
 								/>
 							</SgFormGroup>
 						</div>
-						<div className='col-lg-6'>
+						<div className='col-lg-12'>
 							<SgFormGroup>
 								<SgFile
 									id='widgetImage'
@@ -151,7 +152,9 @@ export default function SgWidgetItem(props) {
 						</div>
 					</div>
 					<hr />
-					<div className='row pt-3'>
+					<hr />
+					<hr />
+					<div className='row pt-5'>
 						{(page_widget_values || []).map((item, i) => {
 							switch (item?.meta_key?.input_type?.alias) {
 								case 'file':

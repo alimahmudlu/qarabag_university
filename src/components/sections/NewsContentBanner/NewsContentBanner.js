@@ -100,7 +100,7 @@ export default function SgSectionNewsContentBanner(props) {
                                                     path={`/page/${page_id}/${item?.id}`}
                                                     size='xs'
                                                     date={moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
-                                                    time={moment(itemContent?.date?.value).format('HH:mm')}
+                                                    time={moment(itemContent?.time?.value).format('HH:mm')}
                                                     ratio={{
                                                         width: 284,
                                                         height: 137
