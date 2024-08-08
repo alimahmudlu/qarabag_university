@@ -36,7 +36,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     image: itemContent?.image?.value,
                                     title: itemContent?.title?.value,
@@ -56,7 +56,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     image: itemContent?.image?.value,
                                     title: itemContent?.titleGallery?.value,
@@ -73,7 +73,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     image1: itemContent?.image1?.value,
                                     title1: itemContent?.title1?.value,
@@ -92,7 +92,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     image: item?.content?.image,
                                     title: item?.content?.title,
@@ -133,7 +133,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     image: item?.content?.image,
                                     title: item?.content?.title,
@@ -150,7 +150,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     image: item?.content?.image,
                                     title: item?.content?.title,
@@ -167,7 +167,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     image: item?.image,
                                     title: item?.title,
@@ -184,7 +184,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     filter: item?.content?.filter,
                                     image: item?.image,
@@ -202,7 +202,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     filter: item?.content?.filter,
                                     image: item?.image,
@@ -220,7 +220,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     image: item?.image,
                                     title: item?.title,
@@ -237,7 +237,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     filter: item?.content?.filter,
                                     image: item?.image,
@@ -255,7 +255,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     filter: item?.content?.filter,
                                     image: item?.image,
@@ -273,7 +273,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     filter: item?.content?.filter,
                                     image: item?.image,
@@ -291,7 +291,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     filter: item?.content?.filter,
                                     image: item?.image,
@@ -309,7 +309,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     image: item?.image,
                                     title: item?.title,
@@ -327,7 +327,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                     key={index}
                                     id={`contentBanner__${item.id}`}
                                     mainData={item}
-                                    page_id={page_id}
+                                    page_id={item?.data_type?.main_page_id || page_id}
                                     data={{
                                         filter: item?.content?.filter,
                                         image: item?.image,
@@ -347,7 +347,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                     key={index}
                                     id={`contentBanner__${item.id}`}
                                     mainData={item}
-                                    page_id={page_id}
+                                    page_id={item?.data_type?.main_page_id || page_id}
                                     data={{
                                         filter: item?.content?.filter,
                                         image: item?.image,
@@ -367,7 +367,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                     key={index}
                                     id={`contentBanner__${item.id}`}
                                     mainData={item}
-                                    page_id={page_id}
+                                    page_id={item?.data_type?.main_page_id || page_id}
                                     data={{
                                         filter: item?.content?.filter,
                                         image: item?.image,
@@ -387,7 +387,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`content__${item.id}`}
                                 mainData={item}
-                                page_id={page_id}
+                                page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     title: itemContent?.title?.value,
                                     description: itemContent?.description?.value,
