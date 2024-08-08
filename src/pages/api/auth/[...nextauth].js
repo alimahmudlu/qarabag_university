@@ -1,5 +1,7 @@
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import {LOGIN_ROUTE} from "@/admin/configs/apiRoutes";
+const REQUEST_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_BASE_URL;
 
 export default NextAuth({
     providers: [
@@ -21,7 +23,7 @@ export default NextAuth({
                     ttl: credentials.ttl || 100000
                 }
 
-                const res = await fetch('https://preview.karabakh.edu.az/api/v1/admin/login', {
+                const res = await fetch(`${REQUEST_BASE_URL}${LOGIN_ROUTE}`, {
                     method: 'POST',
                     body: JSON.stringify(payload),
                     headers: {
@@ -31,8 +33,9 @@ export default NextAuth({
                 })
 
                 const user = await res.json()
+
                 if (!res.ok) {
-                    throw new Error(`${user.message} salam`)
+                    throw new Error(`${user.message}`)
                 }
                 // If no error and we have user data, return it
                 if (res.ok && user) {
@@ -46,7 +49,7 @@ export default NextAuth({
     ],
     secret: 'accessToken',
     pages: {
-        signIn: '/sign-in',
+        signIn: '/admin/sign-in',
         signOut: '/sign-out',
 
     },

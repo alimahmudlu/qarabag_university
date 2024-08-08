@@ -5,7 +5,7 @@ export default function SgPageBody(props) {
 
     return (
         <>
-            <div className={styles["files--block-body"]}>
+            <div className={styles["pages--block-body"]}>
                 {children}
             </div>
         </>

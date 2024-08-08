@@ -31,19 +31,13 @@ export default function Index(props) {
             setErrors(errors)
         }
         else {
-    /*        ApiService.post(LOGIN_ROUTE, data).then(resp => {
-                console.log(resp)
-            }).catch(err => {
-                console.log(err, 'err')
-            })*/
-
             signIn('credentials', {
                 redirect: false,
                 email: data.email,
                 password: data.password,
                 callbackUrl: `/admin`,
             }).then(resp => {
-                console.log(resp)
+                console.log(resp, 'resp')
                 if (resp.ok) {
                     router.push(resp.url)
                 }

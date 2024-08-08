@@ -2,12 +2,13 @@
 import {getBase64} from "@/admin/utils/getBase64";
 import ApiService from "@/admin/services/ApiService";
 import {changeData} from "@/admin/utils/changeData";
+import {FILE_UPLOAD_ROUTE} from "@/admin/configs/apiRoutes";
 
 /**
  * @functionName CALL BACK CHANGE FORM DATA FILE
  * @functionDescription
  */
-export const callBackChangeDataFile = (e, _formData, setFormData, _valueErrors, setValueErrors, extraKey, progress = null, setProgress, url = 'admin/file/upload') => {
+export const callBackChangeDataFile = (e, _formData, setFormData, _valueErrors, setValueErrors, extraKey, progress = null, setProgress, url = FILE_UPLOAD_ROUTE) => {
 	let formData = _formData;
 	let valueErrors = _valueErrors;
 	let count = 0

@@ -89,7 +89,7 @@ export default function Index(props) {
             pages: newData
         }).then(resp => {
             router.push({
-                pathname: '/admin/files/'
+                pathname: '/admin/pages/'
             }, undefined, { scroll: true });
         }).catch(error => {
             console.log(error)

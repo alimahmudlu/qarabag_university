@@ -52,7 +52,6 @@ export default function SiteLayout(props) {
     }
 
     useEffect(() => {
-        console.log(localStorage.getItem('language'))
         if (localStorage.getItem('language')) {
             setMainLanguage(localStorage.getItem('language'))
         }

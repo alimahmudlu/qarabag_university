@@ -41,7 +41,7 @@ ApiService.interceptors.response.use(
 
         if (error.response) {
             // Access Token was expired
-            if (REQUEST_UNAUTHORIZED_CODE.includes(error.response.status) && !originalConfig._retry) {
+            if ([401].includes(error.response.status) && !originalConfig._retry) {
                 originalConfig._retry = true;
                 const refreshToken = session?.user?.token?.refresh_token
                 const email = session?.user?.user?.email

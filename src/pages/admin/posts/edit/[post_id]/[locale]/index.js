@@ -114,8 +114,6 @@ export default function Index(props) {
                     ...data,
                     // post_values: resp.data.data.meta_keys.map(el => ({...el, meta_key_id: el.id, value: _data.value, default_value: '', ..._data.post_values.find(i => i.id === el.id)}))
                 })
-                console.log(data.post_values.find(i => i.id === 8))
-                console.log(resp.data.data.meta_keys.map(el => ({...el, meta_key_id: el.id, default_value: '', ...data.post_values.find(i => i.id === el.id)})))
             }).catch(error => {
                 console.log(error)
             })

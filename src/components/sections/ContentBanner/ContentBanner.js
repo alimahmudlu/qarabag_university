@@ -27,7 +27,6 @@ export default function SgSectionContentBanner(props) {
 
         useEffect(() => {
             if (hasWindow && fluidContainer) {
-                console.log(containerRef.current?.offsetWidth)
                 function handleResize() {
                     setWindowDimensions(getWindowDimensions())
                 }

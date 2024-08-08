@@ -19,11 +19,11 @@ export const POST_SHOW_ROUTE = '/admin/posts'
 export const POST_DELETE_ROUTE = '/admin/posts'
 
 
-export const PAGE_LIST_ROUTE = '/admin/files'
-export const PAGE_CREATE_ROUTE = '/admin/files'
-export const PAGE_EDIT_ROUTE = '/admin/files'
-export const PAGE_SHOW_ROUTE = '/admin/files'
-export const PAGE_DELETE_ROUTE = '/admin/files'
+export const PAGE_LIST_ROUTE = '/admin/pages'
+export const PAGE_CREATE_ROUTE = '/admin/pages'
+export const PAGE_EDIT_ROUTE = '/admin/pages'
+export const PAGE_SHOW_ROUTE = '/admin/pages'
+export const PAGE_DELETE_ROUTE = '/admin/pages'
 
 
 export const PAGE_RELATION_LIST_ROUTE = '/admin/page_relations'
@@ -55,7 +55,12 @@ export const MENU_ITEM_SAVE_ROUTE = '/admin/menu_items/save'
 export const MENU_ITEM_LIST_ROUTE = '/admin/menu_items?menu_type_id='
 
 
+export const FILE_UPLOAD_ROUTE = '/admin/file/upload'
 export const FILE_LIST_ROUTE = '/option/files'
+export const NEXT_FILE_LIST_ROUTE = '/api/files/getAllFiles'
+
+
+export const LOGIN_ROUTE = '/admin/login'
 
 
 

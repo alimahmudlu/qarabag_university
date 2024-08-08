@@ -84,7 +84,7 @@ export default function Index(props) {
         else {
             ApiService.post(PAGE_CREATE_ROUTE, data).then(resp => {
                 router.push({
-                    pathname: '/admin/files/'
+                    pathname: '/admin/pages/'
                 }, undefined, { scroll: true });
             }).catch(error => {
                 console.log(error)
@@ -118,7 +118,6 @@ export default function Index(props) {
     }
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
-        console.log(oldIndex, newIndex, 'salam', data.page_widgets)
         setData({...data, page_widgets: arrayMoveImmutable(data.page_widgets, oldIndex, newIndex)});
     };
 

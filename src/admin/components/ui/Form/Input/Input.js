@@ -6,25 +6,70 @@ import moment from "moment";
 import styles from "@/admin/components/ui/Form/Form.module.css"
 
 import dynamic from "next/dynamic";
+import {FILE_UPLOAD_ROUTE, NEXT_FILE_LIST_ROUTE} from "@/admin/configs/apiRoutes";
 
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 
 export default function SgInput(props) {
-
-    const {options = [], maxDate, minDate, data_id, counter, data_key, color, dateFormat = 'DD-MM-YYYY', timeFormat = 'HH:mm', data_extrakey, data_extraarraykey, data_extraarrayvalue, labelHidden, inline, multiple = false, searchAble = false, type, required, name, id = makeID(7), disabled, readonly, className, wrapperClassName, placeholder = '', size, label, variant, selectVariant, value, isInvalid, invalidMessage, loading, onChange = () => {}, onKeyup = () => {}, suffix, suffixType = 'icon', prefix, prefixType = 'icon', floating = false, children, ...rest} = props;
+    const {
+        options = [],
+        maxDate,
+        minDate,
+        data_id,
+        counter,
+        data_key,
+        color,
+        dateFormat = 'DD-MM-YYYY',
+        timeFormat = 'HH:mm',
+        data_extrakey,
+        data_extraarraykey,
+        data_extraarrayvalue,
+        labelHidden,
+        inline,
+        multiple = false,
+        searchAble = false,
+        type,
+        required,
+        name,
+        id = makeID(7),
+        disabled,
+        readonly,
+        className,
+        wrapperClassName,
+        placeholder = '',
+        size,
+        label,
+        variant,
+        selectVariant,
+        value,
+        isInvalid,
+        invalidMessage,
+        loading,
+        onChange = () => {},
+        onKeyup = () => {},
+        suffix,
+        suffixType = 'icon',
+        prefix,
+        prefixType = 'icon',
+        floating = false,
+        children,
+        ...rest
+    } = props;
     const [showPassword, setShowPassword] = useState(false);
     const [selected, setSelected] = useState(variant === 'select' ? (value || []) : []);
     const [filter, setFilter] = useState("");
     const [opened, setOpened] = useState(false);
     const [onFocus, setOnFocus] = useState(false);
     const editor = useRef(null);
+    const REQUEST_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_BASE_URL;
+    const REQUEST_NEXT_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_NEXT_BASE_URL;
     const config = useMemo( //  Using of useMemo while make custom configuration is strictly recomended
         () => ({              //  if you don't use it the editor will lose focus every time when you make any change to the editor, even an addition of one character
             /* Custom image uploader button configuretion to accept image and convert it to base64 format */
 
             uploader: {
-                url: 'http://apikarabagh.testedumedia.com/api/v1/admin/file/upload',
+                url: `${REQUEST_BASE_URL}${FILE_UPLOAD_ROUTE}`,
             },
             filebrowser: {
                 isSuccess: function (resp) {
@@ -34,7 +79,7 @@ export default function SgInput(props) {
                     return resp.message;
                 },
                 ajax: {
-                    url: 'http://localhost:3000/api/files/getAllFiles',
+                    url: `${REQUEST_NEXT_BASE_URL}${NEXT_FILE_LIST_ROUTE}`,
                     method: 'GET',
                     data: {},
                     prepareData: function (data) {
@@ -270,6 +315,25 @@ export default function SgInput(props) {
                     )
                     toggleOpen()
                 }
+            }
+            else if (option.id === 0) {
+                (onChange)?.(
+                    {
+                        target: {
+                            id: id,
+                            name: name,
+                            value: option.id.toString(),
+                            validity: {},
+                            dataset: {
+                                key: data_key,
+                                id: data_id,
+                                extraarraykey: data_extraarraykey,
+                                extraarrayvalue: data_extraarrayvalue
+                            },
+                        }
+                    }
+                )
+                toggleOpen()
             }
             else {
                 (onChange)?.(
@@ -508,8 +572,9 @@ export default function SgInput(props) {
 
     useEffect(() => {
 
-        const arrayValue = value ? (typeof value !== 'object' ? [value] : value) : [];
-        console.log(arrayValue, 'arrayValue', options)
+        console.log(value, name, 'lols')
+
+        const arrayValue = (value || value === 0) ? (typeof value !== 'object' ? [value] : value) : [];
 
         setSelected(variant === 'select' ? (options.filter(el => arrayValue.includes(el.id) || arrayValue.includes(el.id.toString())).map(el => el.id) || []) : [])
     }, [value]);

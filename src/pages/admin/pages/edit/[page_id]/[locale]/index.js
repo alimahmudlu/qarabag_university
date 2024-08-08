@@ -84,7 +84,6 @@ export default function Index(props) {
     }
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
-        console.log(arrayMoveImmutable(data.page_widgets, oldIndex, newIndex))
         setData({...data, page_widgets: arrayMoveImmutable(data.page_widgets, oldIndex, newIndex).map((el, index) => ({...el, row: index + 1}))});
     };
 

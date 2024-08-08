@@ -9,7 +9,7 @@ export default function SgPage(props) {
 
         switch (variant) {
             case 'center':
-                classes = styles['files--block--center']
+                classes = styles['pages--block--center']
                 break
             default:
                 classes = ''
@@ -20,8 +20,8 @@ export default function SgPage(props) {
     }
     return (
         <>
-            <div className={[styles["pages"], styles['page-'+id], inner ? [styles['page-'+id+'--inner'], styles['files--inner']].join(' ').trim() : '', getPageVariant(), className].join(' ').trim()}>
-                <div style={blockStyle} className={[styles["files--block"], blockClassName].join(' ').trim()}>
+            <div className={[styles["pages"], styles['page-'+id], inner ? [styles['page-'+id+'--inner'], styles['pages--inner']].join(' ').trim() : '', getPageVariant(), className].join(' ').trim()}>
+                <div style={blockStyle} className={[styles["pages--block"], blockClassName].join(' ').trim()}>
                     {children}
                 </div>
             </div>

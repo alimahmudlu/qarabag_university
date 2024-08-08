@@ -378,6 +378,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 />
                             </>
                         )
+
                     case 'content':
                         return (
                             <SgSectionContent
