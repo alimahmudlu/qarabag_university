@@ -9,8 +9,9 @@ import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import SgWidgetsFilter from "@/admin/components/ui/WidgetsFilter";
 import ApiService from "@/admin/services/ApiService";
 import {
+    DATA_TYPE_EDIT_ROUTE, DATA_TYPE_SHOW_ROUTE,
     OPTIONS_DATA_TYPE_LIST_ROUTE,
-    OPTIONS_LANGUAGE_LIST_ROUTE,
+    OPTIONS_LANGUAGE_LIST_ROUTE, OPTIONS_PAGE_LIST_ROUTE,
     OPTIONS_WIDGET_LIST_ROUTE,
     PAGE_EDIT_ROUTE,
     PAGE_SHOW_ROUTE
@@ -21,6 +22,7 @@ import ReactDOM from "react-dom";
 import {arrayMoveImmutable} from "array-move";
 import {validate} from "@/admin/utils/validate";
 import {validationConstraints} from "@/admin/constants/constants";
+import {SgPopup} from "@/admin/components/ui/Popup";
 
 
 export default function Index(props) {
@@ -28,6 +30,12 @@ export default function Index(props) {
     const [valueErrors, setValueErrors] = useState({});
     const [fileManagerModal, setFileManagerModal] = useState(false);
     const [languagesOptions, setLanguagesOptions] = useState([]);
+
+    const [selectedWidgetDataType, setSelectedWidgetDataType] = useState({});
+    const [selectedWidgetDataTypeData, setSelectedWidgetDataTypeData] = useState({});
+    const [widgetDataTypeModal, setWidgetDataTypeModal] = useState(false);
+    const [pagesListOptions, setPagesListOptions] = useState([]);
+
     const [pageTypeOptions, setPageTypeOptions] = useState([
         {
             id: 2,
@@ -82,6 +90,44 @@ export default function Index(props) {
     function toggleFileManagerModal(e) {
         setFileManagerModal(!fileManagerModal)
     }
+
+    function handleChangePopup(e) {
+        changeData(e, selectedWidgetDataTypeData, setSelectedWidgetDataTypeData, valueErrors, setValueErrors);
+    }
+
+    function toggleWidgetDataTypeModal(e, selectedRow) {
+        setSelectedWidgetDataType(selectedRow || {})
+        setWidgetDataTypeModal(!widgetDataTypeModal)
+    }
+
+    function handleEditWidgetDataType() {
+        ApiService.put(`${DATA_TYPE_EDIT_ROUTE}/${selectedWidgetDataType?.id}`, selectedWidgetDataTypeData).then(resp => {
+            toggleWidgetDataTypeModal({}, {})
+        }).catch(error => {
+            console.log(error)
+        })
+    }
+
+    useEffect(() => {
+        if (selectedWidgetDataType.id) {
+            ApiService.get(`${DATA_TYPE_SHOW_ROUTE}/${selectedWidgetDataType?.id}`).then(resp => {
+                setSelectedWidgetDataTypeData(resp.data.data)
+            }).catch(error => {
+                console.log(error)
+            })
+        }
+        else {
+            setSelectedWidgetDataTypeData({})
+        }
+
+        if (pagesListOptions.length === 0) {
+            ApiService.get(OPTIONS_PAGE_LIST_ROUTE).then(resp => {
+                setPagesListOptions(resp.data.data.map(el => ({id: el.id, name: el.title})))
+            }).catch(error => {
+                console.log(error)
+            })
+        }
+    }, [selectedWidgetDataType]);
 
     const onSortEnd = ({ oldIndex, newIndex }) => {
         setData({...data, page_widgets: arrayMoveImmutable(data.page_widgets, oldIndex, newIndex).map((el, index) => ({...el, row: index + 1}))});
@@ -318,6 +364,9 @@ export default function Index(props) {
                                     // useWindowAsScrollContainer={true}
                                     toggleFileManagerModal={toggleFileManagerModal}
                                     fileManagerModal={fileManagerModal}
+
+                                    toggleWidgetDataTypeModal={toggleWidgetDataTypeModal}
+                                    widgetDataTypeModal={widgetDataTypeModal}
                                 />
                             </div>
                         </div>
@@ -352,6 +401,58 @@ export default function Index(props) {
                     </SgButtonGroup>
                 </SgPageFooter>
             </SgPage>
+
+            <SgPopup
+                header='Edit Data Type main page'
+                description='lol'
+                size='md'
+                setToggleModal={toggleWidgetDataTypeModal}
+                toggleModal={widgetDataTypeModal}
+            >
+
+                <SgFormGroup>
+                    <SgInput
+                        id='alias'
+                        name='alias'
+                        label='Alias'
+                        placeholder='Alias'
+                        value={selectedWidgetDataTypeData.alias}
+                        disabled={true}
+                    />
+                </SgFormGroup>
+
+                <SgFormGroup>
+                    <SgInput
+                        id='main_page_id'
+                        name='main_page_id'
+                        label='Main Page'
+                        placeholder='Main Page'
+                        value={selectedWidgetDataTypeData.main_page_id || ''}
+                        onChange={handleChangePopup}
+                        variant='select'
+                        options={pagesListOptions}
+                    />
+                </SgFormGroup>
+
+                <SgButtonGroup
+                    gap={true}
+                >
+                    <SgButton
+                        size='lg'
+                        color='primary'
+                        onClick={handleEditWidgetDataType}
+                    >
+                        Edit
+                    </SgButton>
+                    <SgButton
+                        size='lg'
+                        color='error'
+                        onClick={(e) => toggleWidgetDataTypeModal(e, {})}
+                    >
+                        Cancel
+                    </SgButton>
+                </SgButtonGroup>
+            </SgPopup>
         </>
     )
 }

@@ -105,13 +105,15 @@ export default function SgWidgetItem(props) {
 									data_key={`page_widgets.${index}`}
 									disabled={Number(page_type_id) === 2}
 									suffix={
-										<SgButton
-											size='sm'
-											withOutBlock={true}
-											onClick={(e) => toggleWidgetDataTypeModal(e, {id: data_type_id})}
-										>
-											Main Page
-										</SgButton>
+										data_type_id ?
+											<SgButton
+												size='sm'
+												withOutBlock={true}
+												onClick={(e) => toggleWidgetDataTypeModal(e, {id: data_type_id})}
+											>
+												Main Page
+											</SgButton>
+											: ''
 									}
 								/>
 							</SgFormGroup>

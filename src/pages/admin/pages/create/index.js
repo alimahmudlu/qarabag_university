@@ -12,6 +12,7 @@ import {arrayMoveImmutable} from "array-move";
 
 import ApiService from "@/admin/services/ApiService";
 import {
+    DATA_TYPE_EDIT_ROUTE,
     DATA_TYPE_SHOW_ROUTE,
     OPTIONS_DATA_TYPE_LIST_ROUTE,
     OPTIONS_LANGUAGE_LIST_ROUTE, OPTIONS_PAGE_LIST_ROUTE,
@@ -79,13 +80,21 @@ export default function Index(props) {
         setFileManagerModal(!fileManagerModal)
     }
 
+    function handleChangePopup(e) {
+        changeData(e, selectedWidgetDataTypeData, setSelectedWidgetDataTypeData, valueErrors, setValueErrors);
+    }
+
     function toggleWidgetDataTypeModal(e, selectedRow) {
         setSelectedWidgetDataType(selectedRow || {})
         setWidgetDataTypeModal(!widgetDataTypeModal)
     }
 
     function handleEditWidgetDataType() {
-        console.log(selectedWidgetDataTypeData)
+        ApiService.put(`${DATA_TYPE_EDIT_ROUTE}/${selectedWidgetDataType?.id}`, selectedWidgetDataTypeData).then(resp => {
+            toggleWidgetDataTypeModal({}, {})
+        }).catch(error => {
+            console.log(error)
+        })
     }
 
     useEffect(() => {
@@ -235,11 +244,11 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
-                                    name='short_description'
-                                    id='short_description'
+                                    name='shortDescription'
+                                    id='shortDescription'
                                     placeholder='Enter your short description'
                                     label='Short description'
-                                    value={data.short_description || ''}
+                                    value={data.shortDescription || ''}
                                     onChange={handleChange}
                                     variant='textarea'
                                 />
@@ -355,6 +364,7 @@ export default function Index(props) {
                     </SgButtonGroup>
                 </SgPageFooter>
             </SgPage>
+
             <SgPopup
                 header='Edit Data Type main page'
                 description='lol'
@@ -370,7 +380,6 @@ export default function Index(props) {
                         label='Alias'
                         placeholder='Alias'
                         value={selectedWidgetDataTypeData.alias}
-                        onChange={handleChange}
                         disabled={true}
                     />
                 </SgFormGroup>
@@ -382,9 +391,9 @@ export default function Index(props) {
                         label='Main Page'
                         placeholder='Main Page'
                         value={selectedWidgetDataTypeData.main_page_id || ''}
-                        onChange={handleChange}
+                        onChange={handleChangePopup}
                         variant='select'
-                        // options={pagesListOptions}
+                        options={pagesListOptions}
                     />
                 </SgFormGroup>
 
