@@ -14,7 +14,7 @@ import ApiService from "@/admin/services/ApiService";
 import {
     DATA_TYPE_SHOW_ROUTE,
     OPTIONS_DATA_TYPE_LIST_ROUTE,
-    OPTIONS_LANGUAGE_LIST_ROUTE,
+    OPTIONS_LANGUAGE_LIST_ROUTE, OPTIONS_PAGE_LIST_ROUTE,
     OPTIONS_WIDGET_LIST_ROUTE, PAGE_CREATE_ROUTE, POST_CREATE_ROUTE
 } from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
@@ -35,6 +35,7 @@ export default function Index(props) {
     const [selectedWidgetDataType, setSelectedWidgetDataType] = useState({});
     const [selectedWidgetDataTypeData, setSelectedWidgetDataTypeData] = useState({});
     const [widgetDataTypeModal, setWidgetDataTypeModal] = useState(false);
+    const [pagesListOptions, setPagesListOptions] = useState([]);
 
     const [pageTypeOptions, setPageTypeOptions] = useState([
         {
@@ -99,7 +100,13 @@ export default function Index(props) {
             setSelectedWidgetDataTypeData({})
         }
 
-        // if ()
+        if (pagesListOptions.length === 0) {
+            ApiService.get(OPTIONS_PAGE_LIST_ROUTE).then(resp => {
+                setPagesListOptions(resp.data.data.map(el => ({id: el.id, name: el.title})))
+            }).catch(error => {
+                console.log(error)
+            })
+        }
     }, [selectedWidgetDataType]);
 
     function handleSubmit(e) {
@@ -374,10 +381,10 @@ export default function Index(props) {
                         name='main_page_id'
                         label='Main Page'
                         placeholder='Main Page'
-                        value={selectedWidgetDataTypeData.main_page_id}
+                        value={selectedWidgetDataTypeData.main_page_id || ''}
                         onChange={handleChange}
                         variant='select'
-                        // options={}
+                        // options={pagesListOptions}
                     />
                 </SgFormGroup>
 
