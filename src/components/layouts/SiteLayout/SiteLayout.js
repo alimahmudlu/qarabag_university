@@ -81,7 +81,7 @@ export default function SiteLayout(props) {
                     />
                     {children}
                     <SgTemplateFooter
-                        menus={((menus || []).find(el => el.alias === 'header')?.menu_items || []).map(el => ({
+                        menus={((menus || []).find(el => el.alias === 'footer')?.menu_items || []).map(el => ({
                             header: el.name,
                             list: el?.children,
                         }))}
