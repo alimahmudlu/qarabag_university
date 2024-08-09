@@ -23,7 +23,10 @@ export default function Index(props) {
     const [nestableData, setNestableData] = useState([]);
     const [valueErrors, setValueErrors] = useState({});
 
-    const [optionsData, setOptionsData] = useState({});
+    const [optionsData, setOptionsData] = useState({
+        url_id: null,
+        url: null
+    });
     const [optionsValueErrors, setOptionsValueErrors] = useState({});
 
     const [itemsOptions, setItemsOptions] = useState([])
