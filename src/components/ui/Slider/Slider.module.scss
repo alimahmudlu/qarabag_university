@@ -2,7 +2,7 @@
     margin: 0;
 
     & > div {
-        padding: 0 32px;
+        padding: 0 12px;
     }
 
     &--withOutOverflow > div {
@@ -10,8 +10,8 @@
     }
 }
 .widget-slider-container-item {
-    padding: 0 20px 0 0;
-    margin: 0 0 0 -60px;
+    padding: 0 12px 0 0;
+    margin: 0 0 0 -12px;
     width: 100%;
     height: 100%;
 }

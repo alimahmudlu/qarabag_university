@@ -124,19 +124,19 @@ export default function Index(props) {
         <>
             <SgPage>
                 <SgPageHead
-                    header='Languages'
-                    description='Edit language.'
+                    header='Posts'
+                    description='Edit post.'
                     filter={true}
                 >
                     <SgButton
                         type='link'
                         isLinked={true}
-                        to='/admin/languages'
+                        to='/admin/posts'
                         color='primary'
                         size='md'
                         icon='plus'
                     >
-                        Language list
+                        Post list
                     </SgButton>
                 </SgPageHead>
                 <SgPageBody>
@@ -182,10 +182,21 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
+                                    name='short_description'
+                                    id='short_description'
+                                    placeholder='Enter your short description'
+                                    label='Short description'
+                                    value={data.short_description || ''}
+                                    onChange={handleChange}
+                                    variant='textarea'
+                                />
+                            </SgFormGroup>
+                            <SgFormGroup>
+                                <SgInput
                                     name='content'
                                     id='content'
                                     placeholder='Enter your content'
-                                    label='content'
+                                    label='Content'
                                     value={data.content || ''}
                                     onChange={handleChange}
                                     variant='editor'
@@ -230,13 +241,13 @@ export default function Index(props) {
                                         <SgInput
                                             name='value'
                                             id={`value--${index}`}
-                                            placeholder={item.title}
-                                            label={item.title}
+                                            placeholder={item.title || item?.meta_key?.title}
+                                            label={item.title || item?.meta_key?.title}
                                             value={item.value || ''}
                                             onChange={handleChange}
                                             data_key={`post_values.${index}`}
-                                            type={item?.input_type?.alias}
-                                            variant={item?.input_type?.alias}
+                                            type={item?.input_type?.alias || item?.meta_key?.input_type?.alias}
+                                            variant={item?.input_type?.alias || item?.meta_key?.input_type?.alias}
                                             options={dataTypes}
                                         />
                                     </SgFormGroup>
@@ -261,7 +272,7 @@ export default function Index(props) {
                                     color='error'
                                     size='sm'
                                     type='link'
-                                    to='/admin/languages'
+                                    to='/admin/posts'
                                 >
                                     Cancel
                                 </SgButton>

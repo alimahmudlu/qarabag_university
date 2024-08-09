@@ -24,6 +24,7 @@ export default function SgCampusItem(props) {
                         squared={true}
                         type='link'
                         href={path}
+                        size='md:lg sm:sm'
                     >
                         Go
                     </SgButton>

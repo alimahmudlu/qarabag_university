@@ -56,4 +56,26 @@
             line-height: normal;
         }
     }
+
+    @media (max-width: 992px) {
+        & {
+            height: 230px;
+            min-height: unset;
+            padding: 82px 0 20px !important;
+
+            &--inner {
+                height: 230px;
+                min-height: unset;
+            }
+
+            &-content {
+                gap: 8px;
+
+                &--header {
+                    color: var(--white, #FFF);
+                    font-size: 20px;
+                }
+            }
+        }
+    }
 }

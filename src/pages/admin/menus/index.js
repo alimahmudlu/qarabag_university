@@ -66,7 +66,7 @@ export default function Index(props) {
                         size='md'
                         icon='plus'
                     >
-                        New menu
+                        Add menu
                     </SgButton>
                 </SgPageHead>
                 <SgPageBody>

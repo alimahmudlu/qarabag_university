@@ -58,7 +58,12 @@ export default function Index(props) {
                     pathname: '/admin/posts/'
                 }, undefined, { scroll: true });
             }).catch(error => {
-                console.log(error)
+                const _errors = {...valueErrors}
+                Object.keys(error.response.data.data).map(el => {
+                    _errors[el] = 'blank'
+                })
+
+                setValueErrors(_errors)
             })
         }
     }
@@ -152,11 +157,24 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
+                                    name='short_description'
+                                    id='short_description'
+                                    placeholder='Enter your short description'
+                                    label='Short description'
+                                    value={data.short_description || ''}
+                                    isInvalid={valueErrors.short_description}
+                                    onChange={handleChange}
+                                    variant='textarea'
+                                />
+                            </SgFormGroup>
+                            <SgFormGroup>
+                                <SgInput
                                     name='content'
                                     id='content'
                                     placeholder='Enter your content'
-                                    label='content'
+                                    label='Content'
                                     value={data.content || ''}
+                                    isInvalid={valueErrors.content}
                                     onChange={handleChange}
                                     variant='editor'
                                 />
@@ -168,6 +186,7 @@ export default function Index(props) {
                                     value={data.image}
                                     id='image'
                                     name='image'
+                                    isInvalid={valueErrors.image}
 
                                     fileManager={{
                                         type: 'png',
@@ -189,6 +208,7 @@ export default function Index(props) {
                                     label='Enter your data type'
                                     value={data.data_type_id || ''}
                                     onChange={handleChange}
+                                    isInvalid={valueErrors.data_type_id}
                                     variant='select'
                                     options={dataTypes}
                                 />
@@ -358,7 +378,7 @@ export default function Index(props) {
                                     color='error'
                                     size='sm'
                                     type='link'
-                                    to='/admin/languages'
+                                    to='/admin/posts'
                                 >
                                     Cancel
                                 </SgButton>

@@ -108,9 +108,7 @@ export default function SectionHead(props) {
                         : ''
                     }
                     {description ?
-                        <p className={styles['sg--sections--block-head-group--description']}>
-                        {description}
-                        </p>
+                        <p className={styles['sg--sections--block-head-group--description']} dangerouslySetInnerHTML={{__html: description}} />
                         : ''
                     }
                 </div>

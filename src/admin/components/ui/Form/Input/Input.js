@@ -1,7 +1,6 @@
 import makeID from "@/admin/utils/makeID";
 import {useEffect, useMemo, useRef, useState} from "react";
 import ReactDatetimeClass from "react-datetime";
-// import "react-datetime/css/react-datetime.css";
 import moment from "moment";
 import styles from "@/admin/components/ui/Form/Form.module.css"
 
@@ -498,7 +497,7 @@ export default function SgInput(props) {
                 onFocus: () => setOnFocus(true),
                 onBlur: () => setOnFocus(false)
             }}
-            value={value}
+            value={value ? moment(value).format('DD-MM-YYYY') : ''}
             type={getInputType()}
             isValidDate={validDate}
         />

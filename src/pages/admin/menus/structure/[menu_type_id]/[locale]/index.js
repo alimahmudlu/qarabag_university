@@ -23,7 +23,10 @@ export default function Index(props) {
     const [nestableData, setNestableData] = useState([]);
     const [valueErrors, setValueErrors] = useState({});
 
-    const [optionsData, setOptionsData] = useState({});
+    const [optionsData, setOptionsData] = useState({
+        url_id: null,
+        url: null
+    });
     const [optionsValueErrors, setOptionsValueErrors] = useState({});
 
     const [itemsOptions, setItemsOptions] = useState([])
@@ -191,7 +194,7 @@ export default function Index(props) {
                     <SgButton
                         type='link'
                         isLinked={true}
-                        to='/admin/widgets'
+                        to='/admin/menus'
                         color='primary'
                         size='md'
                         icon='plus'
@@ -334,6 +337,9 @@ export default function Index(props) {
                         <SgButton
                             color='error'
                             size='sm'
+                            type='link'
+                            isLinked={true}
+                            to='/admin/menus'
                         >
                             Cancel
                         </SgButton>

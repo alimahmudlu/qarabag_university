@@ -4,7 +4,7 @@ import SgEventItem from "@/components/ui/EventItem";
 import moment from "moment";
 
 export default function SgEventsList(props) {
-    const { list, image, text } = props;
+    const { list, image, text, page_id } = props;
     return (
         <>
             <div className={[styles['sg--eventsList']].join(' ').trim()}>
@@ -19,6 +19,7 @@ export default function SgEventsList(props) {
                                 <SgEventItem
                                     date={item.date}
                                     title={item.title}
+                                    path={`/page/${page_id}/${item.id}`}
                                     additions={[
                                         {
                                             icon: 'calendar',
@@ -26,7 +27,7 @@ export default function SgEventsList(props) {
                                         },
                                         {
                                             icon: 'clock',
-                                            text: moment(itemContent?.time?.value).format('HH:mm')
+                                            text: itemContent?.time?.value
                                         },
                                         {
                                             icon: 'map-pin',

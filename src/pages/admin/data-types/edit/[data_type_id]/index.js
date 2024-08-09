@@ -15,7 +15,7 @@ import {
     DATA_TYPE_CREATE_ROUTE, DATA_TYPE_EDIT_ROUTE,
     DATA_TYPE_SHOW_ROUTE,
     LANGUAGE_SHOW_ROUTE,
-    OPTIONS_INPUT_TYPE_LIST_ROUTE,
+    OPTIONS_INPUT_TYPE_LIST_ROUTE, OPTIONS_PAGE_LIST_ROUTE,
     PAGE_SHOW_ROUTE,
     WIDGET_LIST_ROUTE
 } from "@/admin/configs/apiRoutes";
@@ -31,6 +31,7 @@ export default function Index(props) {
     });
     const [valueErrors, setValueErrors] = useState({});
     const [inputTypes, setInputTypes] = useState([]);
+    const [pagesListOptions, setPagesListOptions] = useState([]);
     const [innerPageTemplateOptions, setInnerPageTemplateOptions] = useState([
         {
             id: 1,
@@ -39,6 +40,10 @@ export default function Index(props) {
         {
             id: 2,
             name: 'Events'
+        },
+        {
+            id: 3,
+            name: 'Collaborator'
         }
     ]);
     const { query } = useRouter();
@@ -100,6 +105,12 @@ export default function Index(props) {
         }).catch(error => {
             console.log(error)
         })
+
+        ApiService.get(OPTIONS_PAGE_LIST_ROUTE).then(resp => {
+            setPagesListOptions(resp.data.data.map(el => ({id: el.id, name: el.title})))
+        }).catch(error => {
+            console.log(error)
+        })
     }, []);
 
     return (
@@ -107,7 +118,7 @@ export default function Index(props) {
             <SgPage>
                 <SgPageHead
                     header='Data Types'
-                    description='Create data type.'
+                    description='Edit data type.'
                     filter={true}
                 >
                     <SgButton
@@ -145,6 +156,19 @@ export default function Index(props) {
                                     onChange={handleChange}
                                     variant='select'
                                     options={innerPageTemplateOptions}
+                                />
+                            </SgFormGroup>
+
+                            <SgFormGroup>
+                                <SgInput
+                                    name='main_page_id'
+                                    id='main_page_id'
+                                    placeholder='Enter your data type`s main page'
+                                    label='Main page'
+                                    value={data.main_page_id || ''}
+                                    onChange={handleChange}
+                                    variant='select'
+                                    options={pagesListOptions}
                                 />
                             </SgFormGroup>
                         </div>
@@ -238,11 +262,14 @@ export default function Index(props) {
                             size='sm'
                             onClick={handleSubmit}
                         >
-                            Update
+                            Edit
                         </SgButton>
                         <SgButton
                             color='error'
                             size='sm'
+                            type='link'
+                            isLinked={true}
+                            to='/admin/data-types'
                         >
                             Cancel
                         </SgButton>

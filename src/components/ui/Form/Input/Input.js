@@ -1,18 +1,60 @@
-import makeID from "@/utils/makeID";
-import {useEffect, useState} from "react";
-// import ReactDatetimeClass from "react-datetime";
-import ReactDatetimeClass from 'react-datetime';
+import makeID from "@/admin/utils/makeID";
+import {useEffect, useMemo, useRef, useState} from "react";
+import ReactDatetimeClass from "react-datetime";
 import moment from "moment";
-import "react-datetime/css/react-datetime.css";
-import styles from "@/components/ui/Form/Form.module.css"
+import styles from "@/admin/components/ui/Form/Form.module.css"
 
 export default function SgInput(props) {
-    const {options = [], maxDate, minDate, data_id, counter, data_key, color, dateFormat = 'DD-MM-YYYY', timeFormat = 'HH:mm', data_extrakey, labelHidden, inline, multiple = false, searchAble = false, type, required, name, id = makeID(7), disabled, readonly, className, wrapperClassName, placeholder = '', size, label, variant, selectVariant, value, isInvalid, invalidMessage, loading, onChange = () => {}, onKeyup = () => {}, suffix, suffixType = 'icon', prefix, prefixType = 'icon', floating = false, children, ...rest} = props;
+    const {
+        options = [],
+        maxDate,
+        minDate,
+        data_id,
+        counter,
+        data_key,
+        color,
+        dateFormat = 'DD-MM-YYYY',
+        timeFormat = 'HH:mm',
+        data_extrakey,
+        data_extraarraykey,
+        data_extraarrayvalue,
+        labelHidden,
+        inline,
+        multiple = false,
+        searchAble = false,
+        type,
+        required,
+        name,
+        id = makeID(7),
+        disabled,
+        readonly,
+        className,
+        wrapperClassName,
+        placeholder = '',
+        size,
+        label,
+        variant,
+        selectVariant,
+        value,
+        isInvalid,
+        invalidMessage,
+        loading,
+        onChange = () => {},
+        onKeyup = () => {},
+        suffix,
+        suffixType = 'icon',
+        prefix,
+        prefixType = 'icon',
+        floating = false,
+        children,
+        ...rest
+    } = props;
     const [showPassword, setShowPassword] = useState(false);
     const [selected, setSelected] = useState(variant === 'select' ? (value || []) : []);
     const [filter, setFilter] = useState("");
     const [opened, setOpened] = useState(false);
     const [onFocus, setOnFocus] = useState(false);
+    const editor = useRef(null);
 
     const getSuffixType = () => {
         let returnType = ''
@@ -154,7 +196,9 @@ export default function SgInput(props) {
                     validity: {},
                     dataset: {
                         key: data_key,
-                        id: data_id
+                        id: data_id,
+                        extraarraykey: data_extraarraykey,
+                        extraarrayvalue: data_extraarrayvalue
                     },
                 }
             }
@@ -169,65 +213,129 @@ export default function SgInput(props) {
         (onKeyup)?.(e)
     }
 
-    const toggleOption = (option) => {
-        if (multiple) {
-            if (selected.includes(option)) {
-                // setSelected(selected.filter((item) => item !== option));
-                (onChange)?.(
-                    {
-                        target: {
-                            id: id,
-                            name: name,
-                            value: selected.filter((item) => item !== option),
-                            validity: {},
-                            dataset: {
-                                key: data_key,
-                                id: data_id
-                            },
-                        }
-                    }
-                )
-            }
-            else {
-                // setSelected([...selected, option]);
-                (onChange)?.(
-                    {
-                        target: {
-                            id: id,
-                            name: name,
-                            value: [...selected, option.value],
-                            validity: {},
-                            dataset: {
-                                key: data_key,
-                                id: data_id
-                            },
-                        }
-                    }
-                )
-            }
+    const toggleOption = (e, option) => {
+        if (disabled || readonly || loading) {
+            e.preventDefault()
+            return
         }
         else {
-            // setSelected([option]);
-            (onChange)?.(
-                {
-                    target: {
-                        id: id,
-                        name: name,
-                        value: option.value,
-                        validity: {},
-                        dataset: {
-                            key: data_key,
-                            id: data_id
-                        },
+            if (option.id) {
+                if (multiple) {
+                    if (selected.includes(option.id)) {
+                        // setSelected(selected.filter((item) => item !== option));
+                        (onChange)?.(
+                            {
+                                target: {
+                                    id: id,
+                                    name: name,
+                                    value: selected.filter((item) => item !== option.id),
+                                    validity: {},
+                                    dataset: {
+                                        key: data_key,
+                                        id: data_id,
+                                        extraarraykey: data_extraarraykey,
+                                        extraarrayvalue: data_extraarrayvalue
+                                    },
+                                }
+                            }
+                        )
+                    }
+                    else {
+                        // setSelected([...selected, option]);
+                        (onChange)?.(
+                            {
+                                target: {
+                                    id: id,
+                                    name: name,
+                                    value: [...selected, option.id],
+                                    validity: {},
+                                    dataset: {
+                                        key: data_key,
+                                        id: data_id,
+                                        extraarraykey: data_extraarraykey,
+                                        extraarrayvalue: data_extraarrayvalue
+                                    },
+                                }
+                            }
+                        )
                     }
                 }
-            )
-            toggleOpen()
+                else {
+                    // setSelected([option]);
+                    (onChange)?.(
+                        {
+                            target: {
+                                id: id,
+                                name: name,
+                                value: option.id,
+                                validity: {},
+                                dataset: {
+                                    key: data_key,
+                                    id: data_id,
+                                    extraarraykey: data_extraarraykey,
+                                    extraarrayvalue: data_extraarrayvalue
+                                },
+                            }
+                        }
+                    )
+                    toggleOpen()
+                }
+            }
+            else if (option.id === 0) {
+                (onChange)?.(
+                    {
+                        target: {
+                            id: id,
+                            name: name,
+                            value: option.id.toString(),
+                            validity: {},
+                            dataset: {
+                                key: data_key,
+                                id: data_id,
+                                extraarraykey: data_extraarraykey,
+                                extraarrayvalue: data_extraarrayvalue
+                            },
+                        }
+                    }
+                )
+                toggleOpen()
+            }
+            else {
+                (onChange)?.(
+                    {
+                        target: {
+                            id: id,
+                            name: name,
+                            value: option.id,
+                            validity: {},
+                            dataset: {
+                                key: data_key,
+                                id: data_id,
+                                extraarraykey: data_extraarraykey,
+                                extraarrayvalue: data_extraarrayvalue
+                            },
+                        }
+                    }
+                )
+                toggleOpen()
+            }
         }
     };
 
     const toggleOpen = () => {
-        setOpened((!disabled || !readonly) ? !opened : false)
+        setOpened((disabled || readonly || loading) ? false : !opened)
+    }
+
+    const selectRef = useRef(null)
+
+    const closeOpenMenus = (e)=>{
+        if(opened && !selectRef.current?.contains(e.target)){
+            setOpened(false)
+        }
+    }
+
+    if (typeof window !== "undefined") {
+        window.addEventListener('mousedown',closeOpenMenus)
     }
 
     const filteredOptions = options.filter((a) =>
@@ -243,6 +351,70 @@ export default function SgInput(props) {
         let max = maxDate ? current.isBefore(maxDate) : true
         return min && max
     }
+
+    const renderSelect = (
+        <div ref={selectRef} onClick={toggleOpen} className={[styles["select"], getSelectVariant(), disabled && styles['disabled'], readonly && styles['read-only']].join(' ').trim()}>
+            <div className="filter-option">
+                <div className="filter-option-inner">
+                    <div className="filter-option-inner-inner">
+                        {selected.length ? (selected.length === 1 ? filteredOptions.find(el => el.id === selected[0])?.name : `${selected.length} ${placeholder} seçildi`) : (placeholder ? placeholder : (label ? label : 'Seçin'))}
+                    </div>
+                </div>
+            </div>
+            {(opened && (!disabled || !readonly)) && (
+                <div className={[styles['dropdown-menu'], styles['show'], "dropdown-menu show"].join(' ').trim()}
+                     onClick={(e) => e.stopPropagation()}
+                >
+                    {searchAble && <div className="bs-searchbox">
+                        <input
+                            onChange={(e) => setFilter(e.target.value)}
+                            value={filter}
+                            className='form-control'
+                            type="text"
+                            placeholder="Axtar..."
+                            style={{paddingTop: 0, paddingBottom: 0}}
+                        />
+                    </div>}
+                    <div className={[styles["inner"], styles["show"], "inner show"].join(' ').trim()}>
+                        <ul className={[styles['dropdown-menu'], styles['inner'], styles['show'], 'dropdown-menu inner show']}>
+                            {filteredOptions.length ? (
+                                <>
+                                    <li
+                                        className={selected.includes('') ? styles["selected"] : ""}
+                                        onClick={(e) => toggleOption(e, {id: '', value: '', name: 'Seçin'})}
+                                    >
+                                        <a
+                                            className={[styles["dropdown-item"], "dropdown-item", selected.includes('') ? styles["selected"] : ""].join(' ').trim()}>
+                                            <span>Seçin</span>
+                                        </a>
+                                    </li>
+                                    {filteredOptions.map((option, index) => (
+                                        <li
+                                            className={selected.includes(option) ? styles["selected"] : ""}
+                                            onClick={(e) => toggleOption(e, option)}
+                                            key={index}
+                                        >
+                                            <a
+                                                className={[styles["dropdown-item"], "dropdown-item", (selected.includes(option.id) || selected.includes(Number(option.id))) ? styles["selected"] : ""].join(' ').trim()}>
+                                                <span>{option.name}</span>
+                                            </a>
+                                        </li>
+                                    ))}
+                                </>
+
+                            ) : (
+                                <li>
+                                    <span className={[styles["dropdown-item"], "dropdown-item"].join(' ').trim()}>
+                                        Nəticə yoxdur.
+                                    </span>
+                                </li>
+                            )}
+                        </ul>
+                    </div>
+                </div>
+            )}
+        </div>
+    )
 
     const renderDateInput = (
         <ReactDatetimeClass
@@ -262,18 +434,23 @@ export default function SgInput(props) {
                 onFocus: () => setOnFocus(true),
                 onBlur: () => setOnFocus(false)
             }}
-            value={value}
+            value={value ? (
+                type === 'time' ? moment(value).format(timeFormat) :
+                    (type === 'date-time' ? moment(value).format(`${dateFormat} ${timeFormat}`) : moment(value).format(dateFormat))
+                )
+                : ''
+            }
             type={getInputType()}
             isValidDate={validDate}
         />
     )
 
     const renderInput = (
-        <input maxLength={counter} data-id={data_id} data-key={data_key} data-extrakey={data_extrakey} onBlur={() => setOnFocus(false)} onFocus={() => setOnFocus(true)} onChange={handleChange} onKeyUp={handleKeyup} disabled={disabled} readOnly={readonly} id={id} name={name} className={[styles["input"]].join(' ').trim()} placeholder={floating ? "" : placeholder} value={value} type={getInputType()}/>
+        <input maxLength={counter} data-id={data_id} data-extraarraykey={data_extraarraykey} data-extraarrayvalue={data_extraarrayvalue} data-key={data_key} data-extrakey={data_extrakey} onBlur={() => setOnFocus(false)} onFocus={() => setOnFocus(true)} onChange={handleChange} onKeyUp={handleKeyup} disabled={disabled} readOnly={readonly} id={id} name={name} className={[styles["input"]].join(' ').trim()} placeholder={floating ? "" : placeholder} value={value} type={getInputType()}/>
     )
 
     const renderTextarea = (
-        <textarea maxLength={counter} data-id={data_id} data-key={data_key} onChange={handleChange} onKeyUp={handleKeyup} disabled={disabled} readOnly={readonly} id={id} name={name} className={[styles["input"]].join(' ').trim()} placeholder={floating ? "" : placeholder} value={value} type={getInputType()}/>
+        <textarea maxLength={counter} data-id={data_id} data-extraarraykey={data_extraarraykey} data-extraarrayvalue={data_extraarrayvalue} data-key={data_key} onChange={handleChange} onKeyUp={handleKeyup} disabled={disabled} readOnly={readonly} id={id} name={name} className={[styles["input"]].join(' ').trim()} placeholder={floating ? "" : placeholder} value={value} type={getInputType()}/>
     )
 
     const getInputVariant = () => {
@@ -283,6 +460,9 @@ export default function SgInput(props) {
 
             case ('input'):
                 return renderInput
+
+            case ('select'):
+                return renderSelect
 
             case "date":
                 return renderDateInput;
@@ -328,9 +508,9 @@ export default function SgInput(props) {
     }
 
     useEffect(() => {
-        const arrayValue = value ? (typeof value !== 'object' ? [value] : value) : [];
+        const arrayValue = (value || value === 0) ? (typeof value !== 'object' ? [value] : value) : [];
 
-        setSelected(variant === 'select' ? (options.filter(el => arrayValue.includes(el.value)).map(el => el.value) || []) : [])
+        setSelected(variant === 'select' ? (options.filter(el => arrayValue.includes(el.id) || arrayValue.includes(el.id.toString())).map(el => el.id) || []) : [])
     }, [value]);
 
     return (

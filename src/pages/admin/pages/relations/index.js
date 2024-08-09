@@ -177,19 +177,19 @@ export default function Index(props) {
         <>
             <SgPage>
                 <SgPageHead
-                    header='Menus'
-                    description='Edit menu structure.'
+                    header='Page relations'
+                    description='Edit page relations structure.'
                     filter={true}
                 >
                     <SgButton
                         type='link'
                         isLinked={true}
-                        to='/admin/widgets'
+                        to='/admin/pages'
                         color='primary'
                         size='md'
                         icon='plus'
                     >
-                        Menu type list
+                        Page list
                     </SgButton>
                 </SgPageHead>
                 <SgPageBody>
@@ -229,7 +229,7 @@ export default function Index(props) {
                                     size="sm"
                                     onClick={addMenuItem}
                                 >
-                                    Add menu item
+                                    Add relation item
                                 </SgButton>
                                 <SgButton
                                     size="sm"
@@ -286,6 +286,9 @@ export default function Index(props) {
                         <SgButton
                             color='error'
                             size='sm'
+                            type='link'
+                            isLinked={true}
+                            to='/admin/pages'
                         >
                             Cancel
                         </SgButton>
