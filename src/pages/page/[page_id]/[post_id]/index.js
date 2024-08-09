@@ -9,7 +9,7 @@ import SgSectionNewsContent from "@/components/sections/NewsContent";
 import SgSectionEventsBanner from "@/components/sections/EventsBanner";
 import SgSectionEventsContent from "@/components/sections/EventsContent";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
-import SgPageCollabatorsInner from "@/components/pages/CollabatorsInner";
+import SgPageCollaboratorsInner from "@/components/pages/CollaboratorsInner";
 
 
 export default function Index(props) {
@@ -71,7 +71,7 @@ export default function Index(props) {
 			case '3':
 				return (
 					<>
-						<SgPageCollabatorsInner
+						<SgPageCollaboratorsInner
 							data={data}
 						/>
 					</>

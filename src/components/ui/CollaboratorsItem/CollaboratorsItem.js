@@ -11,7 +11,7 @@ import { SgRatio } from '../Ratio';
 */
 
 export default function SgCollaboratorsItem(props) {
-    const { header, position, image, path } = props;
+    const { header, position,email,phone,image, path } = props;
 
 
     return (
@@ -20,8 +20,8 @@ export default function SgCollaboratorsItem(props) {
                 <div className={[styles['sg--collaboratorsItem-head']].join(' ').trim()}>
                     <SgRatio
                         ratio={{
-                            width: 3,
-                            height: 4,
+                            width: 387,
+                            height: 400,
                         }}
                     >
                         <div className={[styles['sg--collaboratorsItem-head-image']].join(' ').trim()}>
@@ -44,6 +44,18 @@ export default function SgCollaboratorsItem(props) {
                     {position ?
                         <p className={[styles['sg--collaboratorsItem-body--position']].join(' ').trim()}>
                             {position}
+                        </p>
+                        : ''
+                    }
+                    {email ?
+                        <p className={[styles['sg--collaboratorsItem-body--position']].join(' ').trim()}>
+                            {email}
+                        </p>
+                        : ''
+                    }
+                    {phone ?
+                        <p className={[styles['sg--collaboratorsItem-body--position']].join(' ').trim()}>
+                            {phone}
                         </p>
                         : ''
                     }
