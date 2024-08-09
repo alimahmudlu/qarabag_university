@@ -54,12 +54,12 @@ export default function Index(props) {
                     <SgButton
                         type='link'
                         isLinked={true}
-                        to='/admin/pages/create'
+                        to='/admin/data-types/create'
                         color='primary'
                         size='md'
                         icon='plus'
                     >
-                        New page
+                        Add Data type
                     </SgButton>
                 </SgPageHead>
                 <SgPageBody>

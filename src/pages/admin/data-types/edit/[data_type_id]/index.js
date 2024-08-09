@@ -114,7 +114,7 @@ export default function Index(props) {
             <SgPage>
                 <SgPageHead
                     header='Data Types'
-                    description='Create data type.'
+                    description='Edit data type.'
                     filter={true}
                 >
                     <SgButton
@@ -258,11 +258,14 @@ export default function Index(props) {
                             size='sm'
                             onClick={handleSubmit}
                         >
-                            Update
+                            Edit
                         </SgButton>
                         <SgButton
                             color='error'
                             size='sm'
+                            type='link'
+                            isLinked={true}
+                            to='/admin/data-types'
                         >
                             Cancel
                         </SgButton>

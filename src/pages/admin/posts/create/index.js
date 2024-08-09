@@ -172,7 +172,7 @@ export default function Index(props) {
                                     name='content'
                                     id='content'
                                     placeholder='Enter your content'
-                                    label='content'
+                                    label='Content'
                                     value={data.content || ''}
                                     isInvalid={valueErrors.content}
                                     onChange={handleChange}
@@ -378,7 +378,7 @@ export default function Index(props) {
                                     color='error'
                                     size='sm'
                                     type='link'
-                                    to='/admin/languages'
+                                    to='/admin/posts'
                                 >
                                     Cancel
                                 </SgButton>

@@ -124,19 +124,19 @@ export default function Index(props) {
         <>
             <SgPage>
                 <SgPageHead
-                    header='Languages'
-                    description='Edit language.'
+                    header='Posts'
+                    description='Edit post.'
                     filter={true}
                 >
                     <SgButton
                         type='link'
                         isLinked={true}
-                        to='/admin/languages'
+                        to='/admin/posts'
                         color='primary'
                         size='md'
                         icon='plus'
                     >
-                        Language list
+                        Post list
                     </SgButton>
                 </SgPageHead>
                 <SgPageBody>
@@ -196,7 +196,7 @@ export default function Index(props) {
                                     name='content'
                                     id='content'
                                     placeholder='Enter your content'
-                                    label='content'
+                                    label='Content'
                                     value={data.content || ''}
                                     onChange={handleChange}
                                     variant='editor'
@@ -272,7 +272,7 @@ export default function Index(props) {
                                     color='error'
                                     size='sm'
                                     type='link'
-                                    to='/admin/languages'
+                                    to='/admin/posts'
                                 >
                                     Cancel
                                 </SgButton>
