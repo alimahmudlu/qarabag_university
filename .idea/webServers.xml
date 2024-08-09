@@ -23,6 +23,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="912a4cc7-bd6b-4e10-82d0-ef14864f5b33" name="tsii_test">
+        <fileTransfer accessType="SFTP" host="192.168.140.46" port="22" sshConfigId="d49ae8de-00cf-487f-b452-88496a66f466" sshConfig="edumedia@192.168.140.46:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
