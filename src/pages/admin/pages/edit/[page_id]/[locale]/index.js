@@ -171,7 +171,7 @@ export default function Index(props) {
             <SgPage>
                 <SgPageHead
                     header='Pages'
-                    description='Create page.'
+                    description='Edit page.'
                     filter={true}
                 >
                     <SgButton

@@ -92,7 +92,7 @@ export default function Index(props) {
             <SgPage>
                 <SgPageHead
                     header='Widgets'
-                    description='Create widget.'
+                    description='Edit widget.'
                     filter={true}
                 >
                     <SgButton

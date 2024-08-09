@@ -107,7 +107,7 @@ export default function Index(props) {
             <SgPage>
                 <SgPageHead
                     header='Data Types'
-                    description='Create data type.'
+                    description='Edit data type.'
                     filter={true}
                 >
                     <SgButton

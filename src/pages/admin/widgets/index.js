@@ -66,7 +66,7 @@ export default function Index(props) {
                         size='md'
                         icon='plus'
                     >
-                        New widgets
+                        Add widgets
                     </SgButton>
                 </SgPageHead>
                 <SgPageBody>
