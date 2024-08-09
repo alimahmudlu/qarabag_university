@@ -162,7 +162,7 @@ export default function Index(props) {
 
                 <SgPopup
                     header='Remove Post'
-                    description='lol'
+                    description='remove post item description'
                     size='md'
                     setToggleModal={toggleRemoveItemModal}
                     toggleModal={removeItemModal}

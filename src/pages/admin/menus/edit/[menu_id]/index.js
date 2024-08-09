@@ -58,19 +58,19 @@ export default function Index(props) {
         <>
             <SgPage>
                 <SgPageHead
-                    header='Widgets'
-                    description='Create widget.'
+                    header='Menus'
+                    description='Edit menu.'
                     filter={true}
                 >
                     <SgButton
                         type='link'
                         isLinked={true}
-                        to='/admin/widgets'
+                        to='/admin/menus'
                         color='primary'
                         size='md'
                         icon='plus'
                     >
-                        Widget list
+                        Menu list
                     </SgButton>
                 </SgPageHead>
                 <SgPageBody>
@@ -113,11 +113,14 @@ export default function Index(props) {
                             size='sm'
                             onClick={handleSubmit}
                         >
-                            Create
+                            Edit
                         </SgButton>
                         <SgButton
                             color='error'
                             size='sm'
+                            type='link'
+                            isLinked={true}
+                            to='/admin/menus'
                         >
                             Cancel
                         </SgButton>

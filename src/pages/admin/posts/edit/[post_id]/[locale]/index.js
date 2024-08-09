@@ -196,7 +196,7 @@ export default function Index(props) {
                                     name='content'
                                     id='content'
                                     placeholder='Enter your content'
-                                    label='content'
+                                    label='Content'
                                     value={data.content || ''}
                                     onChange={handleChange}
                                     variant='editor'

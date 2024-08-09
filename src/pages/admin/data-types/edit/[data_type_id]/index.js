@@ -258,11 +258,14 @@ export default function Index(props) {
                             size='sm'
                             onClick={handleSubmit}
                         >
-                            Update
+                            Edit
                         </SgButton>
                         <SgButton
                             color='error'
                             size='sm'
+                            type='link'
+                            isLinked={true}
+                            to='/admin/data-types'
                         >
                             Cancel
                         </SgButton>

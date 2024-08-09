@@ -191,7 +191,7 @@ export default function Index(props) {
                     <SgButton
                         type='link'
                         isLinked={true}
-                        to='/admin/widgets'
+                        to='/admin/menus'
                         color='primary'
                         size='md'
                         icon='plus'
@@ -334,6 +334,9 @@ export default function Index(props) {
                         <SgButton
                             color='error'
                             size='sm'
+                            type='link'
+                            isLinked={true}
+                            to='/admin/menus'
                         >
                             Cancel
                         </SgButton>

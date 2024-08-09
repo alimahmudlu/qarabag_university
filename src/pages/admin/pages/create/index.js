@@ -358,6 +358,9 @@ export default function Index(props) {
                         <SgButton
                             color='error'
                             size='sm'
+                            type='link'
+                            isLinked={true}
+                            to='/admin/pages'
                         >
                             Cancel
                         </SgButton>
