@@ -353,7 +353,7 @@ body {
 }
 .rdtBtn::before {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'survey-icons' !important;
+  font-family: 'sg-icons' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -371,10 +371,10 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  content: "\e915";
+  content: "\e9ed";
 }
 .rdtCount + .rdtBtn::before {
-  content: "\e900";
+  content: "\e9f4";
 }
 .rdtSwitch {
   cursor: pointer !important;

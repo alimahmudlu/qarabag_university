@@ -66,7 +66,7 @@ export default function SgSectionNewsContent(props) {
                         header={title}
                     />
                     <SectionBody>
-                        <div className='row gap-y-[50px]'>
+                        <div className='row lg:gap-y-[50px] gap-y-[20px]'>
                             {filter ?
                                 <div className='col-lg-3'>
                                     <SgFormGroup>
@@ -99,6 +99,7 @@ export default function SgSectionNewsContent(props) {
                                         <SgInput
                                             color='light'
                                             variant='date'
+                                            type='date'
                                             size='small'
                                             name='post_date'
                                             id='post_date'
@@ -121,19 +122,18 @@ export default function SgSectionNewsContent(props) {
                                 : ''
                             }
                             <div className={filter ? 'col-lg-9' : 'col-lg-12'}>
-                                <div className='row gap-y-[50px]'>
+                                <div className='row lg:gap-y-[50px] gap-y-[20px]'>
                                     {(postList || []).filter((el, index) => !filter ? index < 3 : el).map((item, index) => {
                                         const itemContent = item?.post_values.reduce((a, v) => ({
                                             ...a,
                                             [v.meta_key?.alias]: v
                                         }), {});
                                         return (
-                                            <div className={'col-lg-4'} key={index}>
+                                            <div className={'col-lg-4 col-6 lg:px-[12px] px-[10px]'} key={index}>
                                                 <SgNewsItem
                                                     image={item?.image}
                                                     header={item?.title}
                                                     path={`/page/${page_id}/${item?.id}`}
-                                                    size='xs'
                                                     date={moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
                                                     time={moment(itemContent?.time?.value).format('HH:mm')}
                                                     ratio={{

@@ -63,12 +63,14 @@ export default function SgNewsItem(props) {
                     }
 
                     <SgButton
+                        className='mt-auto'
                         type='link'
                         to={path}
                         color='black-outline'
                         withOutBlock={true}
                         icon={'arrow-up-right'}
                         reverse={true}
+                        size='md:lg sm:sm'
                     >
                         Daha ətraflı
                     </SgButton>

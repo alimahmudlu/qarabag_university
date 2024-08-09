@@ -52,6 +52,7 @@ export default function SgEventItem(props) {
                             withOutBlock={true}
                             icon={'arrow-up-right'}
                             reverse={true}
+                            size='md:lg sm:sm'
                         >
                             Daha ətraflı
                         </SgButton>
