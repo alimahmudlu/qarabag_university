@@ -12,6 +12,7 @@ import {validationConstraints} from "@/admin/constants/constants";
 import { signIn, getCsrfToken } from 'next-auth/react'
 import {useRouter} from "next/router";
 import {toast} from "react-toastify";
+const REQUEST_NEXT_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_NEXT_BASE_URL;
 
 export default function Index(props) {
     const [data, setData] = useState({})
@@ -35,11 +36,10 @@ export default function Index(props) {
                 redirect: false,
                 email: data.email,
                 password: data.password,
-                callbackUrl: `/admin`,
+                callbackUrl: `${REQUEST_NEXT_BASE_URL}/admin`,
             }).then(resp => {
-                console.log(resp, 'resp')
                 if (resp.ok) {
-                    router.push(resp.url)
+
                 }
                 else {
                     toast(resp.error, {
