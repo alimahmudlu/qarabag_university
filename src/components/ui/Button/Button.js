@@ -2,35 +2,19 @@ import styles from '@/components/ui/Button/Button.module.scss';
 import Link from "next/link";
 
 export default function SgButton (props) {
-    const {children, size, color, variant, block, align, icon, onlyIcon, reverse, squared, withOutBlock, className, disabled, loading, close, active, onClick, padding, weight, decoration, type = 'button', isLinked = false, to = '#', ...rest} = props;
+    const {children, size = '', color, variant, block, align, icon, onlyIcon, reverse, squared, withOutBlock, className, disabled, loading, close, active, onClick, padding, weight, decoration, type = 'button', isLinked = false, to = '#', ...rest} = props;
 
     const getButtonSize = () => {
-        let classes = '';
+        let classes = [];
 
-        switch (size) {
-            case 'xs':
-                classes = styles['sg--button--xs']
-                break
+        if (!!size) {
+            (size.split(' ') || []).map(el => {
+                classes.push(styles[`sg--button--${el}`]);
+            });
 
-            case 'sm':
-                classes = styles['sg--button--sm']
-                break
-
-            case 'md':
-                classes = styles['sg--button--md']
-                break
-
-            case 'lg':
-                classes = styles['sg--button--lg']
-                break
-
-
-            default:
-                classes = styles['sg--button--md']
-                break
+            return classes.join(' ').trim()
         }
-
-        return classes
+        return styles[`sg--button--md`]
     }
 
     const getButtonVariant = () => {
