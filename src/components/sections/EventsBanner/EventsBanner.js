@@ -80,6 +80,7 @@ export default function SgSectionEventsBanner(props) {
                         <SgEventsList
                             list={postList}
                             image={image}
+                            page_id={page_id}
                             text='Tədbirlər'
                         />
                     </SectionBody>

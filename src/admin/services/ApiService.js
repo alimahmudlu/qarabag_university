@@ -80,17 +80,30 @@ ApiService.interceptors.response.use(
                 }
             }
             else {
-                toast(error.response.data.message || error.response.statusText, {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    type: "error"
-                });
+                Object.entries(error.response.data.data).map(([key, value], index) => {
+                    toast(
+                        <>
+                            {error.response.data.message || error.response.statusText}
+                            <br/>
+                            <ul>
+                                {(value || []).map((error, i) => (
+                                    <li style={{fontSize: '0.75em'}} key={i}>{i + 1}. {error}</li>
+                                ))}
+                            </ul>
+                        </>,
+                        {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                            type: "error"
+                        }
+                    );
+                })
             }
 
             return Promise.reject(error);

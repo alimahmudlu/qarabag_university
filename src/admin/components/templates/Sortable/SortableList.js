@@ -12,7 +12,10 @@ const SortableList = (props) => {
         dataTypes,
         statusOptions,
         handleChange,
-        handleRemove
+        handleRemove,
+
+        toggleWidgetDataTypeModal,
+        widgetDataTypeModal
     } = props
 
     return (
@@ -34,6 +37,9 @@ const SortableList = (props) => {
                         setData={setData}
                         valueErrors={valueErrors}
                         setValueErrors={setValueErrors}
+
+                        toggleWidgetDataTypeModal={toggleWidgetDataTypeModal}
+                        widgetDataTypeModal={widgetDataTypeModal}
                     />
                 )
             })}

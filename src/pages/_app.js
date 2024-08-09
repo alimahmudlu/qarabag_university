@@ -5,6 +5,8 @@ import "@/assets/styles/globals.scss";
 import "@/assets/fonts/sg-icons/style.scss";
 import "@/admin/assets/fonts/sg-admin-icons/style.scss";
 
+import "react-datetime/css/react-datetime.css";
+
 import "@/admin/components/ui/Form/Input/plugins/imageGallery/styles.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

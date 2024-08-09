@@ -298,3 +298,88 @@ body {
 }
 
 .jodit-wysiwyg{height:300px !important}
+
+
+.rdt {
+  width: 100%;
+}
+.rdtPicker {
+  border-color: #E5E5E5;
+}
+.rdtPicker td.rdtToday::before {
+  border-bottom-color: #8b7736;
+}
+.rdtPicker td.rdtActive, .rdtPicker td.rdtActive:hover {
+  background-color: #8b7736;
+}
+.rdtPicker td, .rdtPicker th {
+  font-size: 14px;
+}
+.rdtNext,
+.rdtPrev {
+  font-size: 0 !important;
+}
+.rdtNext::before,
+.rdtPrev::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'sg-icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.rdtNext::before {
+  content: "\e9f2";
+}
+.rdtPrev::before {
+  content: "\e9f3";
+}
+
+.rdtBtn {
+  font-size: 0 !important;
+}
+.rdtBtn::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'sg-icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  content: "\e9ed";
+}
+.rdtCount + .rdtBtn::before {
+  content: "\e9f4";
+}
+.rdtSwitch {
+  cursor: pointer !important;
+}
+.rdtSwitch:hover {
+  background: #eeeeee;
+  cursor: pointer;
+}
