@@ -30,6 +30,7 @@ export default function SgSectionComplexContentBanner(props) {
                                     title={title2}
                                     description={description2}
                                     button={null}
+                                    reverse={true}
                                 />
                             </div>
                         </div>
