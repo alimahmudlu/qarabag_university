@@ -8,7 +8,7 @@ export default function SgPageCollaboratorsInner(props) {
 	const { data = {}} = props;
 	const {id, image, title, status, data_type = {}, content, post_values = []} = data || {};
 	const itemContent = post_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {});
-	console.log(itemContent)
+
 	return (
 		<>
 			<Section>
