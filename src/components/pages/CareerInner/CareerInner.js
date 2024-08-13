@@ -1,8 +1,5 @@
-import {Section, SectionBlock, SectionBody, SectionHead} from "@/components/ui/Section";
-import styles from "@/components/pages/CollaboratorsInner/CareerInner.module.scss"
-import SgCollaboratorsItem from "@/components/ui/CollaboratorsItem";
-import Link from "next/link";
-import {SgIcon} from "@/components/ui/Icon";
+import {Section, SectionBlock, SectionBody} from "@/components/ui/Section";
+import styles from "@/components/pages/CareerInner/CareerInner.module.scss"
 import {SgDetailsBlog} from "@/components/ui/DetailsBlog";
 
 export default function SgPageCareerInner(props) {

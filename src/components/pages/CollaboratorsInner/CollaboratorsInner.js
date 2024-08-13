@@ -1,8 +1,6 @@
-import {Section, SectionBlock, SectionBody, SectionHead} from "@/components/ui/Section";
+import {Section, SectionBlock, SectionBody} from "@/components/ui/Section";
 import styles from "@/components/pages/CollaboratorsInner/Collaborators.module.scss"
 import SgCollaboratorsItem from "@/components/ui/CollaboratorsItem";
-import Link from "next/link";
-import {SgIcon} from "@/components/ui/Icon";
 
 export default function SgPageCollaboratorsInner(props) {
 	const { data = {}} = props;
