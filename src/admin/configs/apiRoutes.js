@@ -44,6 +44,13 @@ export const DATA_TYPE_SHOW_ROUTE = '/admin/data_types'
 export const DATA_TYPE_DELETE_ROUTE = '/admin/data_types'
 
 
+export const SETTINGS_LIST_ROUTE = '/admin/settings?setting_type_id='
+export const SETTINGS_CREATE_ROUTE = '/admin/settings'
+export const SETTINGS_EDIT_ROUTE = '/admin/settings'
+export const SETTINGS_SHOW_ROUTE = '/admin/settings'
+export const SETTINGS_DELETE_ROUTE = '/admin/settings'
+
+
 export const MENU_TYPE_LIST_ROUTE = '/admin/menu_types'
 export const MENU_TYPE_CREATE_ROUTE = '/admin/menu_types'
 export const MENU_TYPE_EDIT_ROUTE = '/admin/menu_types'
