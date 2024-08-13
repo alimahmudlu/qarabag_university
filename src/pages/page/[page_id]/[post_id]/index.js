@@ -10,6 +10,7 @@ import SgSectionEventsBanner from "@/components/sections/EventsBanner";
 import SgSectionEventsContent from "@/components/sections/EventsContent";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 import SgPageCollaboratorsInner from "@/components/pages/CollaboratorsInner";
+import SgPageCareerInner from "@/components/pages/CareerInner/CareerInner";
 
 
 export default function Index(props) {
@@ -72,6 +73,16 @@ export default function Index(props) {
 				return (
 					<>
 						<SgPageCollaboratorsInner
+							data={data}
+						/>
+					</>
+				)
+
+
+			case '4':
+				return (
+					<>
+						<SgPageCareerInner
 							data={data}
 						/>
 					</>
