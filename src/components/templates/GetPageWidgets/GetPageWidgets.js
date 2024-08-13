@@ -453,7 +453,9 @@ export default function SgTemplateGetPageWidgets(props) {
                                     description: item?.content,
                                     list: item?.content?.list
                                 }}
-                                
+                            />
+                        )
+
                     case 'quoteContent':
                         return (
                             <SgSectionComment
