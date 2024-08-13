@@ -20,6 +20,7 @@ import {validate} from "@/admin/utils/validate";
 import {validationConstraints} from "@/admin/constants/constants";
 import Nestable from "react-nestable";
 import {GetMaxId} from "@/admin/utils/getMaxId";
+import makeID from "@/admin/utils/makeID";
 
 
 export default function Index(props) {
@@ -105,7 +106,7 @@ export default function Index(props) {
             setValueErrors(errors)
         }
         else {
-            setData([...data, {...optionsData, id: optionsData.page_id, new: 1}])
+            setData([...data, {...optionsData, token: makeID(6), id: optionsData.page_id, new: 1}])
             setNestableData([...nestableData, {...optionsData, id: optionsData.page_id, new: 1}])
 
             cancelMenuItem();
@@ -129,10 +130,10 @@ export default function Index(props) {
     }
 
     function generateNestable(array) {
-        const ids = array.map((x) => x.page_id);
+        const ids = array.map((x) => x.token);
         const result = array.map((parent) => {
             const children = array.filter((child) => {
-                if (child.page_id !== child.parent?.id && child.parent?.id === parent.page_id) {
+                if (child.token !== child.parent_token && child.parent_token === parent.token) {
                     return true;
                 }
 
@@ -145,7 +146,7 @@ export default function Index(props) {
 
             return parent;
         }).filter((obj) => {
-            if (obj.page_id === obj.parent?.id || !ids.includes(obj.parent?.id)) {
+            if (obj.token === obj.parent_token || !ids.includes(obj.parent_token)) {
                 return true;
             }
 
@@ -157,7 +158,7 @@ export default function Index(props) {
 
     useEffect(() => {
         ApiService.get(`${PAGE_RELATION_LIST_ROUTE}`).then(resp => {
-            const _data = [...resp.data.data.map(elem => ({...elem, new: 0}))];
+            const _data = [...resp.data.data.map(elem => ({...elem, new: 0, parent_token: (resp.data.data || []).find(el => el.page_id === elem.parent_id)?.token}))];
 
             setData(_data);
 
@@ -242,7 +243,7 @@ export default function Index(props) {
                         </div>
                         <div className='col-lg-8'>
                             <Nestable
-                                idProp='page_id'
+                                idProp='token'
                                 items={nestableData}
                                 renderItem={({ item }) => {
                                     return (
