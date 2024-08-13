@@ -18,6 +18,7 @@ import SgSectionTabContent from "@/components/sections/TabContent";
 import SgSectionTabLinkContent from "@/components/sections/TabLinkContent";
 import SgSectionContent from "@/components/sections/Content";
 import SgSectionApplyContent from "@/components/sections/ApplyContent";
+import SgSectionComment from "@/components/sections/Comment";
 import SgSectionTableContent from "@/components/sections/TableContent";
 
 export default function SgTemplateGetPageWidgets(props) {
@@ -398,7 +399,6 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'content':
                         return (
                             <SgSectionContent
-                                reverse={!!itemContent?.imagePositionRightSide?.value}
                                 style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
                                 key={index}
                                 id={`content__${item.id}`}
@@ -434,6 +434,23 @@ export default function SgTemplateGetPageWidgets(props) {
                                         path: itemContent?.applyButtonUrl?.value,
                                     } : {}
                                 }}
+                            />
+                        );
+
+                    case 'quoteContent':
+                        return (
+                            <SgSectionComment
+                                    style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
+                                    key={index}
+                                    id={`applyContent__${item.id}`}
+                                    mainData={item}
+                                    page_id={page_id}
+                                    data={{
+                                        name: itemContent?.name?.value,
+                                        description: itemContent?.description?.value,
+                                        image: itemContent?.image?.value,
+                                        position: itemContent?.position?.value
+                                    }}
                             />
                         );
                 }

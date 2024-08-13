@@ -18,15 +18,15 @@ export default function SgComment(props) {
             <div className={[styles['sg--comment']].join(' ').trim()}>
                 <div className={[styles['sg--comment-image']].join(' ').trim()}>
                     <Image
+                        width={1000}
+                        height={1000}
                         src={image}
                         alt={description}
                         className={[styles['sg--comment-image--img']].join(' ').trim()}
                     />
                 </div>
                 <div className={[styles['sg--comment-content']].join(' ').trim()}>
-                    <p className={[styles['sg--comment-content--description']].join(' ').trim()}>
-                        {description}
-                    </p>
+                    <p className={[styles['sg--comment-content--description']].join(' ').trim()} dangerouslySetInnerHTML={{ __html: description }} />
                     <div className={[styles['sg--comment-content-person']].join(' ').trim()}>
                         <div className={[styles['sg--comment-content-person--name']].join(' ').trim()}>
                             {fullName}
