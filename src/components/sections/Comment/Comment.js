@@ -1,10 +1,10 @@
-import SgContent from "@/components/ui/Content";
-import {Section, SectionBlock, SectionBody} from "@/components/ui/Section";
-import {useEffect, useRef, useState} from "react";
+import {Section, SectionBlock} from "@/components/ui/Section";
+import {SgComment} from "@/components/ui/Comment";
 
-export default function SgSectionContent(props) {
+export default function SgSectionComment(props) {
     const {id, data, style} = props;
-    const {image, title, description, button = {}} = data;
+    const {image, name, description, position} = data;
+
     return (
         <>
             <Section
@@ -13,11 +13,11 @@ export default function SgSectionContent(props) {
                 containerType={"container"}
             >
                 <SectionBlock>
-                    <SgContent
+                    <SgComment
                         image={image}
-                        title={title}
                         description={description}
-                        button={button}
+                        fullName={name}
+                        position={position}
                     />
                 </SectionBlock>
             </Section>

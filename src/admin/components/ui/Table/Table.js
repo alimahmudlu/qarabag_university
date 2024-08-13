@@ -43,6 +43,7 @@ export default function SgTable(props) {
     const [data, setData] = useState([]);
     const [hoverItemIndex, setHoverItemIndex] = useState('');
 
+    console.log(tableData)
     function changePage(type) {
         switch (type) {
             case ('prev'):

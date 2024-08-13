@@ -117,27 +117,27 @@ export default function SiteLayout(props) {
                         social={[
                             {
                                 title: 'Facebook',
-                                path: 'https://www.facebook.com/',
+                                path: 'https://www.facebook.com/garabagh.eduaz/',
                                 icon: 'fb_fill_n'
                             },
                             {
                                 title: 'Instagram',
-                                path: 'https://www.instagram.com/',
+                                path: 'https://www.instagram.com/karabakheduaz/',
                                 icon: 'insta_fill_n'
                             },
                             {
-                                title: 'Whatsapp',
-                                path: 'https://www.whatsapp.com/',
-                                icon: 'wp'
+                                title: 'X',
+                                path: 'https://x.com/karabakheduaz',
+                                icon: 'x'
                             },
                             {
                                 title: 'Telegram',
-                                path: 'https://www.telegram.com/',
+                                path: 'https://t.me/garabagh_university',
                                 icon: 'tg'
                             },
                             {
                                 title: 'Linkedin',
-                                path: 'https://www.linkedin.com/in/',
+                                path: 'https://www.linkedin.com/company/karabakheduaz/',
                                 icon: 'linkedin'
                             },
                         ]}

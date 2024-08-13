@@ -19,6 +19,8 @@ import SgSectionTabLinkContent from "@/components/sections/TabLinkContent";
 import SgSectionContent from "@/components/sections/Content";
 import SgSectionApplyContent from "@/components/sections/ApplyContent";
 import SgSectionVacancyList from "@/components/sections/VacancyList";
+import SgSectionComment from "@/components/sections/Comment";
+import SgSectionTableContent from "@/components/sections/TableContent";
 
 export default function SgTemplateGetPageWidgets(props) {
     const {page_widgets, page_id, firstSectionPadding = false} = props;
@@ -92,6 +94,21 @@ export default function SgTemplateGetPageWidgets(props) {
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
+                                mainData={item}
+                                page_id={item?.data_type?.main_page_id || page_id}
+                                data={{
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.description
+                                }}
+                            />
+                        )
+                    case 'tableContent':
+                        return (
+                            <SgSectionTableContent
+                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                key={index}
+                                id={`tableContent__${item.id}`}
                                 mainData={item}
                                 page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
@@ -383,7 +400,6 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'content':
                         return (
                             <SgSectionContent
-                                reverse={!!itemContent?.imagePositionRightSide?.value}
                                 style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
                                 key={index}
                                 id={`content__${item.id}`}
@@ -437,6 +453,21 @@ export default function SgTemplateGetPageWidgets(props) {
                                     description: item?.content,
                                     list: item?.content?.list
                                 }}
+                                
+                    case 'quoteContent':
+                        return (
+                            <SgSectionComment
+                                    style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
+                                    key={index}
+                                    id={`applyContent__${item.id}`}
+                                    mainData={item}
+                                    page_id={page_id}
+                                    data={{
+                                        name: itemContent?.name?.value,
+                                        description: itemContent?.description?.value,
+                                        image: itemContent?.image?.value,
+                                        position: itemContent?.position?.value
+                                    }}
                             />
                         );
                 }
