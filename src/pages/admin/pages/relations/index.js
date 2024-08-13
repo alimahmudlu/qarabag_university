@@ -65,12 +65,12 @@ export default function Index(props) {
 
     let newData = [];
 
-    const nestableItem = (datas, parentId, i) => {
+    const nestableItem = (datas, parentToken, i) => {
         let object = {...datas};
         delete object.children;
-        object.parent_id = parentId
+        object.parent_token = parentToken
         object.row = i + 1
-        const ids = object.page_id
+        const ids = object.token
 
         newData = [...newData, object];
 
@@ -106,8 +106,9 @@ export default function Index(props) {
             setValueErrors(errors)
         }
         else {
-            setData([...data, {...optionsData, token: makeID(6), id: optionsData.page_id, new: 1}])
-            setNestableData([...nestableData, {...optionsData, id: optionsData.page_id, new: 1}])
+            const newToken = makeID(6)
+            setData([...data, {...optionsData, token: newToken, id: optionsData.page_id, new: 1}])
+            setNestableData([...nestableData, {...optionsData, token: newToken, id: optionsData.page_id, new: 1}])
 
             cancelMenuItem();
         }
