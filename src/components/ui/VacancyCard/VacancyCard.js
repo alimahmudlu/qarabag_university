@@ -12,7 +12,7 @@ import {SgButton} from "@/components/ui/Button";
 import {SgIcon} from "@/components/ui/Icon";
 
 export default function SgVacancyCard(props) {
-    const {header, workTime, location, deadline} = props;
+    const {header, workTime, location, deadline, path} = props;
 
     return(
         <>
@@ -27,6 +27,8 @@ export default function SgVacancyCard(props) {
                             icon='arrow-up-right'
                             reverse={true}
                             block={true}
+                            type='link'
+                            to={path}
                         >
                             Daha ətraflı
                         </SgButton>

@@ -18,6 +18,7 @@ import SgSectionTabContent from "@/components/sections/TabContent";
 import SgSectionTabLinkContent from "@/components/sections/TabLinkContent";
 import SgSectionContent from "@/components/sections/Content";
 import SgSectionApplyContent from "@/components/sections/ApplyContent";
+import SgSectionVacancyList from "@/components/sections/VacancyList";
 
 export default function SgTemplateGetPageWidgets(props) {
     const {page_widgets, page_id, firstSectionPadding = false} = props;
@@ -417,6 +418,24 @@ export default function SgTemplateGetPageWidgets(props) {
                                         name: itemContent?.applyButtonText?.value,
                                         path: itemContent?.applyButtonUrl?.value,
                                     } : {}
+                                }}
+                            />
+                        );
+
+                    case 'vacancyListBanner':
+                        return (
+                            <SgSectionVacancyList
+                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                key={index}
+                                id={`contentBanner__${item.id}`}
+                                mainData={item}
+                                page_id={item?.data_type?.main_page_id || page_id}
+                                data={{
+                                    filter: item?.content?.filter,
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.content,
+                                    list: item?.content?.list
                                 }}
                             />
                         );
