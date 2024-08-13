@@ -100,16 +100,6 @@ export default function Index(props) {
                                 isInvalid={errors.remember}
                             />
                         </SgCheckboxGroup>
-                        <SgButton
-                            type='link'
-                            isLinked={true}
-                            to='/forgot-password'
-                            color='primary-outline'
-                            withOutBlock={true}
-                            size='sm'
-                        >
-                            Forgot password
-                        </SgButton>
                     </SgButtonGroup>
                 </SgFormGroup>
                 <SgFormGroup>
@@ -120,24 +110,6 @@ export default function Index(props) {
                     >
                         Sign in
                     </SgButton>
-                </SgFormGroup>
-                <SgFormGroup>
-                    <SgButtonGroup
-                        gap={true}
-                    >
-                        Don’t have an account?
-
-                        <SgButton
-                            type='link'
-                            isLinked={true}
-                            to='/sign-up'
-                            color='primary-outline'
-                            withOutBlock={true}
-                            size='sm'
-                        >
-                            Sign up
-                        </SgButton>
-                    </SgButtonGroup>
                 </SgFormGroup>
             </SgSectionAuth>
         </>
