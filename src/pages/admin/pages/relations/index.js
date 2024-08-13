@@ -65,17 +65,19 @@ export default function Index(props) {
 
     let newData = [];
 
-    const nestableItem = (datas, parentToken, i) => {
+    const nestableItem = (datas, parentId, parentToken, i) => {
         let object = {...datas};
         delete object.children;
+        object.parent_id = parentId
         object.parent_token = parentToken
         object.row = i + 1
-        const ids = object.token
+        const ids = object.page_id
+        const tks = object.token
 
         newData = [...newData, object];
 
         (datas.children || []).map((item, index) => {
-            nestableItem(item, ids, index)
+            nestableItem(item, ids, tks, index)
         })
     }
 
@@ -83,7 +85,7 @@ export default function Index(props) {
         e.preventDefault();
 
         nestableData.map((item, index) => {
-            nestableItem(item, null, index)
+            nestableItem(item, null, null, index)
         })
 
         ApiService.post(`${PAGE_RELATION_SAVE_ROUTE}`, {
@@ -106,7 +108,7 @@ export default function Index(props) {
             setValueErrors(errors)
         }
         else {
-            const newToken = makeID(6)
+            const newToken = makeID(6);
             setData([...data, {...optionsData, token: newToken, id: optionsData.page_id, new: 1}])
             setNestableData([...nestableData, {...optionsData, token: newToken, id: optionsData.page_id, new: 1}])
 
@@ -122,7 +124,7 @@ export default function Index(props) {
     function handleRemoveMenuItem(item) {
         let array = data;
 
-        let index = array.indexOf(array.find(el => el.id === item.id));
+        let index = array.indexOf(array.find(el => el.token === item.token));
 
         array.splice(index, 1);
 
@@ -266,7 +268,7 @@ export default function Index(props) {
                                 onChange={({items, dragItem, targetPath}) => {
                                     setNestableData(items)
                                 }}
-                                maxDepth={4}
+                                maxDepth={2}
                             />
                         </div>
                     </div>
