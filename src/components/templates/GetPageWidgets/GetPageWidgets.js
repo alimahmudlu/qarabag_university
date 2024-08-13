@@ -18,8 +18,8 @@ import SgSectionTabContent from "@/components/sections/TabContent";
 import SgSectionTabLinkContent from "@/components/sections/TabLinkContent";
 import SgSectionContent from "@/components/sections/Content";
 import SgSectionApplyContent from "@/components/sections/ApplyContent";
-import {SgComment} from "@/components/ui/Comment";
 import SgSectionComment from "@/components/sections/Comment";
+import SgSectionTableContent from "@/components/sections/TableContent";
 
 export default function SgTemplateGetPageWidgets(props) {
     const {page_widgets, page_id, firstSectionPadding = false} = props;
@@ -93,6 +93,21 @@ export default function SgTemplateGetPageWidgets(props) {
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
+                                mainData={item}
+                                page_id={item?.data_type?.main_page_id || page_id}
+                                data={{
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.description
+                                }}
+                            />
+                        )
+                    case 'tableContent':
+                        return (
+                            <SgSectionTableContent
+                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                key={index}
+                                id={`tableContent__${item.id}`}
                                 mainData={item}
                                 page_id={item?.data_type?.main_page_id || page_id}
                                 data={{

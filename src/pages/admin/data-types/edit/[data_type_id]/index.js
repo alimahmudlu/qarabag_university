@@ -44,6 +44,10 @@ export default function Index(props) {
         {
             id: 3,
             name: 'Collaborator'
+        },
+        {
+            id: 4,
+            name: 'Career'
         }
     ]);
     const { query } = useRouter();
