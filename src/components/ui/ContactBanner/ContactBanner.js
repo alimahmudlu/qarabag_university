@@ -34,9 +34,8 @@ export default function SgContactBanner(props) {
                 </div>
                 <div className={[styles['sg--contactBanner-body']].join(' ').trim()}>
                     <div className={[styles['sg--contactBanner-body-content']].join(' ').trim()}>
-                        <p className={[styles['sg--contactBanner-body-content--description']].join(' ').trim()}>
-                            {description}
-                        </p>
+                        <p className={[styles['sg--contactBanner-body-content--description']].join(' ').trim()}
+                             dangerouslySetInnerHTML={{__html: description}}/>
                     </div>
                     <div className={[styles['sg--contactBanner-body-links']].join(' ').trim()}>
                         {
