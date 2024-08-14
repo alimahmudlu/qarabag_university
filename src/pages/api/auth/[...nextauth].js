@@ -28,7 +28,8 @@ export default NextAuth({
                     body: JSON.stringify(payload),
                     headers: {
                         'Content-Type': 'application/json',
-                        'Content-Language': 'az'
+                        'Content-Language': 'az',
+                        'Signature': 'KarabakhIsAzerbaijan'
                     },
                 })
 
