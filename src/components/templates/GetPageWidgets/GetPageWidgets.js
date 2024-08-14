@@ -21,6 +21,7 @@ import SgSectionApplyContent from "@/components/sections/ApplyContent";
 import SgSectionVacancyList from "@/components/sections/VacancyList";
 import SgSectionComment from "@/components/sections/Comment";
 import SgSectionTableContent from "@/components/sections/TableContent";
+import SgSectionContactBanner from "@/components/sections/ContactBanner";
 
 export default function SgTemplateGetPageWidgets(props) {
     const {page_widgets, page_id, firstSectionPadding = false} = props;
@@ -434,6 +435,21 @@ export default function SgTemplateGetPageWidgets(props) {
                                         name: itemContent?.applyButtonText?.value,
                                         path: itemContent?.applyButtonUrl?.value,
                                     } : {}
+                                }}
+                            />
+                        );
+                    case 'contactBanner':
+                        return (
+                            <SgSectionContactBanner
+                                key={index}
+                                id={`contactBanner__${item.id}`}
+                                mainData={item}
+                                page_id={item?.data_type?.main_page_id || page_id}
+                                data={{
+                                    title: itemContent?.title?.value,
+                                    description: itemContent?.description?.value,
+                                    email: itemContent?.email?.value,
+                                    phone: itemContent?.phone?.value,
                                 }}
                             />
                         );
