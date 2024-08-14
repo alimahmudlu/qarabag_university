@@ -29,24 +29,29 @@ export default function Index(props) {
         <>
             <div className='row gap-y-[16px]'>
                 {(settingsTypeList || []).map((item, index) => {
+                    const {id, title, alias, translate} = item || {};
+                    const mainLanguageLocale = (languageList || []).find((lang, i) => lang.main)?.locale || 'az'
+
                     return (
                         <div key={index} className='col-lg-4'>
                             <DashboardItem
-                                header='Site Meta'
-                                description='Site Meta description'
-                                path='/admin/settings/1'
-                                list={[
-                                    {
+                                header={title}
+                                description={`Edit '${title}' configurations`}
+                                path={`/admin/settings/${id}/${mainLanguageLocale}`}
+                                list={translate ?
+                                    (languageList || []).map((lang, i) => ({
+                                        row: i,
+                                        name: lang?.locale,
+                                        path: `/admin/settings/${id}/${lang?.locale}`,
+                                    }))
+                                    :
+                                    [{
                                         name: 'List',
-                                        path: '/admin/pages',
-                                    },
-                                    {
-                                        name: 'List',
-                                        path: '/admin/pages',
-                                    }
-                                ]}
-                                length={12}
+                                        path: `/admin/settings/${id}/${mainLanguageLocale}`,
+                                    }]
+                                }
                             />
+
                         </div>
                     )
                 })}
