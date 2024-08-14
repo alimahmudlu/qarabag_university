@@ -22,7 +22,7 @@ export default function SgSectionTabLinkContent( props ) {
         }).catch((error) => {
             console.log(error)
         })
-    }, []);
+    }, [page_id]);
 
 
     return (
@@ -38,8 +38,8 @@ export default function SgSectionTabLinkContent( props ) {
                                     return (
                                         <SgTabItem
                                             key={index}
-                                            path={`/page/${item.id}`}
-                                            title={item.title}
+                                            path={`/page/${item?.page?.id}`}
+                                            title={item?.page?.title}
                                         />
                                     )
                                 })}
