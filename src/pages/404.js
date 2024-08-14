@@ -5,7 +5,7 @@ export default function Index() {
 	return (
 		<>
 			<div className='p-[150px]'>
-				<Link href='/'>40aasasas4 - Page Not Found</Link>
+				<Link href='/'>lol ferid - Page Not Found</Link>
 			</div>
 		</>
 	)
