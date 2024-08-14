@@ -34,7 +34,7 @@ export default function SgNewsItem(props) {
                     >
                         <div className={[styles['sg--newsItem-head-image']].join(' ').trim()}>
                             <Image width='1000' height='1000'
-                                src={image}
+                                src={image || ''}
                                 alt={header}
                                 className={[styles['sg--newsItem-head-image--img']].join(' ').trim()}
                             />

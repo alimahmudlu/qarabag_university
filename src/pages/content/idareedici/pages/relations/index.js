@@ -205,7 +205,7 @@ export default function Index(props) {
                                     label="Item"
                                     placeholder="Item"
                                     variant='select'
-                                    options={itemsOptions}
+                                    options={(itemsOptions || []).map(el => ({...el, name: `${el?.name}${el?.short_description? `- (${el?.short_description})` : ''}`}))}
                                     data_extraarraykey={`name`}
                                     value={optionsData.page_id || ''}
                                     searchAble={true}

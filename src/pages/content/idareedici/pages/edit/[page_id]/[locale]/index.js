@@ -311,18 +311,6 @@ export default function Index(props) {
                             </SgFormGroup>
                             <SgFormGroup>
                                 <SgInput
-                                    name='innerPageTemplate'
-                                    id='innerPageTemplate'
-                                    placeholder='Enter your inner page template'
-                                    label='Inner page template'
-                                    value={data.innerPageTemplate || ''}
-                                    onChange={handleChange}
-                                    variant='select'
-                                    options={innerPageTemplateOptions}
-                                />
-                            </SgFormGroup>
-                            <SgFormGroup>
-                                <SgInput
                                     name='status'
                                     id='status'
                                     placeholder='Enter status'

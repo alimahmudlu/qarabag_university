@@ -30,7 +30,7 @@ export default function SgNewsSliderItem(props) {
                         >
                             <div className={[styles['sg--newsSliderItem-block-image']].join(' ').trim()}>
                                 <Image
-                                    src={image}
+                                    src={image || ''}
                                     alt={header}
                                     width={1000}
                                     height={1000}

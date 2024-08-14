@@ -439,7 +439,7 @@ export default function SgInput(props) {
                         />
                     </div>}
                     <div className={[styles["inner"], styles["show"], "inner show"].join(' ').trim()}>
-                        <ul className={[styles['dropdown-menu'], styles['inner'], styles['show'], 'dropdown-menu inner show']}>
+                        <ul className={[styles['dropdown-menu'], styles['inner'], styles['show'], 'dropdown-menu inner show'].join(' ').trim()}>
                             {filteredOptions.length ? (
                                     <>
                                         <li

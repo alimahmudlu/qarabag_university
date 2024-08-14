@@ -68,7 +68,7 @@ export default function SgSideBarMenuItem(props) {
                                         {(item.children || []).map((el, index) =>
                                             <SgSideBarMenuItem
                                                 key={index}
-                                                item={{...el, path: `/admin${el.path}`}}
+                                                item={{...el, path: `/content/idareedici${el.path}`}}
                                             />
                                         )}
                                     </div>
