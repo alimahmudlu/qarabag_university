@@ -64,20 +64,19 @@ export default function Index(props) {
     }
 
     let newData = [];
-
-    const nestableItem = (datas, parentId, parentToken, i) => {
+    const nestableItem = (datas, urlId, parentId, i) => {
         let object = {...datas};
         delete object.children;
-        object.parent_id = parentId
-        object.parent_token = parentToken
-        object.row = i + 1
-        const ids = object.page_id
-        const tks = object.token
+        object.url_id = urlId;
+        object.parent_id = parentId;
+        object.row = i + 1;
+        const ids = object.id;
+        const pds = object.page_id;
 
         newData = [...newData, object];
 
         (datas.children || []).map((item, index) => {
-            nestableItem(item, ids, tks, index)
+            nestableItem(item, ids, pds, index)
         })
     }
 
@@ -108,9 +107,9 @@ export default function Index(props) {
             setValueErrors(errors)
         }
         else {
-            const newToken = makeID(6);
-            setData([...data, {...optionsData, token: newToken, id: optionsData.page_id, new: 1}])
-            setNestableData([...nestableData, {...optionsData, token: newToken, id: optionsData.page_id, new: 1}])
+            console.log({...optionsData, id: GetMaxId(data, 'id') + 1, new: 1})
+            setData([...data, {...optionsData, id: GetMaxId(data, 'id') + 1, new: 1}])
+            setNestableData([...nestableData, {...optionsData, id: GetMaxId(data, 'id') + 1, new: 1}])
 
             cancelMenuItem();
         }
@@ -124,7 +123,7 @@ export default function Index(props) {
     function handleRemoveMenuItem(item) {
         let array = data;
 
-        let index = array.indexOf(array.find(el => el.token === item.token));
+        let index = array.indexOf(array.find(el => el.id === item.id));
 
         array.splice(index, 1);
 
@@ -133,10 +132,10 @@ export default function Index(props) {
     }
 
     function generateNestable(array) {
-        const ids = array.map((x) => x.token);
+        const ids = array.map((x) => x.id);
         const result = array.map((parent) => {
             const children = array.filter((child) => {
-                if (child.token !== child.parent_token && child.parent_token === parent.token) {
+                if (child.id !== child.url_id && child.url_id === parent.id) {
                     return true;
                 }
 
@@ -149,7 +148,7 @@ export default function Index(props) {
 
             return parent;
         }).filter((obj) => {
-            if (obj.token === obj.parent_token || !ids.includes(obj.parent_token)) {
+            if (obj.id === obj.url_id || !ids.includes(obj.url_id)) {
                 return true;
             }
 
@@ -161,7 +160,7 @@ export default function Index(props) {
 
     useEffect(() => {
         ApiService.get(`${PAGE_RELATION_LIST_ROUTE}`).then(resp => {
-            const _data = [...resp.data.data.map(elem => ({...elem, new: 0, parent_token: (resp.data.data || []).find(el => el.page_id === elem.parent_id)?.token}))];
+            const _data = [...resp.data.data.map(elem => ({...elem, new: 0}))];
 
             setData(_data);
 
@@ -246,7 +245,7 @@ export default function Index(props) {
                         </div>
                         <div className='col-lg-8'>
                             <Nestable
-                                idProp='token'
+                                idProp='id'
                                 items={nestableData}
                                 renderItem={({ item }) => {
                                     return (
