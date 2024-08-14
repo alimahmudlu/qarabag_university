@@ -2,6 +2,7 @@ import {SiteLayout} from "@/components/layouts";
 import Link from "next/link";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 import SgSectionMainHero from "@/components/sections/MainHero";
+import SgPageError from "@/components/pages/ErrorPage";
 
 export default function Index() {
 	return (
@@ -20,9 +21,12 @@ export default function Index() {
 				breadcrumb={[]}
 			/>
 
-			<div className='p-[150px]'>
-				<Link href='/'>ERROR</Link>
-			</div>
+
+			<SgPageError
+				header='Xəta baş verdi'
+				mainHeader='500'
+				description={`Üzr istəyirik, gözlənilməz xəta baş verdi. <a href='/'>Əsas səhifəyə</a> geri dönün.`}
+			/>
 		</>
 	)
 }

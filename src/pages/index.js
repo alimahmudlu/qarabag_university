@@ -13,11 +13,11 @@ export default function Index(props) {
 
 export const getServerSideProps = async (context) => {
     try {
-        const pageData = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/27`)
+        const pageData = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/1`)
         return {
             props: {
                 pageData: pageData.data.data,
-                page_id: 27
+                page_id: 1
             }
         }
     }
@@ -29,7 +29,7 @@ export const getServerSideProps = async (context) => {
             },
             props: {
                 pageData: [],
-                page_id: 27
+                page_id: 1
             }
         };
     }
