@@ -2,6 +2,7 @@ import {SiteLayout} from "@/components/layouts";
 import Link from "next/link";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 import SgSectionMainHero from "@/components/sections/MainHero";
+import SgPageError from "@/components/pages/ErrorPage";
 
 export default function Index() {
 	return (
@@ -18,9 +19,11 @@ export default function Index() {
 				header={''}
 				breadcrumb={[]}
 			/>
-			<div className='p-[150px]'>
-				<Link href='/'>lol ferid - Page Not Found</Link>
-			</div>
+			<SgPageError
+				header='Səhifə tapılmadı'
+				mainHeader='404'
+				description={`Üzr istəyirik, bu səhifə mövcud deyil. <a href='/'>Əsas səhifəyə</a> geri dönün.`}
+			/>
 		</>
 	)
 }
