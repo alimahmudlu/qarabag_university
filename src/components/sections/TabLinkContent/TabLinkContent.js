@@ -9,51 +9,12 @@ import GetPage from "@/pages/page/[page_id]";
 import SgTemplateGetPageWidgets from "@/components/templates/GetPageWidgets/GetPageWidgets";
 import SgTabItem from "@/components/ui/TabItem";
 import {useRouter} from "next/router";
+import SgSectionContent from "@/components/sections/Content";
 
 export default function SgSectionTabLinkContent( props ) {
     const {id, data, style, mainData, page_id} = props;
     const {image, title, description, filter = true, list = [], morePath} = data;
-    const [postList, setPostList] = useState([])
     const [pageList, setPageList] = useState([])
-
-    const [page, setPage] = useState(1);
-    const [perPage, setPerPage] = useState(mainData?.pagination_limit || 10);
-    const [lastPage, setLastPage] = useState(1);
-
-    const [ userFilters, setUserFilters ] = useState({})
-    const [ errors, setErrors ] = useState({})
-
-    function setUserFilterFn(e) {
-        changeData(e, userFilters, setUserFilters, errors, setErrors)
-    }
-
-    const filterHandle = () => {
-        setPage(1)
-    }
-
-    function handleChangePage() {
-        setPage(page + 1)
-    }
-
-    useEffect(() => {
-        ApiService.get(`${SITE_POST_LIST_ROUTE}/${mainData?.data_type_id}/data_type`, {
-            params: {
-                page: page,
-                per_page: perPage,
-                ...userFilters,
-            },
-        }).then((response) => {
-            if (page !== 1) {
-                setPostList([...postList, ...response.data.data.data])
-            }
-            else {
-                setPostList([...response.data.data.data])
-            }
-            setLastPage(response.data.data.last_page)
-        }).catch((error) => {
-            console.log(error)
-        })
-    }, [page]);
 
     useEffect(() => {
         ApiService.get(`${SITE_PAGE_CHILDREN_PAGES_LIST_ROUTE}/${page_id}/parent`).then(response => {
@@ -70,9 +31,6 @@ export default function SgSectionTabLinkContent( props ) {
                 id={id}
             >
                 <SectionBlock>
-                    <SectionHead
-                        header={title}
-                    />
                     <SectionBody>
                         <div className='row'>
                             <div className='col-lg-4'>
@@ -87,18 +45,17 @@ export default function SgSectionTabLinkContent( props ) {
                                 })}
                             </div>
                             <div className='col-lg-8'>
-                                {(pageList || []).map((item, index) => {
-                                    return (
-                                        <div key={index} id={`tabContent--${index}--${item.id}`}>
-                                            <SgTemplateGetPageWidgets
-                                                page_widgets={item?.page_widgets}
-                                                page_id={page_id}
-                                                firstSectionPadding={true}
-                                                key={index}
-                                            />
-                                        </div>
-                                    )
-                                })}
+                                <SgSectionContent
+                                    style={{backgroundColor: '', paddingTop: 0}}
+                                    id={`content__${page_id}`}
+                                    mainData={mainData}
+                                    page_id={page_id}
+                                    data={{
+                                        title: title || '',
+                                        description: description || '',
+                                        button: {}
+                                    }}
+                                />
                             </div>
                         </div>
                     </SectionBody>

@@ -16,6 +16,24 @@ const nextConfig = {
         port: '',
         pathname: '/uploads/**',
       },
+      {
+        protocol: 'http',
+        hostname: 'preview.karabakh.edu.az',
+        port: '',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'http',
+        hostname: '192.168.140.46',
+        port: '',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'http',
+        hostname: '192.168.140.46',
+        port: ':8080',
+        pathname: '/uploads/**',
+      },
     ]
   },
 };

@@ -81,7 +81,7 @@ export default function SiteLayout(props) {
                     />
                     {children}
                     <SgTemplateFooter
-                        menus={((menus || []).find(el => el.alias === 'header')?.menu_items || []).map(el => ({
+                        menus={((menus || []).find(el => el.alias === 'footer')?.menu_items || []).map(el => ({
                             header: el.name,
                             list: el?.children,
                         }))}
@@ -117,27 +117,27 @@ export default function SiteLayout(props) {
                         social={[
                             {
                                 title: 'Facebook',
-                                path: 'https://www.facebook.com/',
-                                icon: 'facebook'
+                                path: 'https://www.facebook.com/garabagh.eduaz/',
+                                icon: 'fb_fill_n'
                             },
                             {
                                 title: 'Instagram',
-                                path: 'https://www.instagram.com/',
-                                icon: 'instagram'
+                                path: 'https://www.instagram.com/karabakheduaz/',
+                                icon: 'insta_fill_n'
                             },
                             {
-                                title: 'Whatsapp',
-                                path: 'https://www.whatsapp.com/',
-                                icon: 'whatsapp'
+                                title: 'X',
+                                path: 'https://x.com/karabakheduaz',
+                                icon: 'x'
                             },
                             {
                                 title: 'Telegram',
-                                path: 'https://www.telegram.com/',
-                                icon: 'telegram'
+                                path: 'https://t.me/garabagh_university',
+                                icon: 'tg'
                             },
                             {
                                 title: 'Linkedin',
-                                path: 'https://www.linkedin.com/in/',
+                                path: 'https://www.linkedin.com/company/karabakheduaz/',
                                 icon: 'linkedin'
                             },
                         ]}

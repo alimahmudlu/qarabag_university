@@ -17,8 +17,11 @@ import { SessionProvider } from 'next-auth/react';
 
 import ApiService from "@/services/ApiService";
 import {ToastContainer} from "react-toastify";
-import {SITE_LANGUAGE_LIST_ROUTE, SITE_MENU_TYPE_LIST_ROUTE} from "@/configs/apiRoutes";
-import {menus} from "@/data";
+import {
+    SITE_LANGUAGE_LIST_ROUTE,
+    SITE_MENU_TYPE_LIST_ROUTE,
+    SITE_SETTINGS_LIST_WITH_TYPES_ROUTE
+} from "@/configs/apiRoutes";
 
 Site_App.getInitialProps = async (props) => {
     const initialProps = await App.getInitialProps(props)
@@ -54,18 +57,21 @@ Site_App.getInitialProps = async (props) => {
         const menus = await ApiService.get(SITE_MENU_TYPE_LIST_ROUTE);
         const newMenu = (menus.data.data || []).map((item) => ({...item, menu_items: generateNestable(item?.menu_items)}));
         const languages = await ApiService.get(SITE_LANGUAGE_LIST_ROUTE)
+        const settings = await ApiService.get(SITE_SETTINGS_LIST_WITH_TYPES_ROUTE)
 
         return {
             ...initialProps,
             menus: newMenu,
             languages: languages.data.data,
+            settings: settings.data.data,
         }
     }
     catch (error) {
         return {
             ...initialProps,
             menus: {},
-            languages: []
+            languages: [],
+            settings: []
         }
     }
 }

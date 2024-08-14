@@ -17,9 +17,9 @@ export default function SgPrincipleList(props) {
 							<div className={[styles["sg--principleList-item--header"]].join(' ').trim()}>
 								{title}
 							</div>
-							<div className={[styles["sg--principleList-item--description"]].join(' ').trim()}>
-								{content}
-							</div>
+							<div className={[styles['sg--principleList-item--description']].join(' ').trim()}
+								 dangerouslySetInnerHTML={{__html: content}}
+							/>
 						</div>
 					)
 				})}

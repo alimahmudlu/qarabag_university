@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?er8c3l');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?er8c3l#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?er8c3l') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?er8c3l') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?er8c3l##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?5338s8');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?5338s8#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?5338s8') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?5338s8') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?5338s8##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,6 +27,36 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.sg-icon-wp {
+  &:before {
+    content: $sg-icon-wp; 
+  }
+}
+.sg-icon-images {
+  &:before {
+    content: $sg-icon-images; 
+  }
+}
+.sg-icon-calendar_solid_2 {
+  &:before {
+    content: $sg-icon-calendar_solid_2; 
+  }
+}
+.sg-icon-linkedin {
+  &:before {
+    content: $sg-icon-linkedin; 
+  }
+}
+.sg-icon-insta_fill_n {
+  &:before {
+    content: $sg-icon-insta_fill_n; 
+  }
+}
+.sg-icon-fb_fill_n {
+  &:before {
+    content: $sg-icon-fb_fill_n; 
+  }
+}
 .sg-icon-awards {
   &:before {
     content: $sg-icon-awards; 
@@ -1589,8 +1619,7 @@
 }
 .sg-icon-tg {
   &:before {
-    content: $sg-icon-tg;     
-    color: #707070;
+    content: $sg-icon-tg; 
   }
 }
 .sg-icon-tg_circle {
@@ -1668,9 +1697,9 @@
     content: $sg-icon-instagram_circle; 
   }
 }
-.sg-icon-linkedin {
+.sg-icon-linkedin2 {
   &:before {
-    content: $sg-icon-linkedin; 
+    content: $sg-icon-linkedin2; 
   }
 }
 .sg-icon-linkedin_circle {

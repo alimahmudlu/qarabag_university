@@ -12,6 +12,7 @@ let originalConfig = {url: ''};
 
 ApiService.interceptors.request.use(
     async (config) => {
+        config.headers['Signature'] = 'KarabakhIsAzerbaijan';
         if (!config.headers['Content-Language']) {
             if (typeof window !== 'undefined' && window.localStorage && localStorage.getItem('language')) {
                 config.headers['Content-Language'] = localStorage.getItem('language');

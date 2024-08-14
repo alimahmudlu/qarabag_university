@@ -2,6 +2,13 @@
 <project version="4">
   <component name="PublishConfigData" serverName="livechat" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
+      <paths name="karabagh_preview">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="karabagh_testedumedia">
         <serverdata>
           <mappings>
@@ -10,6 +17,13 @@
         </serverdata>
       </paths>
       <paths name="livechat">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="tsii_test">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

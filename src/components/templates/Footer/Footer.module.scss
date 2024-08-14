@@ -210,22 +210,27 @@
                     &-menu {
                         flex-direction: row;
                         flex-wrap: wrap;
+                        justify-content: center;
                         align-items: flex-start;
                         gap: 46px;
 
                         &-item {
                             gap: 16px;
                             width: 100%;
-                            flex: 1 0 calc(50% - 23px);
+                            flex: 1 0 100%;
                             max-width: unset;
+                            align-items: center;
+                            text-align: center;
 
                             &--header {
-                                font-size: 20px;
+                                font-size: 16px;
                                 line-height: 24px; /* 120% */
                             }
 
                             &-list {
-                                gap: 10px;
+                                gap: 12px;
+                                align-items: center;
+                                text-align: center;
 
                                 &-item {
                                     &--link {

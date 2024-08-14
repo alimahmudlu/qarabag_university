@@ -1,3 +1,21 @@
+.sg-icon-wp {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea4e;');
+}
+.sg-icon-images {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea49;');
+}
+.sg-icon-calendar_solid_2 {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea4d;');
+}
+.sg-icon-linkedin {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea4a;');
+}
+.sg-icon-insta_fill_n {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea4b;');
+}
+.sg-icon-fb_fill_n {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea4c;');
+}
 .sg-icon-awards {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea26;');
 }
@@ -982,7 +1000,7 @@
 .sg-icon-instagram_circle {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea41;');
 }
-.sg-icon-linkedin {
+.sg-icon-linkedin2 {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea3d;');
 }
 .sg-icon-linkedin_circle {

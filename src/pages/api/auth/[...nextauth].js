@@ -39,7 +39,7 @@ export default NextAuth({
                 }
                 // If no error and we have user data, return it
                 if (res.ok && user) {
-                    return user.data
+                    return user?.data
                 }
 
                 // Return null if user data could not be retrieved
@@ -82,5 +82,5 @@ export default NextAuth({
         }
     },
     // Enable debug messages in the console if you are having problems
-    debug: process.env.NODE_ENV === 'development',
+    debug: process.env.NODE_ENV === 'local',
 })

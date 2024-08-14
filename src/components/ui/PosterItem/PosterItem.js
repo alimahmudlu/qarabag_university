@@ -17,7 +17,7 @@ export default function SgPosterItem(props) {
                     >
                         <div className={[styles['sg--posterItem-head-image']].join(' ').trim()}>
                             <Image width='1000' height='1000'
-                                src={image}
+                                src={image || ''}
                                 alt={title}
                                 className={[styles['sg--posterItem-head-image--img']].join(' ').trim()}
                             />

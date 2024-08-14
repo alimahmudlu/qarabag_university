@@ -15,7 +15,7 @@ export default function AuthLayout(props) {
         )
     }
     else if (status === "authenticated") {
-        router.push('/admin')
+        router.push('/content/idareedici')
     }
     else {
         return (

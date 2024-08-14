@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import ApiService from "@/services/ApiService";
-// import SgPagination from "@/components/ui/Pagination";
-// import {SgFormGroup, SgInput} from "@/components/ui/Form";
+import SgPagination from "@/admin/components/ui/Pagination";
+import {SgFormGroup, SgInput} from "@/components/ui/Form";
 import styles from "@/components/ui/Table/Table.module.scss";
 
 /**
@@ -37,7 +37,7 @@ import styles from "@/components/ui/Table/Table.module.scss";
 
 
 export default function SgTable(props) {
-    const {onClick, tableData} = props;
+    const {onClick, tableData, serverSide = true} = props;
     const [page, setPage] = useState(1);
     const [perPage, setPerPage] = useState(10);
     const [data, setData] = useState([]);
@@ -115,16 +115,17 @@ export default function SgTable(props) {
                 method: tableData.apiMethod || 'GET',
                 params: {
                     page: page,
-                    perPage: perPage,
+                    per_page: perPage,
                     ...tableData.filters
                 },
                 data: {
                     page: page,
-                    perPage: perPage,
+                    per_page: perPage,
                     ...tableData.filters
-                }
+                },
+                headers: tableData?.headers || {}
             }).then(el => {
-                setData(el.data)
+                setData(el.data.data)
             }).catch(err =>
                 console.log(err)
             );
@@ -140,16 +141,16 @@ export default function SgTable(props) {
 
     return (
         <>
-            <div className="table-area">
-                <div className="table-area-content">
+            <div className={[styles["table-area"]].join(' ').trim()}>
+                <div className={[styles["table-area-content"]].join(' ').trim()}>
                     <div className="table-responsive">
-                        <table className={["table"].join(' ').trim()}>
+                        <table className={[styles["table"]].join(' ').trim()}>
                             <thead>
                             <tr>
                                 {(tableData?.data || []).filter(el => !el.hidden).map((el, index) =>
-                                    <th key={index} className={[getTableAttributes(), el.hoverable ? 'table--hoverable-th' : '', el.desktopHidden ? 'table-cell-lg-hidden' : '', el.mobileHidden ? 'table-cell-hidden' : ''].join(' ').trim()}>
-                                        <div className="table-group">
-                                            {el.name || el.key || ''}
+                                    <th key={index} className={[getTableAttributes(), el.hoverable ? styles['table--hoverable-th'] : '', el.desktopHidden ? styles['table-cell-lg-hidden'] : '', el.mobileHidden ? styles['table-cell-hidden'] : ''].join(' ').trim()}>
+                                        <div className={[styles["table-group"]].join(' ').trim()}>
+                                            {el.name || ''}
                                         </div>
                                     </th>
                                 )}
@@ -160,20 +161,20 @@ export default function SgTable(props) {
                                 <tr key={itemIndex}
                                     onMouseEnter={() => handleHover(itemIndex)}
                                     onClick={(e) => handleClick(e, item, itemIndex)}
-                                    className={[hoverItemIndex === itemIndex ? 'hover' : ''].join(' ').trim()}
+                                    className={[hoverItemIndex === itemIndex ? styles['hover'] : ''].join(' ').trim()}
                                 >
                                     {(tableData?.data || []).filter(el => !el.hidden).map((el, index) => {
                                         if (el.hoverable) {
                                             return (
-                                                <td key={index} className={[el.hoverable ? 'table--hoverable-td' : '', el.desktopHidden ? 'table-cell-lg-hidden' : '', el.mobileHidden ? 'table-cell-hidden' : ''].join(' ').trim()}>
-                                                    <div className='table--hoverable-td-content'>
+                                                <td key={index} className={[el.hoverable ? styles['table--hoverable-td'] : '', el.desktopHidden ? styles['table-cell-lg-hidden'] : '', el.mobileHidden ? styles['table-cell-hidden'] : ''].join(' ').trim()}>
+                                                    <div className={[styles['table--hoverable-td-content']].join(' ').trim()}>
                                                         {el.cell(item, item[el.key], itemIndex)}
                                                     </div>
                                                 </td>
                                             )
                                         }
                                         return (
-                                            <td key={index} className={[el.desktopHidden ? 'table-cell-lg-hidden' : '', el.mobileHidden ? 'table-cell-hidden' : ''].join(' ').trim()}>
+                                            <td key={index} className={[el.desktopHidden ? styles['table-cell-lg-hidden'] : '', el.mobileHidden ? styles['table-cell-hidden'] : ''].join(' ').trim()}>
                                                 {el.cell(item, item[el.key], itemIndex)}
                                             </td>
                                         )
@@ -184,11 +185,11 @@ export default function SgTable(props) {
                         </table>
                     </div>
                 </div>
-                <div className="table-area-footer">
-                    {/*{tableData.serverSide ?
+                <div className={[styles["table-area-footer"]].join(' ').trim()}>
+                    {serverSide ?
                         <>
                             <SgPagination
-                                pageCount={data.pageCount}
+                                pageCount={data.last_page}
                                 page={page}
                                 onClick={changePage}
                             />
@@ -201,30 +202,30 @@ export default function SgTable(props) {
                                     variant='select'
                                     inline={true}
                                     onChange={changePerPage}
-                                    value={[perPage]}
+                                    value={perPage}
                                     options={[
                                         {
                                             name: '10',
-                                            value: 10
+                                            id: 10
                                         },
                                         {
                                             name: '20',
-                                            value: 20
+                                            id: 20
                                         },
                                         {
                                             name: '50',
-                                            value: 50
+                                            id: 50
                                         },
                                         {
                                             name: '100',
-                                            value: 100
+                                            id: 100
                                         }
                                     ]}
                                 />
                             </SgFormGroup>
                         </>
                         : ""
-                    }*/}
+                    }
                 </div>
             </div>
         </>

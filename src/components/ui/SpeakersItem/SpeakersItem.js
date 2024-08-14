@@ -44,7 +44,7 @@ export default function SgSpeakersItem(props) {
                     >
                         <div className={[styles['sg--speakersItem-head-image']].join(' ').trim()}>
                             <Image width='1000' height='1000'
-                                src={image}
+                                src={image || ''}
                                 alt={header}
                                 className={[styles['sg--speakersItem-head-image--img']].join(' ').trim()}
                             />

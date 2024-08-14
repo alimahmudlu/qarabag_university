@@ -26,7 +26,7 @@ export default function MainLayout(props) {
         )
     }
     else if (status !== "authenticated") {
-        router.push('/admin/sign-in')
+        router.push('/content/idareedici/sign-in')
     }
     else {
         return (

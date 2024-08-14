@@ -13,6 +13,12 @@
 		el.innerHTML = '<span style="font-family: \'sg-icons\'">' + entity + '</span>' + html;
 	}
 	var icons = {
+		'sg-icon-wp': '&#xea4e;',
+		'sg-icon-images': '&#xea49;',
+		'sg-icon-calendar_solid_2': '&#xea4d;',
+		'sg-icon-linkedin': '&#xea4a;',
+		'sg-icon-insta_fill_n': '&#xea4b;',
+		'sg-icon-fb_fill_n': '&#xea4c;',
 		'sg-icon-awards': '&#xea26;',
 		'sg-icon-zoom-out': '&#xe900;',
 		'sg-icon-zoom-in': '&#xe901;',
@@ -341,7 +347,7 @@
 		'sg-icon-calendar': '&#xea3a;',
 		'sg-icon-instagram': '&#xea3b;',
 		'sg-icon-instagram_circle': '&#xea41;',
-		'sg-icon-linkedin': '&#xea3d;',
+		'sg-icon-linkedin2': '&#xea3d;',
 		'sg-icon-linkedin_circle': '&#xea3e;',
 		'0': 0
 		},

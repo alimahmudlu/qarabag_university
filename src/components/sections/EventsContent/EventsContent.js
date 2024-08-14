@@ -99,6 +99,7 @@ export default function SgSectionEventsContent(props) {
                                         <SgInput
                                             color='light'
                                             variant='date'
+                                            type='date'
                                             size='small'
                                             name='post_date'
                                             id='post_date'

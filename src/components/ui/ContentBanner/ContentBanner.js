@@ -7,7 +7,7 @@ export default function SgContentBanner(props) {
     return (
         <>
             <div style={style} className={[styles['sg--contentBanner'], reverse ? styles['sg--contentBanner--reverse'] : ''].join(' ').trim()}>
-                <div style={fluidContainer === 'left' ? {paddingLeft: 0} : {paddingRight: 0}} className={[styles['sg--contentBanner-image']].join(' ').trim()}>
+                <div style={fluidContainer ? (fluidContainer === 'left' ? {paddingLeft: 0} : {paddingRight: 0}) : null} className={[styles['sg--contentBanner-image']].join(' ').trim()}>
                     <Image width='1000' height='1000'
                         src={image || ''}
                         alt={title}
@@ -28,6 +28,7 @@ export default function SgContentBanner(props) {
                             color='primary'
                             icon={button.icon}
                             reverse={true}
+                            size='md:lg sm:sm'
                         >
                             {button?.name}
                         </SgButton>
