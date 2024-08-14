@@ -3,11 +3,12 @@ import {SgPage, SgPageBody, SgPageHead} from "@/admin/components/ui/Page";
 import {SgButton} from "@/admin/components/ui/Button";
 import SgTable from "@/admin/components/ui/Table";
 import SgIcon from "@/admin/components/ui/Icon";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import {SgPopup} from "@/admin/components/ui/Popup";
 import ApiService from "@/admin/services/ApiService";
 import {
+    SETTINGS_CREATE_ROUTE, SETTINGS_DELETE_ROUTE, SETTINGS_EDIT_ROUTE, SETTINGS_LIST_ROUTE,
     STATIC_CONTENT_CREATE_ROUTE,
     STATIC_CONTENT_DELETE_ROUTE,
     STATIC_CONTENT_EDIT_ROUTE,
@@ -26,14 +27,14 @@ export default function Index(props) {
     const [editItemModal, setEditItemModal] = useState(false);
     const router = useRouter();
     const { query } = router;
-    const { locale } = query;
+    const { setting_type_id, locale } = query;
 
     function toggleRemoveItemModal() {
         setRemoveItemModal(!removeItemModal)
     }
 
     function handleRemoveItem() {
-        ApiService.delete(`${STATIC_CONTENT_DELETE_ROUTE}/${selectedRow.id}`).then(response => {
+        ApiService.delete(`${SETTINGS_DELETE_ROUTE}/${selectedRow.id}`).then(response => {
             toggleRemoveItemModal()
             setFilters({...filters})
         }).catch(error => {
@@ -46,7 +47,7 @@ export default function Index(props) {
     }
 
     function handleEditItem() {
-        ApiService.put(`${STATIC_CONTENT_EDIT_ROUTE}/${selectedRow.id}/translate`, selectedRow, {headers: {"Content-Language": locale}}).then(response => {
+        ApiService.put(`${SETTINGS_EDIT_ROUTE}/${selectedRow.id}`, selectedRow, {headers: {"Content-Language": locale}}).then(response => {
             toggleEditItemModal()
             setFilters({...filters})
         }).catch(error => {
@@ -55,7 +56,7 @@ export default function Index(props) {
     }
 
     function handleAddItem() {
-        ApiService.post(`${STATIC_CONTENT_CREATE_ROUTE}`, data, {headers: {"Content-Language": locale}}).then(response => {
+        ApiService.post(`${SETTINGS_CREATE_ROUTE}`, data, {headers: {"Content-Language": locale}}).then(response => {
             setFilters({...filters})
         }).catch(error => {
             console.log(error)
@@ -69,6 +70,10 @@ export default function Index(props) {
     function handleChangeNew(e) {
         changeData(e, data, setData, valueErrors, setValueErrors)
     }
+
+    useEffect(() => {
+        setData({...data, setting_type_id})
+    }, [setting_type_id]);
 
 
     return (
@@ -159,8 +164,32 @@ export default function Index(props) {
                                     }
                                 },
                                 {
+                                    key: 'title',
+                                    name: 'Title',
+                                    hidden: false,
+                                    cell: (row, key) => {
+                                        return (
+                                            <>
+                                                {key}
+                                            </>
+                                        )
+                                    }
+                                },
+                                {
                                     key: 'value',
                                     name: 'Value',
+                                    hidden: false,
+                                    cell: (row, key) => {
+                                        return (
+                                            <>
+                                                {key}
+                                            </>
+                                        )
+                                    }
+                                },
+                                {
+                                    key: 'meta',
+                                    name: 'Meta',
                                     hidden: false,
                                     cell: (row, key) => {
                                         return (
@@ -198,7 +227,7 @@ export default function Index(props) {
                                     }
                                 }
                             ],
-                            api: STATIC_CONTENT_LIST_ROUTE,
+                            api: `${SETTINGS_LIST_ROUTE}${setting_type_id}`,
                             headers: {
                                 "Content-Language": locale
                             },
@@ -249,6 +278,16 @@ export default function Index(props) {
                             label='Alias'
                             placeholder='Alias'
                             value={selectedRow.alias}
+                            disabled={true}
+                        />
+                    </SgFormGroup>
+                    <SgFormGroup>
+                        <SgInput
+                            id='title'
+                            name='title'
+                            label='Title'
+                            placeholder='Title'
+                            value={selectedRow.title}
                             onChange={handleChange}
                         />
                     </SgFormGroup>
@@ -259,6 +298,16 @@ export default function Index(props) {
                             label='Value'
                             placeholder='Value'
                             value={selectedRow.value}
+                            onChange={handleChange}
+                        />
+                    </SgFormGroup>
+                    <SgFormGroup>
+                        <SgInput
+                            id='meta'
+                            name='meta'
+                            label='Meta'
+                            placeholder='Meta'
+                            value={selectedRow.meta}
                             onChange={handleChange}
                         />
                     </SgFormGroup>
