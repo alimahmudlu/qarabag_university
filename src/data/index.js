@@ -10,6 +10,7 @@ import uniItem from "@/assets/images/uniItem.png";
 import monumentItemImage from "@/assets/images/monumentItemImage.png";
 import newsImage2 from "@/assets/images/news.png";
 import eventsSliderBannerItem from "@/assets/images/eventsSliderBannerItem.png";
+import {useState} from "react";
 
 export const pages = [
 	{
@@ -1318,5 +1319,1683 @@ export const posts = [
 		description: null,
 		image: newsImage2,
 		date: new Date()
+	}
+]
+
+export const iconsData = [
+	{
+		id: "wp",
+		name: "wp",
+		value: "wp"
+	},
+	{
+		id: "images",
+		name: "images",
+		value: "images"
+	},
+	{
+		id: "calendar_solid_2",
+		name: "calendar_solid_2",
+		value: "calendar_solid_2"
+	},
+	{
+		id: "linkedin",
+		name: "linkedin",
+		value: "linkedin"
+	},
+	{
+		id: "insta_fill_n",
+		name: "insta_fill_n",
+		value: "insta_fill_n"
+	},
+	{
+		id: "fb_fill_n",
+		name: "fb_fill_n",
+		value: "fb_fill_n"
+	},
+	{
+		id: "awards",
+		name: "awards",
+		value: "awards"
+	},
+	{
+		id: "zoom-out",
+		name: "zoom-out",
+		value: "zoom-out"
+	},
+	{
+		id: "zoom-in",
+		name: "zoom-in",
+		value: "zoom-in"
+	},
+	{
+		id: "zap-off",
+		name: "zap-off",
+		value: "zap-off"
+	},
+	{
+		id: "zap",
+		name: "zap",
+		value: "zap"
+	},
+	{
+		id: "youtube",
+		name: "youtube",
+		value: "youtube"
+	},
+	{
+		id: "x-square",
+		name: "x-square",
+		value: "x-square"
+	},
+	{
+		id: "x-octagon",
+		name: "x-octagon",
+		value: "x-octagon"
+	},
+	{
+		id: "x-circle",
+		name: "x-circle",
+		value: "x-circle"
+	},
+	{
+		id: "x, times",
+		name: "x, times",
+		value: "x, times"
+	},
+	{
+		id: "wind",
+		name: "wind",
+		value: "wind"
+	},
+	{
+		id: "wifi-off",
+		name: "wifi-off",
+		value: "wifi-off"
+	},
+	{
+		id: "wifi",
+		name: "wifi",
+		value: "wifi"
+	},
+	{
+		id: "watch",
+		name: "watch",
+		value: "watch"
+	},
+	{
+		id: "volume-x",
+		name: "volume-x",
+		value: "volume-x"
+	},
+	{
+		id: "volume-2",
+		name: "volume-2",
+		value: "volume-2"
+	},
+	{
+		id: "volume-1",
+		name: "volume-1",
+		value: "volume-1"
+	},
+	{
+		id: "volume",
+		name: "volume",
+		value: "volume"
+	},
+	{
+		id: "voicemail",
+		name: "voicemail",
+		value: "voicemail"
+	},
+	{
+		id: "video-off",
+		name: "video-off",
+		value: "video-off"
+	},
+	{
+		id: "video",
+		name: "video",
+		value: "video"
+	},
+	{
+		id: "user-x",
+		name: "user-x",
+		value: "user-x"
+	},
+	{
+		id: "users",
+		name: "users",
+		value: "users"
+	},
+	{
+		id: "user-plus",
+		name: "user-plus",
+		value: "user-plus"
+	},
+	{
+		id: "user-minus",
+		name: "user-minus",
+		value: "user-minus"
+	},
+	{
+		id: "user-check",
+		name: "user-check",
+		value: "user-check"
+	},
+	{
+		id: "user",
+		name: "user",
+		value: "user"
+	},
+	{
+		id: "upload-cloud",
+		name: "upload-cloud",
+		value: "upload-cloud"
+	},
+	{
+		id: "upload",
+		name: "upload",
+		value: "upload"
+	},
+	{
+		id: "unlock",
+		name: "unlock",
+		value: "unlock"
+	},
+	{
+		id: "underline",
+		name: "underline",
+		value: "underline"
+	},
+	{
+		id: "umbrella",
+		name: "umbrella",
+		value: "umbrella"
+	},
+	{
+		id: "type",
+		name: "type",
+		value: "type"
+	},
+	{
+		id: "twitter",
+		name: "twitter",
+		value: "twitter"
+	},
+	{
+		id: "twitch",
+		name: "twitch",
+		value: "twitch"
+	},
+	{
+		id: "tv",
+		name: "tv",
+		value: "tv"
+	},
+	{
+		id: "truck",
+		name: "truck",
+		value: "truck"
+	},
+	{
+		id: "triangle",
+		name: "triangle",
+		value: "triangle"
+	},
+	{
+		id: "trending-up",
+		name: "trending-up",
+		value: "trending-up"
+	},
+	{
+		id: "trending-down",
+		name: "trending-down",
+		value: "trending-down"
+	},
+	{
+		id: "trello",
+		name: "trello",
+		value: "trello"
+	},
+	{
+		id: "trash-2",
+		name: "trash-2",
+		value: "trash-2"
+	},
+	{
+		id: "trash",
+		name: "trash",
+		value: "trash"
+	},
+	{
+		id: "tool",
+		name: "tool",
+		value: "tool"
+	},
+	{
+		id: "toggle-right",
+		name: "toggle-right",
+		value: "toggle-right"
+	},
+	{
+		id: "toggle-left",
+		name: "toggle-left",
+		value: "toggle-left"
+	},
+	{
+		id: "thumbs-up",
+		name: "thumbs-up",
+		value: "thumbs-up"
+	},
+	{
+		id: "thumbs-down",
+		name: "thumbs-down",
+		value: "thumbs-down"
+	},
+	{
+		id: "thermometer",
+		name: "thermometer",
+		value: "thermometer"
+	},
+	{
+		id: "terminal",
+		name: "terminal",
+		value: "terminal"
+	},
+	{
+		id: "target",
+		name: "target",
+		value: "target"
+	},
+	{
+		id: "tag",
+		name: "tag",
+		value: "tag"
+	},
+	{
+		id: "tablet",
+		name: "tablet",
+		value: "tablet"
+	},
+	{
+		id: "sunset",
+		name: "sunset",
+		value: "sunset"
+	},
+	{
+		id: "sunrise",
+		name: "sunrise",
+		value: "sunrise"
+	},
+	{
+		id: "sun",
+		name: "sun",
+		value: "sun"
+	},
+	{
+		id: "stop-circle",
+		name: "stop-circle",
+		value: "stop-circle"
+	},
+	{
+		id: "star",
+		name: "star",
+		value: "star"
+	},
+	{
+		id: "square",
+		name: "square",
+		value: "square"
+	},
+	{
+		id: "speaker",
+		name: "speaker",
+		value: "speaker"
+	},
+	{
+		id: "smile",
+		name: "smile",
+		value: "smile"
+	},
+	{
+		id: "smartphone",
+		name: "smartphone",
+		value: "smartphone"
+	},
+	{
+		id: "sliders",
+		name: "sliders",
+		value: "sliders"
+	},
+	{
+		id: "slash-divider",
+		name: "slash-divider",
+		value: "slash-divider"
+	},
+	{
+		id: "slash",
+		name: "slash",
+		value: "slash"
+	},
+	{
+		id: "slack",
+		name: "slack",
+		value: "slack"
+	},
+	{
+		id: "skip-forward",
+		name: "skip-forward",
+		value: "skip-forward"
+	},
+	{
+		id: "skip-back",
+		name: "skip-back",
+		value: "skip-back"
+	},
+	{
+		id: "sidebar",
+		name: "sidebar",
+		value: "sidebar"
+	},
+	{
+		id: "shuffle",
+		name: "shuffle",
+		value: "shuffle"
+	},
+	{
+		id: "shopping-cart",
+		name: "shopping-cart",
+		value: "shopping-cart"
+	},
+	{
+		id: "shopping-bag",
+		name: "shopping-bag",
+		value: "shopping-bag"
+	},
+	{
+		id: "shield-off",
+		name: "shield-off",
+		value: "shield-off"
+	},
+	{
+		id: "shield",
+		name: "shield",
+		value: "shield"
+	},
+	{
+		id: "share-2",
+		name: "share-2",
+		value: "share-2"
+	},
+	{
+		id: "share",
+		name: "share",
+		value: "share"
+	},
+	{
+		id: "settings",
+		name: "settings",
+		value: "settings"
+	},
+	{
+		id: "server",
+		name: "server",
+		value: "server"
+	},
+	{
+		id: "send",
+		name: "send",
+		value: "send"
+	},
+	{
+		id: "search1",
+		name: "search1",
+		value: "search1"
+	},
+	{
+		id: "scissors",
+		name: "scissors",
+		value: "scissors"
+	},
+	{
+		id: "save",
+		name: "save",
+		value: "save"
+	},
+	{
+		id: "rss",
+		name: "rss",
+		value: "rss"
+	},
+	{
+		id: "rotate-cw",
+		name: "rotate-cw",
+		value: "rotate-cw"
+	},
+	{
+		id: "rotate-ccw",
+		name: "rotate-ccw",
+		value: "rotate-ccw"
+	},
+	{
+		id: "rocket",
+		name: "rocket",
+		value: "rocket"
+	},
+	{
+		id: "rewind",
+		name: "rewind",
+		value: "rewind"
+	},
+	{
+		id: "repeat",
+		name: "repeat",
+		value: "repeat"
+	},
+	{
+		id: "refresh-cw",
+		name: "refresh-cw",
+		value: "refresh-cw"
+	},
+	{
+		id: "refresh-ccw",
+		name: "refresh-ccw",
+		value: "refresh-ccw"
+	},
+	{
+		id: "radio",
+		name: "radio",
+		value: "radio"
+	},
+	{
+		id: "printer",
+		name: "printer",
+		value: "printer"
+	},
+	{
+		id: "power",
+		name: "power",
+		value: "power"
+	},
+	{
+		id: "pocket",
+		name: "pocket",
+		value: "pocket"
+	},
+	{
+		id: "plus-square",
+		name: "plus-square",
+		value: "plus-square"
+	},
+	{
+		id: "plus-circle",
+		name: "plus-circle",
+		value: "plus-circle"
+	},
+	{
+		id: "plus",
+		name: "plus",
+		value: "plus"
+	},
+	{
+		id: "play-circle",
+		name: "play-circle",
+		value: "play-circle"
+	},
+	{
+		id: "play",
+		name: "play",
+		value: "play"
+	},
+	{
+		id: "pie-chart",
+		name: "pie-chart",
+		value: "pie-chart"
+	},
+	{
+		id: "phone-outgoing",
+		name: "phone-outgoing",
+		value: "phone-outgoing"
+	},
+	{
+		id: "phone-off",
+		name: "phone-off",
+		value: "phone-off"
+	},
+	{
+		id: "phone-missed",
+		name: "phone-missed",
+		value: "phone-missed"
+	},
+	{
+		id: "phone-incoming",
+		name: "phone-incoming",
+		value: "phone-incoming"
+	},
+	{
+		id: "phone-forwarded",
+		name: "phone-forwarded",
+		value: "phone-forwarded"
+	},
+	{
+		id: "phone-call",
+		name: "phone-call",
+		value: "phone-call"
+	},
+	{
+		id: "phone1",
+		name: "phone1",
+		value: "phone1"
+	},
+	{
+		id: "percent",
+		name: "percent",
+		value: "percent"
+	},
+	{
+		id: "pen-tool",
+		name: "pen-tool",
+		value: "pen-tool"
+	},
+	{
+		id: "pause-circle",
+		name: "pause-circle",
+		value: "pause-circle"
+	},
+	{
+		id: "pause",
+		name: "pause",
+		value: "pause"
+	},
+	{
+		id: "paperclip",
+		name: "paperclip",
+		value: "paperclip"
+	},
+	{
+		id: "package",
+		name: "package",
+		value: "package"
+	},
+	{
+		id: "octagon",
+		name: "octagon",
+		value: "octagon"
+	},
+	{
+		id: "navigation-2",
+		name: "navigation-2",
+		value: "navigation-2"
+	},
+	{
+		id: "navigation",
+		name: "navigation",
+		value: "navigation"
+	},
+	{
+		id: "music",
+		name: "music",
+		value: "music"
+	},
+	{
+		id: "move",
+		name: "move",
+		value: "move"
+	},
+	{
+		id: "mouse-pointer",
+		name: "mouse-pointer",
+		value: "mouse-pointer"
+	},
+	{
+		id: "more-vertical",
+		name: "more-vertical",
+		value: "more-vertical"
+	},
+	{
+		id: "more-horizontal",
+		name: "more-horizontal",
+		value: "more-horizontal"
+	},
+	{
+		id: "moon",
+		name: "moon",
+		value: "moon"
+	},
+	{
+		id: "monitor",
+		name: "monitor",
+		value: "monitor"
+	},
+	{
+		id: "minus-square",
+		name: "minus-square",
+		value: "minus-square"
+	},
+	{
+		id: "minus-circle",
+		name: "minus-circle",
+		value: "minus-circle"
+	},
+	{
+		id: "minus",
+		name: "minus",
+		value: "minus"
+	},
+	{
+		id: "minimize-2",
+		name: "minimize-2",
+		value: "minimize-2"
+	},
+	{
+		id: "minimize",
+		name: "minimize",
+		value: "minimize"
+	},
+	{
+		id: "mic-off",
+		name: "mic-off",
+		value: "mic-off"
+	},
+	{
+		id: "mic",
+		name: "mic",
+		value: "mic"
+	},
+	{
+		id: "message-square",
+		name: "message-square",
+		value: "message-square"
+	},
+	{
+		id: "message-circle",
+		name: "message-circle",
+		value: "message-circle"
+	},
+	{
+		id: "menu-2",
+		name: "menu-2",
+		value: "menu-2"
+	},
+	{
+		id: "menu",
+		name: "menu",
+		value: "menu"
+	},
+	{
+		id: "meh",
+		name: "meh",
+		value: "meh"
+	},
+	{
+		id: "maximize-2",
+		name: "maximize-2",
+		value: "maximize-2"
+	},
+	{
+		id: "maximize",
+		name: "maximize",
+		value: "maximize"
+	},
+	{
+		id: "map-pin",
+		name: "map-pin",
+		value: "map-pin"
+	},
+	{
+		id: "map",
+		name: "map",
+		value: "map"
+	},
+	{
+		id: "mail1",
+		name: "mail1",
+		value: "mail1"
+	},
+	{
+		id: "log-out",
+		name: "log-out",
+		value: "log-out"
+	},
+	{
+		id: "log-in",
+		name: "log-in",
+		value: "log-in"
+	},
+	{
+		id: "lock",
+		name: "lock",
+		value: "lock"
+	},
+	{
+		id: "loader",
+		name: "loader",
+		value: "loader"
+	},
+	{
+		id: "list",
+		name: "list",
+		value: "list"
+	},
+	{
+		id: "linkedin1",
+		name: "linkedin1",
+		value: "linkedin1"
+	},
+	{
+		id: "link-2",
+		name: "link-2",
+		value: "link-2"
+	},
+	{
+		id: "link",
+		name: "link",
+		value: "link"
+	},
+	{
+		id: "life-buoy",
+		name: "life-buoy",
+		value: "life-buoy"
+	},
+	{
+		id: "layout",
+		name: "layout",
+		value: "layout"
+	},
+	{
+		id: "key",
+		name: "key",
+		value: "key"
+	},
+	{
+		id: "italic",
+		name: "italic",
+		value: "italic"
+	},
+	{
+		id: "instagram1",
+		name: "instagram1",
+		value: "instagram1"
+	},
+	{
+		id: "info",
+		name: "info",
+		value: "info"
+	},
+	{
+		id: "inbox",
+		name: "inbox",
+		value: "inbox"
+	},
+	{
+		id: "image",
+		name: "image",
+		value: "image"
+	},
+	{
+		id: "home",
+		name: "home",
+		value: "home"
+	},
+	{
+		id: "hexagon",
+		name: "hexagon",
+		value: "hexagon"
+	},
+	{
+		id: "help-circle",
+		name: "help-circle",
+		value: "help-circle"
+	},
+	{
+		id: "heart",
+		name: "heart",
+		value: "heart"
+	},
+	{
+		id: "headphones",
+		name: "headphones",
+		value: "headphones"
+	},
+	{
+		id: "hash",
+		name: "hash",
+		value: "hash"
+	},
+	{
+		id: "hard-drive",
+		name: "hard-drive",
+		value: "hard-drive"
+	},
+	{
+		id: "grid",
+		name: "grid",
+		value: "grid"
+	},
+	{
+		id: "globe",
+		name: "globe",
+		value: "globe"
+	},
+	{
+		id: "git-pull-request",
+		name: "git-pull-request",
+		value: "git-pull-request"
+	},
+	{
+		id: "git-merge",
+		name: "git-merge",
+		value: "git-merge"
+	},
+	{
+		id: "gitlab",
+		name: "gitlab",
+		value: "gitlab"
+	},
+	{
+		id: "github",
+		name: "github",
+		value: "github"
+	},
+	{
+		id: "git-commit",
+		name: "git-commit",
+		value: "git-commit"
+	},
+	{
+		id: "git-branch",
+		name: "git-branch",
+		value: "git-branch"
+	},
+	{
+		id: "gift",
+		name: "gift",
+		value: "gift"
+	},
+	{
+		id: "frown",
+		name: "frown",
+		value: "frown"
+	},
+	{
+		id: "framer",
+		name: "framer",
+		value: "framer"
+	},
+	{
+		id: "folder-plus",
+		name: "folder-plus",
+		value: "folder-plus"
+	},
+	{
+		id: "folder-minus",
+		name: "folder-minus",
+		value: "folder-minus"
+	},
+	{
+		id: "folder",
+		name: "folder",
+		value: "folder"
+	},
+	{
+		id: "flag",
+		name: "flag",
+		value: "flag"
+	},
+	{
+		id: "Filters-lines",
+		name: "Filters-lines",
+		value: "Filters-lines"
+	},
+	{
+		id: "filter",
+		name: "filter",
+		value: "filter"
+	},
+	{
+		id: "film",
+		name: "film",
+		value: "film"
+	},
+	{
+		id: "file-text",
+		name: "file-text",
+		value: "file-text"
+	},
+	{
+		id: "file-plus",
+		name: "file-plus",
+		value: "file-plus"
+	},
+	{
+		id: "file-minus",
+		name: "file-minus",
+		value: "file-minus"
+	},
+	{
+		id: "file",
+		name: "file",
+		value: "file"
+	},
+	{
+		id: "figma",
+		name: "figma",
+		value: "figma"
+	},
+	{
+		id: "feather",
+		name: "feather",
+		value: "feather"
+	},
+	{
+		id: "fast-forward",
+		name: "fast-forward",
+		value: "fast-forward"
+	},
+	{
+		id: "facebook",
+		name: "facebook",
+		value: "facebook"
+	},
+	{
+		id: "eye-off",
+		name: "eye-off",
+		value: "eye-off"
+	},
+	{
+		id: "eye",
+		name: "eye",
+		value: "eye"
+	},
+	{
+		id: "external-link",
+		name: "external-link",
+		value: "external-link"
+	},
+	{
+		id: "edit-3",
+		name: "edit-3",
+		value: "edit-3"
+	},
+	{
+		id: "edit-2",
+		name: "edit-2",
+		value: "edit-2"
+	},
+	{
+		id: "edit",
+		name: "edit",
+		value: "edit"
+	},
+	{
+		id: "droplet",
+		name: "droplet",
+		value: "droplet"
+	},
+	{
+		id: "dribbble",
+		name: "dribbble",
+		value: "dribbble"
+	},
+	{
+		id: "download-cloud",
+		name: "download-cloud",
+		value: "download-cloud"
+	},
+	{
+		id: "download",
+		name: "download",
+		value: "download"
+	},
+	{
+		id: "dollar-sign",
+		name: "dollar-sign",
+		value: "dollar-sign"
+	},
+	{
+		id: "divide-square",
+		name: "divide-square",
+		value: "divide-square"
+	},
+	{
+		id: "divide-circle",
+		name: "divide-circle",
+		value: "divide-circle"
+	},
+	{
+		id: "divide",
+		name: "divide",
+		value: "divide"
+	},
+	{
+		id: "disc",
+		name: "disc",
+		value: "disc"
+	},
+	{
+		id: "delete",
+		name: "delete",
+		value: "delete"
+	},
+	{
+		id: "database",
+		name: "database",
+		value: "database"
+	},
+	{
+		id: "crosshair",
+		name: "crosshair",
+		value: "crosshair"
+	},
+	{
+		id: "crop",
+		name: "crop",
+		value: "crop"
+	},
+	{
+		id: "credit-card",
+		name: "credit-card",
+		value: "credit-card"
+	},
+	{
+		id: "cpu",
+		name: "cpu",
+		value: "cpu"
+	},
+	{
+		id: "corner-up-right",
+		name: "corner-up-right",
+		value: "corner-up-right"
+	},
+	{
+		id: "corner-up-left",
+		name: "corner-up-left",
+		value: "corner-up-left"
+	},
+	{
+		id: "corner-right-up",
+		name: "corner-right-up",
+		value: "corner-right-up"
+	},
+	{
+		id: "corner-right-down",
+		name: "corner-right-down",
+		value: "corner-right-down"
+	},
+	{
+		id: "corner-left-up",
+		name: "corner-left-up",
+		value: "corner-left-up"
+	},
+	{
+		id: "corner-left-down",
+		name: "corner-left-down",
+		value: "corner-left-down"
+	},
+	{
+		id: "corner-down-right",
+		name: "corner-down-right",
+		value: "corner-down-right"
+	},
+	{
+		id: "corner-down-left",
+		name: "corner-down-left",
+		value: "corner-down-left"
+	},
+	{
+		id: "copy",
+		name: "copy",
+		value: "copy"
+	},
+	{
+		id: "compass",
+		name: "compass",
+		value: "compass"
+	},
+	{
+		id: "command",
+		name: "command",
+		value: "command"
+	},
+	{
+		id: "columns",
+		name: "columns",
+		value: "columns"
+	},
+	{
+		id: "coin-stack",
+		name: "coin-stack",
+		value: "coin-stack"
+	},
+	{
+		id: "coins",
+		name: "coins",
+		value: "coins"
+	},
+	{
+		id: "coffee",
+		name: "coffee",
+		value: "coffee"
+	},
+	{
+		id: "codesandbox",
+		name: "codesandbox",
+		value: "codesandbox"
+	},
+	{
+		id: "codepen",
+		name: "codepen",
+		value: "codepen"
+	},
+	{
+		id: "code",
+		name: "code",
+		value: "code"
+	},
+	{
+		id: "cloud-snow",
+		name: "cloud-snow",
+		value: "cloud-snow"
+	},
+	{
+		id: "cloud-rain",
+		name: "cloud-rain",
+		value: "cloud-rain"
+	},
+	{
+		id: "cloud-off",
+		name: "cloud-off",
+		value: "cloud-off"
+	},
+	{
+		id: "cloud-lightning",
+		name: "cloud-lightning",
+		value: "cloud-lightning"
+	},
+	{
+		id: "cloud-drizzle",
+		name: "cloud-drizzle",
+		value: "cloud-drizzle"
+	},
+	{
+		id: "cloud",
+		name: "cloud",
+		value: "cloud"
+	},
+	{
+		id: "clock",
+		name: "clock",
+		value: "clock"
+	},
+	{
+		id: "clipboard",
+		name: "clipboard",
+		value: "clipboard"
+	},
+	{
+		id: "circle",
+		name: "circle",
+		value: "circle"
+	},
+	{
+		id: "chrome",
+		name: "chrome",
+		value: "chrome"
+	},
+	{
+		id: "chevron-up",
+		name: "chevron-up",
+		value: "chevron-up"
+	},
+	{
+		id: "chevrons-up",
+		name: "chevrons-up",
+		value: "chevrons-up"
+	},
+	{
+		id: "chevrons-right",
+		name: "chevrons-right",
+		value: "chevrons-right"
+	},
+	{
+		id: "chevrons-left",
+		name: "chevrons-left",
+		value: "chevrons-left"
+	},
+	{
+		id: "chevrons-down",
+		name: "chevrons-down",
+		value: "chevrons-down"
+	},
+	{
+		id: "chevron-right",
+		name: "chevron-right",
+		value: "chevron-right"
+	},
+	{
+		id: "chevron-left",
+		name: "chevron-left",
+		value: "chevron-left"
+	},
+	{
+		id: "chevron-down",
+		name: "chevron-down",
+		value: "chevron-down"
+	},
+	{
+		id: "check-square",
+		name: "check-square",
+		value: "check-square"
+	},
+	{
+		id: "check-circle",
+		name: "check-circle",
+		value: "check-circle"
+	},
+	{
+		id: "check",
+		name: "check",
+		value: "check"
+	},
+	{
+		id: "cast",
+		name: "cast",
+		value: "cast"
+	},
+	{
+		id: "camera-off",
+		name: "camera-off",
+		value: "camera-off"
+	},
+	{
+		id: "camera",
+		name: "camera",
+		value: "camera"
+	},
+	{
+		id: "calendar1",
+		name: "calendar1",
+		value: "calendar1"
+	},
+	{
+		id: "building-08",
+		name: "building-08",
+		value: "building-08"
+	},
+	{
+		id: "briefcase",
+		name: "briefcase",
+		value: "briefcase"
+	},
+	{
+		id: "box",
+		name: "box",
+		value: "box"
+	},
+	{
+		id: "book-open",
+		name: "book-open",
+		value: "book-open"
+	},
+	{
+		id: "bookmark",
+		name: "bookmark",
+		value: "bookmark"
+	},
+	{
+		id: "book",
+		name: "book",
+		value: "book"
+	},
+	{
+		id: "bold",
+		name: "bold",
+		value: "bold"
+	},
+	{
+		id: "bluetooth",
+		name: "bluetooth",
+		value: "bluetooth"
+	},
+	{
+		id: "bell-off",
+		name: "bell-off",
+		value: "bell-off"
+	},
+	{
+		id: "bell",
+		name: "bell",
+		value: "bell"
+	},
+	{
+		id: "battery-charging",
+		name: "battery-charging",
+		value: "battery-charging"
+	},
+	{
+		id: "battery",
+		name: "battery",
+		value: "battery"
+	},
+	{
+		id: "bar-chart-2",
+		name: "bar-chart-2",
+		value: "bar-chart-2"
+	},
+	{
+		id: "bar-chart",
+		name: "bar-chart",
+		value: "bar-chart"
+	},
+	{
+		id: "award",
+		name: "award",
+		value: "award"
+	},
+	{
+		id: "at-sign",
+		name: "at-sign",
+		value: "at-sign"
+	},
+	{
+		id: "arrow-up-right",
+		name: "arrow-up-right",
+		value: "arrow-up-right"
+	},
+	{
+		id: "arrow-up-left",
+		name: "arrow-up-left",
+		value: "arrow-up-left"
+	},
+	{
+		id: "arrow-up-circle",
+		name: "arrow-up-circle",
+		value: "arrow-up-circle"
+	},
+	{
+		id: "arrow-up",
+		name: "arrow-up",
+		value: "arrow-up"
+	},
+	{
+		id: "arrow-right-circle",
+		name: "arrow-right-circle",
+		value: "arrow-right-circle"
+	},
+	{
+		id: "arrow-right",
+		name: "arrow-right",
+		value: "arrow-right"
+	},
+	{
+		id: "arrow-left-circle",
+		name: "arrow-left-circle",
+		value: "arrow-left-circle"
+	},
+	{
+		id: "arrow-left",
+		name: "arrow-left",
+		value: "arrow-left"
+	},
+	{
+		id: "arrow-down-right",
+		name: "arrow-down-right",
+		value: "arrow-down-right"
+	},
+	{
+		id: "arrow-down-left",
+		name: "arrow-down-left",
+		value: "arrow-down-left"
+	},
+	{
+		id: "arrow-down-circle",
+		name: "arrow-down-circle",
+		value: "arrow-down-circle"
+	},
+	{
+		id: "arrow-down",
+		name: "arrow-down",
+		value: "arrow-down"
+	},
+	{
+		id: "archive",
+		name: "archive",
+		value: "archive"
+	},
+	{
+		id: "aperture",
+		name: "aperture",
+		value: "aperture"
+	},
+	{
+		id: "anchor",
+		name: "anchor",
+		value: "anchor"
+	},
+	{
+		id: "align-right",
+		name: "align-right",
+		value: "align-right"
+	},
+	{
+		id: "align-left",
+		name: "align-left",
+		value: "align-left"
+	},
+	{
+		id: "align-justify",
+		name: "align-justify",
+		value: "align-justify"
+	},
+	{
+		id: "align-center",
+		name: "align-center",
+		value: "align-center"
+	},
+	{
+		id: "alert-triangle",
+		name: "alert-triangle",
+		value: "alert-triangle"
+	},
+	{
+		id: "alert-octagon",
+		name: "alert-octagon",
+		value: "alert-octagon"
+	},
+	{
+		id: "alert-circle",
+		name: "alert-circle",
+		value: "alert-circle"
+	},
+	{
+		id: "airplay",
+		name: "airplay",
+		value: "airplay"
+	},
+	{
+		id: "activity",
+		name: "activity",
+		value: "activity"
+	},
+	{
+		id: "layers",
+		name: "layers",
+		value: "layers"
+	},
+	{
+		id: "layers1",
+		name: "layers1",
+		value: "layers1"
+	},
+	{
+		id: "download1",
+		name: "download1",
+		value: "download1"
+	},
+	{
+		id: "plus1",
+		name: "plus1",
+		value: "plus1"
+	},
+	{
+		id: "minus1",
+		name: "minus1",
+		value: "minus1"
+	},
+	{
+		id: "facebook_fill",
+		name: "facebook_fill",
+		value: "facebook_fill"
+	},
+	{
+		id: "instagram_fill",
+		name: "instagram_fill",
+		value: "instagram_fill"
+	},
+	{
+		id: "person",
+		name: "person",
+		value: "person"
+	},
+	{
+		id: "skype_fill",
+		name: "skype_fill",
+		value: "skype_fill"
+	},
+	{
+		id: "university",
+		name: "university",
+		value: "university"
+	},
+	{
+		id: "work",
+		name: "work",
+		value: "work"
+	},
+	{
+		id: "euro",
+		name: "euro",
+		value: "euro"
+	},
+	{
+		id: "calendar_2",
+		name: "calendar_2",
+		value: "calendar_2"
+	},
+	{
+		id: "url",
+		name: "url",
+		value: "url"
+	},
+	{
+		id: "mail",
+		name: "mail",
+		value: "mail"
+	},
+	{
+		id: "location",
+		name: "location",
+		value: "location"
+	},
+	{
+		id: "phone",
+		name: "phone",
+		value: "phone"
+	},
+	{
+		id: "search",
+		name: "search",
+		value: "search"
+	},
+	{
+		id: "tg",
+		name: "tg",
+		value: "tg"
+	},
+	{
+		id: "tg_circle",
+		name: "tg_circle",
+		value: "tg_circle"
+	},
+	{
+		id: "vp",
+		name: "vp",
+		value: "vp"
+	},
+	{
+		id: "vp_circle",
+		name: "vp_circle",
+		value: "vp_circle"
+	},
+	{
+		id: "arrow_right",
+		name: "arrow_right",
+		value: "arrow_right"
+	},
+	{
+		id: "arrow_top",
+		name: "arrow_top",
+		value: "arrow_top"
+	},
+	{
+		id: "arrow_left",
+		name: "arrow_left",
+		value: "arrow_left"
+	},
+	{
+		id: "arrow_bottom",
+		name: "arrow_bottom",
+		value: "arrow_bottom"
+	},
+	{
+		id: "arrow_chevron_right_top",
+		name: "arrow_chevron_right_top",
+		value: "arrow_chevron_right_top"
+	},
+	{
+		id: "arrow_chevron_left",
+		name: "arrow_chevron_left",
+		value: "arrow_chevron_left"
+	},
+	{
+		id: "arrow_chevron_bottom",
+		name: "arrow_chevron_bottom",
+		value: "arrow_chevron_bottom"
+	},
+	{
+		id: "arrow_chevron_right",
+		name: "arrow_chevron_right",
+		value: "arrow_chevron_right"
+	},
+	{
+		id: "arrow_chevron_top",
+		name: "arrow_chevron_top",
+		value: "arrow_chevron_top"
+	},
+	{
+		id: "calendar",
+		name: "calendar",
+		value: "calendar"
+	},
+	{
+		id: "instagram",
+		name: "instagram",
+		value: "instagram"
+	},
+	{
+		id: "instagram_circle",
+		name: "instagram_circle",
+		value: "instagram_circle"
+	},
+	{
+		id: "linkedin2",
+		name: "linkedin2",
+		value: "linkedin2"
+	},
+	{
+		id: "linkedin_circle",
+		name: "linkedin_circle",
+		value: "linkedin_circle"
 	}
 ]
