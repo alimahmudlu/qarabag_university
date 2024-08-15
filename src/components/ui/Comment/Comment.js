@@ -20,7 +20,7 @@ export default function SgComment(props) {
                     <Image
                         width={1000}
                         height={1000}
-                        src={image}
+                        src={image || ''}
                         alt={description}
                         className={[styles['sg--comment-image--img']].join(' ').trim()}
                     />

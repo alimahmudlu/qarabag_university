@@ -18,7 +18,7 @@ export default function SgTemplateSidebar(props) {
         <>
             <div className={[styles['sg--template--sidebar'], isOpen ? styles['sg--template--sidebar--open'] : ''].join(' ').trim()}>
                 <div className={[styles['sg--template--sidebar-head']].join(' ').trim()}>
-                    <Link href='/admin' className={[styles['sg--template--sidebar-head-logo']].join(' ').trim()}>
+                    <Link href='/content/idareedici' className={[styles['sg--template--sidebar-head-logo']].join(' ').trim()}>
                         <div className={[styles['sg--template--sidebar-head-logo--image']].join(' ').trim()}>
                             SG
                         </div>
@@ -38,7 +38,7 @@ export default function SgTemplateSidebar(props) {
                             <SgSideBarMenuItem
                                 isOpen={isOpen}
                                 key={index}
-                                item={{...item, path: `/admin${item.path}`}}
+                                item={{...item, path: `/content/idareedici${item.path}`}}
                                 index={index}
                             />
                         )}
@@ -47,7 +47,7 @@ export default function SgTemplateSidebar(props) {
                         {(sidebarSecondaryMenu || []).map((item, index) =>
                             <SgSideBarMenuItem
                                 key={index}
-                                item={{...item, path: `/admin${item.path}`}}
+                                item={{...item, path: `/content/idareedici${item.path}`}}
                                 index={index}
                             />
                         )}

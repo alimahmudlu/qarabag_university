@@ -258,7 +258,7 @@ export default function SgWidgetItem(props) {
 												<SgCheckbox
 													id={`value--${index}--${i}`}
 													name='value'
-													checked={!!item.value}
+													checked={item.value && Number(item.value) && !!Number(item.value)}
 													value={''}
 													// isInvalid={errors.data_type_id}
 													label={item.meta_key.title}
