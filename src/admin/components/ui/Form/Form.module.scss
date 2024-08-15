@@ -643,6 +643,9 @@ textarea.input {
     appearance: none;
     resize: none;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .select .dropdown-toggle {

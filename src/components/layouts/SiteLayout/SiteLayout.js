@@ -8,7 +8,7 @@ import {useRouter} from "next/router";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 
 export default function SiteLayout(props) {
-    const { children, menus, languages } = props;
+    const { children, menus, languages, settings } = props;
 
     const [sidebar, setSidebar] = useState(false)
     const [searchbar, setSearchbar] = useState(false)
@@ -62,6 +62,12 @@ export default function SiteLayout(props) {
 
     return (
         <>
+            <GetGenerateMetadata
+                defaultMetas={{
+                    title: ((settings || {})?.meta || []).find(el => el.meta === 'title')?.title,
+                    description: ((settings || {})?.meta || []).find(el => el.meta === 'description')?.title,
+                }}
+            />
             <main
                 className={[styles['sg--layouts'], styles['sg--layout--site'], sidebar ? styles['sg--layout--site--sidebar'] : ''].join(' ').trim()}>
                 <div className={[styles['sg--layout--site-content']].join(' ').trim()}>
@@ -89,58 +95,31 @@ export default function SiteLayout(props) {
                             {
                                 header: 'Əlaqə',
                                 list: [
-                                    {
-                                        name: 'Lorem ipsum dolor sit amet consectetu',
-                                        url_id: 'https://maps.app.goo.gl/9QwGFagRk2ZH11SB7',
-                                        icon: 'map-pin'
-                                    },
-                                    {
-                                        name: 'example@gmail.com',
-                                        url_id: 'mailto::example@gmail.com',
-                                        icon: 'mail'
-                                    },
-                                    {
-                                        name: '(+994)55-555-55-55',
-                                        url_id: 'tel::+99455-555-55-55',
-                                        icon: 'phone'
-                                    },
-                                    {
-                                        name: '(+994)55-555-55-55',
-                                        url_id: 'tel::+99455-555-55-55',
-                                        icon: 'phone'
-                                    }
+                                    ...((settings || {})?.address || []).map(el => ({
+                                        name: el?.title,
+                                        url_id: el?.value,
+                                        icon: el?.meta
+                                    })),
+                                    ...((settings || {})?.email || []).map(el => ({
+                                        name: el?.title,
+                                        url_id: `mailto::${el?.value}`,
+                                        icon: el?.meta
+                                    })),
+                                    ...((settings || {})?.phone || []).map(el => ({
+                                        name: el?.title,
+                                        url_id: `tel::${el?.value}`,
+                                        icon: el?.meta
+                                    }))
                                 ]
                             }
                         ]}
                         logo={logo}
-                        copyright='Lorem ipsum dolor sit amet consectetur. Cras odio at nisl facilisi porttitor est amet.'
-                        social={[
-                            {
-                                title: 'Facebook',
-                                path: 'https://www.facebook.com/garabagh.eduaz/',
-                                icon: 'fb_fill_n'
-                            },
-                            {
-                                title: 'Instagram',
-                                path: 'https://www.instagram.com/karabakheduaz/',
-                                icon: 'insta_fill_n'
-                            },
-                            {
-                                title: 'X',
-                                path: 'https://x.com/karabakheduaz',
-                                icon: 'x'
-                            },
-                            {
-                                title: 'Telegram',
-                                path: 'https://t.me/garabagh_university',
-                                icon: 'tg'
-                            },
-                            {
-                                title: 'Linkedin',
-                                path: 'https://www.linkedin.com/company/karabakheduaz/',
-                                icon: 'linkedin'
-                            },
-                        ]}
+                        copyright={((settings || {})?.meta || []).find(el => el.meta === 'copyright')?.title}
+                        social={((settings || {})?.social_media || []).map(el => ({
+                            title: el?.title,
+                            path: el?.value,
+                            icon: el?.meta
+                        }))}
                     />
                 </div>
             </main>

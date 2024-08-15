@@ -38,16 +38,32 @@ export default function Index(props) {
             name: 'News'
         },
         {
+            id: 5,
+            name: 'News with `more section`'
+        },
+        {
             id: 2,
             name: 'Events'
+        },
+        {
+            id: 6,
+            name: 'Events with `more section`'
         },
         {
             id: 3,
             name: 'Collaborator'
         },
         {
+            id: 7,
+            name: 'Collaborator with `more section`'
+        },
+        {
             id: 4,
             name: 'Career'
+        },
+        {
+            id: 8,
+            name: 'Career with `more section`'
         }
     ]);
     const { query } = useRouter();

@@ -4,9 +4,7 @@ import SgSectionMainHero from "@/components/sections/MainHero";
 import SgPageNewsInner from "@/components/pages/NewsInner";
 import SgPageEventsInner from "@/components/pages/EventsInner";
 import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
-import SgSectionNewsContentBanner from "@/components/sections/NewsContentBanner";
 import SgSectionNewsContent from "@/components/sections/NewsContent";
-import SgSectionEventsBanner from "@/components/sections/EventsBanner";
 import SgSectionEventsContent from "@/components/sections/EventsContent";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 import SgPageCollaboratorsInner from "@/components/pages/CollaboratorsInner";
@@ -16,12 +14,21 @@ import SgPageCareerInner from "@/components/pages/CareerInner/CareerInner";
 export default function Index(props) {
 	const {pageData, page_id} = props;
 	const {post = {}, page = {}} = pageData || {};
-	const {title, data_type = {}} = post || {};
+	const {title, short_description, data_type = {}} = post || {};
 	const {inner_layout} = data_type || {};
 
 	const renderInner = (type, data) => {
 		switch (type) {
 			case '1':
+				return (
+					<>
+						<SgPageNewsInner
+							data={data}
+						/>
+					</>
+				)
+
+			case '5':
 				return (
 					<>
 						<SgPageNewsInner
@@ -46,6 +53,15 @@ export default function Index(props) {
 				)
 
 			case '2':
+				return (
+					<>
+						<SgPageEventsInner
+							data={data}
+						/>
+					</>
+				)
+
+			case '6':
 				return (
 					<>
 						<SgPageEventsInner
@@ -77,7 +93,6 @@ export default function Index(props) {
 						/>
 					</>
 				)
-
 
 			case '4':
 				return (
@@ -119,7 +134,7 @@ export default function Index(props) {
 			<GetGenerateMetadata
 				meta={{
 					title: title,
-					description: '',
+					description: short_description,
 				}}
 			/>
 			<SgSectionMainHero
@@ -177,10 +192,10 @@ export const getServerSideProps = async (context) => {
 
 }
 
-Index.getLayout = function getLayout(page, menus) {
+Index.getLayout = function getLayout(page, menus, languages, settings) {
 	return (
 		<>
-			<SiteLayout menus={menus}>
+			<SiteLayout menus={menus} languages={languages} settings={settings}>
 				{page}
 			</SiteLayout>
 		</>

@@ -82,16 +82,16 @@ export default function SgTemplateHeader(props) {
                                         itemClassName={styles['sg--template--header-block-body-minor-menu-item-subMenu-item']}
                                         toggleClassName={styles['sg--template--header-block-body-minor-menu-item--link']}
                                         caret={true}
-                                        toggleHeader={(languages || [])?.find(el => el.locale === mainLanguage)?.name}
+                                        toggleHeader={<span style={{textTransform: 'capitalize'}}>{(languages || [])?.find(el => el.locale === mainLanguage)?.locale}</span>}
                                         list={(languages || []).map((el, i) => {
                                             return {
-                                                name: <Link href={el?.slug || '/'}
+                                                name: <Link href={el?.locale || '/'}
                                                             onClick={(e) => {
                                                                 e.preventDefault();
                                                                 handleSetMainLanguage(el?.locale)
                                                             }}
                                                             key={`lang_${i}`}
-                                                            className={styles['sg--template--header-block-body-minor-menu-item--link']}>{el?.name}</Link>,
+                                                            className={styles['sg--template--header-block-body-minor-menu-item--link']}>{el?.locale}</Link>,
                                                 disabled: false
                                             }
                                         })}

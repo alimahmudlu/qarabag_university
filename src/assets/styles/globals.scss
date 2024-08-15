@@ -20,6 +20,9 @@
 body {
   min-height: 100vh;
 
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+
   & > div {
     height: 100vh;
   }

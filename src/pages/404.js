@@ -1,24 +1,17 @@
 import {SiteLayout} from "@/components/layouts";
-import Link from "next/link";
-import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 import SgSectionMainHero from "@/components/sections/MainHero";
 import SgPageError from "@/components/pages/ErrorPage";
 
 export default function Index() {
 	return (
 		<>
-			<GetGenerateMetadata
-				meta={{
-					title: '',
-					description: 'asas',
-				}}
-			/>
 			<SgSectionMainHero
 				id='mainHero'
 				inner={true}
 				header={''}
 				breadcrumb={[]}
 			/>
+
 			<SgPageError
 				header='Səhifə tapılmadı'
 				mainHeader='404'
@@ -28,10 +21,10 @@ export default function Index() {
 	)
 }
 
-Index.getLayout = function getLayout(page, menus, languages) {
+Index.getLayout = function getLayout(page, menus, languages, settings) {
 	return (
 		<>
-			<SiteLayout menus={menus} languages={languages}>
+			<SiteLayout menus={menus} languages={languages} settings={settings}>
 				{page}
 			</SiteLayout>
 		</>

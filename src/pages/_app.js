@@ -76,7 +76,7 @@ Site_App.getInitialProps = async (props) => {
     }
 }
 
-export default function Site_App({ Component, pageProps: {session, ...pageProps}, menus, languages }) {
+export default function Site_App({ Component, pageProps: {session, ...pageProps}, menus, languages, settings }) {
     const getLayout = Component.getLayout || ((page) => page)
 
     if (typeof window !== "undefined" && window && !localStorage.getItem('language')) {
@@ -87,9 +87,9 @@ export default function Site_App({ Component, pageProps: {session, ...pageProps}
         <SessionProvider session={session}>
             {getLayout(
                 <>
-                    <Component {...pageProps} menus={menus} languages={languages}/>
+                    <Component {...pageProps} menus={menus} languages={languages} settings={settings}/>
                 </>
-                , menus, languages
+                , menus, languages, settings
             )}
             <ToastContainer />
         </SessionProvider>

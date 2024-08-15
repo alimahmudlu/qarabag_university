@@ -7,14 +7,14 @@ import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 
 export default function Index(props) {
     const {pageData, page_id, inner = true} = props;
-    const {title, id, page_widgets} = pageData || {};
+    const {title, short_description, id, page_widgets} = pageData || {};
 
     return (
         <>
             <GetGenerateMetadata
                 meta={{
                     title: title,
-                    description: 'asas',
+                    description: short_description,
                 }}
             />
             <SgSectionMainHero
@@ -70,10 +70,10 @@ export const getServerSideProps = async (context) => {
 }
 
 
-Index.getLayout = function getLayout(page, menus, languages) {
+Index.getLayout = function getLayout(page, menus, languages, settings) {
     return (
         <>
-            <SiteLayout menus={menus} languages={languages}>
+            <SiteLayout menus={menus} languages={languages} settings={settings}>
                 {page}
             </SiteLayout>
         </>
