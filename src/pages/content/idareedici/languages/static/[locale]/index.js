@@ -16,7 +16,6 @@ import {
 import {useRouter} from "next/router";
 import {SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
-import {iconsData} from "@/data";
 
 export default function Index(props) {
     const [data, setData] = useState({});
@@ -28,7 +27,6 @@ export default function Index(props) {
     const router = useRouter();
     const { query } = router;
     const { locale } = query;
-    const [iconOptions, setIconOptions] = useState(iconsData)
 
     function toggleRemoveItemModal() {
         setRemoveItemModal(!removeItemModal)
@@ -112,19 +110,6 @@ export default function Index(props) {
                                 placeholder='Value'
                                 value={data.value}
                                 onChange={handleChangeNew}
-                            />
-                        </div>
-                        <div className='col-lg'>
-
-                            <SgInput
-                                name='meta'
-                                id='meta'
-                                placeholder='Meta'
-                                label='Status'
-                                value={data.meta || ''}
-                                onChange={handleChangeNew}
-                                variant='select'
-                                options={icons}
                             />
                         </div>
                         <div className='col-lg-auto'>
