@@ -191,7 +191,7 @@ export default function Index(props) {
                                 }
                             ],
                             api: LANGUAGE_LIST_ROUTE,
-                            filters: {filters}
+                            filters
                         }}
                         onClick={(e, row, index) => {setSelectedRow(row)}}
                     />

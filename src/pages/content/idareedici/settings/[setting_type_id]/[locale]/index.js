@@ -245,7 +245,7 @@ export default function Index(props) {
                             headers: {
                                 "Content-Language": locale
                             },
-                            filters: {filters}
+                            filters
                         }}
                         onClick={(e, row, index) => {setSelectedRow(row)}}
                     />

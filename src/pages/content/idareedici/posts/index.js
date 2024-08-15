@@ -154,7 +154,7 @@ export default function Index(props) {
                                 }
                             ],
                             api: POST_LIST_ROUTE,
-                            filters: {filters}
+                            filters
                         }}
                         onClick={(e, row, index) => {setSelectedRow(row)}}
                     />

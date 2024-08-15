@@ -43,7 +43,6 @@ export default function SgTable(props) {
     const [data, setData] = useState([]);
     const [hoverItemIndex, setHoverItemIndex] = useState('');
 
-    console.log(tableData)
     function changePage(type) {
         switch (type) {
             case ('prev'):
@@ -199,9 +198,9 @@ export default function SgTable(props) {
                             >
                                 <SgInput
                                     label='Element sayı'
-                                    size='extraSmall'
                                     variant='select'
                                     inline={true}
+                                    labelHidden={true}
                                     onChange={changePerPage}
                                     value={perPage}
                                     options={[

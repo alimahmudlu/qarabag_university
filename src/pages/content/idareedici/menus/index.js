@@ -167,7 +167,7 @@ export default function Index(props) {
                                 }
                             ],
                             api: MENU_TYPE_LIST_ROUTE,
-                            filters: {filters}
+                            filters
                         }}
                         onClick={(e, row, index) => {setSelectedRow(row)}}
                     />

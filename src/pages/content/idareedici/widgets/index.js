@@ -151,7 +151,7 @@ export default function Index(props) {
                                 }
                             ],
                             api: WIDGET_LIST_ROUTE,
-                            filters: {filters}
+                            filters
                         }}
                         onClick={(e, row, index) => {setSelectedRow(row)}}
                     />

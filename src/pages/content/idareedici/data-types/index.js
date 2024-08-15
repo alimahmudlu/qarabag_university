@@ -27,14 +27,14 @@ export default function Index(props) {
         setRemoveItemModal(!removeItemModal)
     }
 
-    function handleRemoveItem() {
-        ApiService.delete(`${POST_DELETE_ROUTE}/${selectedRow.id}`).then(response => {
-            toggleRemoveItemModal()
-            setFilters(filters)
-        }).catch(error => {
-            console.log(error)
-        })
-    }
+    // function handleRemoveItem() {
+    //     ApiService.delete(`${POST_DELETE_ROUTE}/${selectedRow.id}`).then(response => {
+    //         toggleRemoveItemModal()
+    //         setFilters(filters)
+    //     }).catch(error => {
+    //         console.log(error)
+    //     })
+    // }
 
     useEffect(() => {
         ApiService.get(LANGUAGE_LIST_ROUTE).then(response => {
@@ -120,7 +120,7 @@ export default function Index(props) {
                                 }
                             ],
                             api: DATA_TYPE_LIST_ROUTE,
-                            filters: {filters}
+                            filters
                         }}
                         onClick={(e, row, index) => {setSelectedRow(row)}}
                     />

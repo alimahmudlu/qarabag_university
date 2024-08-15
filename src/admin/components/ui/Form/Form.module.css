@@ -123,6 +123,15 @@
   line-height: 20px;
   height: 36px;
 }
+.input--extraSmall .input-wrapper {
+  padding: 0 8px;
+}
+.input--extraSmall .select {
+  padding: 4px 0;
+  font-size: 12px;
+  line-height: 14px;
+  height: 28px;
+}
 
 textarea.input {
   min-height: 98px;
