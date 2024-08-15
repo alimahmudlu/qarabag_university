@@ -119,6 +119,7 @@ export default function Index(props) {
                             {
                                 setting_type_id !=2 ?
                                     <SgInput
+                                        searchAble={true}
                                         variant='select'
                                         type='select'
                                         name='meta'
@@ -138,7 +139,6 @@ export default function Index(props) {
                                         value={data?.meta || ''}
                                     />
                             }
-
                         </div>
                         <div className='col-lg-auto'>
                             <SgButton
@@ -316,14 +316,29 @@ export default function Index(props) {
                         />
                     </SgFormGroup>
                     <SgFormGroup>
-                        <SgInput
-                            id='meta'
-                            name='meta'
-                            label='Meta'
-                            placeholder='Meta'
-                            value={selectedRow.meta}
-                            onChange={handleChange}
-                        />
+                        {
+                            setting_type_id != 2 ?
+                                <SgInput
+                                    searchAble={true}
+                                    variant='select'
+                                    type='select'
+                                    name='meta'
+                                    id='meta'
+                                    label='Meta'
+                                    placeholder='Meta'
+                                    options={iconsData}
+                                    onChange={handleChangeNew}
+                                    value={data?.meta || ''}
+                                /> :
+                                <SgInput
+                                    name='meta'
+                                    id='meta'
+                                    label='Meta'
+                                    placeholder='Meta'
+                                    onChange={handleChangeNew}
+                                    value={data?.meta || ''}
+                                />
+                        }
                     </SgFormGroup>
 
                     <SgButtonGroup
