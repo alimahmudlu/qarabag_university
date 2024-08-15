@@ -37,17 +37,17 @@ export default function Index(props) {
                             <DashboardItem
                                 header={title}
                                 description={`Edit '${title}' configurations`}
-                                path={`/admin/settings/${id}/${mainLanguageLocale}`}
+                                path={`/content/idareedici/settings/${id}/${mainLanguageLocale}`}
                                 list={translate ?
                                     (languageList || []).map((lang, i) => ({
                                         row: i,
                                         name: lang?.locale,
-                                        path: `/admin/settings/${id}/${lang?.locale}`,
+                                        path: `/content/idareedici/settings/${id}/${lang?.locale}`,
                                     }))
                                     :
                                     [{
                                         name: 'List',
-                                        path: `/admin/settings/${id}/${mainLanguageLocale}`,
+                                        path: `/content/idareedici/settings/${id}/${mainLanguageLocale}`,
                                     }]
                                 }
                             />

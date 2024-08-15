@@ -17,6 +17,7 @@ import {
 import {useRouter} from "next/router";
 import {SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
+import {iconsData} from "@/data";
 
 export default function Index(props) {
     const [data, setData] = useState({});
@@ -74,8 +75,6 @@ export default function Index(props) {
     useEffect(() => {
         setData({...data, setting_type_id})
     }, [setting_type_id]);
-
-
     return (
         <>
             <SgPage>
@@ -117,14 +116,29 @@ export default function Index(props) {
                             />
                         </div>
                         <div className='col-lg'>
-                            <SgInput
-                                id='meta'
-                                name='meta'
-                                label='Meta'
-                                placeholder='Meta'
-                                value={data.meta}
-                                onChange={handleChangeNew}
-                            />
+                            {
+                                setting_type_id !=2 ?
+                                    <SgInput
+                                        variant='select'
+                                        type='select'
+                                        name='meta'
+                                        id='meta'
+                                        label='Meta'
+                                        placeholder='Meta'
+                                        options={iconsData}
+                                        onChange={handleChangeNew}
+                                        value={data?.meta || ''}
+                                    /> :
+                                    <SgInput
+                                        name='meta'
+                                        id='meta'
+                                        label='Meta'
+                                        placeholder='Meta'
+                                        onChange={handleChangeNew}
+                                        value={data?.meta || ''}
+                                    />
+                            }
+
                         </div>
                         <div className='col-lg-auto'>
                             <SgButton
