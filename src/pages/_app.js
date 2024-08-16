@@ -22,9 +22,13 @@ import {
     SITE_MENU_TYPE_LIST_ROUTE,
     SITE_SETTINGS_LIST_WITH_TYPES_ROUTE
 } from "@/configs/apiRoutes";
+import {appWithTranslation} from "next-i18next";
 
 Site_App.getInitialProps = async (props) => {
     const initialProps = await App.getInitialProps(props)
+
+    const locale = props.ctx?.locale
+    const defaultLocale = props.ctx?.defaultLocale
 
     try {
         function generateNestable(array) {
@@ -64,6 +68,7 @@ Site_App.getInitialProps = async (props) => {
             menus: newMenu,
             languages: languages.data.data,
             settings: settings.data.data,
+            locale
         }
     }
     catch (error) {
@@ -71,27 +76,30 @@ Site_App.getInitialProps = async (props) => {
             ...initialProps,
             menus: {},
             languages: [],
-            settings: []
+            settings: [],
+            locale
         }
     }
 }
 
-export default function Site_App({ Component, pageProps: {session, ...pageProps}, menus, languages, settings }) {
+function Site_App({ Component, pageProps: {session, ...pageProps}, menus, languages, settings, locale }) {
     const getLayout = Component.getLayout || ((page) => page)
 
-    if (typeof window !== "undefined" && window && !localStorage.getItem('language')) {
-        localStorage.setItem('language', (languages || [])?.find(el => el.main)?.locale)
+    if (typeof window !== "undefined" && window && window.localStorage) {
+        localStorage.setItem('language', locale)
     }
 
     return (
         <SessionProvider session={session}>
             {getLayout(
                 <>
-                    <Component {...pageProps} menus={menus} languages={languages} settings={settings}/>
+                    <Component {...pageProps} menus={menus} languages={languages} settings={settings} locale={locale} />
                 </>
-                , menus, languages, settings
+                , menus, languages, settings, locale
             )}
             <ToastContainer />
         </SessionProvider>
     )
 }
+
+export default appWithTranslation(Site_App)

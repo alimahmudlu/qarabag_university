@@ -1,3 +1,5 @@
+// const locales = require('./data/locales/locales.js')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
@@ -33,6 +35,21 @@ const nextConfig = {
         hostname: '192.168.140.46',
         port: ':8080',
         pathname: '/uploads/**',
+      },
+    ]
+  },
+
+  i18n: {
+    localeDetection: false,
+    locales: ['az', 'en', 'ru'],
+    defaultLocale: 'az',
+  },
+
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://preview.karabakh.edu.az/api/:path*',
       },
     ]
   },

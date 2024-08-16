@@ -34,7 +34,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'simpleContent':
                         return (
                             <SgSectionContentBanner
-                                reverse={!!itemContent?.imagePositionRightSide?.value}
+                                reverse={!!(itemContent?.imagePositionRightSide?.value && Number(itemContent?.imagePositionRightSide?.value))}
                                 fluidContainer={itemContent?.fluidContainer?.value === '1' ? (itemContent?.imagePositionRightSide?.value === '1' ? 'right' : 'left') : null}
                                 style={{backgroundColor: (itemContent?.backgroundColor?.value && Number(itemContent?.backgroundColor?.value) && !!Number(itemContent?.backgroundColor?.value)) ? '#F6F6F6' : ''}}
                                 key={index}

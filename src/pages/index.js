@@ -17,7 +17,8 @@ export const getServerSideProps = async (context) => {
         return {
             props: {
                 pageData: pageData.data.data,
-                page_id: 1
+                page_id: 1,
+                locale: context?.locale,
             }
         }
     }
@@ -29,15 +30,16 @@ export const getServerSideProps = async (context) => {
             },
             props: {
                 pageData: [],
-                page_id: 1
+                page_id: 1,
+                locale: context?.locale,
             }
         };
     }
 }
 
-Index.getLayout = function getLayout(page, menus, languages, settings) {
+Index.getLayout = function getLayout(page, menus, languages, settings, locale) {
     return (
-        <SiteLayout menus={menus} languages={languages} settings={settings}>
+        <SiteLayout menus={menus} languages={languages} settings={settings} locale={locale}>
             {page}
         </SiteLayout>
     )

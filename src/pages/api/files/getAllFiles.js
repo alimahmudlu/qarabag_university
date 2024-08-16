@@ -1,10 +1,10 @@
-import {contentBoxes, pages} from "@/data";
-import axios from "axios";
 import ApiService from "@/admin/services/ApiService";
 import {FILE_LIST_ROUTE} from "@/admin/configs/apiRoutes";
 
 export default async function handler(req, res) {
 	const files = await ApiService(FILE_LIST_ROUTE)
+
+	console.log(files, 'files')
 	res.status('200').json(
 		{
 			"success": true,
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 				"sources": [
 					{
 						"name": "default",
-						"baseurl": "http://apikarabagh.testedumedia.com/",
+						"baseurl": "https://apikarabagh.testedumedia.com/",
 						"path": "/uploads/",
 						"files": files.data.data.map(el => ({
 							"file": `${el.name}.${el.extension}`,
