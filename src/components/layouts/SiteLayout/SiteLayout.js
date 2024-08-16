@@ -8,7 +8,7 @@ import {useRouter} from "next/router";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 
 export default function SiteLayout(props) {
-    const { children, menus, languages, settings } = props;
+    const { children, menus, languages, settings, locale } = props;
 
     const [sidebar, setSidebar] = useState(false)
     const [searchbar, setSearchbar] = useState(false)
@@ -46,19 +46,17 @@ export default function SiteLayout(props) {
     }
 
     function handleSetMainLanguage(language, reload = true) {
-        localStorage.setItem('language', language)
-        setMainLanguage(language)
-        router.reload()
-    }
+        router.push(
+            {
+                pathname: router.pathname,
+                query: router.query,
+            },
+            null,
+            { locale: language }
+        )
 
-    useEffect(() => {
-        if (localStorage.getItem('language')) {
-            setMainLanguage(localStorage.getItem('language'))
-        }
-        else {
-            handleSetMainLanguage(languages?.find(el => el.main).locale, false)
-        }
-    }, []);
+        localStorage.setItem('language', language)
+    }
 
     return (
         <>
@@ -83,7 +81,7 @@ export default function SiteLayout(props) {
                         searchbar={searchbar}
                         searchQuery={searchQuery}
                         handleSetMainLanguage={handleSetMainLanguage}
-                        mainLanguage={mainLanguage}
+                        mainLanguage={locale}
                     />
                     {children}
                     <SgTemplateFooter
