@@ -27,7 +27,7 @@ export const PAGE_DELETE_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/pages'
 
 
 export const PAGE_RELATION_LIST_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/page_relations'
-export const PAGE_RELATION_SAVE_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/page_relations/save'
+export const PAGE_RELATION_SAVE_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/page_relations'
 
 
 export const WIDGET_LIST_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/widgets'

@@ -70,16 +70,6 @@ export default function Index(props) {
                         >
                             New page
                         </SgButton>
-                        <SgButton
-                            type='link'
-                            isLinked={true}
-                            to='/content/idareedici/pages/relations'
-                            color='primary-outline'
-                            size='md'
-                            icon='menu'
-                        >
-                            Page relations
-                        </SgButton>
                     </SgButtonGroup>
                 </SgPageHead>
                 <SgPageBody>
@@ -118,6 +108,27 @@ export default function Index(props) {
                                         return (
                                             <>
                                                 {statusOptions.find(el => el.id === key).name}
+                                            </>
+                                        )
+                                    }
+                                },
+                                {
+                                    key: 'id',
+                                    name: 'Relations',
+                                    hidden: false,
+                                    cell: (row, key) => {
+                                        return (
+                                            <>
+                                                <SgButtonGroup>
+                                                    <SgButton
+                                                        size='xs'
+                                                        color={'primary'}
+                                                        type='link'
+                                                        to={`/content/idareedici/pages/relations/${key}`}
+                                                    >
+                                                        Edit Relations
+                                                    </SgButton>
+                                                </SgButtonGroup>
                                             </>
                                         )
                                     }

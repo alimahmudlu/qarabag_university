@@ -17,7 +17,7 @@ export default function SgSectionTabLinkContent( props ) {
     const [pageList, setPageList] = useState([])
 
     useEffect(() => {
-        ApiService.get(`${SITE_PAGE_CHILDREN_PAGES_LIST_ROUTE}/${page_id}/parent`).then(response => {
+        ApiService.get(`${SITE_PAGE_CHILDREN_PAGES_LIST_ROUTE}/${page_id}/relations`).then(response => {
             setPageList(response.data.data)
         }).catch((error) => {
             console.log(error)
@@ -38,8 +38,8 @@ export default function SgSectionTabLinkContent( props ) {
                                     return (
                                         <SgTabItem
                                             key={index}
-                                            path={`/page/${item?.page?.id}`}
-                                            title={item?.page?.title}
+                                            path={`/page/${item?.link?.id}`}
+                                            title={item?.link?.title}
                                         />
                                     )
                                 })}

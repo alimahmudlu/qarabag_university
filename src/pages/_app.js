@@ -20,7 +20,7 @@ import {ToastContainer} from "react-toastify";
 import {
     SITE_LANGUAGE_LIST_ROUTE,
     SITE_MENU_TYPE_LIST_ROUTE,
-    SITE_SETTINGS_LIST_WITH_TYPES_ROUTE
+    SITE_SETTINGS_LIST_WITH_TYPES_ROUTE, SITE_STATIC_CONTENTS_ROUTE
 } from "@/configs/apiRoutes";
 import {appWithTranslation} from "next-i18next";
 
@@ -62,27 +62,30 @@ Site_App.getInitialProps = async (props) => {
         const newMenu = (menus.data.data || []).map((item) => ({...item, menu_items: generateNestable(item?.menu_items)}));
         const languages = await ApiService.get(SITE_LANGUAGE_LIST_ROUTE)
         const settings = await ApiService.get(SITE_SETTINGS_LIST_WITH_TYPES_ROUTE)
+        const staticContent = await ApiService.get(SITE_STATIC_CONTENTS_ROUTE)
 
         return {
             ...initialProps,
             menus: newMenu,
             languages: languages.data.data,
             settings: settings.data.data,
+            staticContent: staticContent.data.data,
             locale
         }
     }
     catch (error) {
         return {
             ...initialProps,
-            menus: {},
+            menus: [],
             languages: [],
             settings: [],
+            staticContent: {},
             locale
         }
     }
 }
 
-function Site_App({ Component, pageProps: {session, ...pageProps}, menus, languages, settings, locale }) {
+function Site_App({ Component, pageProps: {session, ...pageProps}, menus, languages, settings, locale, staticContent }) {
     const getLayout = Component.getLayout || ((page) => page)
 
     if (typeof window !== "undefined" && window && window.localStorage) {
@@ -93,9 +96,9 @@ function Site_App({ Component, pageProps: {session, ...pageProps}, menus, langua
         <SessionProvider session={session}>
             {getLayout(
                 <>
-                    <Component {...pageProps} menus={menus} languages={languages} settings={settings} locale={locale} />
+                    <Component {...pageProps} menus={menus} languages={languages} settings={settings} locale={locale} staticContent={staticContent} />
                 </>
-                , menus, languages, settings, locale
+                , menus, languages, settings, locale, staticContent
             )}
             <ToastContainer />
         </SessionProvider>

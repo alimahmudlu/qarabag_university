@@ -69,10 +69,9 @@ export const getServerSideProps = async (context) => {
     }
 }
 
-
-Index.getLayout = function getLayout(page, menus, languages, settings, locale) {
+Index.getLayout = function getLayout(page, menus, languages, settings, locale, staticContent) {
     return (
-        <SiteLayout menus={menus} languages={languages} settings={settings} locale={locale}>
+        <SiteLayout menus={menus} languages={languages} settings={settings} locale={locale} staticContent={staticContent}>
             {page}
         </SiteLayout>
     )

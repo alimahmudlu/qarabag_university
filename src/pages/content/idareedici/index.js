@@ -18,10 +18,6 @@ export default function Index(props) {
                             {
                                 name: 'Add',
                                 path: '/content/idareedici/pages/create',
-                            },
-                            {
-                                name: 'Relations',
-                                path: '/content/idareedici/pages/relations',
                             }
                         ]}
                         length={12}

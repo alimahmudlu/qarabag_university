@@ -7,20 +7,15 @@ import {changeData} from "@/admin/utils/changeData";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import ApiService from "@/admin/services/ApiService";
 import {
-    MENU_ITEM_LIST_ROUTE,
-    MENU_ITEM_SAVE_ROUTE,
     OPTIONS_PAGE_LIST_ROUTE,
-    OPTIONS_POST_LIST_ROUTE,
     PAGE_RELATION_LIST_ROUTE,
     PAGE_RELATION_SAVE_ROUTE,
-    PAGE_SAVE_ROUTE,
 } from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
 import {validate} from "@/admin/utils/validate";
 import {validationConstraints} from "@/admin/constants/constants";
 import Nestable from "react-nestable";
 import {GetMaxId} from "@/admin/utils/getMaxId";
-import makeID from "@/admin/utils/makeID";
 
 
 export default function Index(props) {
@@ -65,32 +60,11 @@ export default function Index(props) {
         changeData(e, optionsData, setOptionsData, optionsValueErrors, setOptionsValueErrors, '', '', extraArrayExtraValue);
     }
 
-    let newData = [];
-    const nestableItem = (datas, urlId, parentId, i) => {
-        let object = {...datas};
-        delete object.children;
-        object.url_id = urlId;
-        object.parent_id = parentId;
-        object.row = i + 1;
-        const ids = object.id;
-        const pds = object.page_id;
-
-        newData = [...newData, object];
-
-        (datas.children || []).map((item, index) => {
-            nestableItem(item, ids, pds, index)
-        })
-    }
-
     function handleSubmit(e) {
         e.preventDefault();
 
-        nestableData.map((item, index) => {
-            nestableItem(item, null, null, index)
-        })
-
-        ApiService.post(`${PAGE_RELATION_SAVE_ROUTE}`, {
-            pages: newData
+        ApiService.post(`${PAGE_RELATION_SAVE_ROUTE}/${page_id}/save`, {
+            pages: (data || []).map((elem, i) => ({...elem, id: elem.new ? 0 : elem.id, row: i + 1}))
         }).then(resp => {
             router.push({
                 pathname: '/content/idareedici/pages/'
@@ -109,9 +83,7 @@ export default function Index(props) {
             setValueErrors(errors)
         }
         else {
-            console.log({...optionsData, id: GetMaxId(data, 'id') + 1, new: 1})
             setData([...data, {...optionsData, id: GetMaxId(data, 'id') + 1, new: 1}])
-            setNestableData([...nestableData, {...optionsData, id: GetMaxId(data, 'id') + 1, new: 1}])
 
             cancelMenuItem();
         }
@@ -125,48 +97,18 @@ export default function Index(props) {
     function handleRemoveMenuItem(item) {
         let array = data;
 
-        let index = array.indexOf(array.find(el => el.id === item.id));
+        let index = array.indexOf(item);
 
         array.splice(index, 1);
 
         setData(array)
-        setNestableData(generateNestable(array))
-    }
-
-    function generateNestable(array) {
-        const ids = array.map((x) => x.id);
-        const result = array.map((parent) => {
-            const children = array.filter((child) => {
-                if (child.id !== child.url_id && child.url_id === parent.id) {
-                    return true;
-                }
-
-                return false;
-            });
-
-            if (children.length) {
-                parent.children = children;
-            }
-
-            return parent;
-        }).filter((obj) => {
-            if (obj.id === obj.url_id || !ids.includes(obj.url_id)) {
-                return true;
-            }
-
-            return false;
-        });
-
-        return result
     }
 
     useEffect(() => {
-        ApiService.get(`${PAGE_RELATION_LIST_ROUTE}`).then(resp => {
+        ApiService.get(`${PAGE_RELATION_LIST_ROUTE}?page_id=${page_id}`).then(resp => {
             const _data = [...resp.data.data.map(elem => ({...elem, new: 0}))];
 
             setData(_data);
-
-            setNestableData(generateNestable(_data))
         }).catch(error => {
             console.log(error)
         })
@@ -202,14 +144,14 @@ export default function Index(props) {
                         <div className='col-lg-4'>
                             <SgFormGroup>
                                 <SgInput
-                                    id='page_id'
-                                    name='page_id'
+                                    id='link_id'
+                                    name='link_id'
                                     label="Item"
                                     placeholder="Item"
                                     variant='select'
                                     options={(itemsOptions || []).map(el => ({...el, name: `${el?.name}${el?.short_description? `- (${el?.short_description})` : ''}`}))}
                                     data_extraarraykey={`name`}
-                                    value={optionsData.page_id || ''}
+                                    value={optionsData.link_id || ''}
                                     searchAble={true}
                                     onChange={(e) => {
                                         handleChangeOptionsData(e, `${itemsOptions.find(el => el.id === e.target.value)?.title}`);
@@ -224,7 +166,6 @@ export default function Index(props) {
                                     placeholder="Name"
                                     value={optionsData.name || ''}
                                     onChange={handleChangeOptionsData}
-                                    disabled={optionsData.menu_item_type !== 'external'}
                                 />
                             </SgFormGroup>
                             <SgButtonGroup
@@ -248,11 +189,11 @@ export default function Index(props) {
                         <div className='col-lg-8'>
                             <Nestable
                                 idProp='id'
-                                items={nestableData}
+                                items={data}
                                 renderItem={({ item }) => {
                                     return (
                                         <>
-                                            <span>{item.name || item?.page?.title}</span>
+                                            <span>{item.name || item?.link?.title}</span>
                                             <SgButton
                                                 size='xs'
                                                 color='error'
@@ -267,9 +208,9 @@ export default function Index(props) {
                                     )
                                 }}
                                 onChange={({items, dragItem, targetPath}) => {
-                                    setNestableData(items)
+                                    setData(items)
                                 }}
-                                maxDepth={2}
+                                maxDepth={1}
                             />
                         </div>
                     </div>

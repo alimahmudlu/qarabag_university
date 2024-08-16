@@ -67,10 +67,10 @@ const MenuItemAddFormValidation = {
 
 
 const PageItemAddFormValidation = {
-    page_id: {
-        custom: function custom(page_id, data) {
-            if ((!page_id || page_id === 'null')) {
-                return {errors: {page_id: 'blank'}}
+    link_id: {
+        custom: function custom(link_id, data) {
+            if ((!link_id || link_id === 'null')) {
+                return {errors: {link_id: 'blank'}}
             }
             else {
                 return null
