@@ -45,14 +45,6 @@ const nextConfig = {
     defaultLocale: 'az',
   },
 
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'https://preview.karabakh.edu.az/api/:path*',
-      },
-    ]
-  },
 };
 
 export default nextConfig;
