@@ -10,9 +10,10 @@ import {changeData} from "@/utils/changeData";
 import ApiService from "@/services/ApiService";
 import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 import SgVacancyCard from "../../ui/VacancyCard/VacancyCard";
+import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgSectionVacancyList(props) {
-    const {id, data, style, mainData, page_id} = props;
+    const {id, data, style, mainData, page_id,staticContent} = props;
     const {image, title, description, filter = true, list = [], morePath} = data;
     const [postList, setPostList] = useState([])
 
@@ -78,6 +79,7 @@ export default function SgSectionVacancyList(props) {
                                         return (
                                             <div className={'col-lg-12 col-12 lg:px-[12px] px-[10px]'} key={index}>
                                                 <SgVacancyCard
+                                                    staticContent={staticContent}
                                                     path={`/page/${page_id}/${item?.id}`}
                                                     header={item?.title}
                                                     workTime={itemContent?.jobType?.value}
@@ -95,7 +97,10 @@ export default function SgSectionVacancyList(props) {
                                                 to={morePath}
                                                 onClick={handleChangePage}
                                             >
-                                                Daha çox
+                                                {<SgHelperTranslate
+                                                    defaultText={'Daha çox'}
+                                                    translatedText={staticContent?.vacancyListBanner__more__button}
+                                                />}
                                             </SgButton>
                                             : ''
                                         }

@@ -8,7 +8,7 @@ import {log} from "next/dist/server/typescript/utils";
 import {changeData} from "@/utils/changeData";
 
 export default function SgSectionNewsContentBanner(props) {
-    const {id, data, style, mainData, page_id} = props;
+    const {id, data, style, mainData, page_id,staticContent} = props;
     const {image, title, description, filter = true, list = [], morePath} = data;
     const [postList, setPostList] = useState([])
 
@@ -95,6 +95,7 @@ export default function SgSectionNewsContentBanner(props) {
                                         return (
                                             <div className='col-lg-6' key={index}>
                                                 <SgNewsItem
+                                                    staticContent={staticContent}
                                                     image={item?.image}
                                                     header={item?.title}
                                                     path={`/page/${page_id}/${item?.id}`}

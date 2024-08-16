@@ -24,7 +24,7 @@ import SgSectionTableContent from "@/components/sections/TableContent";
 import SgSectionContactBanner from "@/components/sections/ContactBanner";
 
 export default function SgTemplateGetPageWidgets(props) {
-    const {page_widgets, page_id, firstSectionPadding = false} = props;
+    const {page_widgets,staticContent, page_id, firstSectionPadding = false} = props;
 
     return (
         <div className={firstSectionPadding ? 'firstSectionPadding' : ''}>
@@ -148,6 +148,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'listBoxContent':
                         return (
                             <SgSectionListBoxContentBanner
+                                staticContent={staticContent}
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
@@ -165,6 +166,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'gallerySlider':
                         return (
                             <SgSectionMonumentsFamousBanner
+                                staticContent={staticContent}
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
@@ -184,6 +186,7 @@ export default function SgTemplateGetPageWidgets(props) {
                             <SgSectionNewsContentBanner
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
+                                staticContent={staticContent}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
                                 page_id={item?.data_type?.main_page_id || page_id}
@@ -193,6 +196,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                     description: item?.content,
                                     list: item?.content?.list
                                 }}
+
                             />
                         )
 
@@ -211,6 +215,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                     description: item?.content,
                                     list: item?.content?.list
                                 }}
+                                staticContent={staticContent}
                             />
                         )
 
@@ -219,6 +224,7 @@ export default function SgTemplateGetPageWidgets(props) {
                             <SgSectionNewsBanner
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
+                                staticContent={staticContent}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
                                 page_id={item?.data_type?.main_page_id || page_id}
@@ -239,6 +245,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
+                                staticContent={staticContent}
                                 page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     image: item?.image,
@@ -254,6 +261,7 @@ export default function SgTemplateGetPageWidgets(props) {
                             <SgSectionEventsContent
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
+                                staticContent={staticContent}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
                                 page_id={item?.data_type?.main_page_id || page_id}
@@ -272,6 +280,7 @@ export default function SgTemplateGetPageWidgets(props) {
                             <SgSectionEventsBanner
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
+                                staticContent={staticContent}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
                                 page_id={item?.data_type?.main_page_id || page_id}
@@ -290,6 +299,7 @@ export default function SgTemplateGetPageWidgets(props) {
                             <SgSectionClubsBanner
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
+                                staticContent={staticContent}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
                                 page_id={item?.data_type?.main_page_id || page_id}
@@ -306,6 +316,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'campusBanner':
                         return (
                             <SgSectionCampusBanner
+                                staticContent={staticContent}
                                 style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
@@ -335,6 +346,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                     description: item?.content,
                                     list: item?.content?.list
                                 }}
+                                staticContent={staticContent}
                             />
                         )
 
@@ -354,6 +366,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                         description: item?.content,
                                         list: item?.content?.list
                                     }}
+                                    staticContent={staticContent}
                                 />
                             </>
                         )
@@ -364,6 +377,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 <SgSectionTabContent
                                     style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                     key={index}
+                                    staticContent={staticContent}
                                     id={`contentBanner__${item.id}`}
                                     mainData={item}
                                     page_id={item?.data_type?.main_page_id || page_id}
@@ -384,6 +398,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 <SgSectionTabLinkContent
                                     style={{backgroundColor: item?.content?.backgroundColor || ''}}
                                     key={index}
+                                    staticContent={staticContent}
                                     id={`contentBanner__${item.id}`}
                                     mainData={item}
                                     page_id={item?.data_type?.main_page_id || page_id}
@@ -405,6 +420,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`content__${item.id}`}
                                 mainData={item}
+                                staticContent={staticContent}
                                 page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     title: itemContent?.title?.value,
@@ -420,6 +436,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'applyContent':
                         return (
                             <SgSectionApplyContent
+                                staticContent={staticContent}
                                 reverse={!!itemContent?.imagePositionRightSide?.value}
                                 style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
                                 key={index}
@@ -442,6 +459,7 @@ export default function SgTemplateGetPageWidgets(props) {
                         return (
                             <SgSectionContactBanner
                                 key={index}
+                                staticContent={staticContent}
                                 id={`contactBanner__${item.id}`}
                                 mainData={item}
                                 page_id={item?.data_type?.main_page_id || page_id}
@@ -461,6 +479,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
+                                staticContent={staticContent}
                                 page_id={item?.data_type?.main_page_id || page_id}
                                 data={{
                                     filter: item?.content?.filter,
@@ -479,6 +498,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                     key={index}
                                     id={`applyContent__${item.id}`}
                                     mainData={item}
+                                    staticContent={staticContent}
                                     page_id={page_id}
                                     data={{
                                         name: itemContent?.name?.value,

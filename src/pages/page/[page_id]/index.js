@@ -6,7 +6,7 @@ import SgTemplateGetPageWidgets from "@/components/templates/GetPageWidgets/GetP
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 
 export default function Index(props) {
-    const {pageData, page_id, inner = true} = props;
+    const {pageData, page_id, inner,staticContent = true} = props;
     const {title, short_description, id, page_widgets} = pageData || {};
 
     return (
@@ -36,6 +36,7 @@ export default function Index(props) {
             <SgTemplateGetPageWidgets
                 page_widgets={page_widgets}
                 page_id={page_id}
+                staticContent={staticContent}
             />
         </>
     );

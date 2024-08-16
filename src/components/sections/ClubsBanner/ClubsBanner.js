@@ -7,9 +7,10 @@ import {useEffect, useState} from "react";
 import ApiService from "@/services/ApiService";
 import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 import {changeData} from "@/utils/changeData";
+import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgSectionClubsBanner(props) {
-    const {id, data, style, mainData, page_id} = props;
+    const {id, data, style, mainData, page_id,staticContent} = props;
     const {image, title, description, filter = true, list = [], morePath} = data;
     const [postList, setPostList] = useState([])
 
@@ -75,7 +76,10 @@ export default function SgSectionClubsBanner(props) {
                                 type='link'
                                 to={`/page/${page_id}`}
                             >
-                                Hamısına baxmaq
+                                <SgHelperTranslate
+                                    defaultText={'Hamısına baxmaq'}
+                                    translatedText={staticContent?.clubsBanner__allSee__button}
+                                />
                             </SgButton>
                         </SgButtonGroup>
                     </SectionHead>

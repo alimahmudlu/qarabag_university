@@ -2,9 +2,10 @@ import styles from '@/components/ui/EventItem/EventItem.module.scss';
 import {SgIcon} from "@/components/ui/Icon";
 import moment from "moment";
 import {SgButton} from "@/components/ui/Button";
+import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgEventItem(props) {
-    const {date, additions = [], title, path} = props;
+    const {date, additions = [], title, path,staticContent} = props;
 
     return (
         <>
@@ -54,7 +55,10 @@ export default function SgEventItem(props) {
                             reverse={true}
                             size='md:lg sm:sm'
                         >
-                            Daha ətraflı
+                            <SgHelperTranslate
+                                defaultText={'Daha ətraflı'}
+                                translatedText={staticContent?.eventsCard__more__link}
+                            />
                         </SgButton>
                     </div>
                 </div>

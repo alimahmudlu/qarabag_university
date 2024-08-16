@@ -4,7 +4,7 @@ import SgEventItem from "@/components/ui/EventItem";
 import moment from "moment";
 
 export default function SgEventsList(props) {
-    const { list, image, text, page_id } = props;
+    const { list, image, text, page_id,staticContent } = props;
     return (
         <>
             <div className={[styles['sg--eventsList']].join(' ').trim()}>
@@ -17,6 +17,7 @@ export default function SgEventsList(props) {
                         return (
                             <div key={index} className={[styles['sg--eventsList-body-item']].join(' ').trim()}>
                                 <SgEventItem
+                                    staticContent={staticContent}
                                     date={item.date}
                                     title={item.title}
                                     path={`/page/${page_id}/${item.id}`}

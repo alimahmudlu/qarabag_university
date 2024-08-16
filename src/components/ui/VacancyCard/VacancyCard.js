@@ -10,9 +10,10 @@
 import styles from '@/components/ui/VacancyCard/VacancyCard.module.css';
 import {SgButton} from "@/components/ui/Button";
 import {SgIcon} from "@/components/ui/Icon";
+import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgVacancyCard(props) {
-    const {header, workTime, location, deadline, path} = props;
+    const {header, workTime, location, deadline, path,staticContent} = props;
 
     return(
         <>
@@ -30,7 +31,10 @@ export default function SgVacancyCard(props) {
                             type='link'
                             to={path}
                         >
-                            Daha ətraflı
+                            {<SgHelperTranslate
+                                defaultText={'Daha ətraflı'}
+                                translatedText={staticContent?.vacancyCard__more__link}
+                            />}
                         </SgButton>
                     </div>
                     <div className={[styles['sg--vacancyCard-content-info']].join('').trim()}>

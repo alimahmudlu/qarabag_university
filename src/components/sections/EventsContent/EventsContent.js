@@ -10,9 +10,10 @@ import {changeData} from "@/utils/changeData";
 import SgEventItem from "@/components/ui/EventItem";
 import ApiService from "@/services/ApiService";
 import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
+import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgSectionEventsContent(props) {
-    const {id, data, style, mainData, page_id} = props;
+    const {id, data, style, mainData, page_id,staticContent} = props;
     const {image, title, description, filter = true, list = [], morePath} = data;
     const [postList, setPostList] = useState([])
 
@@ -75,7 +76,10 @@ export default function SgSectionEventsContent(props) {
                                             size='small'
                                             name='post_search'
                                             id='post_search'
-                                            label='Axtarış'
+                                            label={<SgHelperTranslate
+                                                defaultText={'Axtarış'}
+                                                translatedText={staticContent?.eventsFilterContent__search__input}
+                                            />}
                                             placeholder='Axtarış'
                                             prefix={<SgIcon icon='search' />}
                                             onChange={setUserFilterFn}
@@ -89,7 +93,10 @@ export default function SgSectionEventsContent(props) {
                                             size='small'
                                             name='post_category'
                                             id='post_category'
-                                            label='Kateqoriya'
+                                            label={<SgHelperTranslate
+                                                defaultText={'Kateqoriya'}
+                                                translatedText={staticContent?.eventsFilterContent__categories__select}
+                                            />}
                                             placeholder='Kateqoriya'
                                             onChange={setUserFilterFn}
                                             value={userFilters?.post_category}
@@ -116,7 +123,10 @@ export default function SgSectionEventsContent(props) {
                                         block={true}
                                         onClick={filterHandle}
                                     >
-                                        Axtar
+                                        <SgHelperTranslate
+                                            defaultText={'Axtar'}
+                                            translatedText={staticContent?.eventsFilterContent__search__button}
+                                        />
                                     </SgButton>
                                 </div>
                                 : ''
@@ -160,7 +170,10 @@ export default function SgSectionEventsContent(props) {
                                                 to={morePath}
                                                 onClick={handleChangePage}
                                             >
-                                                Daha çox
+                                                {<SgHelperTranslate
+                                                    defaultText={'Daha çox'}
+                                                    translatedText={staticContent?.eventsFilterBanner__moreNews__button}
+                                                />}
                                             </SgButton>
                                             : ''
                                         }
