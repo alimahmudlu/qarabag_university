@@ -4,6 +4,7 @@ import {useSession} from "next-auth/react";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import styles from "@/admin/components/layouts/MainLayout/MainLayout.module.scss";
+import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 
 
 export default function MainLayout(props) {
@@ -31,6 +32,12 @@ export default function MainLayout(props) {
     else {
         return (
             <>
+
+                <GetGenerateMetadata
+                    defaultMetas={{
+                        title: 'Qarabağ universiteti - İdarəetmə paneli'
+                    }}
+                />
                 <div className={[styles['sg--layouts--main']].join(' ').trim()}>
                     <SgTemplateSidebar
                         user={{}}
