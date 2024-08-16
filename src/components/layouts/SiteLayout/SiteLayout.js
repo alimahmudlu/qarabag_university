@@ -8,7 +8,7 @@ import {useRouter} from "next/router";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 
 export default function SiteLayout(props) {
-    const { children, menus, languages, settings, locale } = props;
+    const { children, menus, languages, settings, locale,staticContent } = props;
 
     const [sidebar, setSidebar] = useState(false)
     const [searchbar, setSearchbar] = useState(false)
@@ -82,6 +82,7 @@ export default function SiteLayout(props) {
                         searchQuery={searchQuery}
                         handleSetMainLanguage={handleSetMainLanguage}
                         mainLanguage={locale}
+                        staticContent={staticContent}
                     />
                     {children}
                     <SgTemplateFooter

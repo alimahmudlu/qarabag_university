@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from 'next/link';
 import { SgButton } from '../Button';
 import { SgRatio } from '../Ratio';
+import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgNewsItem(props) {
-    const { header, description, date, time, image, path, ratio, size } = props;
+    const { header, description, date, time, image, path, ratio, size,staticContent } = props;
 
     // <SgNewsItem
     //     image={newsImage}
@@ -72,7 +73,10 @@ export default function SgNewsItem(props) {
                         reverse={true}
                         size='md:lg sm:sm'
                     >
-                        Daha ətraflı
+                        <SgHelperTranslate
+                            defaultText={'Daha ətraflı'}
+                            translatedText={staticContent?.newsCard__more__link}
+                        />
                     </SgButton>
                 </div>
             </div>

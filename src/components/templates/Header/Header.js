@@ -9,6 +9,7 @@ import SgMenuItem from "@/components/templates/MenuItem";
 import {SgInput} from "@/components/ui/Form";
 import {SgButton} from "@/components/ui/Button";
 import SgButtonGroup from "@/components/ui/ButtonGroup/ButtonGroup";
+import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgTemplateHeader(props) {
     const {
@@ -23,7 +24,8 @@ export default function SgTemplateHeader(props) {
         searchbar,
         searchQuery,
         handleSetMainLanguage,
-        mainLanguage
+        mainLanguage,
+        staticContent
     } = props;
 
 
@@ -175,7 +177,10 @@ export default function SgTemplateHeader(props) {
                                     size='lg'
                                     onClick={handleSearch}
                                 >
-                                    Axtar
+                                    {<SgHelperTranslate
+                                        defaultText={'Axtar'}
+                                        translatedText={staticContent?.header__search__button}
+                                    />}
                                 </SgButton>
                                 <SgButton
                                     color='primary'

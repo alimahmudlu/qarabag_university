@@ -2,7 +2,7 @@ import {Section, SectionBlock, SectionBody} from "@/components/ui/Section";
 import SgNewsItem from "@/components/ui/NewsItem";
 
 export default function SgSectionListBoxContentBanner(props) {
-    const {id, data, style} = props;
+    const {id, data, style,staticContent} = props;
     const {image, title, description, list = []} = data;
 
     return (
@@ -18,6 +18,7 @@ export default function SgSectionListBoxContentBanner(props) {
                                 return (
                                     <div className='col-lg-6 gap-y-[30px]' key={index}>
                                         <SgNewsItem
+                                            staticContent={staticContent}
                                             image={item?.image}
                                             header={item?.title}
                                             description={item?.description}

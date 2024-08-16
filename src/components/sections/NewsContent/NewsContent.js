@@ -9,9 +9,10 @@ import {useEffect, useState} from "react";
 import {changeData} from "@/utils/changeData";
 import ApiService from "@/services/ApiService";
 import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
+import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgSectionNewsContent(props) {
-    const {id, data, style, mainData, page_id} = props;
+    const {id, data, style, mainData, page_id,staticContent} = props;
     const {image, title, description, filter = true, list = [], morePath} = data;
     const [postList, setPostList] = useState([])
 
@@ -75,7 +76,10 @@ export default function SgSectionNewsContent(props) {
                                             size='small'
                                             name='post_search'
                                             id='post_search'
-                                            label='Axtarış'
+                                            label={<SgHelperTranslate
+                                                defaultText={'Axtarış'}
+                                                translatedText={staticContent?.newsFilterBanner__search__input}
+                                            />}
                                             placeholder='Axtarış'
                                             prefix={<SgIcon icon='search' />}
                                             onChange={setUserFilterFn}
@@ -89,7 +93,11 @@ export default function SgSectionNewsContent(props) {
                                             size='small'
                                             name='post_category'
                                             id='post_category'
-                                            label='Kateqoriya'
+                                            label={<SgHelperTranslate
+                                                defaultText={'Kateqoriya'}
+                                                translatedText={staticContent?.newsFilterBanner__categories__select
+                                                }
+                                            />}
                                             placeholder='Kateqoriya'
                                             onChange={setUserFilterFn}
                                             value={userFilters?.post_category}
@@ -116,7 +124,11 @@ export default function SgSectionNewsContent(props) {
                                         block={true}
                                         onClick={filterHandle}
                                     >
-                                        Axtar
+                                        <SgHelperTranslate
+                                            defaultText={'Axtar'}
+                                            translatedText={staticContent?.newsFilterContent__search__button
+                                            }
+                                        />
                                     </SgButton>
                                 </div>
                                 : ''
@@ -152,7 +164,10 @@ export default function SgSectionNewsContent(props) {
                                                 to={morePath}
                                                 onClick={handleChangePage}
                                             >
-                                                Daha çox
+                                                <SgHelperTranslate
+                                                    defaultText={'Daha çox'}
+                                                    translatedText={staticContent?.newsFilterBanner__moreNews__button}
+                                                />
                                             </SgButton>
                                             : ''
                                         }
