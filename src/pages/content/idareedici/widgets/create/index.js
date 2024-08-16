@@ -12,7 +12,6 @@ import {OPTIONS_DATA_TYPE_LIST_ROUTE, WIDGET_CREATE_ROUTE} from "@/admin/configs
 import {validate} from "@/admin/utils/validate";
 import {validationConstraints} from "@/admin/constants/constants";
 import {useRouter} from "next/router";
-import {Jodit} from "jodit";
 
 
 export default function Index(props) {
