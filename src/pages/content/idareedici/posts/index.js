@@ -9,10 +9,13 @@ import {SgPopup} from "@/admin/components/ui/Popup";
 import ApiService from "@/admin/services/ApiService";
 import {LANGUAGE_LIST_ROUTE, POST_DELETE_ROUTE, POST_LIST_ROUTE} from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
+import {SgInput} from "@/admin/components/ui/Form";
+import {changeData} from "@/admin/utils/changeData";
 
 export default function Index(props) {
     const [selectedRow, setSelectedRow] = useState({});
     const [filters, setFilters] = useState({});
+    const [filtersErrors, setFiltersErrors] = useState({});
     const [languageList, setLanguageList] = useState([]);
     const [removeItemModal, setRemoveItemModal] = useState(false);
     const [statusOptions, setStatusOptions] = useState([
@@ -25,7 +28,6 @@ export default function Index(props) {
             name: 'Deactive'
         }
     ]);
-    const router = useRouter();
 
     function toggleRemoveItemModal() {
         setRemoveItemModal(!removeItemModal)
@@ -38,6 +40,10 @@ export default function Index(props) {
         }).catch(error => {
             console.log(error)
         })
+    }
+
+    function handleChange(e) {
+        changeData(e, filters, setFilters, filtersErrors, setFiltersErrors);
     }
 
     useEffect(() => {
@@ -67,6 +73,41 @@ export default function Index(props) {
                     </SgButton>
                 </SgPageHead>
                 <SgPageBody>
+                    <div>
+                        <div className='row align-items-end gap-y-[16px]'>
+                            <div className='col-lg-4'>
+                                <SgInput
+                                    id='search'
+                                    name='search'
+                                    type='text'
+                                    value={filters.search || ''}
+                                    onChange={handleChange}
+                                    label='Search'
+                                    placeholder='Search...'
+                                />
+                            </div>
+                            <div className='col-lg-4'>
+                                <SgInput
+                                    id='status'
+                                    name='status'
+                                    variant='select'
+                                    options={statusOptions}
+                                    value={filters.status || ''}
+                                    onChange={handleChange}
+                                    label='Status'
+                                    placeholder='Status'
+                                />
+                            </div>
+                            <div className='col-lg-4'>
+                                <SgButton
+                                    color='error-outline'
+                                    onClick={() => setFilters({})}
+                                >
+                                    Clear Filters
+                                </SgButton>
+                            </div>
+                        </div>
+                    </div>
                     <SgTable
                         tableData={{
                             data: [
@@ -156,7 +197,9 @@ export default function Index(props) {
                             api: POST_LIST_ROUTE,
                             filters
                         }}
-                        onClick={(e, row, index) => {setSelectedRow(row)}}
+                        onClick={(e, row, index) => {
+                            setSelectedRow(row)
+                        }}
                     />
                 </SgPageBody>
 
