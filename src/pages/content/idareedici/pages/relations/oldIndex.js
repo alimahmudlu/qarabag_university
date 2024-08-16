@@ -23,7 +23,7 @@ import {GetMaxId} from "@/admin/utils/getMaxId";
 import makeID from "@/admin/utils/makeID";
 
 
-export default function Index(props) {
+export default function OldIndex(props) {
     const [data, setData] = useState([]);
     const [nestableData, setNestableData] = useState([]);
     const [valueErrors, setValueErrors] = useState({});
@@ -304,7 +304,7 @@ export default function Index(props) {
     )
 }
 
-Index.getLayout = function getLayout(page) {
+OldIndex.getLayout = function getLayout(page) {
     return (
         <>
             <MainLayout>
