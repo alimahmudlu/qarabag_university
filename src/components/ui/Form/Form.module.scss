@@ -160,7 +160,8 @@ textarea.input {
 }
 
 
-.input--big .input-wrapper {
+
+.input--big > .input-wrapper {
     padding: 0 24px;
 }
 .input--big .input {
@@ -178,6 +179,20 @@ textarea.input {
     height: 48px;
 }
 .input--small .label {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.input--extraSmall .input-wrapper {
+    padding: 0 10px;
+}
+.input--extraSmall .input {
+    padding: 8px 0;
+    font-size: 14px;
+    line-height: 16px;
+    height: 32px;
+}
+.input--extraSmall .label {
     font-size: 16px;
     line-height: 20px;
 }

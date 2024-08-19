@@ -233,6 +233,10 @@
                     display: block;
                     margin-left: auto;
                 }
+
+                &-searchBox {
+                    gap: 16px;
+                }
             }
         }
     }

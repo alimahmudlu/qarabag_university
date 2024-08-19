@@ -95,11 +95,15 @@ export default function Index(props) {
     }
 
     function handleRemoveMenuItem(item) {
-        let array = data;
 
-        let index = array.indexOf(item);
+        let array = [...data];
 
-        array.splice(index, 1);
+        let index = array.indexOf(array.find(el => el.id === item.id));
+        console.log(item, index, array)
+
+        if (index !== -1) {
+            array.splice(index, 1);
+        }
 
         setData(array)
     }
@@ -107,7 +111,6 @@ export default function Index(props) {
     useEffect(() => {
         ApiService.get(`${PAGE_RELATION_LIST_ROUTE}?page_id=${page_id}`).then(resp => {
             const _data = [...resp.data.data.map(elem => ({...elem, new: 0}))];
-
             setData(_data);
         }).catch(error => {
             console.log(error)

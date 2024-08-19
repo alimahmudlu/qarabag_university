@@ -15,7 +15,6 @@ import {SgIcon} from "@/components/ui/Icon";
 export default function SgCollaboratorsItem(props) {
     const { header, position,email,phone,image, path,social } = props;
 
-
     return (
         <>
             <div className={[styles['sg--collaboratorsItem']].join(' ').trim()}>
@@ -44,7 +43,7 @@ export default function SgCollaboratorsItem(props) {
                                     return (
                                         <div key={index}
                                              className={[styles['sg--collaboratorsItem-body--social-item']].join(' ').trim()}>
-                                            <Link href={item.path}
+                                            <Link href={item.path || "/"}
                                                   className={[styles['sg--collaboratorsItem-body--social-item--link']].join(' ').trim()}>
                                                 {item.icon ?
                                                     <SgIcon icon={item.icon}/>
@@ -56,13 +55,12 @@ export default function SgCollaboratorsItem(props) {
                                     )
                                 })}
                             </div>
-
                             : ''
                     }
                     {header ?
-                        <h6 className={[styles['sg--collaboratorsItem-body--header']].join(' ').trim()}>
+                        <Link href={path || ''} className={[styles['sg--collaboratorsItem-body--header']].join(' ').trim()}>
                             {header}
-                        </h6>
+                        </Link>
                         : ''
                     }
                     {position ?

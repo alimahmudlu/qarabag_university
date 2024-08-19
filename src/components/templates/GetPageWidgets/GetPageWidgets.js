@@ -22,6 +22,7 @@ import SgSectionVacancyList from "@/components/sections/VacancyList";
 import SgSectionComment from "@/components/sections/Comment";
 import SgSectionTableContent from "@/components/sections/TableContent";
 import SgSectionContactBanner from "@/components/sections/ContactBanner";
+import SgSectionCollaboratorList from "@/components/sections/CollaboratorList";
 
 export default function SgTemplateGetPageWidgets(props) {
     const {page_widgets,staticContent, page_id, firstSectionPadding = false} = props;
@@ -104,6 +105,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 }}
                             />
                         )
+
                     case 'tableContent':
                         return (
                             <SgSectionTableContent
@@ -455,6 +457,7 @@ export default function SgTemplateGetPageWidgets(props) {
                                 }}
                             />
                         );
+
                     case 'contactBanner':
                         return (
                             <SgSectionContactBanner
@@ -508,6 +511,25 @@ export default function SgTemplateGetPageWidgets(props) {
                                     }}
                             />
                         );
+
+                    case 'collaboratorsBanner':
+                        return (
+                            <SgSectionCollaboratorList
+                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                key={index}
+                                id={`contentBanner__${item.id}`}
+                                mainData={item}
+                                staticContent={staticContent}
+                                page_id={item?.data_type?.main_page_id || page_id}
+                                data={{
+                                    filter: item?.content?.filter,
+                                    image: item?.image,
+                                    title: item?.title,
+                                    description: item?.content,
+                                    list: item?.content?.list
+                                }}
+                            />
+                        )
                 }
             })}
         </div>

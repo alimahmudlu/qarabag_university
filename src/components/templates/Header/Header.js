@@ -162,12 +162,12 @@ export default function SgTemplateHeader(props) {
                             </div>
                         </div>
                         {searchbar ?
-                            <div className={[styles['sg--template--header-block-searchBox']].join(' ').trim()}>
+                            <div className={[styles['sg--template--header-block-searchBox'], 'd-none', 'd-lg-flex'].join(' ').trim()}>
                                 <SgInput
                                     size='big'
                                     labelHidden={true}
                                     placeholder='Axtar...'
-                                    prefix={<SgIcon icon='search'/>}
+                                    prefix={<SgIcon icon='search' />}
                                     onChange={handleChange}
                                     value={searchQuery}
                                 />
@@ -191,6 +191,30 @@ export default function SgTemplateHeader(props) {
                                     onClick={handleSearchbar}
                                 >
                                     Close
+                                </SgButton>
+                            </div>
+                            : ''
+                        }
+                        {searchbar ?
+                            <div className={[styles['sg--template--header-block-searchBox'], 'd-flex', 'd-lg-none'].join(' ').trim()}>
+                                <SgInput
+                                    size='extraSmall'
+                                    labelHidden={true}
+                                    placeholder='Axtar...'
+                                    prefix={<SgIcon icon='search' />}
+                                    onChange={handleChange}
+                                    value={searchQuery}
+                                />
+                                <SgButton
+                                    color='black'
+                                    icon='search'
+                                    size='xs'
+                                    onClick={handleSearch}
+                                >
+                                    {<SgHelperTranslate
+                                        defaultText={'Axtar'}
+                                        translatedText={staticContent?.header__search__button}
+                                    />}
                                 </SgButton>
                             </div>
                             : ''

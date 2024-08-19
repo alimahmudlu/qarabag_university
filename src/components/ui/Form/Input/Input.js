@@ -2,7 +2,7 @@ import makeID from "@/admin/utils/makeID";
 import {useEffect, useMemo, useRef, useState} from "react";
 import ReactDatetimeClass from "react-datetime";
 import moment from "moment";
-import styles from "@/admin/components/ui/Form/Form.module.css"
+import styles from "@/components/ui/Form/Form.module.scss"
 
 export default function SgInput(props) {
     const {
