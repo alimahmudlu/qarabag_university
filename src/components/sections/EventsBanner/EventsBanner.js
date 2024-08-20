@@ -53,7 +53,7 @@ export default function SgSectionEventsBanner(props) {
         }).catch((error) => {
             console.log(error)
         })
-    }, [page]);
+    }, [page, page_id]);
 
     return (
         <>

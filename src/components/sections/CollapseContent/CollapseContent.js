@@ -48,7 +48,7 @@ export default function SgSectionCollapseContent( props ) {
         }).catch((error) => {
             console.log(error)
         })
-    }, [page]);
+    }, [page, page_id]);
 
 
     return (

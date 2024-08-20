@@ -55,7 +55,7 @@ export default function SgSectionCollaboratorList(props) {
         }).catch((error) => {
             console.log(error)
         })
-    }, [page]);
+    }, [page, page_id]);
 
     return (
         <>

@@ -53,7 +53,7 @@ export default function SgSectionTabContent( props ) {
         }).catch((error) => {
             console.log(error)
         })
-    }, [page]);
+    }, [page, page_id]);
 
     useEffect(() => {
         ApiService.get(`${SITE_PAGE_CHILDREN_PAGES_LIST_ROUTE}/${page_id}/parent`).then(response => {

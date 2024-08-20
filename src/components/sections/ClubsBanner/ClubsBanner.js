@@ -51,7 +51,7 @@ export default function SgSectionClubsBanner(props) {
         }).catch((error) => {
             console.log(error)
         })
-    }, [page]);
+    }, [page, page_id]);
 
     return (
         <>

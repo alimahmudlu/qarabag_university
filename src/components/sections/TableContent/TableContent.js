@@ -48,7 +48,7 @@ export default function SgSectionTableContent(props) {
         }).catch((error) => {
             console.log(error)
         })
-    }, [page]);
+    }, [page, page_id]);
 
     const tableData = postList?.[0]?.post_values?.map(value => ({
         key: value?.meta_key?.alias,

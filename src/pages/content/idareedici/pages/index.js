@@ -4,7 +4,7 @@ import {SgButton} from "@/admin/components/ui/Button";
 import SgTable from "@/admin/components/ui/Table";
 import SgIcon from "@/admin/components/ui/Icon";
 import {
-    LANGUAGE_LIST_ROUTE,
+    LANGUAGE_LIST_ROUTE, OPTIONS_LANGUAGE_LIST_ROUTE,
     PAGE_DELETE_ROUTE,
     PAGE_LIST_ROUTE,
     POST_DELETE_ROUTE,
@@ -52,8 +52,8 @@ export default function Index(props) {
     }
 
     useEffect(() => {
-        ApiService.get(LANGUAGE_LIST_ROUTE).then(response => {
-            setLanguageList(response.data.data.data)
+        ApiService.get(OPTIONS_LANGUAGE_LIST_ROUTE).then(response => {
+            setLanguageList(response.data.data)
         })
     }, []);
 

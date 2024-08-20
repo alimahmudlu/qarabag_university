@@ -49,7 +49,7 @@ export default function SgSectionPrincipleListBanner(props) {
         }).catch((error) => {
             console.log(error)
         })
-    }, [page]);
+    }, [page, page_id]);
 
     return (
         <>
