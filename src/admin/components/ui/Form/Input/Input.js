@@ -85,7 +85,7 @@ export default function SgInput(props) {
                     headers: {
                         "Content-Language": "az",
                         "Signature": "KarabakhIsAzerbaijan",
-                        REQUEST_HEADER_AUTH_KEY: `${session?.user?.token?.token_type} ${session?.user?.token?.access_token}`
+                        [REQUEST_HEADER_AUTH_KEY]: `${session?.user?.token?.token_type} ${session?.user?.token?.access_token}`
                     }
                 }
             }
