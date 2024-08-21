@@ -74,12 +74,6 @@ export default function SgInput(props) {
                 url: `${REQUEST_BASE_URL}${FILE_MANAGER_UPLOAD_ROUTE}`,
             },
             filebrowser: {
-                isSuccess: function (resp) {
-                    return resp.data.length !== 0;
-                },
-                getMessage: function (resp) {
-                    return resp.message;
-                },
                 ajax: {
                     url: `${REQUEST_BASE_URL}${FILE_MANAGER_ROUTE}`,
                     headers: {
