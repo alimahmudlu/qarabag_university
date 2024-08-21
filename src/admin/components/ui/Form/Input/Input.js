@@ -5,7 +5,11 @@ import moment from "moment";
 import styles from "@/admin/components/ui/Form/Form.module.css"
 
 import dynamic from "next/dynamic";
-import {FILE_UPLOAD_ROUTE, NEXT_FILE_LIST_ROUTE} from "@/admin/configs/apiRoutes";
+import {
+    FILE_MANAGER_ROUTE,
+    FILE_MANAGER_UPLOAD_ROUTE
+} from "@/admin/configs/apiRoutes";
+import {useSession} from "next-auth/react";
 
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
@@ -63,12 +67,11 @@ export default function SgInput(props) {
     const editor = useRef(null);
     const REQUEST_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_BASE_URL;
     const REQUEST_NEXT_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_NEXT_BASE_URL;
-    const config = useMemo( //  Using of useMemo while make custom configuration is strictly recomended
-        () => ({              //  if you don't use it the editor will lose focus every time when you make any change to the editor, even an addition of one character
-            /* Custom image uploader button configuretion to accept image and convert it to base64 format */
-
+    const {data: session} = useSession();
+    const config = useMemo(
+        () => ({
             uploader: {
-                url: `${REQUEST_BASE_URL}${FILE_UPLOAD_ROUTE}`,
+                url: `${REQUEST_BASE_URL}${FILE_MANAGER_UPLOAD_ROUTE}`,
             },
             filebrowser: {
                 isSuccess: function (resp) {
@@ -78,12 +81,12 @@ export default function SgInput(props) {
                     return resp.message;
                 },
                 ajax: {
-                    url: `${REQUEST_NEXT_BASE_URL}${NEXT_FILE_LIST_ROUTE}`,
-                    method: 'GET',
-                    data: {},
-                    prepareData: function (data) {
-                        return data;
-                    },
+                    url: `${REQUEST_BASE_URL}${FILE_MANAGER_ROUTE}`,
+                    headers: {
+                        "Content-Language": "az",
+                        "Signature": "KarabakhIsAzerbaijan",
+                        "session": `${session?.user?.token?.token_type} ${session?.user?.token?.access_token}`
+                    }
                 }
             }
         }),

@@ -2,24 +2,23 @@ import {MainLayout} from "@/admin/components/layouts";
 import {SgPage, SgPageBody, SgPageHead} from "@/admin/components/ui/Page";
 import {SgButton} from "@/admin/components/ui/Button";
 import SgTable from "@/admin/components/ui/Table";
-import SgIcon from "@/admin/components/ui/Icon";
 import {useEffect, useState} from "react";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import {SgPopup} from "@/admin/components/ui/Popup";
 import ApiService from "@/admin/services/ApiService";
 import {
-    SETTINGS_CREATE_ROUTE, SETTINGS_DELETE_ROUTE, SETTINGS_EDIT_ROUTE, SETTINGS_LIST_ROUTE,
-    STATIC_CONTENT_CREATE_ROUTE,
-    STATIC_CONTENT_DELETE_ROUTE,
-    STATIC_CONTENT_EDIT_ROUTE,
-    STATIC_CONTENT_LIST_ROUTE
+    SETTINGS_CREATE_ROUTE,
+    SETTINGS_DELETE_ROUTE,
+    SETTINGS_EDIT_ROUTE,
+    SETTINGS_LIST_ROUTE
 } from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
 import {SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
 import {iconsData} from "@/data";
+import {SgIcon} from "@/components/ui/Icon";
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState({});
     const [selectedRow, setSelectedRow] = useState({});
     const [valueErrors, setValueErrors] = useState({});
@@ -126,7 +125,7 @@ export default function Index(props) {
                                         id='meta'
                                         label='Meta'
                                         placeholder='Meta'
-                                        options={iconsData}
+                                        options={iconsData.map(el => ({...el, name: <div className='d-flex align-items-center gap-2'><SgIcon  icon={el.name} />  <span>{el.name}</span></div>}))}
                                         onChange={handleChangeNew}
                                         value={data?.meta || ''}
                                     /> :
@@ -326,7 +325,7 @@ export default function Index(props) {
                                     id='meta'
                                     label='Meta'
                                     placeholder='Meta'
-                                    options={iconsData}
+                                    options={iconsData.map(el => ({...el, name: <div className='d-flex align-items-center gap-2'><SgIcon  icon={el.name} />  <span>{el.name}</span></div>}))}
                                     onChange={handleChangeNew}
                                     value={data?.meta || ''}
                                 /> :

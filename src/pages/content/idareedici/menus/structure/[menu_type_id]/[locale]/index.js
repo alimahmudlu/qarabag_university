@@ -18,7 +18,7 @@ import Nestable from "react-nestable";
 import {GetMaxId} from "@/admin/utils/getMaxId";
 
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState([]);
     const [nestableData, setNestableData] = useState([]);
     const [valueErrors, setValueErrors] = useState({});

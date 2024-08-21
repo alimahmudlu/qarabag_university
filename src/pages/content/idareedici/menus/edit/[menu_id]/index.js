@@ -16,7 +16,7 @@ import {validate} from "@/admin/utils/validate";
 import {validationConstraints} from "@/admin/constants/constants";
 
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState({});
     const [valueErrors, setValueErrors] = useState({});
     const { query } = useRouter();

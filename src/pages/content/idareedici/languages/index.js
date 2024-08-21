@@ -8,7 +8,7 @@ import {SgPopup} from "@/admin/components/ui/Popup";
 import ApiService from "@/admin/services/ApiService";
 import {LANGUAGE_DELETE_ROUTE, LANGUAGE_LIST_ROUTE} from "@/admin/configs/apiRoutes";
 
-export default function Index(props) {
+export default function Index() {
     const [selectedRow, setSelectedRow] = useState({});
     const [filters, setFilters] = useState({});
     const [removeLanguageModal, setRemoveLanguageModal] = useState(false);

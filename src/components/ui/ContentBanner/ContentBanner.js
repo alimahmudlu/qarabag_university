@@ -14,7 +14,7 @@ export default function SgContentBanner(props) {
                         className={[styles['sg--contentBanner-image--img']].join(' ').trim()}
                     />
                 </div>
-                <div style={fluidContainer === 'right' ? {paddingLeft: fluidContainerPadding} : {paddingRight: fluidContainerPadding}} className={[styles['sg--contentBanner-body']].join(' ').trim()}>
+                <div style={fluidContainer ? (fluidContainer === 'right' ? {paddingLeft: fluidContainerPadding} : {paddingRight: fluidContainerPadding}) : null} className={[styles['sg--contentBanner-body']].join(' ').trim()}>
                     <div className={[styles['sg--contentBanner-body--header']].join(' ').trim()}>
                         {title}
                     </div>

@@ -64,7 +64,8 @@ export const MENU_ITEM_LIST_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/menu_
 
 export const FILE_UPLOAD_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/file/upload'
 export const FILE_LIST_ROUTE = '/option/files'
-export const NEXT_FILE_LIST_ROUTE = '/api/files/getAllFiles'
+export const FILE_MANAGER_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/file_manager'
+export const FILE_MANAGER_UPLOAD_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/file_manager'
 
 
 export const LOGIN_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/login'

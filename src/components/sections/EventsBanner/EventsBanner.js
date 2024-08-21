@@ -29,8 +29,6 @@ export default function SgSectionEventsBanner(props) {
         setPage(1)
     }
 
-    console.log(staticContent)
-
     function handleChangePage() {
         setPage(page + 1)
     }

@@ -20,7 +20,6 @@ import {GetMaxId} from "@/admin/utils/getMaxId";
 
 export default function Index(props) {
     const [data, setData] = useState([]);
-    const [nestableData, setNestableData] = useState([]);
     const [valueErrors, setValueErrors] = useState({});
 
     const [optionsData, setOptionsData] = useState({});
@@ -28,30 +27,6 @@ export default function Index(props) {
 
     const [itemsOptions, setItemsOptions] = useState([])
 
-    const [itemTypeOptions, setItemTypeOptions] = useState([
-        {
-            id: 'post',
-            name: 'post'
-        },
-        {
-            id: 'page',
-            name: 'page'
-        },
-        {
-            id: 'external',
-            name: 'external'
-        }
-    ]);
-    const [statusOptions, setStatusOptions] = useState([
-        {
-            id: 1,
-            name: 'Active'
-        },
-        {
-            id: 0,
-            name: 'Deactive'
-        }
-    ]);
     const router = useRouter()
     const { query } = router;
     const { page_id } = query;

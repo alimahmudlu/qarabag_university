@@ -1,7 +1,7 @@
 import {MainLayout} from "@/admin/components/layouts";
 import {SgPage, SgPageBody, SgPageFooter, SgPageHead} from "@/admin/components/ui/Page";
 import {SgButton} from "@/admin/components/ui/Button";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import {SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
 import slugify from "slugify";
@@ -18,14 +18,13 @@ import {
 } from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
 import SortableList from "@/admin/components/templates/Sortable/SortableList";
-import ReactDOM from "react-dom";
 import {arrayMoveImmutable} from "array-move";
 import {validate} from "@/admin/utils/validate";
 import {validationConstraints} from "@/admin/constants/constants";
 import {SgPopup} from "@/admin/components/ui/Popup";
 
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState({});
     const [valueErrors, setValueErrors] = useState({});
     const [fileManagerModal, setFileManagerModal] = useState(false);
@@ -46,50 +45,11 @@ export default function Index(props) {
             name: 'List'
         }
     ]);
-    const [innerPageTemplateOptions, setInnerPageTemplateOptions] = useState([
-        {
-            id: 1,
-            name: 'News'
-        },
-        {
-            id: 2,
-            name: 'Events'
-        },
-        {
-            id: 3,
-            name: 'Collaborator'
-        },
-        {
-            id: 4,
-            name: 'Career'
-        }
-    ]);
-    const [statusOptions, setStatusOptions] = useState([
-        {
-            id: 1,
-            name: 'Active'
-        },
-        {
-            id: 0,
-            name: 'Deactive'
-        }
-    ]);
-    const [protectOptions, setProtectOptions] = useState([
-        {
-            id: 1,
-            name: 'Qorunur'
-        },
-        {
-            id: 0,
-            name: 'Qorunmur'
-        }
-    ]);
     const [widgets, setWidgets] = useState([])
     const [dataTypes, setDataTypes] = useState([])
     const { query } = useRouter();
     const { page_id, locale } = query;
     const router = useRouter();
-    const bodyInstance = useRef(null);
 
     function handleChange(e) {
         changeData(e, data, setData, valueErrors, setValueErrors, e.target.name === 'slug' ? slugify(e.target.value) : null);

@@ -13,7 +13,7 @@ import {validationConstraints} from "@/admin/constants/constants";
 import {useRouter} from "next/router";
 
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState({});
     const [valueErrors, setValueErrors] = useState({});
     const router = useRouter()

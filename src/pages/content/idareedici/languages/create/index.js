@@ -12,7 +12,7 @@ import {LANGUAGE_CREATE_ROUTE} from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
 
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState({});
     const [valueErrors, setValueErrors] = useState({});
     const [statusOptions, setStatusOptions] = useState([

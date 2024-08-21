@@ -57,7 +57,7 @@ export default function SgSectionClubsBanner(props) {
         <>
             <Section
                 style={{
-                    backgroundColor: 'var(--background, #F6F6F6);'
+                    backgroundColor: 'var(--background, #F6F6F6)'
                 }}
                 id={id}
             >

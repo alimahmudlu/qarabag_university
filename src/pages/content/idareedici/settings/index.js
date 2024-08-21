@@ -3,12 +3,11 @@ import DashboardItem from "@/admin/components/ui/DashboardItem";
 import {useEffect, useState} from "react";
 import ApiService from "@/admin/services/ApiService";
 import {
-    LANGUAGE_LIST_ROUTE,
     OPTIONS_LANGUAGE_LIST_ROUTE,
     OPTIONS_SETTINGS_TYPE_LIST_ROUTE
 } from "@/admin/configs/apiRoutes";
 
-export default function Index(props) {
+export default function Index() {
     const [settingsTypeList, setSettingsTypeList] = useState([])
     const [languageList, setLanguageList] = useState([])
 

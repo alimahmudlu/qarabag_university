@@ -17,7 +17,7 @@ import {
 } from "@/admin/configs/apiRoutes";
 
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState({});
     const [valueErrors, setValueErrors] = useState({});
     const [dataTypes, setDataTypes] = useState([]);

@@ -1,7 +1,7 @@
 import {MainLayout} from "@/admin/components/layouts";
 import DashboardItem from "@/admin/components/ui/DashboardItem";
 
-export default function Index(props) {
+export default function Index() {
     return (
         <>
             <div className='row gap-y-[16px]'>

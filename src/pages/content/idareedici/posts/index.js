@@ -2,22 +2,19 @@ import {MainLayout} from "@/admin/components/layouts";
 import {SgPage, SgPageBody, SgPageHead} from "@/admin/components/ui/Page";
 import {SgButton} from "@/admin/components/ui/Button";
 import SgTable from "@/admin/components/ui/Table";
-import SgIcon from "@/admin/components/ui/Icon";
 import {useEffect, useState} from "react";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import {SgPopup} from "@/admin/components/ui/Popup";
 import ApiService from "@/admin/services/ApiService";
 import {
-    LANGUAGE_LIST_ROUTE,
     OPTIONS_LANGUAGE_LIST_ROUTE,
     POST_DELETE_ROUTE,
     POST_LIST_ROUTE
 } from "@/admin/configs/apiRoutes";
-import {useRouter} from "next/router";
 import {SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
 
-export default function Index(props) {
+export default function Index() {
     const [selectedRow, setSelectedRow] = useState({});
     const [filters, setFilters] = useState({});
     const [filtersErrors, setFiltersErrors] = useState({});

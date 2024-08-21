@@ -6,26 +6,18 @@ import {SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
 import slugify from "slugify";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
-import SgWidgetsFilter from "@/admin/components/ui/WidgetsFilter";
-
-import simpleContentImage from "@/admin/assets/images/widgets/simpleContent.png"
-import SgContentBanner from "@/components/ui/ContentBanner";
 import ApiService from "@/admin/services/ApiService";
 import {
-    DATA_TYPE_CREATE_ROUTE, DATA_TYPE_EDIT_ROUTE,
+    DATA_TYPE_EDIT_ROUTE,
     DATA_TYPE_SHOW_ROUTE,
-    LANGUAGE_SHOW_ROUTE,
     OPTIONS_INPUT_TYPE_LIST_ROUTE, OPTIONS_PAGE_LIST_ROUTE,
-    PAGE_SHOW_ROUTE,
-    WIDGET_LIST_ROUTE
 } from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
-import SgWidgetItem from "@/admin/components/ui/WidgetItem";
 import {validate} from "@/admin/utils/validate";
 import {validationConstraints} from "@/admin/constants/constants";
 
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState({
         widgets: []
     });

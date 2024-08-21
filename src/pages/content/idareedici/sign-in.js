@@ -3,21 +3,17 @@ import {SgSectionAuth} from "@/admin/components/sections/Auth";
 import {SgCheckbox, SgCheckboxGroup, SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {SgButton} from "@/admin/components/ui/Button";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
-import ApiService from "@/admin/services/ApiService";
-import {LOGIN_ROUTE} from "@/admin/configs/apiRoutes";
 import {useState} from "react";
 import {changeData} from "@/admin/utils/changeData";
 import {validate} from "@/admin/utils/validate";
 import {validationConstraints} from "@/admin/constants/constants";
-import { signIn, getCsrfToken } from 'next-auth/react'
-import {useRouter} from "next/router";
+import { signIn } from 'next-auth/react'
 import {toast} from "react-toastify";
 const REQUEST_NEXT_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_NEXT_BASE_URL;
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState({})
     const [errors, setErrors] = useState({})
-    const router = useRouter()
 
     function handleChange(e) {
         changeData(e, data, setData, errors, setErrors)

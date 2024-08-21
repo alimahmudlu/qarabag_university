@@ -1,11 +1,9 @@
 import {MainLayout} from "@/admin/components/layouts";
-import ReactDOM from 'react-dom'
 import {SgPage, SgPageBody, SgPageFooter, SgPageHead} from "@/admin/components/ui/Page";
 import {SgButton} from "@/admin/components/ui/Button";
 import {useEffect, useState} from "react";
 import {SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
-import slugify from "slugify";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import SgWidgetsFilter from "@/admin/components/ui/WidgetsFilter";
 import {arrayMoveImmutable} from "array-move";
@@ -16,7 +14,7 @@ import {
     DATA_TYPE_SHOW_ROUTE,
     OPTIONS_DATA_TYPE_LIST_ROUTE,
     OPTIONS_LANGUAGE_LIST_ROUTE, OPTIONS_PAGE_LIST_ROUTE,
-    OPTIONS_WIDGET_LIST_ROUTE, PAGE_CREATE_ROUTE, POST_CREATE_ROUTE
+    OPTIONS_WIDGET_LIST_ROUTE, PAGE_CREATE_ROUTE
 } from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
 import SortableList from "@/admin/components/templates/Sortable/SortableList";
@@ -25,7 +23,7 @@ import {validationConstraints} from "@/admin/constants/constants";
 import {SgPopup} from "@/admin/components/ui/Popup";
 
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState({
         page_widgets: []
     });

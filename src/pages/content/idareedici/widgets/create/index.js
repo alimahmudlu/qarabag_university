@@ -4,7 +4,6 @@ import {SgButton} from "@/admin/components/ui/Button";
 import {useEffect, useState} from "react";
 import {SgFile, SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
-// import slugify from "slugify";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 
 import ApiService from "@/admin/services/ApiService";
@@ -14,7 +13,7 @@ import {validationConstraints} from "@/admin/constants/constants";
 import {useRouter} from "next/router";
 
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState({});
     const [valueErrors, setValueErrors] = useState({});
     const [fileManagerModal, setFileManagerModal] = useState(false);

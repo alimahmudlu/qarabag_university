@@ -9,7 +9,6 @@ import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import ApiService from "@/admin/services/ApiService";
 import {
     DATA_TYPE_CREATE_ROUTE,
-    LANGUAGE_CREATE_ROUTE,
     OPTIONS_INPUT_TYPE_LIST_ROUTE,
     OPTIONS_PAGE_LIST_ROUTE
 } from "@/admin/configs/apiRoutes";
@@ -18,7 +17,7 @@ import {validationConstraints} from "@/admin/constants/constants";
 import {useRouter} from "next/router";
 
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState({
         meta_keys: []
     });

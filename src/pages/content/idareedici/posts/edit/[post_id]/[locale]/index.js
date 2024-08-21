@@ -10,15 +10,14 @@ import {validationConstraints} from "@/admin/constants/constants";
 import ApiService from "@/admin/services/ApiService";
 import {
     DATA_TYPE_SHOW_ROUTE,
-    LANGUAGE_EDIT_ROUTE,
-    LANGUAGE_SHOW_ROUTE, OPTIONS_DATA_TYPE_LIST_ROUTE,
+    OPTIONS_DATA_TYPE_LIST_ROUTE,
     OPTIONS_LANGUAGE_LIST_ROUTE, POST_EDIT_ROUTE,
     POST_SHOW_ROUTE
 } from "@/admin/configs/apiRoutes";
 import {useRouter} from "next/router";
 
 
-export default function Index(props) {
+export default function Index() {
     const [data, setData] = useState({});
     const [valueErrors, setValueErrors] = useState({});
     const [languagesOptions, setLanguagesOptions] = useState([]);

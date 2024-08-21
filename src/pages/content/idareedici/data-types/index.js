@@ -4,30 +4,17 @@ import {SgButton} from "@/admin/components/ui/Button";
 import SgTable from "@/admin/components/ui/Table";
 import {
     DATA_TYPE_LIST_ROUTE,
-    LANGUAGE_LIST_ROUTE,
-    OPTIONS_LANGUAGE_LIST_ROUTE,
-    PAGE_LIST_ROUTE,
-    POST_DELETE_ROUTE
+    OPTIONS_LANGUAGE_LIST_ROUTE
 } from "@/admin/configs/apiRoutes";
 import {useEffect, useState} from "react";
 import ApiService from "@/admin/services/ApiService";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 
-export default function Index(props) {
+export default function Index() {
     const [selectedRow, setSelectedRow] = useState({});
     const [filters, setFilters] = useState({});
     const [languageList, setLanguageList] = useState([]);
     const [removeItemModal, setRemoveItemModal] = useState(false);
-    const [statusOptions, setStatusOptions] = useState([
-        {
-            id: 1,
-            name: 'Active'
-        },
-        {
-            id: 0,
-            name: 'Deactive'
-        }
-    ]);
 
     function toggleRemoveItemModal() {
         setRemoveItemModal(!removeItemModal)
