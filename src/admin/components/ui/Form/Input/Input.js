@@ -66,7 +66,7 @@ export default function SgInput(props) {
     const [onFocus, setOnFocus] = useState(false);
     const editor = useRef(null);
     const REQUEST_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_BASE_URL;
-    const REQUEST_NEXT_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_NEXT_BASE_URL;
+    const REQUEST_HEADER_AUTH_KEY = process.env.NEXT_PUBLIC_REQUEST_HEADER_AUTH_KEY;
     const {data: session} = useSession();
     const config = useMemo(
         () => ({
@@ -85,7 +85,7 @@ export default function SgInput(props) {
                     headers: {
                         "Content-Language": "az",
                         "Signature": "KarabakhIsAzerbaijan",
-                        "session": `${session?.user?.token?.token_type} ${session?.user?.token?.access_token}`
+                        REQUEST_HEADER_AUTH_KEY: `${session?.user?.token?.token_type} ${session?.user?.token?.access_token}`
                     }
                 }
             }
