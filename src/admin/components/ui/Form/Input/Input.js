@@ -71,15 +71,19 @@ export default function SgInput(props) {
     const config = useMemo(
         () => ({
             uploader: {
-                url: `${REQUEST_BASE_URL}${FILE_MANAGER_UPLOAD_ROUTE}`,
+                url: `${REQUEST_BASE_URL}${FILE_MANAGER_UPLOAD_ROUTE}?action=fileUpload`,
+                headers: {
+                    "Content-Language": "az",
+                    "Signature": "KarabakhIsAzerbaijan",
+                    [REQUEST_HEADER_AUTH_KEY]: `${session?.user?.token?.token_type} ${session?.user?.token?.access_token}`
+                }
             },
+            // uploader: null,
             filebrowser: {
                 isSuccess: function (resp) {
-                    console.log(resp,resp.data, resp.data.length, 'isSuccess')
                     return resp.data.length !== 0;
                 },
                 getMessage: function (resp) {
-                    console.log(resp,resp.data, resp.message, 'getMessage')
                     return resp.message;
                 },
                 ajax: {
