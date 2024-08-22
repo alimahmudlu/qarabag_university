@@ -75,7 +75,7 @@ export default function SgInput(props) {
             },
             filebrowser: {
                 isSuccess: function (resp) {
-                    console.log(resp,resp.data, resp.data.length, 'this.isSuccess')
+                    console.log(resp,resp.data, resp.data.length, 'isSuccess')
                     return resp.data.length !== 0;
                 },
                 getMessage: function (resp) {

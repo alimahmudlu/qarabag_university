@@ -28,6 +28,7 @@ export default function SgContentBanner(props) {
                             color='primary'
                             icon={button.icon}
                             reverse={true}
+                            download={!!button?.downloadButton}
                             size='md:lg sm:sm'
                         >
                             {button?.name}

@@ -106,12 +106,6 @@ export default function Index() {
     }
 
     useEffect(() => {
-        ApiService.get(`${DATA_TYPE_SHOW_ROUTE}/${data_type_id}`).then(resp => {
-            setData(resp.data.data)
-        }).catch(error => {
-            console.log(error)
-        })
-
         ApiService.get(OPTIONS_INPUT_TYPE_LIST_ROUTE).then(resp => {
             setInputTypes(resp.data.data.map(el => ({id: el.id, name: el.alias})))
         }).catch(error => {
@@ -120,6 +114,12 @@ export default function Index() {
 
         ApiService.get(OPTIONS_PAGE_LIST_ROUTE).then(resp => {
             setPagesListOptions(resp.data.data.map(el => ({id: el.id, name: el.title})))
+        }).catch(error => {
+            console.log(error)
+        })
+
+        ApiService.get(`${DATA_TYPE_SHOW_ROUTE}/${data_type_id}`).then(resp => {
+            setData(resp.data.data)
         }).catch(error => {
             console.log(error)
         })
@@ -252,7 +252,7 @@ export default function Index() {
                                                 label='Input type'
                                                 placeholder='Input type'
                                                 onChange={handleChange}
-                                                value={item.input_type_id}
+                                                value={item.input_type_id || ''}
                                                 variant='select'
                                                 options={inputTypes}
                                             />

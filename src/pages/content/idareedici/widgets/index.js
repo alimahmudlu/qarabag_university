@@ -3,6 +3,7 @@ import {SgPage, SgPageBody, SgPageHead} from "@/admin/components/ui/Page";
 import {SgButton} from "@/admin/components/ui/Button";
 import SgTable from "@/admin/components/ui/Table";
 import {
+    OPTIONS_LANGUAGE_LIST_ROUTE,
     WIDGET_DELETE_ROUTE,
     WIDGET_LIST_ROUTE
 } from "@/admin/configs/apiRoutes";
@@ -43,7 +44,7 @@ export default function Index() {
     useEffect(() => {
         ApiService.get(OPTIONS_LANGUAGE_LIST_ROUTE).then(response => {
             setLanguageList(response.data.data)
-        })
+        });
     }, []);
 
 

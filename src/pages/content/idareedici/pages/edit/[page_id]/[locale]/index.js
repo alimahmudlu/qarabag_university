@@ -45,6 +45,26 @@ export default function Index() {
             name: 'List'
         }
     ]);
+    const [statusOptions, setStatusOptions] = useState([
+        {
+            id: 1,
+            name: 'Active'
+        },
+        {
+            id: 0,
+            name: 'Deactive'
+        }
+    ]);
+    const [protectOptions, setProtectOptions] = useState([
+        {
+            id: 1,
+            name: 'Qorunur'
+        },
+        {
+            id: 0,
+            name: 'Qorunmur'
+        }
+    ]);
     const [widgets, setWidgets] = useState([])
     const [dataTypes, setDataTypes] = useState([])
     const { query } = useRouter();
@@ -157,16 +177,6 @@ export default function Index() {
             console.log(error)
         })
 
-        ApiService.get(`${PAGE_SHOW_ROUTE}/${page_id}`, {
-            headers: {
-                'Content-Language': locale
-            }
-        }).then(resp => {
-            setData({...resp.data.data, page_widgets: resp.data.data.page_widgets.filter(widget => !!widget.widget)})
-        }).catch(error => {
-            console.log(error)
-        })
-
         ApiService.get(`${OPTIONS_DATA_TYPE_LIST_ROUTE}`).then(resp => {
             setDataTypes((resp.data.data || []).map(el => ({id: el.id, name: el.alias, meta_keys: el.meta_keys || []})))
         }).catch(error => {
@@ -179,6 +189,19 @@ export default function Index() {
             console.log(error)
         })
     }, []);
+
+    useEffect(() => {
+        ApiService.get(`${PAGE_SHOW_ROUTE}/${page_id}`, {
+            headers: {
+                'Content-Language': locale
+            }
+        }).then(resp => {
+            console.log({...resp.data.data, page_widgets: resp.data.data.page_widgets.filter(widget => !!widget.widget).map(el => ({...el, page_widget_values: [...el.page_widget_values, ...dataTypes.find(dt => dt.id === el.data_type_id)?.meta_keys.filter(dt => !el.page_widget_values.find(pwv => pwv.meta_key_id == dt.id)).map(asd => ({meta_key: asd, meta_key_id: asd.id}))]}))})
+            setData({...resp.data.data, page_widgets: resp.data.data.page_widgets.filter(widget => !!widget.widget).map(el => ({...el, page_widget_values: [...el.page_widget_values, ...dataTypes.find(dt => dt.id === el.data_type_id)?.meta_keys.filter(dt => !el.page_widget_values.find(pwv => pwv.meta_key_id == dt.id)).map(asd => ({meta_key: asd, meta_key_id: asd.id}))]}))});
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [!!dataTypes.length]);
 
     return (
         <>

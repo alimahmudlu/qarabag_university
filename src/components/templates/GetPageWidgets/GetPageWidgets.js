@@ -49,6 +49,8 @@ export default function SgTemplateGetPageWidgets(props) {
                                     button: (itemContent?.buttonTitle && itemContent?.buttonUrl) ? {
                                         name: itemContent?.buttonTitle?.value,
                                         path: itemContent?.buttonUrl?.value,
+                                        downloadButton: itemContent?.downloadButton?.value,
+                                        icon: !!itemContent?.downloadButton?.value ? 'download1' : itemContent?.icon?.value
                                     } : {}
                                 }}
                             />
@@ -430,6 +432,8 @@ export default function SgTemplateGetPageWidgets(props) {
                                     button: (itemContent?.buttonTitle && itemContent?.buttonUrl) ? {
                                         name: itemContent?.buttonTitle?.value,
                                         path: itemContent?.buttonUrl?.value,
+                                        downloadButton: itemContent?.downloadButton?.value,
+                                        icon: !!itemContent?.downloadButton?.value ? 'download1' : itemContent?.icon?.value
                                     } : {}
                                 }}
                             />

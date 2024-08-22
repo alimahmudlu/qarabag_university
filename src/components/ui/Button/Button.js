@@ -2,7 +2,7 @@ import styles from '@/components/ui/Button/Button.module.scss';
 import Link from "next/link";
 
 export default function SgButton (props) {
-    const {children, size = '', color, variant, block, align, icon, onlyIcon, reverse, squared, withOutBlock, className, disabled, loading, close, active, onClick, padding, weight, decoration, type = 'button', isLinked = false, to = '#', ...rest} = props;
+    const {children, size = '', color, variant, block, align, icon, onlyIcon, reverse, squared, withOutBlock, className, disabled, loading, close, active, onClick, padding, weight, decoration, type = 'button', isLinked = false, download, to = '#', ...rest} = props;
 
     const getButtonSize = () => {
         let classes = [];
@@ -140,13 +140,15 @@ export default function SgButton (props) {
 
     if (type === 'link') {
         return (
-            <Link href={to}
-                  {...rest}
-                  className={[styles['sg--button'], getButtonSize(), getButtonVariant(), getButtonColor(), getButtonAttr(), getButtonIcon(), className].join(' ').trim()}
-                  onClick={handleClick}
-            >
-                {children}
-            </Link>
+                <Link href={to}
+                      {...rest}
+                      download={download ? '' : false}
+                      target={disabled ? '_blank' : undefined}
+                      className={[styles['sg--button'], getButtonSize(), getButtonVariant(), getButtonColor(), getButtonAttr(), getButtonIcon(), className].join(' ').trim()}
+                      onClick={handleClick}
+                >
+                    {children}
+                </Link>
         )
     }
     return (
