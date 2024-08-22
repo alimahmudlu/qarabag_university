@@ -58,6 +58,11 @@ export default function SiteLayout(props) {
         localStorage.setItem('language', language)
     }
 
+    useEffect(() => {
+        setSearchbar(false)
+        setSidebar(false)
+    }, [router])
+
     return (
         <>
             <GetGenerateMetadata
