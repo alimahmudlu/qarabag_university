@@ -70,6 +70,9 @@ export default function SgInput(props) {
     const {data: session} = useSession();
     const config = useMemo(
         () => ({
+            readonly: false,
+            license: "",
+            enter: "br",
             uploader: {
                 url: `${REQUEST_BASE_URL}${FILE_MANAGER_UPLOAD_ROUTE}?action=fileUpload`,
                 headers: {
@@ -78,14 +81,7 @@ export default function SgInput(props) {
                     [REQUEST_HEADER_AUTH_KEY]: `${session?.user?.token?.token_type} ${session?.user?.token?.access_token}`
                 }
             },
-            // uploader: null,
             filebrowser: {
-                isSuccess: function (resp) {
-                    return resp.data.length !== 0;
-                },
-                getMessage: function (resp) {
-                    return resp.message;
-                },
                 ajax: {
                     url: `${REQUEST_BASE_URL}${FILE_MANAGER_ROUTE}`,
                     headers: {
@@ -397,10 +393,31 @@ export default function SgInput(props) {
 
     const renderEditor = (
     <JoditEditor
-        ref={editor}            //This is important
-        value={value}         //This is important
-        config={config}         //Only use when you declare some custom configs
+        ref={editor}
+        value={value}
+        config={config}
+        tabIndex={1}
         onChange={(editorContent) =>
+                    {
+                        /*handleChange(
+                            {
+                                target: {
+                                    id: id,
+                                    name: name,
+                                    value: `${editorContent}`,
+                                    validity: {},
+                                    dataset: {
+                                        key: data_key,
+                                        id: data_id,
+                                        extraarraykey: data_extraarraykey,
+                                        extraarrayvalue: data_extraarrayvalue
+                                    },
+                                }
+                            }
+                        )*/
+                    }
+                }
+        onBlur={(editorContent) =>
                     {
                         handleChange(
                             {
@@ -419,7 +436,7 @@ export default function SgInput(props) {
                             }
                         )
                     }
-                } //handle the changes
+                }
         className="w-full h-[70%] mt-10 bg-white"
     />
     )
