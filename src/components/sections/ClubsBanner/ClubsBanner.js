@@ -91,6 +91,7 @@ export default function SgSectionClubsBanner(props) {
                                         <SgClubItem
                                             image={item.image}
                                             header={item.title}
+                                            description={item.short_description}
                                             path={`/page/${page_id}/${item?.id}`}
                                         />
                                     </div>

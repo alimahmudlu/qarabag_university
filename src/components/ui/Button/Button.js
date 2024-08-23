@@ -73,6 +73,14 @@ export default function SgButton (props) {
                 classes = styles['sg--button--black-outline']
                 break
 
+            case 'white':
+                classes = styles['sg--button--white']
+                break
+
+            case 'white-outline':
+                classes = styles['sg--button--white-outline']
+                break
+
 
             default:
                 classes = styles['sg--button--primary-outline']
