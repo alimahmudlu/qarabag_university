@@ -3,13 +3,17 @@ import SgIcon from "@/admin/components/ui/Icon";
 import Link from "next/link";
 import {SgTemplateUserDropdown} from "@/admin/components/templates/UserDropdown";
 import {useSession,signOut} from "next-auth/react";
+const REQUEST_NEXT_ADMIN_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_NEXT_ADMIN_BASE_URL;
 
 export default function SgTemplateHeader(props) {
     const { userId, workspaceId, layout, handleToggleSidebar } = props;
     const { data: session } = useSession();
 
-    function handleSignOut() {
-        signOut()
+    async function handleSignOut() {
+        await signOut({
+            redirect: false,
+            callbackUrl: `${REQUEST_NEXT_ADMIN_BASE_URL}/content/idareedici`
+        });
     }
 
     return (

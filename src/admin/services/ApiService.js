@@ -3,22 +3,22 @@ import {signOut, getCsrfToken, getSession} from "next-auth/react";
 import { toast } from 'react-toastify';
 
 const REQUEST_HEADER_AUTH_KEY = process.env.NEXT_PUBLIC_REQUEST_HEADER_AUTH_KEY;
-const REQUEST_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_BASE_URL;
-// const REQUEST_TOKEN_TYPE = process.env.NEXT_PUBLIC_REQUEST_TOKEN_TYPE;
-// const REQUEST_ACCESS_TOKEN = process.env.NEXT_PUBLIC_REQUEST_ACCESS_TOKEN;
+const REQUEST_ADMIN_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_ADMIN_BASE_URL;
 const REQUEST_TIME_OUT = process.env.NEXT_PUBLIC_REQUEST_TIME_OUT;
-const REQUEST_UNAUTHORIZED_CODE = process.env.NEXT_PUBLIC_REQUEST_UNAUTHORIZED_CODE;
+const REQUEST_HEADER_SECRET_KEY = process.env.NEXT_PUBLIC_REQUEST_HEADER_SECRET_KEY;
+const REQUEST_HEADER_SECRET_VALUE = process.env.NEXT_PUBLIC_REQUEST_HEADER_SECRET_VALUE;
+const REQUEST_NEXT_ADMIN_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_NEXT_ADMIN_BASE_URL;
 
 const ApiService = axios.create({
     timeout: REQUEST_TIME_OUT,
-    baseURL: REQUEST_BASE_URL,
+    baseURL: REQUEST_ADMIN_BASE_URL,
 });
 let originalConfig = {url: ''};
 
 ApiService.interceptors.request.use(
     async (config) => {
         const session = await getSession();
-        config.headers['Signature'] = 'KarabakhIsAzerbaijan';
+        config.headers[REQUEST_HEADER_SECRET_KEY] = REQUEST_HEADER_SECRET_VALUE;
         if (!config.headers['Content-Language']) {
             config.headers['Content-Language'] = 'az';
         }
@@ -76,7 +76,10 @@ ApiService.interceptors.response.use(
 
                     return ApiService(originalConfig);
                 } catch (_error) {
-                    await signOut();
+                    await signOut({
+                        redirect: false,
+                        callbackUrl: `${REQUEST_NEXT_ADMIN_BASE_URL}/content/idareedici`
+                    });
                     return Promise.reject(_error);
                 }
             }

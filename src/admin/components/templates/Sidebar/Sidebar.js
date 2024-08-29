@@ -2,16 +2,18 @@ import styles from '@/admin/components/templates/Sidebar/Sidebar.module.scss';
 import Link from "next/link";
 import {sidebarPrimaryMenu, sidebarSecondaryMenu} from "@/admin/configs/sidebarMenu";
 import SgSideBarMenuItem from "@/admin/components/templates/Sidebar/SideBarMenuItem";
-import {SgTemplateUserDropdown} from "@/admin/components/templates/UserDropdown";
 import {signOut, useSession} from "next-auth/react";
-import SgIcon from "@/admin/components/ui/Icon";
+const REQUEST_NEXT_ADMIN_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_NEXT_ADMIN_BASE_URL;
 
 export default function SgTemplateSidebar(props) {
     const { user = {}, menu = [], isOpen, handleToggleSidebar } = props;
     const { data: session } = useSession();
 
-    function handleSignOut() {
-        signOut()
+    async function handleSignOut() {
+        await signOut({
+            redirect: false,
+            callbackUrl: `${REQUEST_NEXT_ADMIN_BASE_URL}/content/idareedici`
+        });
     }
 
     return (

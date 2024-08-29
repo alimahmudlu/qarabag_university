@@ -9,7 +9,7 @@ import {validate} from "@/admin/utils/validate";
 import {validationConstraints} from "@/admin/constants/constants";
 import { signIn } from 'next-auth/react'
 import {toast} from "react-toastify";
-const REQUEST_NEXT_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_NEXT_BASE_URL;
+const REQUEST_NEXT_ADMIN_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_NEXT_ADMIN_BASE_URL;
 
 export default function Index() {
     const [data, setData] = useState({})
@@ -32,7 +32,7 @@ export default function Index() {
                 redirect: false,
                 email: data.email,
                 password: data.password,
-                callbackUrl: `${REQUEST_NEXT_BASE_URL}/content/idareedici`,
+                callbackUrl: `${REQUEST_NEXT_ADMIN_BASE_URL}/content/idareedici`,
             }).then(resp => {
                 if (resp.ok) {
 
