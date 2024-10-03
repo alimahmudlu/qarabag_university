@@ -44,14 +44,14 @@ export default function SgVacancyCard(props) {
                         <p className={[styles['sg--vacancyCard-content-info--text']].join('').trim()}>
                             <SgIcon
                                 icon={'location'}
-                                color={'#902923'}
+                                color={'#44766C'}
                             />
                             {location}
                         </p>
                         <p className={[styles['sg--vacancyCard-content-info--text']].join('').trim()}>
                             <SgIcon
                                 icon={'calendar'}
-                                color={'#902923'}
+                                color={'#44766C'}
                             />
                             Son müraciət tarixi: {deadline}
                         </p>

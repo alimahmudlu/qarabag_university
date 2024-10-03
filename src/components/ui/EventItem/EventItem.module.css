@@ -13,7 +13,7 @@
   text-align: center;
 }
 .sg--eventItem:hover .sg--eventItem-date {
-  background: var(--burgundy-color, #902923);
+  background: var(--hookerGreen-color, #44766C);
 }
 .sg--eventItem-date--day {
   color: var(--black, #262626);
@@ -45,7 +45,7 @@
   width: calc(100% - 127px);
 }
 .sg--eventItem:hover .sg--eventItem-body {
-  background: var(--burgundy-color, #902923);
+  background: var(--hookerGreen-color, #44766C);
 }
 .sg--eventItem-body--header {
   color: var(--black, #262626);

@@ -96,10 +96,10 @@
     top: 0;
   }
   .sg--template--header--sidebar {
-    background: var(--burgundy-color, #902923);
+    background: var(--hookerGreen-color, #44766C);
   }
   .sg--template--header--searchbar {
-    background: var(--burgundy-color, #902923);
+    background: var(--hookerGreen-color, #44766C);
   }
   .sg--template--header-block {
     gap: 24px;
@@ -116,7 +116,7 @@
     top: 82px;
     width: 100%;
     height: calc(100vh - 82px);
-    background: var(--burgundy-color, #902923);
+    background: var(--hookerGreen-color, #44766C);
     left: -100%;
     overflow: scroll;
   }

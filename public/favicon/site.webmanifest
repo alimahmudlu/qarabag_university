@@ -1,6 +1,6 @@
 {
-    "name": "Karabakh University",
-    "short_name": "Karabakh University",
+    "name": "",
+    "short_name": "",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#902923",
-    "background_color": "#902923",
+    "theme_color": "#44766c",
+    "background_color": "#44766c",
     "display": "standalone"
 }

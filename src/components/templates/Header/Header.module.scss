@@ -126,11 +126,11 @@
             top: 0;
 
             &--sidebar {
-                background: var(--burgundy-color, #902923);
+                background: var(--hookerGreen-color, #44766C);
             }
 
             &--searchbar {
-                background: var(--burgundy-color, #902923);
+                background: var(--hookerGreen-color, #44766C);
             }
 
             &-block {
@@ -153,7 +153,7 @@
                     top: calc(100% + 24px);
                     width: calc(100% + 24px);
                     height: calc(100vh - 82px);
-                    background: var(--burgundy-color, #902923);
+                    background: var(--hookerGreen-color, #44766C);
                     left: calc(-100% - 36px);
                     overflow: scroll;
 

@@ -6,7 +6,7 @@
   border-top: 1px solid var(--stroke, #CCC);
 }
 .sg--principleList-item--key {
-  color: var(--burgundy-color, #902923);
+  color: var(--hookerGreen-color, #44766C);
   font-size: 18px;
   font-style: normal;
   font-weight: 600;

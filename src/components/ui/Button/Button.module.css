@@ -77,8 +77,8 @@
   padding: 23px;
 }
 .sg--button--primary {
-  background-color: var(--burgundy-color, #902923);
-  border-color: var(--burgundy-color, #902923);
+  background-color: var(--hookerGreen-color, #44766C);
+  border-color: var(--hookerGreen-color, #44766C);
   color: var(--white, #FFFFFF);
 }
 .sg--button--primary:hover {
@@ -90,13 +90,13 @@
   box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
 }
 .sg--button--primary:disabled {
-  background-color: var(--burgundy-color, #902923);
-  border-color: var(--burgundy-color, #902923);
+  background-color: var(--hookerGreen-color, #44766C);
+  border-color: var(--hookerGreen-color, #44766C);
   color: var(--white, #FFFFFF);
 }
 .sg--button--primary-outline {
-  color: var(--burgundy-color, #902923);
-  border-color: var(--burgundy-color, #902923);
+  color: var(--hookerGreen-color, #44766C);
+  border-color: var(--hookerGreen-color, #44766C);
   background-color: var(--white, #FFFFFF);
 }
 .sg--button--primary-outline:hover {
@@ -108,8 +108,8 @@
   box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
 }
 .sg--button--primary-outline:disabled {
-  color: var(--burgundy-color, #902923);
-  border-color: var(--burgundy-color, #902923);
+  color: var(--hookerGreen-color, #44766C);
+  border-color: var(--hookerGreen-color, #44766C);
   background-color: var(--white, #FFFFFF);
 }
 .sg--button--black {
@@ -118,8 +118,8 @@
   color: var(--white, #FFFFFF);
 }
 .sg--button--black:hover {
-  background-color: var(--burgundy-color, #902923);
-  border-color: var(--burgundy-color, #902923);
+  background-color: var(--hookerGreen-color, #44766C);
+  border-color: var(--hookerGreen-color, #44766C);
   color: var(--white, #FFFFFF);
 }
 .sg--button--black:focus {
@@ -136,8 +136,8 @@
   background-color: var(--white, #FFFFFF);
 }
 .sg--button--black-outline:hover {
-  color: var(--burgundy-color, #902923);
-  border-color: var(--burgundy-color, #902923);
+  color: var(--hookerGreen-color, #44766C);
+  border-color: var(--hookerGreen-color, #44766C);
   background-color: var(--white, #FFFFFF);
 }
 .sg--button--black-outline:focus {

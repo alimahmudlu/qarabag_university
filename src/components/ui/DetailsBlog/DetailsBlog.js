@@ -51,7 +51,7 @@ export default function SgDetailsBlog(props) {
                                         <div className={[styles['sg--detailsBlog-content-item--icon']].join(' ').trim()}>
                                             <SgIcon
                                                 icon={item?.icon}
-                                                color={'#902923'}
+                                                color={'#44766C'}
                                             />
                                         </div>
                                         <div className={[styles['sg--detailsBlog-content-item-info']].join(' ').trim()}>

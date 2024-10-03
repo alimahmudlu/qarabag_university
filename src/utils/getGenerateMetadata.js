@@ -7,12 +7,12 @@ export default function GetGenerateMetadata({meta = {}, defaultMetas = {}}) {
             <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"/>
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/>
             <link rel="manifest" href="/favicon/site.webmanifest"/>
-            <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#902923"/>
+            <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#44766C"/>
             <meta name="apple-mobile-web-app-title" content="Karabakh University"/>
             <meta name="application-name" content="Karabakh University"/>
-            <meta name="msapplication-TileColor" content="#902923"/>
+            <meta name="msapplication-TileColor" content="#44766C"/>
             <meta name="msapplication-TileImage" content="/favicon/mstile-144x144.png"/>
-            <meta name="theme-color" content="#902923"/>
+            <meta name="theme-color" content="#44766C"/>
 
             <title>{meta.title || defaultMetas.title}</title>
             <meta name="description" content={meta.description || defaultMetas.description}/>

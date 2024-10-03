@@ -285,8 +285,8 @@
     }
 
     &--primary {
-        background-color: var(--burgundy-color, #902923);
-        border-color: var(--burgundy-color, #902923);
+        background-color: var(--hookerGreen-color, #44766C);
+        border-color: var(--hookerGreen-color, #44766C);
         color: var(--white, #FFFFFF);
 
         &:hover {
@@ -300,14 +300,14 @@
         }
 
         &:disabled {
-            background-color: var(--burgundy-color, #902923);
-            border-color: var(--burgundy-color, #902923);
+            background-color: var(--hookerGreen-color, #44766C);
+            border-color: var(--hookerGreen-color, #44766C);
             color: var(--white, #FFFFFF);
         }
 
         &-outline {
-            color: var(--burgundy-color, #902923);
-            border-color: var(--burgundy-color, #902923);
+            color: var(--hookerGreen-color, #44766C);
+            border-color: var(--hookerGreen-color, #44766C);
             background-color: var(--white, #FFFFFF);
 
             &:hover {
@@ -321,8 +321,8 @@
             }
 
             &:disabled {
-                color: var(--burgundy-color, #902923);
-                border-color: var(--burgundy-color, #902923);
+                color: var(--hookerGreen-color, #44766C);
+                border-color: var(--hookerGreen-color, #44766C);
                 background-color: var(--white, #FFFFFF);
             }
         }
@@ -333,8 +333,8 @@
         color: var(--white, #FFFFFF);
 
         &:hover {
-            background-color: var(--burgundy-color, #902923);
-            border-color: var(--burgundy-color, #902923);
+            background-color: var(--hookerGreen-color, #44766C);
+            border-color: var(--hookerGreen-color, #44766C);
             color: var(--white, #FFFFFF);
         }
 
@@ -354,8 +354,8 @@
             background-color: var(--white, #FFFFFF);
 
             &:hover {
-                color: var(--burgundy-color, #902923);
-                border-color: var(--burgundy-color, #902923);
+                color: var(--hookerGreen-color, #44766C);
+                border-color: var(--hookerGreen-color, #44766C);
                 background-color: var(--white, #FFFFFF);
             }
 
@@ -376,8 +376,8 @@
         color: var(--black, #262626);
 
         &:hover {
-            background-color: var(--burgundy-color, #902923);
-            border-color: var(--burgundy-color, #902923);
+            background-color: var(--hookerGreen-color, #44766C);
+            border-color: var(--hookerGreen-color, #44766C);
             color: var(--white, #FFFFFF);
         }
 
@@ -397,8 +397,8 @@
             background-color: var(--black, #262626);
 
             &:hover {
-                color: var(--burgundy-color, #902923);
-                border-color: var(--burgundy-color, #902923);
+                color: var(--hookerGreen-color, #44766C);
+                border-color: var(--hookerGreen-color, #44766C);
                 background-color: var(--black, #262626);
             }
 
