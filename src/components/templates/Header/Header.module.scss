@@ -12,7 +12,7 @@
         position: relative;
 
         &-logo {
-            height: 70px;
+            height: 100px;
 
             &--img {
                 height: 100%;
@@ -126,18 +126,18 @@
             top: 0;
 
             &--sidebar {
-                background: var(--hookerGreen-color, #44766C);
+                background: var(--burgundy-color, #902923);
             }
 
             &--searchbar {
-                background: var(--hookerGreen-color, #44766C);
+                background: var(--burgundy-color, #902923);
             }
 
             &-block {
                 gap: 24px;
 
                 &-logo {
-                    height: 34px;
+                    height: 42px;
 
                     &--img {
 
@@ -153,7 +153,7 @@
                     top: calc(100% + 24px);
                     width: calc(100% + 24px);
                     height: calc(100vh - 82px);
-                    background: var(--hookerGreen-color, #44766C);
+                    background: var(--burgundy-color, #902923);
                     left: calc(-100% - 36px);
                     overflow: scroll;
 
