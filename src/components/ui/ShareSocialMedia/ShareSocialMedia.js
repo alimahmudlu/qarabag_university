@@ -3,7 +3,10 @@ import {SgIcon} from "@/components/ui/Icon";
 import styles from "@/components/ui/ShareSocialMedia/ShareSocialMedia.module.scss";
 
 export default function SgShareSocialMedia(props) {
-	const { list, direction } = props;
+	const {
+		list,
+		direction
+	} = props;
 
 	const getDirection = () => {
 		switch (direction) {
@@ -18,7 +21,7 @@ export default function SgShareSocialMedia(props) {
 				{(list || []).map((item, index) => {
 					return (
 						<div key={index} className={[styles['sg--shareSocialMedia-item']].join(' ').trim()}>
-							<Link href='#' className={[styles['sg--shareSocialMedia-item--link']].join(' ').trim()}>
+							<Link target='_blank' href={item?.path || '#'} className={[styles['sg--shareSocialMedia-item--link']].join(' ').trim()}>
 								<SgIcon
 									icon={item.icon}
 									name={item.name}

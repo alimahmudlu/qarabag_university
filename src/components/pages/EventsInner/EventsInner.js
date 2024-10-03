@@ -3,11 +3,17 @@ import styles from "@/components/pages/EventsInner/EventsInner.module.scss"
 import SgShareSocialMedia from "@/components/ui/ShareSocialMedia/ShareSocialMedia";
 import moment from "moment";
 import {SgIcon} from "@/components/ui/Icon";
+import {useEffect, useState} from "react";
 
 export default function SgPageEventsInner(props) {
 	const { data } = props;
 	const { title, date, content, location, post_values } = data;
 	const itemContent = post_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {});
+
+	const [thisLocation, setThisLocation] = useState(null);
+	useEffect(() => {
+		setThisLocation((typeof window !== "undefined" && window && window.location) ? window.location : '')
+	}, []);
 
 	return (
 		<>
@@ -15,37 +21,43 @@ export default function SgPageEventsInner(props) {
 				<SectionBlock>
 					<SectionBody>
 						<div className={[styles['sg--page--eventsInner']].join(' ').trim()}>
-
 							<div className={[styles['sg--page--eventsInner-social']].join(' ').trim()}>
-								<SgShareSocialMedia
+								{thisLocation ? <SgShareSocialMedia
 									list={[
 										{
+											path: `https://www.facebook.com/sharer/sharer.php?u=${thisLocation}`,
 											icon: 'facebook',
 											name: 'Facebook'
 										},
 										{
+											path: `https://www.instagram.com/?url=${thisLocation}`,
 											icon: 'instagram',
 											name: 'Instagram'
 										},
 										{
+											path: `http://www.linkedin.com/shareArticle?mini=true&url=${thisLocation}&title=${title}&summary=`,
 											icon: 'linkedin',
 											name: 'Linkedin'
 										},
 										{
-											icon: 'telegram',
+											path: `https://telegram.me/share/url?url=${thisLocation}&text=${title}`,
+											icon: 'tg',
 											name: 'Telegram'
 										},
 										{
-											icon: 'whatsapp',
+											path: `https://wa.me/+994/?text=${thisLocation}`,
+											icon: 'wp',
 											name: 'Whatsapp'
 										},
 										{
+											path: `http://twitter.com/share?text=${title}&url=${thisLocation}&hashtags=karabakh,azerbaijan,university,karabakhisazerbaijan`,
 											icon: 'twitter',
 											name: 'Twitter'
 										}
 									]}
+
 									direction='column'
-								/>
+								/> : ''}
 							</div>
 
 							<div className={[styles['sg--page--eventsInner-details']].join(' ').trim()}>
