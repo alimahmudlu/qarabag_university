@@ -71,7 +71,7 @@ body {
   line-height: normal;
 }
 .dropdown-item > a:hover {
-  color: var(--burgundy-color, #902923);
+  color: var(--hookerGreen-color, #44766C);
 }
 .dropdown-item:hover {
   background-color: unset !important;
@@ -86,7 +86,7 @@ body {
 
 .dropdown-item.active,
 .dropdown-item:active {
-    color: var(--burgundy-color, #902923);
+    color: var(--hookerGreen-color, #44766C);
   background-color: var(--gray-100);
     text-decoration: none;
 }

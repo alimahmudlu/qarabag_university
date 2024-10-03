@@ -25,7 +25,7 @@
   border: 1px solid transparent;
 }
 .sg--speakersItem-head-image:hover {
-  border: 1px solid #902923;
+  border: 1px solid #44766C;
 }
 .sg--speakersItem-head-image--img {
   width: 100%;
@@ -57,7 +57,7 @@
   transition: all 0.3s ease;
 }
 .sg--speakersItem-body--header:hover {
-  color: #902923;
+  color: #44766C;
 }
 .sg--speakersItem-body--position {
   color: var(--gray-text, #707070);

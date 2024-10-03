@@ -35,7 +35,7 @@
   transition: all 0.3s ease;
 }
 .sg--collaboratorsItem-body--header:hover {
-  color: #902923;
+  color: #44766C;
 }
 .sg--collaboratorsItem-body--position {
   color: var(--gray-text, #707070);
