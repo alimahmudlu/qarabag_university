@@ -1,4 +1,3 @@
-import styles from '@/components/sections/CampusBanner/CampusBanner.module.css';
 import {Section, SectionBlock, SectionBody, SectionHead} from "@/components/ui/Section";
 import SgCampusItem from "@/components/ui/CampusItem";
 import {useEffect, useState} from "react";
@@ -7,7 +6,7 @@ import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 import {changeData} from "@/utils/changeData";
 
 export default function SgSectionCampusBanner(props) {
-    const {id, data, style, mainData, page_id} = props;
+    const {id, data, mainData, page_id} = props;
     const {image, title, description, filter = true, list = [], morePath} = data;
     const [postList, setPostList] = useState([])
 

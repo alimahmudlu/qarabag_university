@@ -63,9 +63,9 @@ export default function SgTemplateFooter(props) {
                                         <div key={index}
                                              className={[styles['sg--template--footer-block-middle-menu-item']].join(' ').trim()}
                                         >
-                                            <h6 className={[styles['sg--template--footer-block-middle-menu-item--header']].join(' ').trim()}>
+                                            <h2 className={[styles['sg--template--footer-block-middle-menu-item--header']].join(' ').trim()}>
                                                 {menu.header}
-                                            </h6>
+                                            </h2>
                                             <div
                                                 className={[styles['sg--template--footer-block-middle-menu-item-list']].join(' ').trim()}>
                                                 {(menu.list || []).map((item, i) => {

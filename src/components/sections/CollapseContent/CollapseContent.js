@@ -64,20 +64,18 @@ export default function SgSectionCollapseContent( props ) {
                         <div className='row gap-[24px]'>
                             {(postList || []).map((item, index) => {
                                 return (
-                                    <>
-                                        <div className='col-lg-12'>
-                                            <SgCollapse
-                                                toggleHeader={item.title}
-                                                id={item.id}
-                                                className={[styles['sg--section--collapseContent-item']].join(' ').trim()}
-                                                openClassName={[styles['sg--section--collapseContent-item--open']].join(' ').trim()}
-                                                toggleClassName={[styles[`sg--section--collapseContent-item--link`]].join(' ').trim()}
-                                                menuClassName={[styles[`sg--section--collapseContent-item--content`]].join(' ').trim()}
-                                            >
-                                                <div dangerouslySetInnerHTML={{__html: item?.content}} />
-                                            </SgCollapse>
-                                        </div>
-                                    </>
+                                    <div className='col-lg-12' key={index}>
+                                        <SgCollapse
+                                            toggleHeader={item.title}
+                                            id={item.id}
+                                            className={[styles['sg--section--collapseContent-item']].join(' ').trim()}
+                                            openClassName={[styles['sg--section--collapseContent-item--open']].join(' ').trim()}
+                                            toggleClassName={[styles[`sg--section--collapseContent-item--link`]].join(' ').trim()}
+                                            menuClassName={[styles[`sg--section--collapseContent-item--content`]].join(' ').trim()}
+                                        >
+                                            <div dangerouslySetInnerHTML={{__html: item?.content}} />
+                                        </SgCollapse>
+                                    </div>
                                 )
                             })}
                         </div>

@@ -30,7 +30,7 @@ export default function SgIcon(props) {
         <>
             {icon ?
                 <i>
-                    <i style={{fontSize: size ?? '', color: color ?? ''}} className={['sg-icons', getIcon()].join(' ').trim()}></i>
+                    <i style={{fontSize: size ? size : 'unset', color: color ? color : 'unset'}} className={['sg-icons', getIcon()].join(' ').trim()}></i>
                     <span className={styles['sg--icon--accessibility']}>{name ? name : icon} icon</span>
                 </i>
                 : ''

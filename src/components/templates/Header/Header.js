@@ -115,6 +115,7 @@ export default function SgTemplateHeader(props) {
                                     <div
                                         className={[styles['sg--template--header-block-body-main-menu-item'], 'd-none', 'd-lg-block'].join(' ').trim()}>
                                         <Link href='#'
+                                              aria-label='Axtarış'
                                               onClick={handleSearchbar}
                                               className={[styles['sg--template--header-block-body-main-menu-item--link']].join(' ').trim()}
                                         >

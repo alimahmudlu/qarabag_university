@@ -1,6 +1,11 @@
 import Head from "next/head";
 
-export default function GetGenerateMetadata({meta = {}, defaultMetas = {}}) {
+export default function GetGenerateMetadata({meta = {}}) {
+    const defaultMetas = {
+        title: 'Qarabağ Universiteti',
+        description: 'Qarabağ Universiteti Azərbaycan Respublikası Elm və Təhsil Nazirliyinin tabeliyində olan ali təhsil müəssisəsidir. Azərbaycanın Qarabağ İqtisadi Rayonunun Xankəndi şəhərində yerləşir.',
+    }
+
     return (
         <Head>
             <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"/>

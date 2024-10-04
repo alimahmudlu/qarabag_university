@@ -14,7 +14,7 @@ export default function SgDropdown(props) {
                     <DropdownToggle
                         className={[toggleClassName, 'dropdown-toggle--l'].join(' ').trim()}
                         data-toggle="dropdown"
-                        tag="span"
+                        tag="button"
                         caret
                     >
                         {toggleHeader}
@@ -23,7 +23,7 @@ export default function SgDropdown(props) {
                     <DropdownToggle
                         className={[toggleClassName, 'dropdown-toggle--l'].join(' ').trim()}
                         data-toggle="dropdown"
-                        tag="span"
+                        tag="button"
                     >
                         {toggleHeader}
                     </DropdownToggle>

@@ -33,17 +33,15 @@ export default function SgInfoBanner(props) {
                         {
                             (list || []).map((item, index) => {
                                 return (
-                                    <>
-                                        <div key={index}
-                                             className={[styles['sg--infoBanner-content-item']].join(' ').trim()}>
-                                            <h3 className={[styles['sg--infoBanner-content-item--header']].join(' ').trim()}>
-                                                {item.header}
-                                            </h3>
-                                            <p className={[styles['sg--infoBanner-content-item--description']].join(' ').trim()}>
-                                                {item.description}
-                                            </p>
-                                        </div>
-                                    </>
+                                    <div key={index}
+                                         className={[styles['sg--infoBanner-content-item']].join(' ').trim()}>
+                                        <h3 className={[styles['sg--infoBanner-content-item--header']].join(' ').trim()}>
+                                            {item.header}
+                                        </h3>
+                                        <p className={[styles['sg--infoBanner-content-item--description']].join(' ').trim()}>
+                                            {item.description}
+                                        </p>
+                                    </div>
                                 )
                             })
                         }

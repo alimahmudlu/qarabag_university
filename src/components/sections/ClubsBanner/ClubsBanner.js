@@ -10,7 +10,7 @@ import {changeData} from "@/utils/changeData";
 import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgSectionClubsBanner(props) {
-    const {id, data, style, mainData, page_id,staticContent} = props;
+    const {id, data, mainData, page_id,staticContent} = props;
     const {image, title, description, filter = true, list = [], morePath} = data;
     const [postList, setPostList] = useState([])
 

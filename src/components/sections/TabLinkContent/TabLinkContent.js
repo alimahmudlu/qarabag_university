@@ -46,7 +46,7 @@ export default function SgSectionTabLinkContent( props ) {
                             </div>
                             <div className='col-lg-8'>
                                 <SgSectionContent
-                                    style={{backgroundColor: '', paddingTop: 0}}
+                                    style={{backgroundColor: 'unset', paddingTop: 0}}
                                     id={`content__${page_id}`}
                                     mainData={mainData}
                                     page_id={page_id}

@@ -7,7 +7,7 @@ export default function SgPrincipleList(props) {
 		<>
 			<div className={[styles["sg--principleList"]].join(' ').trim()}>
 				{(data || []).map((item, index) => {
-					const {key, title, content} = item;
+					const {title, content} = item;
 
 					return (
 						<div key={index} className={[styles['sg--principleList-item']].join(' ').trim()}>

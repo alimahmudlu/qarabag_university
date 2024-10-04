@@ -62,11 +62,11 @@ export default function SgSectionMonumentsFamousBannerList(props) {
                     />
                     <SectionBody>
                         <div className='row gap-y-[48px]'>
-                            {(list || []).map((item, index) => {
-                                return (
-                                    <></>
-                                )
-                            })}
+                            {/*{(list || []).map((item, index) => {*/}
+                            {/*    return (*/}
+                            {/*        <></>*/}
+                            {/*    )*/}
+                            {/*})}*/}
 
                             <div className='col-lg-12' key={0}>
                                 <SgSlider

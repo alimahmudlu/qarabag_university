@@ -37,7 +37,7 @@ export default function SgTemplateGetPageWidgets(props) {
                             <SgSectionContentBanner
                                 reverse={!!(itemContent?.imagePositionRightSide?.value && Number(itemContent?.imagePositionRightSide?.value))}
                                 fluidContainer={itemContent?.fluidContainer?.value === '1' ? (itemContent?.imagePositionRightSide?.value === '1' ? 'right' : 'left') : null}
-                                style={{backgroundColor: (itemContent?.backgroundColor?.value && Number(itemContent?.backgroundColor?.value) && !!Number(itemContent?.backgroundColor?.value)) ? '#F6F6F6' : ''}}
+                                style={{backgroundColor: (itemContent?.backgroundColor?.value && Number(itemContent?.backgroundColor?.value) && !!Number(itemContent?.backgroundColor?.value)) ? '#F6F6F6' : 'unset'}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
@@ -59,7 +59,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'galleryBanner':
                         return (
                             <SgSectionGalleryBanner
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
@@ -76,7 +76,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'complexContentBanner':
                         return (
                             <SgSectionComplexContentBanner
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
@@ -95,7 +95,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'principleListBanner':
                         return (
                             <SgSectionPrincipleListBanner
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
@@ -111,7 +111,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'tableContent':
                         return (
                             <SgSectionTableContent
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 id={`tableContent__${item.id}`}
                                 mainData={item}
@@ -153,7 +153,7 @@ export default function SgTemplateGetPageWidgets(props) {
                         return (
                             <SgSectionListBoxContentBanner
                                 staticContent={staticContent}
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
@@ -171,7 +171,7 @@ export default function SgTemplateGetPageWidgets(props) {
                         return (
                             <SgSectionMonumentsFamousBanner
                                 staticContent={staticContent}
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
@@ -188,7 +188,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'newsContentBanner':
                         return (
                             <SgSectionNewsContentBanner
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 staticContent={staticContent}
                                 id={`contentBanner__${item.id}`}
@@ -207,7 +207,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'newsFilterContent':
                         return (
                             <SgSectionNewsContent
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
@@ -226,7 +226,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'newsBannerSlider':
                         return (
                             <SgSectionNewsBanner
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 staticContent={staticContent}
                                 id={`contentBanner__${item.id}`}
@@ -245,7 +245,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'eventsSliderBanner':
                         return (
                             <SgSectionEventsContentBanner
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
@@ -263,7 +263,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'eventsFilterContent':
                         return (
                             <SgSectionEventsContent
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 staticContent={staticContent}
                                 id={`contentBanner__${item.id}`}
@@ -282,7 +282,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'eventsListBanner':
                         return (
                             <SgSectionEventsBanner
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 staticContent={staticContent}
                                 id={`contentBanner__${item.id}`}
@@ -301,7 +301,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'clubsBanner':
                         return (
                             <SgSectionClubsBanner
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 staticContent={staticContent}
                                 id={`contentBanner__${item.id}`}
@@ -321,7 +321,7 @@ export default function SgTemplateGetPageWidgets(props) {
                         return (
                             <SgSectionCampusBanner
                                 staticContent={staticContent}
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
@@ -339,7 +339,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'GallerySliderList':
                         return (
                             <SgSectionMonumentsFamousBannerList
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
@@ -358,7 +358,7 @@ export default function SgTemplateGetPageWidgets(props) {
                         return (
                             <>
                                 <SgSectionCollapseContent
-                                    style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                    style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                     key={index}
                                     id={`contentBanner__${item.id}`}
                                     mainData={item}
@@ -379,7 +379,7 @@ export default function SgTemplateGetPageWidgets(props) {
                         return (
                             <>
                                 <SgSectionTabContent
-                                    style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                    style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                     key={index}
                                     staticContent={staticContent}
                                     id={`contentBanner__${item.id}`}
@@ -400,7 +400,7 @@ export default function SgTemplateGetPageWidgets(props) {
                         return (
                             <>
                                 <SgSectionTabLinkContent
-                                    style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                    style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                     key={index}
                                     staticContent={staticContent}
                                     id={`contentBanner__${item.id}`}
@@ -420,7 +420,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'content':
                         return (
                             <SgSectionContent
-                                style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
+                                style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : 'unset'}}
                                 key={index}
                                 id={`content__${item.id}`}
                                 mainData={item}
@@ -444,7 +444,7 @@ export default function SgTemplateGetPageWidgets(props) {
                             <SgSectionApplyContent
                                 staticContent={staticContent}
                                 reverse={!!itemContent?.imagePositionRightSide?.value}
-                                style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
+                                style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : 'unset'}}
                                 key={index}
                                 id={`applyContent__${item.id}`}
                                 mainData={item}
@@ -482,7 +482,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'vacancyListBanner':
                         return (
                             <SgSectionVacancyList
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}
@@ -501,7 +501,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'quoteContent':
                         return (
                             <SgSectionComment
-                                    style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : ''}}
+                                    style={{backgroundColor: itemContent?.backgroundColor?.value ? '#F6F6F6' : 'unset'}}
                                     key={index}
                                     id={`applyContent__${item.id}`}
                                     mainData={item}
@@ -519,7 +519,7 @@ export default function SgTemplateGetPageWidgets(props) {
                     case 'collaboratorsBanner':
                         return (
                             <SgSectionCollaboratorList
-                                style={{backgroundColor: item?.content?.backgroundColor || ''}}
+                                style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                 key={index}
                                 id={`contentBanner__${item.id}`}
                                 mainData={item}

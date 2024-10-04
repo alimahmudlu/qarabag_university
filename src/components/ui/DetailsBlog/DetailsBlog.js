@@ -46,24 +46,22 @@ export default function SgDetailsBlog(props) {
                     {
                         (list || []).map((item, index) => {
                             return(
-                                <>
-                                    <div key={index} className={[styles['sg--detailsBlog-content-item']].join(' ').trim()}>
-                                        <div className={[styles['sg--detailsBlog-content-item--icon']].join(' ').trim()}>
-                                            <SgIcon
-                                                icon={item?.icon}
-                                                color={'#44766C'}
-                                            />
-                                        </div>
-                                        <div className={[styles['sg--detailsBlog-content-item-info']].join(' ').trim()}>
-                                            <div className={[styles['sg--detailsBlog-content-item-info--title']].join(' ').trim()}>
-                                                {item?.title}
-                                            </div>
-                                            <Link href={(item?.type === 'mail' ? `mailto:${item?.name}` : '') || (item?.type === 'tel' ? `tel:${item?.name}` : '')} className={[styles['sg--detailsBlog-content-item-info--text']].join(' ').trim()}>
-                                                {item?.name}
-                                            </Link>
-                                        </div>
+                                <div key={index} className={[styles['sg--detailsBlog-content-item']].join(' ').trim()}>
+                                    <div className={[styles['sg--detailsBlog-content-item--icon']].join(' ').trim()}>
+                                        <SgIcon
+                                            icon={item?.icon}
+                                            color={'#44766C'}
+                                        />
                                     </div>
-                                </>
+                                    <div className={[styles['sg--detailsBlog-content-item-info']].join(' ').trim()}>
+                                        <div className={[styles['sg--detailsBlog-content-item-info--title']].join(' ').trim()}>
+                                            {item?.title}
+                                        </div>
+                                        <Link href={(item?.type === 'mail' ? `mailto:${item?.name}` : '') || (item?.type === 'tel' ? `tel:${item?.name}` : '')} className={[styles['sg--detailsBlog-content-item-info--text']].join(' ').trim()}>
+                                            {item?.name}
+                                        </Link>
+                                    </div>
+                                </div>
                             )
                         })
                     }
