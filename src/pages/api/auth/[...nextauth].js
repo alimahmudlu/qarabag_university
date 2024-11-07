@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import {LOGIN_ROUTE} from "@/admin/configs/apiRoutes";
-const REQUEST_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_BASE_URL;
+const REQUEST_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_ADMIN_BASE_URL;
 
 export default NextAuth({
     providers: [
