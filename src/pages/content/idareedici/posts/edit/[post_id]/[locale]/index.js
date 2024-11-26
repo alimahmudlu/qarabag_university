@@ -249,8 +249,8 @@ export default function Index() {
                                                         label={item.title}
                                                         options={dataTypes}
                                                         data_key={`post_values.${i}`}
-                                                        type={item.input_type.alias}
-                                                        variant={item.input_type.alias}
+                                                        type={item?.meta_key?.input_type?.alias}
+                                                        variant={item?.meta_key?.input_type?.alias}
 
                                                         fileManager={{
                                                             multiple: false,
@@ -275,8 +275,8 @@ export default function Index() {
                                                         label={item.title}
 
                                                         data_key={`post_values.${i}`}
-                                                        type={item.input_type.alias}
-                                                        variant={item.input_type.alias}
+                                                        type={item?.meta_key?.input_type?.alias}
+                                                        variant={item?.meta_key?.input_type?.alias}
 
                                                         fileManager={{
                                                             type: 'png',
@@ -302,8 +302,8 @@ export default function Index() {
                                                         label={item.title}
 
                                                         data_key={`post_values.${i}`}
-                                                        type={item.input_type.alias}
-                                                        variant={item.input_type.alias}
+                                                        type={item?.meta_key?.input_type?.alias}
+                                                        variant={item?.meta_key?.input_type?.alias}
 
                                                         fileManager={{
                                                             type: 'png',
@@ -330,8 +330,8 @@ export default function Index() {
                                                         label={item.title}
                                                         onChange={handleChange}
                                                         options={dataTypes}
-                                                        data_key={`post_values.${i}`} type={item.input_type.alias}
-                                                        variant={item.input_type.alias}
+                                                        data_key={`post_values.${i}`} type={item?.meta_key?.input_type?.alias}
+                                                        variant={item?.meta_key?.input_type?.alias}
                                                     />
                                                 </SgFormGroup>
                                             </div>
@@ -348,8 +348,8 @@ export default function Index() {
                                                         label={item.title}
                                                         onChange={handleChange}
                                                         data_key={`post_values.${i}`}
-                                                        type={item.input_type.alias}
-                                                        variant={item.input_type.alias}
+                                                        type={item?.meta_key?.input_type?.alias}
+                                                        variant={item?.meta_key?.input_type?.alias}
                                                     />
                                                 </SgFormGroup>
                                             </div>
