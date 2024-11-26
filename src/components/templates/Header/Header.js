@@ -32,7 +32,7 @@ export default function SgTemplateHeader(props) {
     return (
         <>
             <div className={[styles['sg--template--header'], sidebar ? styles['sg--template--header--sidebar'] : '', searchbar ? styles['sg--template--header--searchbar'] : ''].join(' ').trim()}>
-                <div className='container-fluid'>
+                <div className='container-fluid px-[12px] md:px-[32px] lg:px-[82px]'>
                     <div className={[styles['sg--template--header-block']].join(' ').trim()}>
                         <Link href='/' className={[styles['sg--template--header-block-logo']].join(' ').trim()}>
                             <Image width='1000' height='1000'
