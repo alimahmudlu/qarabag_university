@@ -118,21 +118,21 @@
     @media (max-width: 992px) {
         & {
             &-date {
-                width: 64px;
+                width: 74px;
 
                 &--day {
-                    font-size: 32px;
+                    font-size: 28px;
                     line-height: 100%;
                 }
                 &--month {
-                    font-size: 16px;
+                    font-size: 12px;
                     line-height: 100%;
                 }
             }
 
             &-body {
                 padding: 10px;
-                width: calc(100% - 64px);
+                width: calc(100% - 74px);
 
                 &--header {
                     font-size: 16px;

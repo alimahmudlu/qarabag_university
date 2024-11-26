@@ -18,7 +18,7 @@ export default function SgMenuItem(props) {
                     toggleClassName={[styles[`${className}--link`]].join(' ').trim()}
                     caret={true}
                     toggleHeader={item.name}
-                    list={(item?.children || []).map((el, i) => {
+                    list={(item?.children || []).sort((a, b) => a.row - b.row).map((el, i) => {
                         return {
                             name: <Link href={`/${el?.menu_item_type === 'page' ? 'page' : 'content'}/${el?.url_id}` || '/'}
                                         key={`main_${index}_${i}`}
@@ -35,7 +35,7 @@ export default function SgMenuItem(props) {
                     toggleClassName={[styles[`${className}--link`]].join(' ').trim()}
                     menuClassName={[styles[`${className}-subMenu`]].join(' ').trim()}
                 >
-                    {(item?.children || []).map((el, i) => {
+                    {(item?.children || []).sort((a, b) => a.row - b.row).map((el, i) => {
                         return (
                             <SgMenuItem
                                 key={`main_c_${index}_${i}`}
