@@ -2,7 +2,7 @@ import {MainLayout} from "@/admin/components/layouts";
 import {SgPage, SgPageBody, SgPageHead} from "@/admin/components/ui/Page";
 import {SgButton} from "@/admin/components/ui/Button";
 import {useEffect, useState} from "react";
-import {SgFile, SgFormGroup, SgInput} from "@/admin/components/ui/Form";
+import {SgCheckbox, SgFile, SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import {validate} from "@/admin/utils/validate";
@@ -234,23 +234,128 @@ export default function Index() {
                                 />
                             </SgFormGroup>
 
-                            {(data.post_values || []).map((item, index) => {
-                                return (
-                                    <SgFormGroup key={index}>
-                                        <SgInput
-                                            name='value'
-                                            id={`value--${index}`}
-                                            placeholder={item.title || item?.meta_key?.title}
-                                            label={item.title || item?.meta_key?.title}
-                                            value={item.value || ''}
-                                            onChange={handleChange}
-                                            data_key={`post_values.${index}`}
-                                            type={item?.input_type?.alias || item?.meta_key?.input_type?.alias}
-                                            variant={item?.input_type?.alias || item?.meta_key?.input_type?.alias}
-                                            options={dataTypes}
-                                        />
-                                    </SgFormGroup>
-                                )
+
+                            {(data.post_values || []).map((item, i) => {
+                                switch (item?.input_type?.alias) {
+                                    case 'file':
+                                        return (
+                                            <div key={i} className='col-lg-12'>
+                                                <SgFormGroup>
+                                                    <SgFile
+                                                        id={`value--${i}`}
+                                                        name='value'
+                                                        value={item.value || ''}
+                                                        // isInvalid={errors.data_type_id}
+                                                        label={item.title}
+                                                        options={dataTypes}
+                                                        data_key={`post_values.${i}`}
+                                                        type={item.input_type.alias}
+                                                        variant={item.input_type.alias}
+
+                                                        fileManager={{
+                                                            multiple: false,
+                                                            data: data,
+                                                            setData: setData,
+                                                            errors: valueErrors,
+                                                            setErrors: setValueErrors,
+                                                        }}
+                                                    />
+                                                </SgFormGroup>
+                                            </div>
+                                        )
+                                    case 'image':
+                                        return (
+                                            <div key={i} className='col-lg-12'>
+                                                <SgFormGroup>
+                                                    <SgFile
+                                                        id={`value--${i}`}
+                                                        name='value'
+                                                        value={item.value || ''}
+                                                        // isInvalid={errors.data_type_id}
+                                                        label={item.title}
+
+                                                        data_key={`post_values.${i}`}
+                                                        type={item.input_type.alias}
+                                                        variant={item.input_type.alias}
+
+                                                        fileManager={{
+                                                            type: 'png',
+                                                            multiple: false,
+                                                            data: data,
+                                                            setData: setData,
+                                                            errors: valueErrors,
+                                                            setErrors: setValueErrors,
+                                                        }}
+                                                    />
+                                                </SgFormGroup>
+                                            </div>
+                                        )
+                                    case 'multi_image':
+                                        return (
+                                            <div key={i} className='col-lg-12'>
+                                                <SgFormGroup>
+                                                    <SgFile
+                                                        id={`value--${i}`}
+                                                        name='value'
+                                                        value={item.value || ''}
+                                                        // isInvalid={errors.data_type_id}
+                                                        label={item.title}
+
+                                                        data_key={`post_values.${i}`}
+                                                        type={item.input_type.alias}
+                                                        variant={item.input_type.alias}
+
+                                                        fileManager={{
+                                                            type: 'png',
+                                                            multiple: true,
+                                                            data: data,
+                                                            setData: setData,
+                                                            errors: valueErrors,
+                                                            setErrors: setValueErrors,
+                                                        }}
+                                                    />
+                                                </SgFormGroup>
+                                            </div>
+                                        )
+                                    case 'checkbox':
+                                        return (
+                                            <div key={i} className='col-lg-12'>
+                                                <SgFormGroup>
+                                                    <SgCheckbox
+                                                        id={`value--${i}`}
+                                                        name='value'
+                                                        checked={!!item.value}
+                                                        value={''}
+                                                        // isInvalid={errors.data_type_id}
+                                                        label={item.title}
+                                                        onChange={handleChange}
+                                                        options={dataTypes}
+                                                        data_key={`post_values.${i}`} type={item.input_type.alias}
+                                                        variant={item.input_type.alias}
+                                                    />
+                                                </SgFormGroup>
+                                            </div>
+                                        )
+                                    default:
+                                        return (
+                                            <div key={i} className='col-lg-12'>
+                                                <SgFormGroup>
+                                                    <SgInput
+                                                        id={`value--${i}`}
+                                                        name='value'
+                                                        value={item.value || ''}
+                                                        // isInvalid={errors.data_type_id}
+                                                        label={item.title}
+                                                        onChange={handleChange}
+                                                        data_key={`post_values.${i}`}
+                                                        type={item.input_type.alias}
+                                                        variant={item.input_type.alias}
+                                                    />
+                                                </SgFormGroup>
+                                            </div>
+                                        )
+                                }
+
                             })}
 
 
