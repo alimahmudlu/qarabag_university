@@ -236,7 +236,7 @@ export default function Index() {
 
 
                             {(data.post_values || []).map((item, i) => {
-                                switch (item?.input_type?.alias) {
+                                switch (item?.meta_key?.input_type?.alias) {
                                     case 'file':
                                         return (
                                             <div key={i} className='col-lg-12'>
