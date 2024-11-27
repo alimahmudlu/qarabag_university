@@ -71,7 +71,7 @@ export default function SgInput(props) {
     const config = useMemo(
         () => ({
             readonly: false,
-            license: "",
+            license: "5AA22-12GF1-B2L6J-28ANZ",
             enter: "br",
             uploader: {
                 url: `${REQUEST_BASE_URL}${FILE_MANAGER_UPLOAD_ROUTE}?action=fileUpload`,
