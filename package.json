@@ -16,6 +16,7 @@
     "bootstrap": "^5.3.3",
     "i18next": "^23.13.0",
     "jodit": "^4.2.27",
+    "jodit-pro": "^4.2.41",
     "jodit-pro-react": "^4.1.21",
     "jodit-react": "^4.1.2",
     "lodash": "^4.17.21",

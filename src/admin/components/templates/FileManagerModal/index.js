@@ -1,211 +1,177 @@
-import React, {useEffect, useState} from "react";
-import _ from "lodash";
-
-import ApiService from "@/admin/services/ApiService";
-import {FILE_LIST_ROUTE} from "@/admin/configs/apiRoutes";
-import {SgPopup} from "@/admin/components/ui/Popup";
-import Link from "next/link";
-import {SgButton} from "@/admin/components/ui/Button";
-import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
-import {SgFile, SgFormGroup} from "@/admin/components/ui/Form";
-import {callBackChangeDataFile, changeDataFile} from "@/admin/utils/changeDataFile";
-import {SgRatio} from "@/admin/components/ui/Ratio";
+import React, {useRef, useState} from "react";
+import {FILE_MANAGER_ROUTE, FILE_MANAGER_UPLOAD_ROUTE} from "@/admin/configs/apiRoutes";
 import {changeData} from "@/admin/utils/changeData";
-import {value} from "lodash/seq";
-import Fancybox from "@/components/templates/Fancybox/Fancybox";
-import Image from "next/image";
-import SgIcon from "@/admin/components/ui/Icon";
+import {useSession} from "next-auth/react";
+import {Jodit} from "jodit-pro-react";
+import styles from "@/admin/components/ui/Form/Form.module.scss";
+import {SgRatio} from "@/admin/components/ui/Ratio";
+import {SgButton} from "@/admin/components/ui/Button";
 
 
 export default function SgTemplateFileManagerModal(props) {
-	const {children, id, name, type, toggleFileManagerModal, fileManagerModal, multiple=false, data, setData, errors, setErrors, data_key = null} = props;
-	const [files, setFiles] = useState([])
-	const [newFiles, setNewFiles] = useState({})
-	const [filesProgress, setFilesProgress] = useState(null)
+	const {id, name, config = {}, multiple=false, data, setData, errors, setErrors, data_key = null, fileManager, value, label, handleChange, readonly, isInvalid, externalRef, disabled, required} = props;
+	const REQUEST_BASE_URL = process.env.NEXT_PUBLIC_REQUEST_ADMIN_BASE_URL;
+	const REQUEST_HEADER_AUTH_KEY = process.env.NEXT_PUBLIC_REQUEST_HEADER_AUTH_KEY;
+	const {data: session} = useSession();
 
-	function fileClick(url, index) {
+	const containerRef = useRef(null);
+	const defaultConfig = {
+		ajax: {
+			url: `${REQUEST_BASE_URL}${FILE_MANAGER_ROUTE}`,
+			headers: {
+				"Content-Language": "az",
+				"Signature": "KarabakhIsAzerbaijan",
+				[REQUEST_HEADER_AUTH_KEY]: `${session?.user?.token?.token_type} ${session?.user?.token?.access_token}`
+			}
+		},
+		uploader: {
+			url: `${REQUEST_BASE_URL}${FILE_MANAGER_UPLOAD_ROUTE}?action=fileUpload`,
+			headers: {
+				"Content-Language": "az",
+				"Signature": "KarabakhIsAzerbaijan",
+				[REQUEST_HEADER_AUTH_KEY]: `${session?.user?.token?.token_type} ${session?.user?.token?.access_token}`
+			}
+		},
+		selectMode: 'single',
+		events: {
+			afterSelect: (selectedFiles) => {
+				console.log('lol', selectedFiles)
+				if (fileSubmit && selectedFiles.files.length > 0) {
+					console.log('lol')
+					fileSubmit(selectedFiles.files);
+				}
+			},
+		},
+		license: "5AA22-12GF1-B2L6J-28ANZ",
+	};
+
+	function fileSubmit(selectedFiles) {
 		if (multiple) {
-			let file = files
-			const selected = file[index].selected
-			file = file.map(n => ({...n}))
-			file[index].selected = !selected
-			setFiles(file)
+			changeData({
+				target: {
+					id: id,
+					name: name,
+					value: selectedFiles?.[0],
+					validity: {},
+					dataset: {
+						key: data_key,
+						id: null
+					}
+				}
+			}, data, setData, errors, setErrors)
 		}
 		else {
-			let file = files
-			const selected = file[index].selected
-			file = file.map(n => ({...n, selected: false}))
-			file[index].selected = !selected
-			setFiles(file)
+			changeData({
+				target: {
+					id: id,
+					name: name,
+					value: selectedFiles.join(','),
+					validity: {},
+					dataset: {
+						key: data_key,
+						id: null
+					}
+				}
+			}, data, setData, errors, setErrors)
 		}
 	}
 
-	function fileSubmit() {
-		if (files.find(n => n.selected)) {
-			if (multiple) {
-				changeData({
-					target: {
-						id: id,
-						name: name,
-						value: _.filter(files, n => n.selected).map(el => el.url).join(','),
-						validity: {},
-						dataset: {
-							key: data_key,
-							id: null
-						}
-					}
-				}, data, setData, errors, setErrors)
+	const fileBrowser = new Jodit.modules.FileBrowserPro({
+		container: containerRef.current,
+		...defaultConfig,
+	});
 
-				toggleFileManagerModal()
-			}
-			else {
-				changeData({
-					target: {
-						id: id,
-						name: name,
-						value: _.find(files, n => n.selected)?.url,
-						validity: {},
-						dataset: {
-							key: data_key,
-							id: null
-						}
-					}
-				}, data, setData, errors, setErrors)
-
-				toggleFileManagerModal()
-			}
-		}
+	function toggleFileManagerModal(e) {
+		fileBrowser.open((files) => {
+			fileSubmit(files.files);
+		}, true);
 	}
 
-	function fileUpload(e) {
-		callBackChangeDataFile(e, newFiles, setNewFiles, errors, setErrors, null, filesProgress, setFilesProgress)
-	}
-
-	useEffect(() => {
-		ApiService.get(FILE_LIST_ROUTE, {headers: {type}}).then(data => {
-			setFiles(data.data.data)
-		}).catch(error => {
-			setFiles([])
-		});
-	}, [newFiles])
 
 	return (
 		<>
 			<>
-				{children}
-				<SgPopup
-					header='FILE MANAGER'
-					size='xl'
-					setToggleModal={toggleFileManagerModal}
-					toggleModal={fileManagerModal}
-				>
-					<div className='mb-[72px]'>
-						<SgFormGroup>
-							<SgFile
-								id='files'
-								name='files'
-								label='Files'
-								multiple={true}
-								onChange={fileUpload}
-							/>
-						</SgFormGroup>
+
+				<div ref={containerRef} style={{width: '100%', height: '100%'}}/>
+				<div className={[styles['input-container'], 'mb-1'].join(' ').trim()}>
+					<label className={styles["label"]} htmlFor={fileManager ? '' : id}>{label}</label>
+					<div
+						className={[styles["input-wrapper"], styles["input-wrapper--file"], isInvalid && styles['input-wrapper--error'], fileManager && styles['input-wrapper--fakeFiles']].join(' ').trim()}>
+						<input className={styles["file"]} type="file" name={name} ref={externalRef} data-key={data_key}
+							   id={id} onChange={handleChange} disabled={disabled} multiple={multiple}
+							   readOnly={readonly} required={required}/>
+						<label className={[styles["label"], styles["label--file"]].join(' ').trim()}
+							   htmlFor={fileManager ? '' : id}
+							   onClick={fileManager ? toggleFileManagerModal : undefined}>
+							Fayl seçin
+						</label>
 					</div>
-					<Fancybox
-						options={{
-							Carousel: {
-								infinite: false
-							}
-						}}
-					>
+					<div className={['input--fileList'].join(' ').trim()}>
 						<div className='row'>
-							{files.length > 0 ?
-								(files || []).map((file, index) =>
-									<div key={index} className="col-lg-2">
-										<div className={['fm_item', file.selected ? 'active' : ''].join(' ')}
-											 data-type={file.extension} onClick={() => fileClick(file.url, index)}>
-											<div className='fm_item_image'>
-												<a className={'fm_item_view'} data-fancybox="gallery" href={file.url} onClick={(e) => e.stopPropagation()}>
-													<SgIcon
-														size='24px'
-														icon={'eye'}
-													/>
-												</a>
+							{value ?
+								(value.split(',') && Array.isArray(value.split(','))) ?
+									(value.split(',') || []).map((file, index) => (
+										<div key={index} className='col-lg-2'>
+											<div className={['input--fileList-item'].join(' ').trim()}>
 												<SgRatio>
-													{['mp4'].includes(file.extension) ?
+													{['mp4'].includes(file.split('.')[file.split('.').length - 1]) ?
 														<>
 															<video className='fm_item_image--img'>
-																<source src={file.url} type="video/mp4"/>
+																<source src={file} type="video/mp4"/>
 															</video>
 														</>
 														:
 														(
-															['png', 'jpg', 'jpeg', 'svg', 'gif'].includes(file.extension) ?
-																<Image width={1000} height={1000} src={file.url}
-																	   className='fm_item_image--img'
-																	   alt={file.name}/>
+															['png', 'jpg', 'jpeg', 'svg', 'gif'].includes(file.split('.')[file.split('.').length - 1]) ?
+																<img src={file} className='fm_item_image--img'
+																	 alt={file}/>
 																:
-																<span
-																	style={{
-																		width: '100%',
-																		height: '100%',
-																		display: 'flex',
-																		flexDirection: 'column',
-																		justifyContent: 'center',
-																		alignItems: 'center',
-																		gap: '4px',
-																		fontWeight: 600,
-																		fontSize: '14px'
-																	}}
-																>
-																	<SgIcon
-																		size='52px'
-																		icon='file-text'
-																	/>
-																	{file.extension}
-																</span>
+																<span>{file}</span>
 														)
 													}
 												</SgRatio>
-											</div>
-											<div className='fm_item_body'>
-											<div className='fm_item_body--name'>
-													{file.name}
-												</div>
+												<SgButton
+													color='error-outline'
+													size='sm'
+												>
+													Sil
+												</SgButton>
 											</div>
 										</div>
+									))
+									:
+									<div className='col-lg-3'>
+										<div className={['input--fileList-item'].join(' ').trim()}>
+											<SgRatio>
+												{['mp4'].includes(value.split('.')[value.split('.').length - 1]) ?
+													<>
+														<video className='fm_item_image--img'>
+															<source src={value} type="video/mp4"/>
+														</video>
+													</>
+													:
+													(
+														['png', 'jpg', 'jpeg', 'svg', 'gif'].includes(value.split('.')[value.split('.').length - 1]) ?
+															<img src={value} className='fm_item_image--img'
+																 alt={value}/>
+															:
+															<span>{value}</span>
+													)
+												}
+											</SgRatio>
+											<SgButton
+												color='error-outline'
+												size='sm'
+											>
+												Sil
+											</SgButton>
+										</div>
 									</div>
-								)
-								:
-								<div className='col-lg-12'>
-								<h2 className="custom_modal--description">
-										Fayl yoxdur
-									</h2>
-								</div>
+								: ''
 							}
 						</div>
-					</Fancybox>
-
-					<div className='mt-[72px]'>
-						<SgButtonGroup
-							gap={true}
-						>
-							<SgButton
-								color='error'
-								onClick={toggleFileManagerModal}
-							>
-								Close
-							</SgButton>
-							{files.find(n => n.selected) &&
-								<SgButton
-									color='primary'
-									onClick={fileSubmit}
-								>
-									Submit
-								</SgButton>
-							}
-						</SgButtonGroup>
 					</div>
-				</SgPopup>
+				</div>
 			</>
 		</>
 	)

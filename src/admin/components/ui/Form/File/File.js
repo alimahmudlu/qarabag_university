@@ -1,17 +1,30 @@
 import styles from '@/admin/components/ui/Form/Form.module.scss';
-import SgTemplateFileManagerModal from "@/admin/components/templates/FileManagerModal";
-import {SgRatio} from "@/admin/components/ui/Ratio";
-import React, {useState} from "react";
-import {SgButton} from "@/admin/components/ui/Button";
+import React from "react";
+import dynamic from 'next/dynamic';
+const SgTemplateFileManagerModal = dynamic(() => import('@/admin/components/templates/FileManagerModal'), { ssr: false });
+// import SgTemplateFileManagerModal from "@/admin/components/templates/FileManagerModal";
 
 export default function SgFile(props) {
-    const {label, name, externalRef, id, required, readonly, disabled, value, loading, isInvalid, onChange, color, data_key, multiple, fileManager = undefined} = props
-
-    const [fileManagerModal, setFileManagerModal] = useState(false);
-
-    function toggleFileManagerModal(e) {
-        setFileManagerModal(!fileManagerModal)
-    }
+    const {
+        label,
+        name,
+        externalRef,
+        id,
+        required,
+        readonly,
+        disabled,
+        data_extrakey,
+        data_extraarraykey,
+        data_extraarrayvalue,
+        value,
+        loading,
+        isInvalid,
+        onChange,
+        color,
+        data_key,
+        multiple,
+        fileManager = undefined
+    } = props;
 
     const handleChange = (e) => {
         if (disabled || readonly || loading) {
@@ -39,96 +52,28 @@ export default function SgFile(props) {
 
     return (
         fileManager ?
-            <SgTemplateFileManagerModal
-                id={id}
-                name={name}
-                type={fileManager?.type}
-                multiple={fileManager?.multiple}
-                toggleFileManagerModal={toggleFileManagerModal}
-                fileManagerModal={fileManagerModal}
-                data={fileManager?.data}
-                setData={fileManager?.setData}
-                errors={fileManager?.errors}
-                setErrors={fileManager?.setErrors}
-                data_key={data_key}
-            >
-                <div className={[styles['input-container'], 'mb-1', getColor()].join(' ').trim()}>
-                    <label className={styles["label"]} htmlFor={fileManager ? '' : id}>{label}</label>
-                    <div className={[styles["input-wrapper"], styles["input-wrapper--file"], isInvalid && styles['input-wrapper--error'], fileManager && styles['input-wrapper--fakeFiles']].join(' ').trim()}>
-                        <input className={styles["file"]} type="file" name={name} ref={externalRef} data-key={data_key}
-                               id={id} onChange={handleChange} disabled={disabled} multiple={multiple}
-                               readOnly={readonly} required={required}/>
-                        <label className={[styles["label"], styles["label--file"]].join(' ').trim()} htmlFor={fileManager ? '' : id} onClick={fileManager ? toggleFileManagerModal : undefined}>
-                            Fayl seçin
-                        </label>
-                    </div>
-                    <div className={['input--fileList'].join(' ').trim()}>
-                        <div className='row'>
-                            {value ?
-                                (value.split(',') && Array.isArray(value.split(','))) ?
-                                        (value.split(',') || []).map((file, index) => (
-                                            <div key={index} className='col-lg-2'>
-                                                <div className={['input--fileList-item'].join(' ').trim()}>
-                                                    <SgRatio>
-                                                        {['mp4'].includes(file.split('.')[file.split('.').length - 1]) ?
-                                                            <>
-                                                                <video className='fm_item_image--img'>
-                                                                    <source src={file} type="video/mp4"/>
-                                                                </video>
-                                                            </>
-                                                            :
-                                                            (
-                                                                ['png', 'jpg', 'jpeg', 'svg', 'gif'].includes(file.split('.')[file.split('.').length - 1]) ?
-                                                                    <img src={file} className='fm_item_image--img'
-                                                                         alt={file}/>
-                                                                    :
-                                                                    <span>{file}</span>
-                                                            )
-                                                        }
-                                                    </SgRatio>
-                                                    <SgButton
-                                                        color='error-outline'
-                                                        size='sm'
-                                                    >
-                                                        Sil
-                                                    </SgButton>
-                                                </div>
-                                            </div>
-                                        ))
-                                        :
-                                        <div className='col-lg-3'>
-                                            <div className={['input--fileList-item'].join(' ').trim()}>
-                                                <SgRatio>
-                                                    {['mp4'].includes(value.split('.')[value.split('.').length - 1]) ?
-                                                        <>
-                                                            <video className='fm_item_image--img'>
-                                                                <source src={value} type="video/mp4"/>
-                                                            </video>
-                                                        </>
-                                                        :
-                                                        (
-                                                            ['png', 'jpg', 'jpeg', 'svg', 'gif'].includes(value.split('.')[value.split('.').length - 1]) ?
-                                                                <img src={value} className='fm_item_image--img'
-                                                                     alt={value}/>
-                                                                :
-                                                                <span>{value}</span>
-                                                        )
-                                                    }
-                                                </SgRatio>
-                                                <SgButton
-                                                    color='error-outline'
-                                                    size='sm'
-                                                >
-                                                    Sil
-                                                </SgButton>
-                                            </div>
-                                        </div>
-                                : ''
-                            }
-                        </div>
-                    </div>
-                </div>
-            </SgTemplateFileManagerModal>
+            <>
+                <SgTemplateFileManagerModal
+                    fileManager={fileManager}
+                    id={id}
+                    name={name}
+                    config={{}}
+                    multiple={multiple}
+                    data={fileManager?.data}
+                    setData={fileManager?.setData}
+                    errors={fileManager?.errors}
+                    setErrors={fileManager?.setErrors}
+                    data_key={data_key}
+                    value={value}
+                    label={label}
+                    handleChange={handleChange}
+                    readonly={readonly}
+                    isInvalid={isInvalid}
+                    externalRef={externalRef}
+                    disabled={disabled}
+                    required={required}
+                />
+            </>
             :
             <div className={[styles['input-container'], 'mb-1', getColor()].join(' ').trim()}
                  onClick={fileManager ? onChange : undefined}>
