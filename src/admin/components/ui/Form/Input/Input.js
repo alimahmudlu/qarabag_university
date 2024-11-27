@@ -596,13 +596,11 @@ export default function SgInput(props) {
     }
 
     useEffect(() => {
+        const _value = typeof Number(value) === 'number' ? Number(value) : value;
+        const arrayValue = (_value || _value === 0) ? (typeof _value !== 'object' ? [_value] : _value) : [];
 
-        console.log(value, name, 'lols')
-
-        const arrayValue = (value || value === 0) ? (typeof value !== 'object' ? [value] : value) : [];
-
-        setSelected(variant === 'select' ? (options.filter(el => arrayValue.includes(el.id) || arrayValue.includes(el.id.toString())).map(el => el.id) || []) : [])
-    }, [value]);
+        setSelected(variant === 'select' ? (options.filter(el => arrayValue.includes(el.id) || arrayValue.includes(el.id)).map(el => el.id) || []) : [])
+    }, [value, options.length]);
 
     return (
         <>

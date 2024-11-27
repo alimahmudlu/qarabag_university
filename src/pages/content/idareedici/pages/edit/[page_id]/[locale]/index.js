@@ -386,7 +386,7 @@ export default function Index() {
 
             <SgPopup
                 header='Edit Data Type main page'
-                description='lol'
+                description=' '
                 size='md'
                 setToggleModal={toggleWidgetDataTypeModal}
                 toggleModal={widgetDataTypeModal}

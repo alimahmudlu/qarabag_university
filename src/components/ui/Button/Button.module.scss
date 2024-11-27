@@ -16,6 +16,7 @@
     font-weight: 600;
     line-height: 20px;
     text-decoration: unset;
+    transition: all 0.3s;
 
     &::before {
         /* use !important to prevent issues with browser extensions that change fonts */
@@ -284,6 +285,12 @@
         }
     }
 
+
+
+
+
+    /*
+    //OLD
     &--primary {
         background-color: var(--hookerGreen-color, #44766C);
         border-color: var(--hookerGreen-color, #44766C);
@@ -413,6 +420,158 @@
             }
         }
     }
+    */
+
+    //NEW
+    &--primary {
+        background-color: var(--hookerGreen-color, #44766C);
+        border-color: var(--hookerGreen-color, #44766C);
+        color: var(--white, #FFFFFF);
+
+        &:hover {
+            background-color: var(--white, #FFFFFF);
+            border-color: var(--hookerGreen-color, #44766C);
+            color: var(--hookerGreen-color, #44766C);
+
+            &.sg--button--withOutBlock {
+                color: var(--hookerGreen-color, #44766C) !important;
+            }
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+        }
+
+        &:disabled {
+            background-color: var(--hookerGreen-color, #44766C);
+            border-color: var(--hookerGreen-color, #44766C);
+            color: var(--white, #FFFFFF);
+        }
+
+        &-outline {
+            color: var(--hookerGreen-color, #44766C);
+            border-color: var(--hookerGreen-color, #44766C);
+            background-color: var(--white, #FFFFFF);
+
+            &:hover {
+                color: var(--white, #FFFFFF);
+                border-color: var(--hookerGreen-color, #44766C);
+                background-color: var(--hookerGreen-color, #44766C);
+
+                &.sg--button--withOutBlock {
+                    color: var(--hookerGreen-color, #44766C) !important;
+                }
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+            }
+
+            &:disabled {
+                color: var(--hookerGreen-color, #44766C);
+                border-color: var(--hookerGreen-color, #44766C);
+                background-color: var(--white, #FFFFFF);
+            }
+        }
+    }
+    &--black {
+        background-color: var(--black, #262626);
+        border-color: var(--black, #262626);
+        color: var(--white, #FFFFFF);
+
+        &:hover {
+            background-color: var(--white, #FFFFFF);
+            border-color: var(--black, #262626);
+            color: var(--black, #262626);
+
+            &.sg--button--withOutBlock {
+                color: var(--black, #262626) !important;
+            }
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+        }
+
+        &:disabled {
+            background-color: var(--black, #262626);
+            border-color: var(--black, #262626);
+            color: var(--white, #FFFFFF);
+        }
+
+        &-outline {
+            color: var(--black, #262626);
+            border-color: var(--black, #262626);
+            background-color: var(--white, #FFFFFF);
+
+            &:hover {
+                color: var(--white, #FFFFFF);
+                border-color: var(--black, #262626);
+                background-color: var(--black, #262626);
+
+                &.sg--button--withOutBlock {
+                    color: var(--black, #262626) !important;
+                }
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+            }
+
+            &:disabled {
+                color: var(--black, #262626);
+                border-color: var(--black, #262626);
+                background-color: var(--white, #FFFFFF);
+            }
+        }
+    }
+    &--white {
+        background-color: var(--white, #FFFFFF);;
+        border-color: var(--white, #FFFFFF);
+        color: var(--black, #262626);
+
+        &:hover {
+            background-color: var(--hookerGreen-color, #44766C);
+            border-color: var(--hookerGreen-color, #44766C);
+            color: var(--white, #FFFFFF);
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+        }
+
+        &:disabled {
+            background-color: var(--black, #262626);
+            border-color: var(--black, #262626);
+            color: var(--white, #FFFFFF);
+        }
+
+        &-outline {
+            color: var(--white, #FFFFFF);
+            border-color: var(--white, #FFFFFF);
+            background-color: var(--black, #262626);
+
+            &:hover {
+                color: var(--hookerGreen-color, #44766C);
+                border-color: var(--hookerGreen-color, #44766C);
+                background-color: var(--black, #262626);
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+            }
+
+            &:disabled {
+                color: var(--white, #FFFFFF);
+                border-color: var(--white, #FFFFFF);
+                background-color: var(--black, #262626);
+            }
+        }
+    }
+
+
+
+
 
     &--squared {
         width: 46px;
@@ -432,10 +591,10 @@
     &--reverse {
         flex-direction: row-reverse;
     }
-    &--underline {
+    &--underline > div {
         text-decoration: underline;
     }
-    &--underline:hover {
+    &--underline > div:hover {
         text-decoration: underline;
     }
     &--onlyIcon {
@@ -464,4 +623,35 @@
         justify-content: center;
         text-align: center;
     }
+
+
+
+    &--animation {
+        &--icon {
+            &-hover {
+                &-rotate-45 {
+                    &::before {
+                        transition: all 0.3s;
+                        transform: rotate(0) !important;
+                    }
+                    &:hover {
+                        &::before {
+                            transform: rotate(45deg) !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //sg--button--animation--icon:hover:rotate-45
+    //&--animation {
+    //    &--icon {
+    //        &\:hover {
+    //            &\:rotate-45 {
+    //                &::before {
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 }

@@ -2,7 +2,7 @@ import styles from '@/components/ui/Button/Button.module.scss';
 import Link from "next/link";
 
 export default function SgButton (props) {
-    const {children, size = '', color, variant, block, align, icon, onlyIcon, reverse, squared, withOutBlock, className, disabled, loading, close, active, onClick, padding, weight, decoration, type = 'button', isLinked = false, download, to = '#', ...rest} = props;
+    const {children, size = '', color, animations = {}, target, variant, block, align, icon, onlyIcon, reverse, squared, withOutBlock, className, disabled, loading, close, active, onClick, padding, weight, decoration, type = 'button', isLinked = false, download, to = '#', ...rest} = props;
 
     const getButtonSize = () => {
         let classes = [];
@@ -138,6 +138,17 @@ export default function SgButton (props) {
         return `sg-icon-${icon}`
     }
 
+    const getAnimation = () => {
+        const _iconAnimations = [];
+
+        (animations.icon || []).map((animation, index) => {
+            const _className = styles[`sg--button--animation--icon-${animation?.type}-${animation?.value}`];
+            _iconAnimations.push(_className)
+            console.log(`sg--button--animation--icon-${animation?.type}-${animation?.value}`)
+        })
+        return _iconAnimations.join(' ');
+    }
+
     const handleClick = (e) => {
         if (disabled || loading) {
             e.preventDefault()
@@ -151,22 +162,23 @@ export default function SgButton (props) {
                 <Link href={to}
                       {...rest}
                       download={download ? '' : false}
-                      target={disabled ? '_blank' : undefined}
-                      className={[styles['sg--button'], getButtonSize(), getButtonVariant(), getButtonColor(), getButtonAttr(), getButtonIcon(), className].join(' ').trim()}
+                      target={target ? target : (disabled ? '_blank' : undefined)}
+                      className={[styles['sg--button'], getButtonSize(), getAnimation(), getButtonVariant(), getButtonColor(), getButtonAttr(), getButtonIcon(), className].join(' ').trim()}
                       onClick={handleClick}
                 >
-                    {children}
+                    <div>{children}</div>
                 </Link>
         )
     }
     return (
         <button
             {...rest}
-            className={[styles['sg--button'], getButtonSize(), getButtonVariant(), getButtonColor(), getButtonAttr(), getButtonIcon(), className].join(' ').trim()} type={type}
+            className={[styles['sg--button'], getButtonSize(), getAnimation(), getButtonVariant(), getButtonColor(), getButtonAttr(), getButtonIcon(), className].join(' ').trim()}
+            type={type}
             disabled={disabled}
             onClick={handleClick}
         >
-            {children}
+            <div>{children}</div>
         </button>
     )
 }

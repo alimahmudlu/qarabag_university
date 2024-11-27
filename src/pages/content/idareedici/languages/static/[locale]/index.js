@@ -200,7 +200,7 @@ export default function Index() {
 
                 <SgPopup
                     header='Remove Language'
-                    description='lol'
+                    description=' '
                     size='md'
                     setToggleModal={toggleRemoveItemModal}
                     toggleModal={removeItemModal}
@@ -227,7 +227,7 @@ export default function Index() {
 
                 <SgPopup
                     header='Edit Language'
-                    description='lol'
+                    description=' '
                     size='md'
                     setToggleModal={toggleEditItemModal}
                     toggleModal={editItemModal}

@@ -79,7 +79,7 @@ export default function Index() {
                 </SgPageHead>
                 <SgPageBody>
                     <div>
-                        <div className='row align-items-end gap-y-[16px]'>
+                        <div className='row align-items-end gap-y-[16px] pb-[32px]'>
                             <div className='col-lg-4'>
                                 <SgInput
                                     id='search'
@@ -211,6 +211,7 @@ export default function Index() {
                                                 <SgButton
                                                     size='xs'
                                                     color='error'
+                                                    disabled={row.protected}
                                                     onClick={toggleRemoveItemModal}
                                                 >
                                                     Remove
@@ -229,7 +230,7 @@ export default function Index() {
 
                 <SgPopup
                     header='Remove Page'
-                    description='lol'
+                    description=' '
                     size='md'
                     setToggleModal={toggleRemoveItemModal}
                     toggleModal={removeItemModal}

@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-nestable/dist/styles/index.css';
 
 import { SessionProvider } from 'next-auth/react';
+import az from "moment/locale/az"
 
 import ApiService from "@/services/ApiService";
 import {ToastContainer} from "react-toastify";

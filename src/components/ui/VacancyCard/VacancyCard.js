@@ -26,6 +26,14 @@ export default function SgVacancyCard(props) {
                         <SgButton
                             color='primary'
                             icon='arrow-up-right'
+                            animations={{
+                                icon: [
+                                    {
+                                        type: 'hover',
+                                        value: 'rotate-45'
+                                    }
+                                ]
+                            }}
                             reverse={true}
                             block={true}
                             type='link'

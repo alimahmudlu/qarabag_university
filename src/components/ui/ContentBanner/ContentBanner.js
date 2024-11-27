@@ -25,8 +25,16 @@ export default function SgContentBanner(props) {
                         <SgButton
                             type='link'
                             to={button?.path}
-                            color='primary'
-                            icon={button.icon}
+                            color='primary-outline'
+                            icon={button.icon ? button.icon : 'arrow-up-right'}
+                            animations={!button.icon ? {
+                                icon: [
+                                    {
+                                        type: 'hover',
+                                        value: 'rotate-45'
+                                    }
+                                ]
+                            } : {}}
                             reverse={true}
                             download={!!button?.downloadButton}
                             size='md:lg sm:sm'

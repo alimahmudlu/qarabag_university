@@ -70,11 +70,20 @@ export default function SgSectionClubsBanner(props) {
                             <SgButton
                                 color='primary-outline'
                                 icon='arrow-up-right'
+                                animations={{
+                                    icon: [
+                                        {
+                                            type: 'hover',
+                                            value: 'rotate-45'
+                                        }
+                                    ]
+                                }}
                                 size='sm'
                                 withOutBlock={true}
                                 reverse={true}
                                 type='link'
                                 to={`/page/${page_id}`}
+                                decoration='underline'
                             >
                                 <SgHelperTranslate
                                     defaultText={'Hamısına baxmaq'}

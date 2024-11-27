@@ -70,6 +70,14 @@ export default function SgNewsItem(props) {
                         color='black-outline'
                         withOutBlock={true}
                         icon={'arrow-up-right'}
+                        animations={{
+                            icon: [
+                                {
+                                    type: 'hover',
+                                    value: 'rotate-45'
+                                }
+                            ]
+                        }}
                         reverse={true}
                         size='md:lg sm:sm'
                     >

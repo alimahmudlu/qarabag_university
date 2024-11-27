@@ -18,6 +18,14 @@ export default function SgCampusItem(props) {
                 <div className={[styles['sg--campusItem-icon']].join(' ').trim()}>
                     <SgButton
                         icon='arrow-up-right'
+                        animations={{
+                            icon: [
+                                {
+                                    type: 'hover',
+                                    value: 'rotate-45'
+                                }
+                            ]
+                        }}
                         variant='rounded'
                         color='black-outline'
                         onlyIcon={true}

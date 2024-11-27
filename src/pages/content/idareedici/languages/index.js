@@ -199,7 +199,7 @@ export default function Index() {
 
                 <SgPopup
                     header='Remove Language'
-                    description='lol'
+                    description=' '
                     size='md'
                     setToggleModal={toggleRemoveLanguageModal}
                     toggleModal={removeLanguageModal}

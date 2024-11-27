@@ -43,6 +43,14 @@ export default function SgClubItem(props) {
                                     color='white-outline'
                                     withOutBlock={true}
                                     icon={'arrow-up-right'}
+                                    animations={{
+                                        icon: [
+                                            {
+                                                type: 'hover',
+                                                value: 'rotate-45'
+                                            }
+                                        ]
+                                    }}
                                     reverse={true}
                                     size='md:lg sm:sm'
                                 >

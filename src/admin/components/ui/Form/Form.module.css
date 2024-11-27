@@ -613,6 +613,7 @@ textarea.input {
   appearance: none;
   resize: none;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  position: relative;
 }
 
 .select .dropdown-toggle {
@@ -702,6 +703,7 @@ textarea.input {
   justify-content: space-between;
   gap: 12px;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
 }
 
 .select .dropdown-menu li a span,

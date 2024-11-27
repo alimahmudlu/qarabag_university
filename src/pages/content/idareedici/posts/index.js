@@ -7,6 +7,7 @@ import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import {SgPopup} from "@/admin/components/ui/Popup";
 import ApiService from "@/admin/services/ApiService";
 import {
+    OPTIONS_DATA_TYPE_LIST_ROUTE,
     OPTIONS_LANGUAGE_LIST_ROUTE,
     POST_DELETE_ROUTE,
     POST_LIST_ROUTE
@@ -19,6 +20,7 @@ export default function Index() {
     const [filters, setFilters] = useState({});
     const [filtersErrors, setFiltersErrors] = useState({});
     const [languageList, setLanguageList] = useState([]);
+    const [dataTypeOptions, setDataTypeOptions] = useState([]);
     const [removeItemModal, setRemoveItemModal] = useState(false);
     const [statusOptions, setStatusOptions] = useState([
         {
@@ -52,6 +54,13 @@ export default function Index() {
         ApiService.get(OPTIONS_LANGUAGE_LIST_ROUTE).then(response => {
             setLanguageList(response.data.data)
         })
+        ApiService.get(OPTIONS_DATA_TYPE_LIST_ROUTE).then(response => {
+            setDataTypeOptions((response.data.data || []).map(item => ({
+                id: item.id,
+                value: item.id,
+                name: item.alias,
+            })))
+        })
     }, []);
 
 
@@ -76,7 +85,7 @@ export default function Index() {
                 </SgPageHead>
                 <SgPageBody>
                     <div>
-                        <div className='row align-items-end gap-y-[16px]'>
+                        <div className='row align-items-end gap-y-[16px] pb-[32px]'>
                             <div className='col-lg-4'>
                                 <SgInput
                                     id='search'
@@ -98,6 +107,18 @@ export default function Index() {
                                     onChange={handleChange}
                                     label='Status'
                                     placeholder='Status'
+                                />
+                            </div>
+                            <div className='col-lg-4'>
+                                <SgInput
+                                    id='data_type_id'
+                                    name='data_type_id'
+                                    variant='select'
+                                    options={dataTypeOptions}
+                                    value={filters.data_type_id || ''}
+                                    onChange={handleChange}
+                                    label='Data type'
+                                    placeholder='Data type'
                                 />
                             </div>
                             <div className='col-lg-4'>
@@ -133,6 +154,18 @@ export default function Index() {
                                         return (
                                             <>
                                                 {key}
+                                            </>
+                                        )
+                                    }
+                                },
+                                {
+                                    key: 'data_type',
+                                    name: 'Data type',
+                                    hidden: false,
+                                    cell: (row, key) => {
+                                        return (
+                                            <>
+                                                {key?.alias}
                                             </>
                                         )
                                     }

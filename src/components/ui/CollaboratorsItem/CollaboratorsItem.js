@@ -17,7 +17,7 @@ export default function SgCollaboratorsItem(props) {
 
     return (
         <>
-            <div className={[styles['sg--collaboratorsItem']].join(' ').trim()}>
+            <Link href={path || ''}  className={[styles['sg--collaboratorsItem']].join(' ').trim()}>
                 <div className={[styles['sg--collaboratorsItem-head']].join(' ').trim()}>
                     <SgRatio
                         ratio={{
@@ -58,9 +58,9 @@ export default function SgCollaboratorsItem(props) {
                             : ''
                     }
                     {header ?
-                        <Link href={path || ''} className={[styles['sg--collaboratorsItem-body--header']].join(' ').trim()}>
+                        <div className={[styles['sg--collaboratorsItem-body--header']].join(' ').trim()}>
                             {header}
-                        </Link>
+                        </div>
                         : ''
                     }
                     {position ?
@@ -82,7 +82,7 @@ export default function SgCollaboratorsItem(props) {
                         : ''
                     }
                 </div>
-            </div>
+            </Link>
         </>
     )
 }

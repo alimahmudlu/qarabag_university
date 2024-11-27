@@ -5,6 +5,7 @@ import SgIcon from "@/admin/components/ui/Icon";
 import { sortableHandle } from "react-sortable-hoc";
 import {useState} from "react";
 import {SgButton} from "@/components/ui/Button";
+import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 
 const DragHandle = sortableHandle(({index, handleRemove}) => (
 	<div className={[styles['sg--widgetItem--key']].join(' ').trim()}>
@@ -92,31 +93,55 @@ export default function SgWidgetItem(props) {
 							</SgFormGroup>
 						</div>
 						<div className='col-lg-6'>
-							<SgFormGroup>
-								<SgInput
-									id='data_type_id'
-									name='data_type_id'
-									value={data_type_id}
-									isInvalid={errors.data_type_id}
-									label='Data Type'
-									onChange={handleChange}
-									options={dataTypesOptions}
-									variant='select'
-									data_key={`page_widgets.${index}`}
-									disabled={Number(page_type_id) === 2}
-									suffix={
-										data_type_id ?
-											<SgButton
-												size='sm'
-												withOutBlock={true}
-												onClick={(e) => toggleWidgetDataTypeModal(e, {id: data_type_id})}
-											>
-												Main Page
-											</SgButton>
-											: ''
-									}
-								/>
-							</SgFormGroup>
+							<div className='row'>
+								<div className='col-lg'>
+									<SgFormGroup>
+										<SgInput
+											id='data_type_id'
+											name='data_type_id'
+											value={data_type_id}
+											isInvalid={errors.data_type_id}
+											label='Data Type'
+											onChange={handleChange}
+											options={dataTypesOptions}
+											variant='select'
+											data_key={`page_widgets.${index}`}
+											disabled={Number(page_type_id) === 2}
+										/>
+									</SgFormGroup>
+								</div>
+
+									<div className='col-lg-auto mt-auto'>
+										<SgFormGroup>
+											{data_type_id ?
+												<SgButtonGroup>
+													<SgButton
+														size='sm'
+														className='px-2'
+														color='primary'
+														onClick={(e) => toggleWidgetDataTypeModal(e, {id: data_type_id})}
+													>
+														Main Page
+													</SgButton>
+													{Number(page_type_id) === 1 ?
+														<SgButton
+															size='sm'
+															className='px-2'
+															color='primary-outline'
+															type='link'
+															target='_blank'
+															to={`/content/idareedici/posts/${data_type_id}`}
+														>
+															Posts
+														</SgButton>
+														: null
+													}
+												</SgButtonGroup>
+												: ''
+											}
+										</SgFormGroup>
+									</div>
+							</div>
 						</div>
 						<div className='col-lg-6'>
 							<SgFormGroup>
