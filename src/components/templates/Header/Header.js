@@ -184,7 +184,6 @@ export default function SgTemplateHeader(props) {
                                     />}
                                 </SgButton>
                                 <SgButton
-                                    color='primary'
                                     color='white-outline'
                                     icon='times'
                                     onlyIcon={true}
