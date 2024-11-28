@@ -65,7 +65,7 @@ export default function SgSectionCollaboratorList(props) {
             >
                 <SectionBlock>
                     <SectionHead
-                        variant={!filter ? 'center' : null}
+                        variant={'center'}
                         header={title}
                         size='sm'
                     />

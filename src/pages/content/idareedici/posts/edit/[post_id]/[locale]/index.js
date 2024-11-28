@@ -246,7 +246,7 @@ export default function Index() {
                                                         name='value'
                                                         value={item.value || ''}
                                                         // isInvalid={errors.data_type_id}
-                                                        label={item.title}
+                                                        label={item?.meta_key?.title}
                                                         options={dataTypes}
                                                         data_key={`post_values.${i}`}
                                                         type={item?.meta_key?.input_type?.alias}
@@ -272,7 +272,7 @@ export default function Index() {
                                                         name='value'
                                                         value={item.value || ''}
                                                         // isInvalid={errors.data_type_id}
-                                                        label={item.title}
+                                                        label={item?.meta_key?.title}
 
                                                         data_key={`post_values.${i}`}
                                                         type={item?.meta_key?.input_type?.alias}
@@ -299,7 +299,7 @@ export default function Index() {
                                                         name='value'
                                                         value={item.value || ''}
                                                         // isInvalid={errors.data_type_id}
-                                                        label={item.title}
+                                                        label={item?.meta_key?.title}
 
                                                         data_key={`post_values.${i}`}
                                                         type={item?.meta_key?.input_type?.alias}
@@ -327,7 +327,7 @@ export default function Index() {
                                                         checked={!!item.value}
                                                         value={''}
                                                         // isInvalid={errors.data_type_id}
-                                                        label={item.title}
+                                                        label={item?.meta_key?.title}
                                                         onChange={handleChange}
                                                         options={dataTypes}
                                                         data_key={`post_values.${i}`} type={item?.meta_key?.input_type?.alias}
@@ -345,7 +345,7 @@ export default function Index() {
                                                         name='value'
                                                         value={item.value || ''}
                                                         // isInvalid={errors.data_type_id}
-                                                        label={item.title}
+                                                        label={item?.meta_key?.title}
                                                         onChange={handleChange}
                                                         data_key={`post_values.${i}`}
                                                         type={item?.meta_key?.input_type?.alias}

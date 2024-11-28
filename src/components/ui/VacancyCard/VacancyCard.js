@@ -11,6 +11,7 @@ import styles from '@/components/ui/VacancyCard/VacancyCard.module.css';
 import {SgButton} from "@/components/ui/Button";
 import {SgIcon} from "@/components/ui/Icon";
 import SgHelperTranslate from "@/components/helper/Translate";
+import moment from "moment";
 
 export default function SgVacancyCard(props) {
     const {header, workTime, location, deadline, path,staticContent} = props;
@@ -61,7 +62,7 @@ export default function SgVacancyCard(props) {
                                 icon={'calendar'}
                                 color={'#44766C'}
                             />
-                            Son müraciət tarixi: {deadline}
+                            Son müraciət tarixi: {moment(deadline).format('DD.MM.YYYY')}
                         </p>
                     </div>
                 </div>
