@@ -59,6 +59,7 @@ export default function SgSectionCollapseContent( props ) {
                 <SectionBlock>
                     <SectionHead
                         header={title}
+                        size='sm'
                     />
                     <SectionBody>
                         <div className='row gap-[24px]'>

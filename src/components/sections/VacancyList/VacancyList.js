@@ -66,6 +66,7 @@ export default function SgSectionVacancyList(props) {
                     <SectionHead
                         variant={!filter ? 'center' : null}
                         header={title}
+                        size='sm'
                     />
                     <SectionBody>
                         <div className='row lg:gap-y-[50px] gap-y-[20px]'>

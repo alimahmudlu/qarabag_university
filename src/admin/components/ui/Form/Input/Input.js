@@ -11,7 +11,7 @@ import {
 } from "@/admin/configs/apiRoutes";
 import {useSession} from "next-auth/react";
 
-const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
+const JoditEditor = dynamic(() => import("jodit-pro-react"), { ssr: false });
 
 
 export default function SgInput(props) {
@@ -79,7 +79,20 @@ export default function SgInput(props) {
                     "Content-Language": "az",
                     "Signature": "KarabakhIsAzerbaijan",
                     [REQUEST_HEADER_AUTH_KEY]: `${session?.user?.token?.token_type} ${session?.user?.token?.access_token}`
-                }
+                },
+                insertImageAsBase64URI: false,
+                defaultHandlerSuccess: (data, editors) => {
+                    console.log('salam', data)
+                    if (data.sources && data.sources.length > 0) {
+                        const fileUrl = `${data.sources[0]?.baseurl}${data.sources[0]?.files?.[0]}`;
+                        editor?.selection?.insertHTML(`<img src="${fileUrl}" alt="Uploaded File" />`);
+                        editors?.selection?.insertHTML(`<img src="${fileUrl}" alt="Uploaded File" />`);
+                        console.log('salam', fileUrl,editors, editor)
+                    }
+                },
+                error: (error) => {
+                    console.error('Dosya yükleme hatası:', error.message);
+                },
             },
             filebrowser: {
                 ajax: {

@@ -18,7 +18,7 @@ export default function SgEventsList(props) {
                             <div key={index} className={[styles['sg--eventsList-body-item']].join(' ').trim()}>
                                 <SgEventItem
                                     staticContent={staticContent}
-                                    date={item.date}
+                                    date={itemContent?.date?.value}
                                     title={item.title}
                                     path={`/page/${page_id}/${item.id}`}
                                     additions={[

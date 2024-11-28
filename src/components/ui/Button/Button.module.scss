@@ -451,7 +451,8 @@
         &-outline {
             color: var(--hookerGreen-color, #44766C);
             border-color: var(--hookerGreen-color, #44766C);
-            background-color: var(--white, #FFFFFF);
+            //background-color: var(--white, #FFFFFF);
+            background-color: transparent;
 
             &:hover {
                 color: var(--white, #FFFFFF);
@@ -549,12 +550,13 @@
         &-outline {
             color: var(--white, #FFFFFF);
             border-color: var(--white, #FFFFFF);
-            background-color: var(--black, #262626);
+            //background-color: var(--black, #262626);
+            background-color: transparent;
 
             &:hover {
-                color: var(--hookerGreen-color, #44766C);
+                color: var(--white, #FFFFFF);
                 border-color: var(--hookerGreen-color, #44766C);
-                background-color: var(--black, #262626);
+                background-color: var(--hookerGreen-color, #44766C);
             }
 
             &:focus {

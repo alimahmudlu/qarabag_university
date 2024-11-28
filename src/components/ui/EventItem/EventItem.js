@@ -5,7 +5,9 @@ import {SgButton} from "@/components/ui/Button";
 import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgEventItem(props) {
-    const {date, additions = [], title, path,staticContent} = props;
+    const {date, additions = [], title, path, staticContent} = props;
+
+    console.log(date, title, 'dateeee')
 
     return (
         <>

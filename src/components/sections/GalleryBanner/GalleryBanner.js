@@ -14,6 +14,7 @@ export default function SgSectionGalleryBanner(props) {
                <SectionBlock>
                    <SectionHead
                        header={title}
+                       size='sm'
                        variant='center'
                    />
 

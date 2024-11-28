@@ -63,8 +63,9 @@ export default function SgSectionNewsContent(props) {
             >
                 <SectionBlock>
                     <SectionHead
-                        variant={!filter ? 'center' : null}
+                        variant={'center'}
                         header={title}
+                        size='sm'
                     />
                     <SectionBody>
                         <div className='row lg:gap-y-[50px] gap-y-[20px]'>
@@ -84,23 +85,6 @@ export default function SgSectionNewsContent(props) {
                                             prefix={<SgIcon icon='search' />}
                                             onChange={setUserFilterFn}
                                             value={userFilters?.post_search}
-                                        />
-                                    </SgFormGroup>
-                                    <SgFormGroup>
-                                        <SgInput
-                                            color='light'
-                                            variant='select'
-                                            size='small'
-                                            name='post_category'
-                                            id='post_category'
-                                            label={<SgHelperTranslate
-                                                defaultText={'Kateqoriya'}
-                                                translatedText={staticContent?.newsFilterBanner__categories__select
-                                                }
-                                            />}
-                                            placeholder='Kateqoriya'
-                                            onChange={setUserFilterFn}
-                                            value={userFilters?.post_category}
                                         />
                                     </SgFormGroup>
                                     <SgFormGroup>

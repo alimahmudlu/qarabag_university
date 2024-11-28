@@ -83,6 +83,56 @@ const PageItemAddFormValidation = {
     },
 }
 
+
+const UserAddFormValidation = {
+    name: {
+        presence: true,
+        length: { minimum: 1 }
+    },
+    surname: {
+        presence: true,
+        length: { minimum: 1 }
+    },
+    email: {
+        presence: true,
+        length: { minimum: 1 }
+    },
+    password: {
+        presence: true,
+        length: { minimum: 6 }
+    },
+}
+
+const UserEditFormValidation = {
+    name: {
+        presence: true,
+        length: { minimum: 1 }
+    },
+    surname: {
+        presence: true,
+        length: { minimum: 1 }
+    },
+    email: {
+        presence: true,
+        length: { minimum: 1 }
+    }
+}
+
+const ChangePasswordFormValidation = {
+    password_old: {
+        presence: true,
+        length: { minimum: 6 }
+    },
+    password: {
+        presence: true,
+        length: { minimum: 6 }
+    },
+    password_confirmation: {
+        presence: true,
+        length: { minimum: 6 }
+    },
+}
+
 const SignInFormValidation = {
     email: {
         presence: true,
@@ -113,6 +163,21 @@ export const validationConstraints = (data, type) => {
     if (type === 'pageItemAdd') {
         return {
             ...PageItemAddFormValidation,
+        };
+    }
+    if (type === 'userCreate') {
+        return {
+            ...UserAddFormValidation,
+        };
+    }
+    if (type === 'userEdit') {
+        return {
+            ...UserEditFormValidation,
+        };
+    }
+    if (type === 'changePassword') {
+        return {
+            ...ChangePasswordFormValidation,
         };
     }
     if (type === 'sign-in') {

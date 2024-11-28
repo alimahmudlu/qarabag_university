@@ -9,7 +9,7 @@ export default function SgDashboardItem(props) {
 		<div className={[styles["sg--dashboardItem"]].join(' ').trim()}>
 			<div className={[styles["sg--dashboardItem-head"]].join(' ').trim()}>
 				<Link href={path} className={[styles["sg--dashboardItem-head--header"]].join(' ').trim()}>
-					{header} - {length}
+					{header}
 				</Link>
 				<p className={[styles["sg--dashboardItem-head--description"]].join(' ').trim()}>
 					{description}

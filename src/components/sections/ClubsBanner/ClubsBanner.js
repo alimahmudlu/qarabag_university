@@ -65,6 +65,7 @@ export default function SgSectionClubsBanner(props) {
                     <SectionHead
                         header={title}
                         filter={true}
+                        size='sm'
                     >
                         <SgButtonGroup>
                             <SgButton

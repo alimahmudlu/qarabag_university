@@ -15,6 +15,7 @@ export default function SgSectionMonumentsFamousBanner(props) {
                     <SectionHead
                         header={title}
                         variant="center"
+                        size='sm'
                     />
                     <SectionBody>
                         <div className='row gap-y-[48px]'>

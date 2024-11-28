@@ -61,6 +61,7 @@ export default function SgSectionNewsBanner(props) {
                 <SectionBlock>
                     <SectionHead
                         header={title}
+                        size='sm'
                         filter={true}
                     >
                         <SgButtonGroup>

@@ -33,7 +33,10 @@ export default function SgTemplateUserDropdown(props) {
                 menuClassName={['p-0', styles['sg--template--userDropdown-maimMenu-catalogue-menu']].join(' ').trim()}
                 list={[
                     {
-                        name: <Link href={`/settings/user/${id}`}>Profile</Link>
+                        name: <Link href={`/content/idareedici/users/edit/${id}`}>Profile</Link>
+                    },
+                    {
+                        name: <Link href={`/content/idareedici/users/edit/${id}/change-password`}>Change Password</Link>
                     },
                     {
                         type: 'divider'

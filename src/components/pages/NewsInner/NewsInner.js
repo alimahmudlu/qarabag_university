@@ -10,6 +10,8 @@ export default function SgPageNewsInner(props) {
 	const {id, image, title, status, data_type = {}, content, post_values = []} = data || {};
 	const itemContent = post_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {});
 
+	console.log(itemContent);
+
 	const [thisLocation, setThisLocation] = useState(null);
 	useEffect(() => {
 		setThisLocation((typeof window !== "undefined" && window && location) ? location : '')
@@ -27,9 +29,12 @@ export default function SgPageNewsInner(props) {
 								</h2>
 							</div>
 							<div className={[styles['sg--page--newsInner-details']].join(' ').trim()}>
-								<div className={[styles['sg--page--newsInner-details-item']].join(' ').trim()}>
-									{moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
-								</div>
+								{(itemContent?.date?.value || itemContent?.announcementDate?.value ) ?
+									<div className={[styles['sg--page--newsInner-details-item']].join(' ').trim()}>
+										{moment(itemContent?.date?.value || itemContent?.announcementDate?.value).format('MMMM DD, YYYY')}
+									</div>
+									: ''
+								}
 								<div className={[styles['sg--page--newsInner-details-item']].join(' ').trim()}>
 									{thisLocation ? <SgShareSocialMedia
 										list={[

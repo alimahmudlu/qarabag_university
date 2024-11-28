@@ -75,6 +75,7 @@ export default function SgSectionTableContent(props) {
             >
             <SectionBlock>
                     <SectionHead
+                        size='sm'
                         header={title}
                     />
                     <SectionBody>

@@ -62,6 +62,7 @@ export default function SgSectionEventsBanner(props) {
                     <SectionHead
                         header={title}
                         filter={true}
+                        size='sm'
                     >
                         <SgButtonGroup>
                             <SgButton

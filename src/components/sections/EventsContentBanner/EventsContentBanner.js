@@ -62,6 +62,7 @@ export default function SgSectionEventsContentBanner(props) {
                 <SectionBlock>
                     <SectionHead
                         header={title}
+                        size='sm'
                     />
                     <SectionBody>
                         <div className='row'>

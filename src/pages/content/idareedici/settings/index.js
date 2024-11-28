@@ -27,6 +27,23 @@ export default function Index() {
     return (
         <>
             <div className='row gap-y-[16px]'>
+                <div className='col-lg-4'>
+                    <DashboardItem
+                        header='Users'
+                        description={`User List`}
+                        path={`/content/idareedici/users/`}
+                        list={[
+                            {
+                                name: 'List',
+                                path: `/content/idareedici/users/`,
+                            },
+                            {
+                                name: 'Create',
+                                path: `/content/idareedici/users/create`,
+                            }
+                        ]}
+                    />
+                </div>
                 {(settingsTypeList || []).map((item, index) => {
                     const {id, title, alias, translate} = item || {};
                     const mainLanguageLocale = (languageList || []).find((lang, i) => lang.main)?.locale || 'az'
@@ -50,7 +67,6 @@ export default function Index() {
                                     }]
                                 }
                             />
-
                         </div>
                     )
                 })}

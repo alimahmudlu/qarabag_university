@@ -59,6 +59,7 @@ export default function SgSectionPrincipleListBanner(props) {
             >
                 <SectionBlock>
                     <SectionHead
+                        size='sm'
                         header={title}
                     />
                     <SectionBody>

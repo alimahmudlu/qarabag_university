@@ -68,6 +68,15 @@ export const FILE_MANAGER_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/file_ma
 export const FILE_MANAGER_UPLOAD_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/file_manager'
 
 
+export const USER_LIST_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/users'
+export const USER_CREATE_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/users'
+export const USER_EDIT_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/users'
+export const USER_SHOW_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/users'
+export const USER_DELETE_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/users'
+
+export const CHANGE_PASSWORD_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/change_password'
+
+
 export const LOGIN_ROUTE = '/5928dd0c-6819-4c8b-af0c-aa468f34f6b5/login'
 
 

@@ -59,6 +59,7 @@ export default function SgSectionNewsContentBanner(props) {
             >
                 <SectionBlock>
                     <SectionHead
+                        size='sm'
                         header={title}
                     />
                     <SectionBody>

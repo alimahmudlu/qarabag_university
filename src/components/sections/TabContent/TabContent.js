@@ -72,6 +72,7 @@ export default function SgSectionTabContent( props ) {
                 <SectionBlock>
                     <SectionHead
                         header={title}
+                        size='sm'
                     />
                     <SectionBody>
                         <div className='row'>

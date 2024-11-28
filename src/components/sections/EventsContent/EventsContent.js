@@ -65,6 +65,7 @@ export default function SgSectionEventsContent(props) {
                 <SectionBlock>
                     <SectionHead
                         header={title}
+                        size='sm'
                     />
                     <SectionBody>
                         <div className='row gap-y-[50px]'>
@@ -84,22 +85,6 @@ export default function SgSectionEventsContent(props) {
                                             prefix={<SgIcon icon='search' />}
                                             onChange={setUserFilterFn}
                                             value={userFilters?.post_search}
-                                        />
-                                    </SgFormGroup>
-                                    <SgFormGroup>
-                                        <SgInput
-                                            color='light'
-                                            variant='select'
-                                            size='small'
-                                            name='post_category'
-                                            id='post_category'
-                                            label={<SgHelperTranslate
-                                                defaultText={'Kateqoriya'}
-                                                translatedText={staticContent?.eventsFilterContent__categories__select}
-                                            />}
-                                            placeholder='Kateqoriya'
-                                            onChange={setUserFilterFn}
-                                            value={userFilters?.post_category}
                                         />
                                     </SgFormGroup>
                                     <SgFormGroup>
@@ -143,7 +128,7 @@ export default function SgSectionEventsContent(props) {
                                                 <SgEventItem
                                                     title={item?.title}
                                                     path={`/page/${page_id}/${item.id}`}
-                                                    date={moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
+                                                    date={itemContent?.date?.value}
                                                     additions={[
                                                         {
                                                             icon: 'calendar',
