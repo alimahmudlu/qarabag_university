@@ -56,7 +56,7 @@ export default function SgSectionTabContent( props ) {
     }, [page, page_id]);
 
     useEffect(() => {
-        ApiService.get(`${SITE_PAGE_CHILDREN_PAGES_LIST_ROUTE}/${page_id}/parent`).then(response => {
+        ApiService.get(`${SITE_PAGE_CHILDREN_PAGES_LIST_ROUTE}/${page_id}/relations`).then(response => {
             setPageList(response.data.data)
         }).catch((error) => {
             console.log(error)
@@ -81,8 +81,8 @@ export default function SgSectionTabContent( props ) {
                                     return (
                                         <SgTabItem
                                             key={index}
-                                            path={`#tabContent--${index}--${item.id}`}
-                                            title={item.title}
+                                            path={`#tabContent--${index}--${item.link.id}`}
+                                            title={item.link.title}
                                         />
                                     )
                                 })}
@@ -90,9 +90,9 @@ export default function SgSectionTabContent( props ) {
                             <div className='col-lg-8'>
                                 {(pageList || []).map((item, index) => {
                                     return (
-                                        <div key={index} id={`tabContent--${index}--${item.id}`}>
+                                        <div key={index} id={`tabContent--${index}--${item?.link.id}`}>
                                             <SgTemplateGetPageWidgets
-                                                page_widgets={item?.page_widgets}
+                                                page_widgets={item?.link?.page_widgets}
                                                 page_id={page_id}
                                                 firstSectionPadding={true}
                                                 key={index}
