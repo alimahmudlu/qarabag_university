@@ -1,0 +1,14 @@
+.sg--template--scrollToTop {
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 9999;
+  border: 2px solid #FFFFFF;
+
+  &.visible {
+    opacity: 1;
+  }
+}

@@ -6,6 +6,7 @@ import SgTemplateHeader from "@/components/templates/Header";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
+import SgTemplateScrollToTop from "@/components/templates/ScrollToTop";
 
 export default function SiteLayout(props) {
     const { children, menus, languages, settings, locale,staticContent } = props;
@@ -125,6 +126,7 @@ export default function SiteLayout(props) {
                             icon: el?.meta
                         }))}
                     />
+                    <SgTemplateScrollToTop />
                 </div>
             </main>
         </>

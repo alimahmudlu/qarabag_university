@@ -2,7 +2,7 @@ const LanguageCreateFormValidation = {
     status: {
         presence: true
     },
-    title: {
+    name: {
         presence: true,
         length: { minimum: 2 }
     },
