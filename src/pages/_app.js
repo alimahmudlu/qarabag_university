@@ -1,5 +1,6 @@
 import App from 'next/app';
 import 'bootstrap/dist/css/bootstrap.css';
+import "@/assets/fonts/fonts.scss";
 import "@/assets/styles/globals.scss";
 
 import "@/assets/fonts/sg-icons/style.scss";
