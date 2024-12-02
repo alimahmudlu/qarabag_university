@@ -15,7 +15,7 @@
   flex: 1 0 100px;
 }
 .sg--principleList-item--header {
-  color: var(--black, #262626);
+  color: var(--black, #231F20);
   font-size: 20px;
   font-style: normal;
   font-weight: 600;

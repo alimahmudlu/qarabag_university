@@ -12,7 +12,7 @@
     gap: 20px;
 }
 .sg--vacancyCard-content--header{
-    color: #262626;
+    color: #231F20;
     font-size: 24px;
     font-weight: 600;
     line-height: 24px;
@@ -25,7 +25,7 @@
     gap: 20px;
 }
 .sg--vacancyCard-content-info--workTime{
-    color: #262626;
+    color: #231F20;
     font-size: 14px;
     font-weight: 500;
     line-height: 24px;
@@ -38,7 +38,7 @@
     font-size: 18px;
     font-weight: 400;
     line-height: 30px;
-    color: #262626;
+    color: #231F20;
     display: flex;
     align-items: center;
     gap: 14px;

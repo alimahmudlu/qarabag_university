@@ -16,7 +16,7 @@
   background: var(--hookerGreen-color, #44766C);
 }
 .sg--eventItem-date--day {
-  color: var(--black, #262626);
+  color: var(--black, #231F20);
   text-align: center;
   font-size: 64px;
   font-style: normal;
@@ -27,7 +27,7 @@
   color: var(--white, #FFF);
 }
 .sg--eventItem-date--month {
-  color: var(--black, #262626);
+  color: var(--black, #231F20);
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
@@ -48,7 +48,7 @@
   background: var(--hookerGreen-color, #44766C);
 }
 .sg--eventItem-body--header {
-  color: var(--black, #262626);
+  color: var(--black, #231F20);
   text-overflow: ellipsis;
   font-size: 20px;
   font-style: normal;
@@ -76,13 +76,13 @@
 }
 .sg--eventItem-body-additions-item--icon {
   font-size: 16px;
-  color: var(--black, #262626);
+  color: var(--black, #231F20);
 }
 .sg--eventItem:hover .sg--eventItem-body-additions-item--icon {
   color: var(--white, #FFF);
 }
 .sg--eventItem-body-additions-item--text {
-  color: var(--black, #262626);
+  color: var(--black, #231F20);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

@@ -21,7 +21,7 @@ export default function SgShareSocialMedia(props) {
 				{(list || []).map((item, index) => {
 					return (
 						<div key={index} className={[styles['sg--shareSocialMedia-item']].join(' ').trim()}>
-							<Link target='_blank' href={item?.path || '#'} className={[styles['sg--shareSocialMedia-item--link']].join(' ').trim()}>
+							<Link target='_blank' onClick={item?.onClick} href={item?.path || '#'} className={[styles['sg--shareSocialMedia-item--link']].join(' ').trim()}>
 								<SgIcon
 									icon={item.icon}
 									name={item.name}

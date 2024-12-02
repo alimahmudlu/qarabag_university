@@ -11,14 +11,14 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        font-family: "Source Serif 4", serif;
+        font-family: "Poppins", sans-serif;
 
         .sg--eventItem:hover & {
             background: var(--hookerGreen-color, #44766C);
         }
 
         &--day {
-            color: var(--black, #262626);
+            color: var(--black, #231F20);
             text-align: center;
             font-size: 58px;
             font-style: normal;
@@ -30,7 +30,7 @@
             }
         }
         &--month {
-            color: var(--black, #262626);
+            color: var(--black, #231F20);
             font-size: 20px;
             font-style: normal;
             font-weight: 400;
@@ -55,7 +55,7 @@
         }
 
         &--header {
-            color: var(--black, #262626);
+            color: var(--black, #231F20);
             text-overflow: ellipsis;
             font-size: 20px;
             font-style: normal;
@@ -67,7 +67,7 @@
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 1;
             overflow: hidden;
-            font-family: "Source Serif 4", serif;
+            font-family: "Poppins", sans-serif;
 
             .sg--eventItem:hover & {
                 color: var(--white, #FFF);
@@ -87,14 +87,14 @@
 
                 &--icon {
                     font-size: 16px;
-                    color: var(--black, #262626);
+                    color: var(--black, #231F20);
 
                     .sg--eventItem:hover & {
                         color: var(--white, #FFF);
                     }
                 }
                 &--text {
-                    color: var(--black, #262626);
+                    color: var(--black, #231F20);
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 500;

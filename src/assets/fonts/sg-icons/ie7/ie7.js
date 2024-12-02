@@ -13,6 +13,10 @@
 		el.innerHTML = '<span style="font-family: \'sg-icons\'">' + entity + '</span>' + html;
 	}
 	var icons = {
+		'sg-icon-whatsapp-solid': '&#xea4f;',
+		'sg-icon-twitter-solid': '&#xea50;',
+		'sg-icon-telegram-solid': '&#xea51;',
+		'sg-icon-link1': '&#xea52;',
 		'sg-icon-wp': '&#xea4e;',
 		'sg-icon-images': '&#xea49;',
 		'sg-icon-calendar_solid_2': '&#xea4d;',

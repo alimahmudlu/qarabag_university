@@ -1,3 +1,15 @@
+.sg-icon-whatsapp-solid {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea4f;');
+}
+.sg-icon-twitter-solid {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea50;');
+}
+.sg-icon-telegram-solid {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea51;');
+}
+.sg-icon-link1 {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea52;');
+}
 .sg-icon-wp {
   *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xea4e;');
 }

@@ -5,7 +5,7 @@
   gap: 70px;
 }
 .sg--page--eventsInner-head--header {
-  color: var(--black, #262626);
+  color: var(--black, #231F20);
   text-align: center;
   font-size: 44px;
   font-style: normal;
@@ -30,7 +30,7 @@
   color: var(--hookerGreen-color, #44766C);
 }
 .sg--page--eventsInner-details-item--title {
-  color: var(--black, #262626);
+  color: var(--black, #231F20);
   font-size: 16px;
   font-style: normal;
   font-weight: 600;

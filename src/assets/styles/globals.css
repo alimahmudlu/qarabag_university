@@ -6,7 +6,7 @@
   --Light-gray: #F2F2F2;
   --stroke: #CCC;
   --white: #FFF;
-  --black: #262626;
+  --black: #231F20;
   --burgundy-color: #44766C;
   --background: #F6F6F6;
   --gray-text: #707070;
@@ -68,7 +68,7 @@ body > div {
 
 .dropdown-item > a {
   padding: 2px 10px;
-  color: var(--black, #262626);
+  color: var(--black, #231F20);
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

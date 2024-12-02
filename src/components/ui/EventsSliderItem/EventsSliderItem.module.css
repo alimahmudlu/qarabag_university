@@ -3,7 +3,7 @@
   transition: all 0.3s ease;
 }
 .sg--eventsSliderItem:hover {
-  border: 1px solid var(--black, #262626);
+  border: 1px solid var(--black, #231F20);
 }
 .sg--eventsSliderItem-head {
   width: 100%;
@@ -31,14 +31,14 @@
   gap: 8px;
 }
 .sg--eventsSliderItem-body--info p {
-  color: var(--black, #262626);
+  color: var(--black, #231F20);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 .sg--eventsSliderItem-body--header {
-  color: var(--black, #262626);
+  color: var(--black, #231F20);
   font-size: 24px;
   font-style: normal;
   font-weight: 600;

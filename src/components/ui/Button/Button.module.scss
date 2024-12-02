@@ -297,8 +297,8 @@
         color: var(--white, #FFFFFF);
 
         &:hover {
-            background-color: var(--black, #262626);
-            border-color: var(--black, #262626);
+            background-color: var(--black, #231F20);
+            border-color: var(--black, #231F20);
             color: var(--white, #FFFFFF);
         }
 
@@ -318,8 +318,8 @@
             background-color: var(--white, #FFFFFF);
 
             &:hover {
-                color: var(--black, #262626);
-                border-color: var(--black, #262626);
+                color: var(--black, #231F20);
+                border-color: var(--black, #231F20);
                 background-color: var(--white, #FFFFFF);
             }
 
@@ -335,8 +335,8 @@
         }
     }
     &--black {
-        background-color: var(--black, #262626);
-        border-color: var(--black, #262626);
+        background-color: var(--black, #231F20);
+        border-color: var(--black, #231F20);
         color: var(--white, #FFFFFF);
 
         &:hover {
@@ -350,14 +350,14 @@
         }
 
         &:disabled {
-            background-color: var(--black, #262626);
-            border-color: var(--black, #262626);
+            background-color: var(--black, #231F20);
+            border-color: var(--black, #231F20);
             color: var(--white, #FFFFFF);
         }
 
         &-outline {
-            color: var(--black, #262626);
-            border-color: var(--black, #262626);
+            color: var(--black, #231F20);
+            border-color: var(--black, #231F20);
             background-color: var(--white, #FFFFFF);
 
             &:hover {
@@ -371,8 +371,8 @@
             }
 
             &:disabled {
-                color: var(--black, #262626);
-                border-color: var(--black, #262626);
+                color: var(--black, #231F20);
+                border-color: var(--black, #231F20);
                 background-color: var(--white, #FFFFFF);
             }
         }
@@ -380,7 +380,7 @@
     &--white {
         background-color: var(--white, #FFFFFF);;
         border-color: var(--white, #FFFFFF);
-        color: var(--black, #262626);
+        color: var(--black, #231F20);
 
         &:hover {
             background-color: var(--hookerGreen-color, #44766C);
@@ -393,20 +393,20 @@
         }
 
         &:disabled {
-            background-color: var(--black, #262626);
-            border-color: var(--black, #262626);
+            background-color: var(--black, #231F20);
+            border-color: var(--black, #231F20);
             color: var(--white, #FFFFFF);
         }
 
         &-outline {
             color: var(--white, #FFFFFF);
             border-color: var(--white, #FFFFFF);
-            background-color: var(--black, #262626);
+            background-color: var(--black, #231F20);
 
             &:hover {
                 color: var(--hookerGreen-color, #44766C);
                 border-color: var(--hookerGreen-color, #44766C);
-                background-color: var(--black, #262626);
+                background-color: var(--black, #231F20);
             }
 
             &:focus {
@@ -416,7 +416,7 @@
             &:disabled {
                 color: var(--white, #FFFFFF);
                 border-color: var(--white, #FFFFFF);
-                background-color: var(--black, #262626);
+                background-color: var(--black, #231F20);
             }
         }
     }
@@ -476,17 +476,17 @@
         }
     }
     &--black {
-        background-color: var(--black, #262626);
-        border-color: var(--black, #262626);
+        background-color: var(--black, #231F20);
+        border-color: var(--black, #231F20);
         color: var(--white, #FFFFFF);
 
         &:hover {
             background-color: var(--white, #FFFFFF);
-            border-color: var(--black, #262626);
-            color: var(--black, #262626);
+            border-color: var(--black, #231F20);
+            color: var(--black, #231F20);
 
             &.sg--button--withOutBlock {
-                color: var(--black, #262626) !important;
+                color: var(--black, #231F20) !important;
             }
         }
 
@@ -495,23 +495,23 @@
         }
 
         &:disabled {
-            background-color: var(--black, #262626);
-            border-color: var(--black, #262626);
+            background-color: var(--black, #231F20);
+            border-color: var(--black, #231F20);
             color: var(--white, #FFFFFF);
         }
 
         &-outline {
-            color: var(--black, #262626);
-            border-color: var(--black, #262626);
+            color: var(--black, #231F20);
+            border-color: var(--black, #231F20);
             background-color: var(--white, #FFFFFF);
 
             &:hover {
                 color: var(--white, #FFFFFF);
-                border-color: var(--black, #262626);
-                background-color: var(--black, #262626);
+                border-color: var(--black, #231F20);
+                background-color: var(--black, #231F20);
 
                 &.sg--button--withOutBlock {
-                    color: var(--black, #262626) !important;
+                    color: var(--black, #231F20) !important;
                 }
             }
 
@@ -520,8 +520,8 @@
             }
 
             &:disabled {
-                color: var(--black, #262626);
-                border-color: var(--black, #262626);
+                color: var(--black, #231F20);
+                border-color: var(--black, #231F20);
                 background-color: var(--white, #FFFFFF);
             }
         }
@@ -529,7 +529,7 @@
     &--white {
         background-color: var(--white, #FFFFFF);;
         border-color: var(--white, #FFFFFF);
-        color: var(--black, #262626);
+        color: var(--black, #231F20);
 
         &:hover {
             background-color: var(--hookerGreen-color, #44766C);
@@ -542,15 +542,15 @@
         }
 
         &:disabled {
-            background-color: var(--black, #262626);
-            border-color: var(--black, #262626);
+            background-color: var(--black, #231F20);
+            border-color: var(--black, #231F20);
             color: var(--white, #FFFFFF);
         }
 
         &-outline {
             color: var(--white, #FFFFFF);
             border-color: var(--white, #FFFFFF);
-            //background-color: var(--black, #262626);
+            //background-color: var(--black, #231F20);
             background-color: transparent;
 
             &:hover {
@@ -566,7 +566,7 @@
             &:disabled {
                 color: var(--white, #FFFFFF);
                 border-color: var(--white, #FFFFFF);
-                background-color: var(--black, #262626);
+                background-color: var(--black, #231F20);
             }
         }
     }

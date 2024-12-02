@@ -82,8 +82,8 @@
   color: var(--white, #FFFFFF);
 }
 .sg--button--primary:hover {
-  background-color: var(--black, #262626);
-  border-color: var(--black, #262626);
+  background-color: var(--black, #231F20);
+  border-color: var(--black, #231F20);
   color: var(--white, #FFFFFF);
 }
 .sg--button--primary:focus {
@@ -100,8 +100,8 @@
   background-color: var(--white, #FFFFFF);
 }
 .sg--button--primary-outline:hover {
-  color: var(--black, #262626);
-  border-color: var(--black, #262626);
+  color: var(--black, #231F20);
+  border-color: var(--black, #231F20);
   background-color: var(--white, #FFFFFF);
 }
 .sg--button--primary-outline:focus {
@@ -113,8 +113,8 @@
   background-color: var(--white, #FFFFFF);
 }
 .sg--button--black {
-  background-color: var(--black, #262626);
-  border-color: var(--black, #262626);
+  background-color: var(--black, #231F20);
+  border-color: var(--black, #231F20);
   color: var(--white, #FFFFFF);
 }
 .sg--button--black:hover {
@@ -126,13 +126,13 @@
   box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
 }
 .sg--button--black:disabled {
-  background-color: var(--black, #262626);
-  border-color: var(--black, #262626);
+  background-color: var(--black, #231F20);
+  border-color: var(--black, #231F20);
   color: var(--white, #FFFFFF);
 }
 .sg--button--black-outline {
-  color: var(--black, #262626);
-  border-color: var(--black, #262626);
+  color: var(--black, #231F20);
+  border-color: var(--black, #231F20);
   background-color: var(--white, #FFFFFF);
 }
 .sg--button--black-outline:hover {
@@ -144,8 +144,8 @@
   box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
 }
 .sg--button--black-outline:disabled {
-  color: var(--black, #262626);
-  border-color: var(--black, #262626);
+  color: var(--black, #231F20);
+  border-color: var(--black, #231F20);
   background-color: var(--white, #FFFFFF);
 }
 .sg--button--squared {

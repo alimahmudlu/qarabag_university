@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?5338s8');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?5338s8#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?5338s8') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?5338s8') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?5338s8##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?v4tean');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?v4tean#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?v4tean') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?v4tean') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?v4tean##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,6 +27,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.sg-icon-whatsapp-solid {
+  &:before {
+    content: $sg-icon-whatsapp-solid; 
+  }
+}
+.sg-icon-twitter-solid {
+  &:before {
+    content: $sg-icon-twitter-solid; 
+  }
+}
+.sg-icon-telegram-solid {
+  &:before {
+    content: $sg-icon-telegram-solid; 
+  }
+}
+.sg-icon-link1 {
+  &:before {
+    content: $sg-icon-link1; 
+  }
+}
 .sg-icon-wp {
   &:before {
     content: $sg-icon-wp; 

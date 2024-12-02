@@ -1,5 +1,5 @@
 .sg--template--footer {
-    background: var(--black, #262626);
+    background: var(--black, #231F20);
 
     &-block {
         display: flex;
@@ -40,7 +40,7 @@
                         font-style: normal;
                         font-weight: 600;
                         line-height: 24px; /* 120% */
-                        font-family: "Source Serif 4", serif;
+                        font-family: "Poppins", sans-serif;
                     }
 
                     &-list {
@@ -108,7 +108,7 @@
                         font-style: normal;
                         font-weight: 600;
                         line-height: 24px; /* 120% */
-                        font-family: "Source Serif 4", serif;
+                        font-family: "Poppins", sans-serif;
                     }
 
                     &-list {
