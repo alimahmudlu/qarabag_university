@@ -46,7 +46,7 @@ export default function SgTemplateHeader(props) {
                             <div className={[styles['sg--template--header-block-body-minor']].join(' ').trim()}>
                                 <div
                                     className={[styles['sg--template--header-block-body-minor-menu']].join(' ').trim()}>
-                                    {((menus || []).find(el => el.alias === 'minorHeader')?.menu_items || []).map((item, index) => {
+                                    {((menus || []).find(el => el.alias === 'minorHeader')?.menu_items || []).sort((a, b) => a.row - b.row).map((item, index) => {
                                         return (
                                             item.children ?
                                                 <SgDropdown
@@ -106,7 +106,7 @@ export default function SgTemplateHeader(props) {
                             </div>
                             <div className={[styles['sg--template--header-block-body-main']].join(' ').trim()}>
                                 <div className={[styles['sg--template--header-block-body-main-menu']].join(' ').trim()}>
-                                    {((menus || []).find(el => el.alias === 'header')?.menu_items || []).map((item, index) => {
+                                    {((menus || []).find(el => el.alias === 'header')?.menu_items || []).sort((a, b) => a.row - b.row).map((item, index) => {
                                         return (
                                             <SgMenuItem
                                                 key={`main_${index}`}
