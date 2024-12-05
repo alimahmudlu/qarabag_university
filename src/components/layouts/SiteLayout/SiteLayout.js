@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 import SgTemplateScrollToTop from "@/components/templates/ScrollToTop";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export default function SiteLayout(props) {
     const { children, menus, languages, settings, locale,staticContent } = props;
@@ -129,6 +130,8 @@ export default function SiteLayout(props) {
                     <SgTemplateScrollToTop />
                 </div>
             </main>
+
+            <GoogleAnalytics gaId="G-E5VK6Q1Z41" />
         </>
     );
 }
