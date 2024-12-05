@@ -25,6 +25,7 @@ import {
     SITE_SETTINGS_LIST_WITH_TYPES_ROUTE, SITE_STATIC_CONTENTS_ROUTE
 } from "@/configs/apiRoutes";
 import {appWithTranslation} from "next-i18next";
+import {GoogleAnalytics} from "@next/third-parties/google";
 
 Site_App.getInitialProps = async (props) => {
     const initialProps = await App.getInitialProps(props)
@@ -99,6 +100,7 @@ function Site_App({ Component, pageProps: {session, ...pageProps}, menus, langua
             {getLayout(
                 <>
                     <Component {...pageProps} menus={menus} languages={languages} settings={settings} locale={locale} staticContent={staticContent} />
+                    <GoogleAnalytics gaId="G-E5VK6Q1Z41" />
                 </>
                 , menus, languages, settings, locale, staticContent
             )}

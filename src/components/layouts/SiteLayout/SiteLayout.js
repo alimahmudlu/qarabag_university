@@ -130,8 +130,6 @@ export default function SiteLayout(props) {
                     <SgTemplateScrollToTop />
                 </div>
             </main>
-
-            <GoogleAnalytics gaId="G-E5VK6Q1Z41" />
         </>
     );
 }
