@@ -212,7 +212,7 @@ export default function SgWidgetItem(props) {
 													variant={item.meta_key.input_type.alias}
 
 													fileManager={{
-														multiple: false,
+														multiple: !!item?.meta_key?.input_type?.alias === 'multi_image',
 														data: Fdata,
 														setData: FsetData,
 														errors: FvalueErrors,

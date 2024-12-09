@@ -58,7 +58,7 @@ export default function SgFile(props) {
                     id={id}
                     name={name}
                     config={{}}
-                    multiple={multiple}
+                    multiple={fileManager?.multiple}
                     data={fileManager?.data}
                     setData={fileManager?.setData}
                     errors={fileManager?.errors}

@@ -51,7 +51,7 @@ export default function SgTemplateFileManagerModal(props) {
 				target: {
 					id: id,
 					name: name,
-					value: selectedFiles?.[0],
+					value: selectedFiles?.join(','),
 					validity: {},
 					dataset: {
 						key: data_key,
@@ -65,7 +65,7 @@ export default function SgTemplateFileManagerModal(props) {
 				target: {
 					id: id,
 					name: name,
-					value: selectedFiles.join(','),
+					value: selectedFiles?.[0],
 					validity: {},
 					dataset: {
 						key: data_key,
@@ -83,8 +83,24 @@ export default function SgTemplateFileManagerModal(props) {
 
 	function toggleFileManagerModal(e) {
 		fileBrowser.open((files) => {
+			console.log(files.files, 'asdasjdkhajshdbajshdbajshdbjashdbajshdbjhasd-asdkjadksjasbdkj-asdkl');
 			fileSubmit(files.files);
 		}, true);
+	}
+
+	function removeItem(e, index) {
+		e.preventDefault();
+		const _files = value;
+
+		if (_files && (_files.split(',') && Array.isArray(_files.split(',')))) {
+			const _newFiles = _files.split(',');
+			(_newFiles || []).splice(index, 1)
+			fileSubmit(_newFiles);
+		}
+		else {
+			fileSubmit([]);
+		}
+
 	}
 
 
@@ -133,6 +149,7 @@ export default function SgTemplateFileManagerModal(props) {
 												<SgButton
 													color='error-outline'
 													size='sm'
+													onClick={(e) => removeItem(e, index)}
 												>
 													Sil
 												</SgButton>
@@ -162,6 +179,7 @@ export default function SgTemplateFileManagerModal(props) {
 											<SgButton
 												color='error-outline'
 												size='sm'
+												onClick={(e) => removeItem(e)}
 											>
 												Sil
 											</SgButton>
