@@ -5,10 +5,34 @@
   position: fixed;
   bottom: 50px;
   right: 50px;
-  z-index: 9999;
+  z-index: -1;
   border: 2px solid #FFFFFF;
+  background: var(--brunswickGreen-color, #225449);
 
   &.visible {
-    opacity: 1;
+    opacity: .8;
+    z-index: 9999;
+
+    &:hover {
+      opacity: 1;
+      background: var(--brunswickGreen-color, #225449);
+      border-color: #FFFFFF;
+      color: #FFFFFF;
+    }
+  }
+
+  @media (max-width: 992px) {
+    & {
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      position: fixed;
+      bottom: 12px;
+      right: 12px;
+      width: 60px;
+      height: 60px;
+      z-index: 9999;
+      border: 2px solid #FFFFFF;
+    }
   }
 }

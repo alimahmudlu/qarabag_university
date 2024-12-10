@@ -1,6 +1,6 @@
 import styles from "@/components/sections/MainHero/MainHero.module.scss";
 import {Section, SectionBody} from "@/components/ui/Section";
-import heroImage from "@/assets/images/KarabakhUniversityBanner_.jpg";
+import heroImage from "@/assets/images/KarabakhUniversityBanner2.png";
 import Image from "next/image";
 import {SgBreadcrumb} from "@/components/ui/Breadcrumb";
 
@@ -15,7 +15,7 @@ export default function SgSectionMainHero(props) {
             >
                 <div className={[styles['sg--section--mainHero-absolute']].join(' ').trim()}>
                     {inner ?
-                        <Image width='1000' height='1000'
+                        <Image width='2000' height='2000'
                                src={heroImage}
                                className={[styles['sg--section--mainHero-absolute--background']].join(' ').trim()}
                         />
@@ -24,6 +24,7 @@ export default function SgSectionMainHero(props) {
                                autoPlay
                                loop
                                muted={true}
+                               poster={heroImage}
                                preload="none"
                                className={[styles['sg--section--mainHero-absolute--background']].join(' ').trim()}
                         >

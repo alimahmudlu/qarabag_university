@@ -1,6 +1,5 @@
 .sg--template--header {
-    padding: 30px 0;
-    position: absolute;
+    position: sticky;
     top: 0;
     z-index: 3;
     width: 100%;
@@ -13,6 +12,7 @@
 
         &-logo {
             height: 100px;
+            display: none;
 
             &--img {
                 height: 100%;
@@ -23,15 +23,23 @@
         &-body {
             display: flex;
             flex-direction: column;
-            margin-left: auto;
-            gap: 12px;
+            width: 100%;
 
             &-minor {
-                margin-left: auto;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background-color: var(--hookerGreen-color, #44766C);
+
                 &-menu {
                     display: flex;
                     flex-direction: row;
                     gap: 24px;
+                    margin-left: auto;
 
                     &-item {
                         &--link {
@@ -55,6 +63,24 @@
             }
 
             &-main {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background-color: var(--white, #FFFFFF);
+
+                &-logo {
+                    height: 70px;
+
+                    &--img {
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+
                 &-menu {
                     display: flex;
                     flex-direction: row;
@@ -64,7 +90,7 @@
                         &--link {
                             display: flex !important;
                             justify-content: space-between;
-                            color: var(--white, #FFF);
+                            color: var(--black, #231F20);
                             font-size: 16px;
                             font-style: normal;
                             font-weight: 500;
@@ -122,8 +148,9 @@
 
     @media (max-width: 992px) {
         & {
-            padding: 24px 0;
+            padding: 24px 12px;
             top: 0;
+            background: var(--brunswickGreen-color, #225449);
 
             &--sidebar {
                 background: var(--burgundy-color, #902923);
@@ -135,9 +162,11 @@
 
             &-block {
                 gap: 24px;
+                align-items: center;
 
                 &-logo {
                     height: 42px;
+                    display: block;
 
                     &--img {
 
@@ -200,6 +229,11 @@
                     &-main {
                         order: 1;
                         display: none;
+                        background: unset;
+
+                        &-logo {
+                            display: none;
+                        }
 
                         .sg--template--header--sidebar & {
                             display: block;

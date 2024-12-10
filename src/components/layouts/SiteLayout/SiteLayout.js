@@ -1,6 +1,7 @@
 import styles from '@/components/layouts/SiteLayout/SiteLayout.module.css';
 import logo from "@/assets/images/logo.svg";
-import logoWithText from "@/assets/images/logow.svg";
+import logoWithText from "@/assets/images/logoColorful.svg";
+import logowWithText from "@/assets/images/logow.svg";
 import SgTemplateFooter from "@/components/templates/Footer";
 import SgTemplateHeader from "@/components/templates/Header";
 import {useEffect, useState} from "react";
@@ -78,6 +79,7 @@ export default function SiteLayout(props) {
                 <div className={[styles['sg--layout--site-content']].join(' ').trim()}>
                     <SgTemplateHeader
                         logo={logoWithText}
+                        logoW={logowWithText}
                         menus={menus}
                         languages={languages}
                         handleSearchbar={handleSearchbar}
