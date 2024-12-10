@@ -609,7 +609,7 @@ export default function SgInput(props) {
     }
 
     useEffect(() => {
-        const _value = typeof Number(value) === 'number' ? Number(value) : value;
+        const _value = (typeof value === 'number' && typeof Number(value) === 'number') ? Number(value) : value;
         const arrayValue = (_value || _value === 0) ? (typeof _value !== 'object' ? [_value] : _value) : [];
 
         setSelected(variant === 'select' ? (options.filter(el => arrayValue.includes(el.id) || arrayValue.includes(el.id)).map(el => el.id) || []) : [])

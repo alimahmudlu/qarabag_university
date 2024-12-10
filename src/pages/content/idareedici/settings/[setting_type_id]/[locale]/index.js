@@ -116,7 +116,7 @@ export default function Index() {
                         </div>
                         <div className='col-lg'>
                             {
-                                setting_type_id !=2 ?
+                                setting_type_id != 2 ?
                                     <SgInput
                                         searchAble={true}
                                         variant='select'
@@ -286,7 +286,7 @@ export default function Index() {
                 >
                     <SgFormGroup>
                         <SgInput
-                            id='alias'
+                            id='e_alias'
                             name='alias'
                             label='Alias'
                             placeholder='Alias'
@@ -296,7 +296,7 @@ export default function Index() {
                     </SgFormGroup>
                     <SgFormGroup>
                         <SgInput
-                            id='title'
+                            id='e_title'
                             name='title'
                             label='Title'
                             placeholder='Title'
@@ -306,7 +306,7 @@ export default function Index() {
                     </SgFormGroup>
                     <SgFormGroup>
                         <SgInput
-                            id='value'
+                            id='e_value'
                             name='value'
                             label='Value'
                             placeholder='Value'
@@ -322,20 +322,20 @@ export default function Index() {
                                     variant='select'
                                     type='select'
                                     name='meta'
-                                    id='meta'
+                                    id='e_meta'
                                     label='Meta'
                                     placeholder='Meta'
                                     options={iconsData.map(el => ({...el, name: <div className='d-flex align-items-center gap-2'><SgIcon  icon={el.name} />  <span>{el.name}</span></div>}))}
-                                    onChange={handleChangeNew}
-                                    value={data?.meta || ''}
+                                    onChange={handleChange}
+                                    value={selectedRow?.meta || ''}
                                 /> :
                                 <SgInput
                                     name='meta'
-                                    id='meta'
+                                    id='e_meta'
                                     label='Meta'
                                     placeholder='Meta'
-                                    onChange={handleChangeNew}
-                                    value={data?.meta || ''}
+                                    onChange={handleChange}
+                                    value={selectedRow?.meta || ''}
                                 />
                         }
                     </SgFormGroup>

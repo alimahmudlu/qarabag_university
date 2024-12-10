@@ -14,11 +14,26 @@ export default function SgSectionMainHero(props) {
                 className={[styles['sg--section--mainHero'], inner ? styles['sg--section--mainHero--inner'] : null].join(' ').trim()}
             >
                 <div className={[styles['sg--section--mainHero-absolute']].join(' ').trim()}>
-                    <Image width='1000' height='1000'
-                        src={heroImage}
-                        alt={'hero'}
-                        className={[styles['sg--section--mainHero-absolute--background']].join(' ').trim()}
-                    />
+                    {inner ?
+                        <Image width='1000' height='1000'
+                               src={heroImage}
+                               alt={'hero'}
+                               className={[styles['sg--section--mainHero-absolute--background']].join(' ').trim()}
+                        />
+                        :
+                        <video width="320" height="240"
+                               controls
+                               autoPlay
+                               loop
+                               muted={true}
+                               preload="none"
+                               title={'hero'}
+                               className={[styles['sg--section--mainHero-absolute--background']].join(' ').trim()}
+                        >
+                            <source src='/video/heroVideo.mp4' type="video/mp4"/>
+                            Your browser does not support the video tag.
+                        </video>
+                    }
                 </div>
                 {inner ?
                     <SectionBody

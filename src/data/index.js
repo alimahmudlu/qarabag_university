@@ -1324,6 +1324,26 @@ export const posts = [
 
 export const iconsData = [
 	{
+		id: "whatsapp-solid",
+		name: "whatsapp-solid",
+		value: "whatsapp-solid"
+	},
+	{
+		id: "twitter-solid",
+		name: "twitter-solid",
+		value: "twitter-solid"
+	},
+	{
+		id: "telegram-solid",
+		name: "telegram-solid",
+		value: "telegram-solid"
+	},
+	{
+		id: "link1",
+		name: "link1",
+		value: "link1"
+	},
+	{
 		id: "wp",
 		name: "wp",
 		value: "wp"
