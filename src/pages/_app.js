@@ -100,7 +100,7 @@ function Site_App({ Component, pageProps: {session, ...pageProps}, menus, langua
             {getLayout(
                 <>
                     <Component {...pageProps} menus={menus} languages={languages} settings={settings} locale={locale} staticContent={staticContent} />
-                    <GoogleAnalytics gaId="G-E5VK6Q1Z41" />
+                    {/*<GoogleAnalytics gaId="G-E5VK6Q1Z41" />*/}
                 </>
                 , menus, languages, settings, locale, staticContent
             )}
