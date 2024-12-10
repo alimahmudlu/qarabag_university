@@ -17,7 +17,6 @@ export default function SgSectionMainHero(props) {
                     {inner ?
                         <Image width='1000' height='1000'
                                src={heroImage}
-                               alt={'hero'}
                                className={[styles['sg--section--mainHero-absolute--background']].join(' ').trim()}
                         />
                         :
@@ -26,7 +25,6 @@ export default function SgSectionMainHero(props) {
                                loop
                                muted={true}
                                preload="none"
-                               title={'hero'}
                                className={[styles['sg--section--mainHero-absolute--background']].join(' ').trim()}
                         >
                             <source src='/video/heroVideo.mp4' type="video/mp4"/>
