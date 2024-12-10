@@ -21,8 +21,7 @@ export default function SgSectionMainHero(props) {
                                className={[styles['sg--section--mainHero-absolute--background']].join(' ').trim()}
                         />
                         :
-                        <video width="320" height="240"
-                               controls
+                        <video width="1000" height="1000"
                                autoPlay
                                loop
                                muted={true}
