@@ -24,7 +24,6 @@ export default function SgSectionMainHero(props) {
                                autoPlay
                                loop
                                muted={true}
-                               poster={heroImage}
                                preload="none"
                                className={[styles['sg--section--mainHero-absolute--background']].join(' ').trim()}
                         >

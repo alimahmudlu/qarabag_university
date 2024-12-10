@@ -14,9 +14,10 @@ export default function Index(props) {
 export const getServerSideProps = async (context) => {
     try {
         const pageData = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/1`)
+
         return {
             props: {
-                pageData: pageData.data.data,
+                pageData: pageData.data.data || {},
                 page_id: 1,
                 locale: context?.locale,
             }
