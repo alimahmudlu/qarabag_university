@@ -141,21 +141,24 @@ export default function SgTemplateHeader(props) {
                     </div>
                     <div className={[styles['sg--template--header-block-mobile']].join(' ').trim()}>
                         <div className={[styles['sg--template--header-block-mobile-menu']].join(' ').trim()}>
-                            <SgDropdown
-                                className={[styles['sg--template--header-block-mobile-menu-item']].join(' ').trim()}
-                                itemClassName={[styles['sg--template--header-block-mobile-menu-item-subMenu-item']].join(' ').trim()}
-                                toggleClassName={[styles['sg--template--header-block-mobile-menu-item--link']].join(' ').trim()}
-                                caret={true}
-                                toggleHeader={'AZ'}
-                                list={(languages || []).map((el, i) => {
-                                    return {
-                                        name: <Link href={el?.path || '/'}
-                                                    key={`lang_${i}`}
-                                                    className={[styles['sg--template--header-block-mobile-menu-item--link']].join(' ').trim()}>{el?.title}</Link>,
-                                        disabled: false
-                                    }
-                                })}
-                            />
+                            {(languages || []).length > 1 ?
+                                <SgDropdown
+                                    className={[styles['sg--template--header-block-mobile-menu-item']].join(' ').trim()}
+                                    itemClassName={[styles['sg--template--header-block-mobile-menu-item-subMenu-item']].join(' ').trim()}
+                                    toggleClassName={[styles['sg--template--header-block-mobile-menu-item--link']].join(' ').trim()}
+                                    caret={true}
+                                    toggleHeader={'AZ'}
+                                    list={(languages || []).map((el, i) => {
+                                        return {
+                                            name: <Link href={el?.path || '/'}
+                                                        key={`lang_${i}`}
+                                                        className={[styles['sg--template--header-block-mobile-menu-item--link']].join(' ').trim()}>{el?.title}</Link>,
+                                            disabled: false
+                                        }
+                                    })}
+                                />
+                                : ''
+                            }
                             <div
                                 className={[styles['sg--template--header-block-mobile-menu-item']].join(' ').trim()}>
                                 <Link href='#'

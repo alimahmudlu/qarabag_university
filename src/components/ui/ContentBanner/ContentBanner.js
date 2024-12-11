@@ -4,6 +4,7 @@ import {SgButton} from "@/components/ui/Button";
 
 export default function SgContentBanner(props) {
     const {image, title, description, button, style, fluidContainer, fluidContainerPadding, reverse} = props;
+    console.log(title, fluidContainer, fluidContainerPadding)
     return (
         <>
             <div style={style} className={[styles['sg--contentBanner'], reverse ? styles['sg--contentBanner--reverse'] : ''].join(' ').trim()}>
@@ -14,7 +15,7 @@ export default function SgContentBanner(props) {
                         className={[styles['sg--contentBanner-image--img']].join(' ').trim()}
                     />
                 </div>
-                <div style={fluidContainer ? (fluidContainer === 'right' ? {paddingLeft: fluidContainerPadding} : {paddingRight: fluidContainerPadding}) : null} className={[styles['sg--contentBanner-body']].join(' ').trim()}>
+                <div style={fluidContainer ? (fluidContainer === 'right' ? {paddingLeft: fluidContainerPadding ? fluidContainerPadding : '12px'} : {paddingRight: fluidContainerPadding ? fluidContainerPadding : '12px'}) : null} className={[styles['sg--contentBanner-body']].join(' ').trim()}>
                     <div className={[styles['sg--contentBanner-body--header']].join(' ').trim()}>
                         {title}
                     </div>
