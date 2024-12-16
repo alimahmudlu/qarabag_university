@@ -93,7 +93,7 @@ export default function SgSectionVacancyList(props) {
                                     <div className='col-lg-12 flex justify-center'>
                                         {lastPage > page ?
                                             <SgButton
-                                                color='primary'
+                                                color='primary-outline'
                                                 type={filter ? null : 'link'}
                                                 to={morePath}
                                                 onClick={handleChangePage}

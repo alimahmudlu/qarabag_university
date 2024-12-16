@@ -150,7 +150,7 @@ export default function SgSectionEventsContent(props) {
                                     <div className='col-lg-12 flex justify-center pt-[50px]'>
                                         {lastPage > page ?
                                             <SgButton
-                                                color='primary'
+                                                color='primary-outline'
                                                 type={filter ? null : 'link'}
                                                 to={morePath}
                                                 onClick={handleChangePage}
