@@ -91,48 +91,49 @@ export default function SgSectionNewsBanner(props) {
                         </SgButtonGroup>
                     </SectionHead>
                     <SectionBody>
-                    <div className='row'>
-                        <div className='col-lg-12'>
-                            <SgSlider
-                                withOutOverflow={true}
-                                arrow={true}
-                                sliderSettings={{
-                                    "slidesToShow": 2,
-                                    "slidesToScroll": 1,
+                        <div className='row'>
+                            <div className='col-lg-12'>
+                                {(postList || []).length > 0?
+                                    <SgSlider
+                                        withOutOverflow={true}
+                                        arrow={true}
+                                        sliderSettings={{
+                                            "slidesToShow": 2,
+                                            "slidesToScroll": 1,
 
-                                    infinite: false,
-                                    arrows: false,
-                                    dots: false,
-                                    responsive:[
-                                        {
-                                            breakpoint: 992,
-                                            settings:
+                                            infinite: false,
+                                            arrows: false,
+                                            dots: false,
+                                            responsive:[
                                                 {
-                                                    slidesToShow: 1,
-                                                    slidesToScroll: 1
+                                                    breakpoint: 992,
+                                                    settings:
+                                                        {
+                                                            slidesToShow: 1,
+                                                            slidesToScroll: 1
+                                                        }
                                                 }
-                                        }
-                                    ]
-                                }}
-                                items={(postList || []).map((item, index) => {
-                                    const itemContent = item?.post_values.reduce((a, v) => ({
-                                        ...a,
-                                        [v.meta_key?.alias]: v
-                                    }), {});
-                                    return (
-                                        <SgNewsSliderItem
-                                            key={index}
-                                            image={item.image}
-                                            header={item.title}
-                                            path={`/page/${page_id}/${item?.id}`}
-                                            date={itemContent?.date?.value}
-                                            duration={itemContent?.time?.value}
-                                        />
-                                    )
-                                })}
-                            />
-                        </div>
-
+                                            ]
+                                        }}
+                                        items={(postList || []).map((item, index) => {
+                                            const itemContent = item?.post_values.reduce((a, v) => ({
+                                                ...a,
+                                                [v.meta_key?.alias]: v
+                                            }), {});
+                                            return (
+                                                <SgNewsSliderItem
+                                                    key={index}
+                                                    image={item.image}
+                                                    header={item.title}
+                                                    path={`/page/${page_id}/${item?.id}`}
+                                                    date={itemContent?.date?.value}
+                                                    duration={itemContent?.time?.value}
+                                                />
+                                            )
+                                        })}
+                                    /> : ''
+                                }
+                            </div>
                         </div>
                     </SectionBody>
                 </SectionBlock>
