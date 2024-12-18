@@ -30,7 +30,6 @@ export default function SgTemplateGetPageWidgets(props) {
     return (
         <div className={firstSectionPadding ? 'firstSectionPadding' : ''}>
             {(page_widgets || []).sort((a, b) => a?.row > b?.row).map((item, index) => {
-                console.log(item, 'itemsssss')
                 const itemContent = item.page_widget_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {}) ;
                 switch (item?.widget?.alias) {
                     case 'simpleContent':
