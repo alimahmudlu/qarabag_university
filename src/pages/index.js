@@ -15,6 +15,8 @@ export const getServerSideProps = async (context) => {
     try {
         const pageData = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/1`)
 
+        console.log(pageData.data.data, 'pageData');
+
         return {
             props: {
                 pageData: pageData.data.data || {},
