@@ -22,6 +22,7 @@ export default function SgSectionMainHero(props) {
                         :
                         <video width="1000" height="1000"
                                autoPlay
+                               playsInline
                                loop
                                muted={true}
                                preload="none"
