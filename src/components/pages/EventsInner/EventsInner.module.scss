@@ -1,8 +1,16 @@
 .sg--page--eventsInner {
     position: relative;
     display: flex;
-    flex-direction: column;
-    gap: 70px;
+    flex-direction: row;
+
+    &-content {
+        width: calc(100% - 60px);
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 70px;
+    }
 
     &-head {
         &--header {
@@ -76,7 +84,25 @@
 
     &-social {
         position: absolute;
-        top: 0;
+        height: 100%;
         left: -30px;
+
+        &--container {
+            position: sticky;
+            //top: 50%;
+            //transform: translateY(-50%);
+            top: 134px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        & {
+            &-content {
+                width: 100%;
+            }
+            &-social {
+                display: none;
+            }
+        }
     }
 }

@@ -83,7 +83,6 @@ export default function SgTemplateFileManagerModal(props) {
 
 	function toggleFileManagerModal(e) {
 		fileBrowser.open((files) => {
-			console.log(files.files, 'asdasjdkhajshdbajshdbajshdbjashdbajshdbjhasd-asdkjadksjasbdkj-asdkl');
 			fileSubmit(files.files);
 		}, true);
 	}
@@ -100,7 +99,6 @@ export default function SgTemplateFileManagerModal(props) {
 		else {
 			fileSubmit([]);
 		}
-
 	}
 
 

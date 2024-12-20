@@ -61,11 +61,19 @@ Site_App.getInitialProps = async (props) => {
             return result
         }
 
-        const menus = await ApiService.get(SITE_MENU_TYPE_LIST_ROUTE);
+        const menus = await ApiService.get(SITE_MENU_TYPE_LIST_ROUTE, {headers: {
+            "Content-Language": locale || 'az'
+            }});
         const newMenu = (menus.data.data || []).map((item) => ({...item, menu_items: generateNestable(item?.menu_items)}));
-        const languages = await ApiService.get(SITE_LANGUAGE_LIST_ROUTE)
-        const settings = await ApiService.get(SITE_SETTINGS_LIST_WITH_TYPES_ROUTE)
-        const staticContent = await ApiService.get(SITE_STATIC_CONTENTS_ROUTE)
+        const languages = await ApiService.get(SITE_LANGUAGE_LIST_ROUTE, {headers: {
+            "Content-Language": locale || 'az'
+            }});
+        const settings = await ApiService.get(SITE_SETTINGS_LIST_WITH_TYPES_ROUTE, {headers: {
+            "Content-Language": locale || 'az'
+            }})
+        const staticContent = await ApiService.get(SITE_STATIC_CONTENTS_ROUTE, {headers: {
+            "Content-Language": locale || 'az'
+            }});
 
         return {
             ...initialProps,

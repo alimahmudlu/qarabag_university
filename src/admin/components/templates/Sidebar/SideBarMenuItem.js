@@ -40,7 +40,7 @@ export default function SgSideBarMenuItem(props) {
                                 }
                                 list={(item?.children || []).map((el, i) => {
                                     return {
-                                        name: <Link href={item.path}
+                                        name: <Link href={item.path || ''}
                                                     key={`main__${i}`}
                                                     className={[].join(' ').trim()}>{el?.name}</Link>,
                                         disabled: false

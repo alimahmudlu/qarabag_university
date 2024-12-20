@@ -2,6 +2,7 @@ import styles from "@/components/templates/Footer/Footer.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import {SgIcon} from "@/components/ui/Icon";
+import SgTemplateScrollToTop from "@/components/templates/ScrollToTop";
 
 export default function SgTemplateFooter(props) {
     const {menus = [], contact=[],logo, copyright, social = []} = props;
@@ -9,6 +10,7 @@ export default function SgTemplateFooter(props) {
     return (
         <>
             <div className={[styles['sg--template--footer']].join(' ').trim()}>
+                <SgTemplateScrollToTop />
                 <div className='container-lg'>
                     <div className={[styles['sg--template--footer-block']].join(' ').trim()}>
                         <div className={[styles['sg--template--footer-block-main']].join(' ').trim()}>
@@ -103,7 +105,7 @@ export default function SgTemplateFooter(props) {
                                     return (
                                         <div key={index}
                                              className={[styles['sg--template--footer-block-minor-social-item']].join(' ').trim()}>
-                                            <Link href={item.path}
+                                            <Link href={item.path || ''}
                                                   className={[styles['sg--template--footer-block-minor-social-item--link']].join(' ').trim()}>
                                                 {item.icon ?
                                                     <SgIcon icon={item.icon}/>

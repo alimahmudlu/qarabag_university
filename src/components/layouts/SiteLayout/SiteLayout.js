@@ -78,8 +78,8 @@ export default function SiteLayout(props) {
                 className={[styles['sg--layouts'], styles['sg--layout--site'], sidebar ? styles['sg--layout--site--sidebar'] : ''].join(' ').trim()}>
                 <div className={[styles['sg--layout--site-content']].join(' ').trim()}>
                     <SgTemplateHeader
-                        logo={logoWithText}
-                        logoW={logowWithText}
+                        logo={((settings || {})?.meta || []).find(el => el.meta === 'logo_green')?.value ? ((settings || {})?.meta || []).find(el => el.meta === 'logo_green')?.value : logo}
+                        logoW={((settings || {})?.meta || []).find(el => el.meta === 'logo_white')?.value ? ((settings || {})?.meta || []).find(el => el.meta === 'logo_white')?.value : logo}
                         menus={menus}
                         languages={languages}
                         handleSearchbar={handleSearchbar}
@@ -121,7 +121,7 @@ export default function SiteLayout(props) {
                                 ]
                             }
                         ]}
-                        logo={logo}
+                        logo={((settings || {})?.meta || []).find(el => el.meta === 'logo_white')?.value ? ((settings || {})?.meta || []).find(el => el.meta === 'logo_white')?.value : logo}
                         copyright={((settings || {})?.meta || []).find(el => el.meta === 'copyright')?.title}
                         social={((settings || {})?.social_media || []).map(el => ({
                             title: el?.title,
@@ -129,7 +129,6 @@ export default function SiteLayout(props) {
                             icon: el?.meta
                         }))}
                     />
-                    <SgTemplateScrollToTop />
                 </div>
             </main>
         </>
