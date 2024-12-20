@@ -7,15 +7,17 @@ import SgHelperTranslate from "@/components/helper/Translate";
 export default function SgEventItem(props) {
     const {date, additions = [], title, path, staticContent} = props;
 
+    console.log(date, title, 'dateeee')
+
     return (
         <>
             <div className={[styles['sg--eventItem']].join(' ').trim()}>
                 <div className={[styles['sg--eventItem-date']].join(' ').trim()}>
                     <div className={[styles['sg--eventItem-date--day']].join(' ').trim()}>
-                        {moment(date ? date : '').format('DD')}
+                        {date ? moment(date).format('DD') : moment().format('DD')}
                     </div>
                     <div className={[styles['sg--eventItem-date--month']].join(' ').trim()}>
-                        {moment(date ? date : '').format('MMMM')}
+                        {date ? moment(date).format('MMMM') : moment().format('MMMM')}
                     </div>
                 </div>
                 <div className={[styles['sg--eventItem-body']].join(' ').trim()}>
