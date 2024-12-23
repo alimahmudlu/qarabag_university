@@ -95,7 +95,7 @@ export default function SgSectionNewsBanner(props) {
                             <div className='col-lg-12'>
                                 {(postList || []).length > 0?
                                     <SgSlider
-                                        withOutOverflow={true}
+                                        withOutOverflow={false}
                                         arrow={true}
                                         sliderSettings={{
                                             "slidesToShow": 2,

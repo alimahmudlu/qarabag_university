@@ -33,7 +33,7 @@
                     },
                     {
                         id: 7,
-                        icon: 'twitter',
+                        icon: 'twitter-solid',
                         path: '/'
                     },
                 ]}

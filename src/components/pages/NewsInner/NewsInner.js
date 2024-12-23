@@ -40,7 +40,7 @@ export default function SgPageNewsInner(props) {
 										list={[
 											{
 												path: `https://www.facebook.com/sharer/sharer.php?u=${thisLocation}`,
-												icon: 'facebook',
+												icon: 'facebook_fill',
 												name: 'Facebook'
 											},
 											{
@@ -55,17 +55,26 @@ export default function SgPageNewsInner(props) {
 											},
 											{
 												path: `https://telegram.me/share/url?url=${thisLocation}&text=${title}`,
-												icon: 'tg',
+												icon: 'telegram-solid',
 												name: 'Telegram'
 											},
 											{
 												path: `https://wa.me/+994/?text=${thisLocation}`,
-												icon: 'wp',
+												icon: 'whatsapp-solid',
 												name: 'Whatsapp'
 											},
 											{
+												path: `${thisLocation}`,
+												onClick: (e) => {
+													e.preventDefault();
+													navigator.clipboard.writeText(thisLocation)
+												},
+												icon: 'link1',
+												name: 'Copy Link'
+											},
+											{
 												path: `http://twitter.com/share?text=${title}&url=${thisLocation}&hashtags=karabakh,azerbaijan,university,karabakhisazerbaijan`,
-												icon: 'twitter',
+												icon: 'twitter-solid',
 												name: 'Twitter'
 											}
 										]}

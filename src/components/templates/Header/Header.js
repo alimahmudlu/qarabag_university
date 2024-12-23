@@ -143,16 +143,44 @@ export default function SgTemplateHeader(props) {
                         <div className={[styles['sg--template--header-block-mobile-menu']].join(' ').trim()}>
                             {(languages || []).length > 1 ?
                                 <SgDropdown
+                                    className={[styles['sg--template--header-block-body-minor-menu-item'], 'd-none', 'd-lg-block'].join(' ').trim()}
+                                    itemClassName={styles['sg--template--header-block-body-minor-menu-item-subMenu-item']}
+                                    toggleClassName={styles['sg--template--header-block-body-minor-menu-item--link']}
+                                    caret={true}
+                                    toggleHeader={<span
+                                        style={{textTransform: 'capitalize'}}>{(languages || [])?.find(el => el.locale === mainLanguage)?.locale}</span>}
+                                    list={(languages || []).map((el, i) => {
+                                        return {
+                                            name: <Link href={el?.locale || '/'}
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            handleSetMainLanguage(el?.locale)
+                                                        }}
+                                                        key={`lang_${i}`}
+                                                        className={styles['sg--template--header-block-body-minor-menu-item--link']}>{el?.locale}</Link>,
+                                            disabled: false
+                                        }
+                                    })}
+                                />
+                                : null
+                            }
+                            {(languages || []).length > 1 ?
+                                <SgDropdown
                                     className={[styles['sg--template--header-block-mobile-menu-item']].join(' ').trim()}
                                     itemClassName={[styles['sg--template--header-block-mobile-menu-item-subMenu-item']].join(' ').trim()}
                                     toggleClassName={[styles['sg--template--header-block-mobile-menu-item--link']].join(' ').trim()}
                                     caret={true}
-                                    toggleHeader={'AZ'}
+                                    toggleHeader={<span
+                                        style={{textTransform: 'capitalize'}}>{(languages || [])?.find(el => el.locale === mainLanguage)?.locale}</span>}
                                     list={(languages || []).map((el, i) => {
                                         return {
-                                            name: <Link href={el?.path || '/'}
+                                            name: <Link href={el?.locale || '/'}
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            handleSetMainLanguage(el?.locale)
+                                                        }}
                                                         key={`lang_${i}`}
-                                                        className={[styles['sg--template--header-block-mobile-menu-item--link']].join(' ').trim()}>{el?.title}</Link>,
+                                                        className={styles['sg--template--header-block-mobile-menu-item--link']}>{el?.locale}</Link>,
                                             disabled: false
                                         }
                                     })}
