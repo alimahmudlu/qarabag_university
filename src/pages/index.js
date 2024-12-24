@@ -13,7 +13,9 @@ export default function Index(props) {
 
 export const getServerSideProps = async (context) => {
     try {
-        const pageData = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/1`)
+        const pageData = await ApiService.get(`${SITE_PAGE_SHOW_ROUTE}/1`, {headers: {
+                "Content-Language": context.locale || 'az'
+            }});
 
         return {
             props: {

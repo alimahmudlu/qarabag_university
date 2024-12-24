@@ -101,7 +101,13 @@ export default function SgSectionNewsBanner(props) {
                                             "slidesToShow": 2,
                                             "slidesToScroll": 1,
 
-                                            infinite: false,
+                                            autoplay: true,
+                                            speed: 300,
+                                            autoplaySpeed: 5000,
+                                            cssEase: "linear",
+                                            pauseOnHover: true,
+
+                                            infinite: true,
                                             arrows: false,
                                             dots: false,
                                             responsive:[
