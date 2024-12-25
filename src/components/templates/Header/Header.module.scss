@@ -169,10 +169,11 @@
                     height: 42px;
                     display: inline-block;
                     margin-right: auto;
-                    flex: 0 0 auto;
+                    width: auto;
 
                     &--img {
-
+                        width: auto;
+                        height: 100%;
                     }
                 }
 

@@ -35,7 +35,7 @@ export default function SgTemplateHeader(props) {
             <div className={[styles['sg--template--header'], sidebar ? styles['sg--template--header--sidebar'] : '', searchbar ? styles['sg--template--header--searchbar'] : ''].join(' ').trim()}>
                 <div className={[styles['sg--template--header-block']].join(' ').trim()}>
                     <Link href='/' className={[styles['sg--template--header-block-logo']].join(' ').trim()}>
-                        <Image width='1000' height='1000'
+                        <Image width='150' height='150'
                                src={logoW}
                                alt='logo'
                                className={[styles['sg--template--header-block-logo--img']].join(' ').trim()}
