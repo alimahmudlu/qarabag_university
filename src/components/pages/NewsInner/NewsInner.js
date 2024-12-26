@@ -1,21 +1,22 @@
-import {Section, SectionBlock, SectionBody, SectionHead} from "@/components/ui/Section";
+import {Section, SectionBlock, SectionBody} from "@/components/ui/Section";
 import styles from "@/components/pages/NewsInner/NewsInner.module.scss"
 import SgShareSocialMedia from "@/components/ui/ShareSocialMedia/ShareSocialMedia";
 import moment from "moment";
-import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
+import readingTime from "reading-time";
+
 
 export default function SgPageNewsInner(props) {
 	const { data = {}} = props;
-	const {id, image, title, status, data_type = {}, content, post_values = []} = data || {};
+	// const {id, image, title, status, data_type = {}, content, post_values = []} = data || {};
+	const { title, content, post_values = [] } = data || {};
 	const itemContent = post_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {});
-
-	console.log(itemContent);
-
 	const [thisLocation, setThisLocation] = useState(null);
+
 	useEffect(() => {
 		setThisLocation((typeof window !== "undefined" && window && location) ? location : '')
 	}, []);
+
 
 	return (
 		<>
@@ -80,9 +81,9 @@ export default function SgPageNewsInner(props) {
 										]}
 									/> : ''}
 								</div>
-								<div className={[styles['sg--page--newsInner-details-item']].join(' ').trim()}>
-									5 dəq
-								</div>
+								{/*<div className={[styles['sg--page--newsInner-details-item']].join(' ').trim()}>
+									{Math.ceil(readingTime(content)?.minutes)} dəq
+								</div>*/}
 							</div>
 							<div className={[styles['sg--page--newsInner-body']].join(' ').trim()}
 								 dangerouslySetInnerHTML={{__html: content}}
