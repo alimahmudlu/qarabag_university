@@ -3,12 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import {SgDropdown} from "@/components/ui/Dropdown";
 import {SgIcon} from "@/components/ui/Icon";
-import {useRouter} from "next/router";
-import {useState} from "react";
 import SgMenuItem from "@/components/templates/MenuItem";
 import {SgInput} from "@/components/ui/Form";
 import {SgButton} from "@/components/ui/Button";
-import SgButtonGroup from "@/components/ui/ButtonGroup/ButtonGroup";
 import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgTemplateHeader(props) {
@@ -26,7 +23,8 @@ export default function SgTemplateHeader(props) {
         searchQuery,
         handleSetMainLanguage,
         mainLanguage,
-        staticContent
+        staticContent,
+        social
     } = props;
 
 
@@ -43,7 +41,25 @@ export default function SgTemplateHeader(props) {
                         />
                     </Link>
                     <div className={[styles['sg--template--header-block-body']].join(' ').trim()}>
-                        <div className={[styles['sg--template--header-block-body-minor'], 'md:px-[32px] lg:px-[82px]'].join(' ').trim()}>
+                        <div
+                            className={[styles['sg--template--header-block-body-minor'], 'md:px-[32px] lg:px-[82px]'].join(' ').trim()}>
+                            <div className={[styles['sg--template--header-block-body-minor-social']].join(' ').trim()}>
+                                {(social || []).map((item, index) => {
+                                    return (
+                                        <div key={index}
+                                             className={[styles['sg--template--header-block-body-minor-social-item']].join(' ').trim()}>
+                                            <Link href={item.path || ''}
+                                                  className={[styles['sg--template--header-block-body-minor-social-item--link']].join(' ').trim()}>
+                                                {item.icon ?
+                                                    <SgIcon icon={item.icon}/>
+                                                    : ''
+                                                }
+                                                <span>{item.title}</span>
+                                            </Link>
+                                        </div>
+                                    )
+                                })}
+                            </div>
                             <div className={[styles['sg--template--header-block-body-minor-menu']].join(' ').trim()}>
                                 {((menus || []).find(el => el.alias === 'minorHeader')?.menu_items || []).sort((a, b) => a.row - b.row).map((item, index) => {
                                     return (
@@ -106,8 +122,10 @@ export default function SgTemplateHeader(props) {
 
                             </div>
                         </div>
-                        <div className={[styles['sg--template--header-block-body-main'], 'md:px-[32px] lg:px-[82px]'].join(' ').trim()}>
-                            <Link href='/' className={[styles['sg--template--header-block-body-main-logo']].join(' ').trim()}>
+                        <div
+                            className={[styles['sg--template--header-block-body-main'], 'md:px-[32px] lg:px-[82px]'].join(' ').trim()}>
+                            <Link href='/'
+                                  className={[styles['sg--template--header-block-body-main-logo']].join(' ').trim()}>
                                 <Image width='1000' height='1000'
                                        src={logo}
                                        alt='logo'

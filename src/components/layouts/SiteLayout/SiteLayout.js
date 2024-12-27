@@ -81,6 +81,11 @@ export default function SiteLayout(props) {
                         logo={((settings || {})?.meta || []).find(el => el.meta === 'logo_green')?.value ? ((settings || {})?.meta || []).find(el => el.meta === 'logo_green')?.value : logo}
                         logoW={((settings || {})?.meta || []).find(el => el.meta === 'logo_white')?.value ? ((settings || {})?.meta || []).find(el => el.meta === 'logo_white')?.value : logo}
                         menus={menus}
+                        social={((settings || {})?.social_media || []).map(el => ({
+                            title: el?.title,
+                            path: el?.value,
+                            icon: el?.meta
+                        }))}
                         languages={languages}
                         handleSearchbar={handleSearchbar}
                         handleSidebar={handleSidebar}

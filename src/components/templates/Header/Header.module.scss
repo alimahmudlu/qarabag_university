@@ -3,6 +3,7 @@
     top: 0;
     z-index: 3;
     width: 100%;
+    box-shadow: 0 8px 20px 0 #00000159;
 
     &-block {
         display: flex;
@@ -33,9 +34,10 @@
                 gap: 12px;
                 padding-top: 10px;
                 padding-bottom: 10px;
-                background-color: var(--hookerGreen-color, #44766C);
+                background: var(--brunswickGreen-color, #225449);
 
                 &-menu {
+                    order: 2;
                     display: flex;
                     flex-direction: row;
                     gap: 24px;
@@ -57,6 +59,41 @@
                             padding: 0 16px;
 
                             &-item {}
+                        }
+                    }
+                }
+
+                &-social {
+                    order: 1;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 16px;
+
+                    &-item {
+                        &--link {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 0;
+                            width: 24px;
+                            height: 24px;
+                            border-radius: 50%;
+                            border: 1px solid rgba(112, 112, 112, 0.7);
+
+                            font-size: 14px;
+                            color: var(--white, #FFF);
+
+                            & i {
+                                font-size: 14px;
+                                line-height: 1;
+                            }
+
+                            & > span {
+                                font-size: 0;
+                                opacity: 0;
+                            }
                         }
                     }
                 }
@@ -153,11 +190,11 @@
             background: var(--brunswickGreen-color, #225449);
 
             &--sidebar {
-                background: var(--burgundy-color, #902923);
+                background: var(--brunswickGreen-color, #225449);
             }
 
             &--searchbar {
-                background: var(--burgundy-color, #902923);
+                background: var(--brunswickGreen-color, #225449);
             }
 
             &-block {
@@ -186,7 +223,7 @@
                     top: calc(100% + 24px);
                     width: calc(100% + 24px);
                     height: calc(100vh - 82px);
-                    background: var(--burgundy-color, #902923);
+                    background: var(--brunswickGreen-color, #225449);
                     left: calc(-100% - 36px);
                     overflow: scroll;
 
@@ -205,12 +242,16 @@
                         display: none;
 
                         .sg--template--header--sidebar & {
-                            display: block;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
                         }
 
                         &-menu {
+                            order: 1;
                             flex-direction: column;
                             gap: 16px;
+                            margin-left: unset;
 
                             &-item {
                                 &--link {
@@ -225,6 +266,34 @@
 
                                 &-subMenu {
                                     &-item {}
+                                }
+                            }
+                        }
+
+                        &-social {
+                            margin-top: 24px;
+                            order: 2;
+                            margin-left: unset;
+                            align-items: center;
+                            justify-content: space-evenly;
+                            gap: 16px;
+
+                            &-item {
+                                &--link {
+                                    width: 30px;
+                                    height: 30px;
+
+                                    font-size: 14px;
+                                    color: var(--white, #FFF);
+
+                                    & i {
+                                        font-size: 14px;
+                                    }
+
+                                    & span {
+                                        font-size: 0;
+                                        opacity: 0;
+                                    }
                                 }
                             }
                         }
