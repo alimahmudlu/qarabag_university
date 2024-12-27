@@ -10,8 +10,9 @@ import SgTemplateGetPageWidgets from "@/components/templates/GetPageWidgets/GetP
 import SgTabItem from "@/components/ui/TabItem";
 import {useRouter} from "next/router";
 import SgSectionContent from "@/components/sections/Content";
+import SgSectionCollapseContent from "@/components/sections/CollapseContent";
 
-export default function SgSectionTabLinkContent( props ) {
+export default function SgSectionTabLinkCollapse( props ) {
     const {id, data, style, mainData, page_id, staticContent} = props;
     const {image, title, description, filter = true, list = [], morePath} = data;
     const [pageList, setPageList] = useState([])
@@ -45,16 +46,18 @@ export default function SgSectionTabLinkContent( props ) {
                                 })}
                             </div>
                             <div className='col-lg-8'>
-                                <SgSectionContent
+                                <SgSectionCollapseContent
                                     style={{backgroundColor: 'unset', paddingTop: 0}}
-                                    id={`content__${page_id}`}
+                                    id={`collapseBanner__${page_id}`}
                                     mainData={mainData}
                                     page_id={page_id}
                                     data={{
+                                        filter: false,
                                         title: title || '',
                                         description: description || '',
                                         button: {}
                                     }}
+                                    staticContent={staticContent}
                                 />
                             </div>
                         </div>

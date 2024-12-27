@@ -96,7 +96,7 @@ export default function SgTemplateHeader(props) {
                                                                 handleSetMainLanguage(el?.locale)
                                                             }}
                                                             key={`lang_${i}`}
-                                                            className={styles['sg--template--header-block-body-minor-menu-item--link']}>{el?.locale}</Link>,
+                                                            className={[styles['sg--template--header-block-body-minor-menu-item--link'], 'text-capitalize'].join(" ").trim()}>{el?.locale}</Link>,
                                                 disabled: false
                                             }
                                         })}
@@ -141,7 +141,7 @@ export default function SgTemplateHeader(props) {
                     </div>
                     <div className={[styles['sg--template--header-block-mobile']].join(' ').trim()}>
                         <div className={[styles['sg--template--header-block-mobile-menu']].join(' ').trim()}>
-                            {(languages || []).length > 1 ?
+                            {/*{(languages || []).length > 1 ?
                                 <SgDropdown
                                     className={[styles['sg--template--header-block-body-minor-menu-item'], 'd-none', 'd-lg-block'].join(' ').trim()}
                                     itemClassName={styles['sg--template--header-block-body-minor-menu-item-subMenu-item']}
@@ -163,7 +163,7 @@ export default function SgTemplateHeader(props) {
                                     })}
                                 />
                                 : null
-                            }
+                            }*/}
                             {(languages || []).length > 1 ?
                                 <SgDropdown
                                     className={[styles['sg--template--header-block-mobile-menu-item']].join(' ').trim()}
@@ -180,7 +180,7 @@ export default function SgTemplateHeader(props) {
                                                             handleSetMainLanguage(el?.locale)
                                                         }}
                                                         key={`lang_${i}`}
-                                                        className={styles['sg--template--header-block-mobile-menu-item--link']}>{el?.locale}</Link>,
+                                                        className={[styles['sg--template--header-block-mobile-menu-item--link'], 'text-capitalize'].join(' ').trim()}>{el?.locale}</Link>,
                                             disabled: false
                                         }
                                     })}

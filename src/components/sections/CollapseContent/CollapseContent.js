@@ -55,6 +55,7 @@ export default function SgSectionCollapseContent( props ) {
         <>
             <Section
                 id={id}
+                style={style}
             >
                 <SectionBlock>
                     <SectionHead

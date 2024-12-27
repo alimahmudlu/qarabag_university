@@ -23,6 +23,7 @@ import SgSectionComment from "@/components/sections/Comment";
 import SgSectionTableContent from "@/components/sections/TableContent";
 import SgSectionContactBanner from "@/components/sections/ContactBanner";
 import SgSectionCollaboratorList from "@/components/sections/CollaboratorList";
+import SgSectionTabLinkCollapse from "@/components/sections/TabLinkCollapse";
 
 export default function SgTemplateGetPageWidgets(props) {
     const {page_widgets,staticContent, page_id, firstSectionPadding = false} = props;
@@ -400,6 +401,27 @@ export default function SgTemplateGetPageWidgets(props) {
                         return (
                             <>
                                 <SgSectionTabLinkContent
+                                    style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
+                                    key={index}
+                                    staticContent={staticContent}
+                                    id={`contentBanner__${item.id}`}
+                                    mainData={item}
+                                    page_id={item?.data_type?.main_page_id || page_id}
+                                    data={{
+                                        filter: item?.content?.filter,
+                                        image: item?.image,
+                                        title: item?.title,
+                                        description: item?.content,
+                                        list: item?.content?.list
+                                    }}
+                                />
+                            </>
+                        )
+
+                    case 'tabLinkCollapse':
+                        return (
+                            <>
+                                <SgSectionTabLinkCollapse
                                     style={{backgroundColor: item?.content?.backgroundColor || 'unset'}}
                                     key={index}
                                     staticContent={staticContent}
