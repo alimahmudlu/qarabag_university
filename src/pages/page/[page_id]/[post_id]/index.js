@@ -168,7 +168,9 @@ export const getServerSideProps = async (context) => {
 	const {post_id, page_id} = query;
 
 	try {
-		const data = await ApiService.get(`${SITE_POST_LIST_ROUTE}/${post_id}?page_id=${page_id}`)
+		const data = await ApiService.get(`${SITE_POST_LIST_ROUTE}/${post_id}?page_id=${page_id}`, {headers: {
+				"Content-Language": context.locale || 'az'
+			}});
 
 		return {
 			props: {
