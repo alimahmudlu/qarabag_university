@@ -98,7 +98,9 @@ export default function SiteLayout(props) {
                         mainLanguage={locale}
                         staticContent={staticContent}
                     />
-                    {children}
+                    <div>
+                        {children}
+                    </div>
                     <SgTemplateFooter
                         menus={((menus || []).find(el => el.alias === 'footer')?.menu_items || []).map(el => ({
                             header: el.name,

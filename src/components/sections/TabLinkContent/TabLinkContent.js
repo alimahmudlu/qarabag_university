@@ -10,6 +10,7 @@ import SgTemplateGetPageWidgets from "@/components/templates/GetPageWidgets/GetP
 import SgTabItem from "@/components/ui/TabItem";
 import {useRouter} from "next/router";
 import SgSectionContent from "@/components/sections/Content";
+import SgTab from "@/components/ui/Tab";
 
 export default function SgSectionTabLinkContent( props ) {
     const {id, data, style, mainData, page_id, staticContent} = props;
@@ -34,15 +35,17 @@ export default function SgSectionTabLinkContent( props ) {
                     <SectionBody>
                         <div className='row'>
                             <div className='col-lg-4'>
-                                {(pageList || []).map((item, index) => {
-                                    return (
-                                        <SgTabItem
-                                            key={index}
-                                            path={`/page/${item?.link?.id}`}
-                                            title={item?.link?.title}
-                                        />
-                                    )
-                                })}
+                                <SgTab>
+                                    {(pageList || []).map((item, index) => {
+                                        return (
+                                            <SgTabItem
+                                                key={index}
+                                                path={`/page/${item?.link?.id}`}
+                                                title={item?.link?.title}
+                                            />
+                                        )
+                                    })}
+                                </SgTab>
                             </div>
                             <div className='col-lg-8'>
                                 <SgSectionContent

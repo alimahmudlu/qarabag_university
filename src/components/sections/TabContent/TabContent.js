@@ -9,6 +9,7 @@ import GetPage from "@/pages/page/[page_id]";
 import SgTemplateGetPageWidgets from "@/components/templates/GetPageWidgets/GetPageWidgets";
 import SgTabItem from "@/components/ui/TabItem";
 import {useRouter} from "next/router";
+import SgTab from "@/components/ui/Tab";
 
 export default function SgSectionTabContent( props ) {
     const {id, data, style, mainData, page_id} = props;
@@ -77,15 +78,17 @@ export default function SgSectionTabContent( props ) {
                     <SectionBody>
                         <div className='row'>
                             <div className='col-lg-4'>
-                                {(pageList || []).map((item, index) => {
-                                    return (
-                                        <SgTabItem
-                                            key={index}
-                                            path={`#tabContent--${index}--${item.link.id}`}
-                                            title={item.link.title}
-                                        />
-                                    )
-                                })}
+                                <SgTab>
+                                    {(pageList || []).map((item, index) => {
+                                        return (
+                                            <SgTabItem
+                                                key={index}
+                                                path={`#tabContent--${index}--${item.link.id}`}
+                                                title={item.link.title}
+                                            />
+                                        )
+                                    })}
+                                </SgTab>
                             </div>
                             <div className='col-lg-8'>
                                 {(pageList || []).map((item, index) => {

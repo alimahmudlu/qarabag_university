@@ -26,6 +26,7 @@ import {
 } from "@/configs/apiRoutes";
 import {appWithTranslation} from "next-i18next";
 import {GoogleAnalytics} from "@next/third-parties/google";
+import ScrollAdjuster from "@/utils/ScrollAdjuster";
 
 Site_App.getInitialProps = async (props) => {
     const initialProps = await App.getInitialProps(props)
@@ -107,8 +108,9 @@ function Site_App({ Component, pageProps: {session, ...pageProps}, menus, langua
         <SessionProvider session={session}>
             {getLayout(
                 <>
+                    <ScrollAdjuster />
                     <Component {...pageProps} menus={menus} languages={languages} settings={settings} locale={locale} staticContent={staticContent} />
-                    {/*<GoogleAnalytics gaId="G-E5VK6Q1Z41" />*/}
+                    <GoogleAnalytics gaId="G-E5VK6Q1Z41" />
                 </>
                 , menus, languages, settings, locale, staticContent
             )}

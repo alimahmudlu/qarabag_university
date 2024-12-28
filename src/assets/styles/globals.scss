@@ -9,6 +9,7 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -400,4 +401,9 @@ body {
 
 table {
   max-width: 100%;
+}
+
+
+:target {
+  scroll-margin-top: 140px;
 }
