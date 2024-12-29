@@ -692,6 +692,7 @@ textarea.input {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
+  min-height: 40px;
   line-height: 40px;
   padding: 4px 34px 4px 12px;
   font-feature-settings: "pnum" on, "lnum" on;
@@ -704,6 +705,7 @@ textarea.input {
   gap: 12px;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   position: relative;
+  cursor: pointer;
 }
 
 .select .dropdown-menu li a span,

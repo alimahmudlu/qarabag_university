@@ -391,7 +391,7 @@ export default function SgInput(props) {
     }
 
     const filteredOptions = options.filter((a) =>
-        a.name.toString().toLowerCase().startsWith(filter.toLowerCase())
+        (a?.name || ' ')?.toString().toLowerCase().startsWith(filter.toLowerCase())
     );
 
     const handleTogglePassword = () => {

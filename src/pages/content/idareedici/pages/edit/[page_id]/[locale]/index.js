@@ -98,7 +98,11 @@ export default function Index() {
 
     useEffect(() => {
         if (selectedWidgetDataType.id) {
-            ApiService.get(`${DATA_TYPE_SHOW_ROUTE}/${selectedWidgetDataType?.id}`).then(resp => {
+            ApiService.get(`${DATA_TYPE_SHOW_ROUTE}/${selectedWidgetDataType?.id}`, {
+                headers: {
+                    'Content-Language': locale
+                }
+            }).then(resp => {
                 setSelectedWidgetDataTypeData(resp.data.data)
             }).catch(error => {
                 console.log(error)
@@ -109,7 +113,11 @@ export default function Index() {
         }
 
         if (pagesListOptions.length === 0) {
-            ApiService.get(OPTIONS_PAGE_LIST_ROUTE).then(resp => {
+            ApiService.get(OPTIONS_PAGE_LIST_ROUTE, {
+                headers: {
+                    'Content-Language': locale
+                }
+            }).then(resp => {
                 setPagesListOptions(resp.data.data.map(el => ({id: el.id, name: el.title})))
             }).catch(error => {
                 console.log(error)
@@ -171,13 +179,21 @@ export default function Index() {
     }
 
     useEffect(() => {
-        ApiService.get(`${OPTIONS_WIDGET_LIST_ROUTE}`).then(resp => {
+        ApiService.get(`${OPTIONS_WIDGET_LIST_ROUTE}`, {
+            headers: {
+                'Content-Language': locale
+            }
+        }).then(resp => {
             setWidgets(resp.data.data)
         }).catch(error => {
             console.log(error)
         })
 
-        ApiService.get(`${OPTIONS_DATA_TYPE_LIST_ROUTE}`).then(resp => {
+        ApiService.get(`${OPTIONS_DATA_TYPE_LIST_ROUTE}`, {
+            headers: {
+                'Content-Language': locale
+            }
+        }).then(resp => {
             setDataTypes((resp.data.data || []).map(el => ({id: el.id, name: el.alias, meta_keys: el.meta_keys || []})))
         }).catch(error => {
             console.log(error)

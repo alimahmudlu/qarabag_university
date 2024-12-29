@@ -89,6 +89,10 @@ export default function Index() {
         ApiService.post(`${MENU_ITEM_SAVE_ROUTE}`, {
             menu_type_id: menu_type_id,
             menu_items: newData
+        }, {
+            headers: {
+                'Content-Language': locale
+            }
         }).then(resp => {
             router.push({
                 pathname: '/content/idareedici/menus/'
@@ -175,7 +179,11 @@ export default function Index() {
 
     useEffect(() => {
         if (optionsData.menu_item_type || optionsData.menu_item_type === 'external') {
-            ApiService.get(optionsData.menu_item_type === 'page' ? `${OPTIONS_PAGE_LIST_ROUTE}` : `${OPTIONS_POST_LIST_ROUTE}`).then(resp => {
+            ApiService.get(optionsData.menu_item_type === 'page' ? `${OPTIONS_PAGE_LIST_ROUTE}` : `${OPTIONS_POST_LIST_ROUTE}`, {
+                headers: {
+                    'Content-Language': locale
+                }
+            }).then(resp => {
                 setItemsOptions((resp.data.data || []).map(el => ({...el, name: el.title})))
             }).catch(error => {
                 console.log(error)
