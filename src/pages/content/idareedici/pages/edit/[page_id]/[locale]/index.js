@@ -212,7 +212,7 @@ export default function Index() {
                 'Content-Language': locale
             }
         }).then(resp => {
-            console.log({...resp.data.data, page_widgets: resp.data.data.page_widgets.filter(widget => !!widget.widget).map(el => ({...el, page_widget_values: [...el.page_widget_values, ...dataTypes.find(dt => dt.id === el.data_type_id)?.meta_keys.filter(dt => !el.page_widget_values.find(pwv => pwv.meta_key_id == dt.id)).map(asd => ({meta_key: asd, meta_key_id: asd.id}))]}))})
+            // console.log({...resp.data.data, page_widgets: resp.data.data.page_widgets.filter(widget => !!widget.widget).map(el => ({...el, page_widget_values: [...el.page_widget_values, ...dataTypes.find(dt => dt.id === el.data_type_id)?.meta_keys.filter(dt => !el.page_widget_values.find(pwv => pwv.meta_key_id == dt.id)).map(asd => ({meta_key: asd, meta_key_id: asd.id}))]}))})
             setData({...resp.data.data, page_widgets: resp.data.data.page_widgets.filter(widget => !!widget.widget).map(el => ({...el, page_widget_values: [...el.page_widget_values, ...dataTypes.find(dt => dt.id === el.data_type_id)?.meta_keys.filter(dt => !el.page_widget_values.find(pwv => pwv.meta_key_id == dt.id)).map(asd => ({meta_key: asd, meta_key_id: asd.id}))]}))});
         }).catch(error => {
             console.log(error)
@@ -347,7 +347,6 @@ export default function Index() {
                                     statusOptions={statusOptions}
                                     handleChange={handleChange}
                                     handleRemove={handleRemove}
-
 
                                     onSortEnd={onSortEnd}
                                     pressDelay={200}

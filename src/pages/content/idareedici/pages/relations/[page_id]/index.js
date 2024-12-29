@@ -74,7 +74,6 @@ export default function Index(props) {
         let array = [...data];
 
         let index = array.indexOf(array.find(el => el.id === item.id));
-        console.log(item, index, array)
 
         if (index !== -1) {
             array.splice(index, 1);

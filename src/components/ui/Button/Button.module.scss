@@ -570,6 +570,58 @@
             }
         }
     }
+    &--error {
+        background-color: var(--red, #902923);
+        border-color: var(--red, #902923);
+        color: var(--white, #FFFFFF);
+
+        &:hover {
+            background-color: var(--white, #FFFFFF);
+            border-color: var(--red, #902923);
+            color: var(--red, #902923);
+
+            &.sg--button--withOutBlock {
+                color: var(--red, #902923) !important;
+            }
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+        }
+
+        &:disabled {
+            background-color: var(--red, #902923);
+            border-color: var(--red, #902923);
+            color: var(--white, #FFFFFF);
+        }
+
+        &-outline {
+            color: var(--red, #902923);
+            border-color: var(--red, #902923);
+            //background-color: var(--white, #FFFFFF);
+            background-color: transparent;
+
+            &:hover {
+                color: var(--white, #FFFFFF);
+                border-color: var(--red, #902923);
+                background-color: var(--red, #902923);
+
+                &.sg--button--withOutBlock {
+                    color: var(--red, #902923) !important;
+                }
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 4px #F4EBFF, 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+            }
+
+            &:disabled {
+                color: var(--red, #902923);
+                border-color: var(--red, #902923);
+                background-color: var(--white, #FFFFFF);
+            }
+        }
+    }
 
 
 

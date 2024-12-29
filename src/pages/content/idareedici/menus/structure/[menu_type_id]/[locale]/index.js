@@ -246,7 +246,7 @@ export default function Index() {
                                         label="Item"
                                         placeholder="Item"
                                         variant='select'
-                                        options={itemsOptions}
+                                        options={(itemsOptions || []).map(el => ({...el, name: `${el?.id}. ${el?.name} ${el?.short_description? `- (${el?.short_description})` : ''}`}))}
                                         data_extraarraykey={`name`}
                                         value={optionsData.url_id || ''}
                                         searchAble={true}
