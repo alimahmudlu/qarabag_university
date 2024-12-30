@@ -265,7 +265,10 @@ export default function SgTemplateHeader(props) {
                             <SgInput
                                 size='extraSmall'
                                 labelHidden={true}
-                                placeholder='Axtar...'
+                                placeholder={<SgHelperTranslate
+                                    defaultText={'Axtar'}
+                                    translatedText={staticContent?.header__search__button}
+                                />}
                                 prefix={<SgIcon icon='search' />}
                                 onChange={handleChange}
                                 value={searchQuery}
