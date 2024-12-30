@@ -139,6 +139,10 @@ export default function SgSectionEventsContent(props) {
                                                             icon: 'calendar',
                                                             text: moment(itemContent?.date?.value).locale(locale).format('MMMM DD, YYYY')
                                                         },
+                                                        /*{
+                                                            icon: 'clock',
+                                                            text: itemContent?.time?.value
+                                                        },*/
                                                         {
                                                             icon: 'map-pin',
                                                             text: itemContent?.location?.value
