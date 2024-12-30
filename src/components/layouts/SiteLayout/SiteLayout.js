@@ -134,7 +134,7 @@ export default function SiteLayout(props) {
                             }
                         ]}
                         logo={((settings || {})?.meta || []).find(el => el.meta === 'logo_white')?.value ? ((settings || {})?.meta || []).find(el => el.meta === 'logo_white')?.value : logo}
-                        copyright={((settings || {})?.meta || []).find(el => el.meta === 'copyright')?.title}
+                        copyright={staticContent?.copyright__title__text ? staticContent?.copyright__title__text : ((settings || {})?.meta || []).find(el => el.meta === 'copyright')?.title}
                         social={((settings || {})?.social_media || []).map(el => ({
                             title: el?.title,
                             path: el?.value,
