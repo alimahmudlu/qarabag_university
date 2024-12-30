@@ -60,14 +60,14 @@ export default function SgNewsSliderItem(props) {
                                 </div>
                                 : null
                             }
-                            {duration ? <div className={[styles['sg--newsSliderItem-block-body-info--date']].join(' ').trim()}>
+                            {/*{duration ? <div className={[styles['sg--newsSliderItem-block-body-info--date']].join(' ').trim()}>
                                 <span className={[styles['sg--newsSliderItem-block-body-info--date--icon']].join(' ').trim()}>
                                     <SgIcon icon={'clock'} />
                                 </span>
                                 <p className={[styles['sg--newsSliderItem-block-body-info--date--text']].join(' ').trim()}>
                                    {duration}
                                 </p>
-                            </div> : ''}
+                            </div> : ''}*/}
                         </div>
                     </div>
                 </div>

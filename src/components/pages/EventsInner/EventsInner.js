@@ -99,7 +99,7 @@ export default function SgPageEventsInner(props) {
 										</div>
 										: null
 									}
-									{itemContent?.time?.value ?
+									{/*{itemContent?.time?.value ?
 										<div className={[styles['sg--page--eventsInner-details-item']].join(' ').trim()}>
 											<div
 												className={[styles['sg--page--eventsInner-details-item--icon']].join(' ').trim()}>
@@ -121,7 +121,7 @@ export default function SgPageEventsInner(props) {
 											</div>
 										</div>
 										: null
-									}
+									}*/}
 									{itemContent?.location?.value ?
 										<div className={[styles['sg--page--eventsInner-details-item']].join(' ').trim()}>
 											<div

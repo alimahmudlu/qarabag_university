@@ -83,7 +83,7 @@ export default function SgSectionNewsContent(props) {
                                                 defaultText={'Axtarış'}
                                                 translatedText={staticContent?.newsFilterBanner__search__input}
                                             />}
-                                            placeholder='Axtarış'
+                                            placeholder={staticContent?.newsFilterBanner__search__input}
                                             prefix={<SgIcon icon='search' />}
                                             onChange={setUserFilterFn}
                                             value={userFilters?.post_search}
