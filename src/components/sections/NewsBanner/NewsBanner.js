@@ -10,7 +10,7 @@ import {changeData} from "@/utils/changeData";
 import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgSectionNewsBanner(props) {
-    const {id, data, style, mainData, page_id,staticContent} = props;
+    const {id, data, style, mainData, page_id, org_page_id, staticContent} = props;
     const {image, title, description, filter = true, list = [], morePath} = data;
     const [postList, setPostList] = useState([])
 
@@ -64,7 +64,7 @@ export default function SgSectionNewsBanner(props) {
                         size='sm'
                         filter={true}
                     >
-                        {page_id === 1 ?
+                        {Number(org_page_id) === 1 ?
                             <SgButtonGroup>
                                 <SgButton
                                     color='primary-outline'
