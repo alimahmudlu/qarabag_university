@@ -99,6 +99,7 @@ export default function SgSectionClubsBanner(props) {
                                 return (
                                     <div key={index} className='col-lg-4'>
                                         <SgClubItem
+                                            staticContent={staticContent}
                                             image={item.image}
                                             header={item.title}
                                             description={item.short_description}
