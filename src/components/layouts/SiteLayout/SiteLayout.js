@@ -12,7 +12,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SiteLayout(props) {
-    const { children, menus, languages, settings, locale,staticContent } = props;
+    const { children, menus, languages, settings, locale, staticContent } = props;
 
     const [sidebar, setSidebar] = useState(false)
     const [searchbar, setSearchbar] = useState(false)
@@ -115,7 +115,8 @@ export default function SiteLayout(props) {
                                 />,
                                 list: [
                                     ...((settings || {})?.address || []).map(el => ({
-                                        name: el?.title,
+                                        // name: el?.title,
+                                        name: staticContent?.settings__contactAddressTitle__text,
                                         url_id: el?.value,
                                         icon: el?.meta
                                     })),
@@ -124,8 +125,8 @@ export default function SiteLayout(props) {
                                         url_id: `mailto::${el?.value}`,
                                         icon: el?.meta
                                     })),
-                                    ...((settings || {})?.phone || []).map(el => ({
-                                        name: el?.title,
+                                    ...((settings || {})?.phone || []).map((el, i) => ({
+                                        name: i === 0 ? staticContent?.settings__contactPhoneTitle__text : el?.title,
                                         url_id: `tel::${el?.value}`,
                                         icon: el?.meta
                                     }))

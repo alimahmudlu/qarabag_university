@@ -64,32 +64,35 @@ export default function SgSectionEventsBanner(props) {
                         filter={true}
                         size='sm'
                     >
-                        <SgButtonGroup>
-                            <SgButton
-                                color='primary-outline'
-                                icon='arrow-up-right'
-                                animations={{
-                                    icon: [
-                                        {
-                                            type: 'hover',
-                                            value: 'rotate-45'
-                                        }
-                                    ]
-                                }}
-                                size='sm'
-                                withOutBlock={true}
-                                reverse={true}
-                                type='link'
-                                to={`/page/${page_id}`}
-                                decoration='underline'
-                            >
-                                <SgHelperTranslate
-                                defaultText={'Hamısına baxmaq'}
-                                translatedText={staticContent?.EventsBannerList__allSee__button}
-                                />
+                        {page_id === 1 ?
+                            <SgButtonGroup>
+                                <SgButton
+                                    color='primary-outline'
+                                    icon='arrow-up-right'
+                                    animations={{
+                                        icon: [
+                                            {
+                                                type: 'hover',
+                                                value: 'rotate-45'
+                                            }
+                                        ]
+                                    }}
+                                    size='sm'
+                                    withOutBlock={true}
+                                    reverse={true}
+                                    type='link'
+                                    to={`/page/${page_id}`}
+                                    decoration='underline'
+                                >
+                                    <SgHelperTranslate
+                                    defaultText={'Hamısına baxmaq'}
+                                    translatedText={staticContent?.EventsBannerList__allSee__button}
+                                    />
 
-                            </SgButton>
-                        </SgButtonGroup>
+                                </SgButton>
+                            </SgButtonGroup>
+                            : null
+                        }
                     </SectionHead>
                     <SectionBody>
                         <SgEventsList

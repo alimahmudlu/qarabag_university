@@ -231,7 +231,7 @@ export default function SgTemplateHeader(props) {
                             <SgInput
                                 size='big'
                                 labelHidden={true}
-                                placeholder='Axtar...'
+                                placeholder={staticContent?.header__search__button}
                                 prefix={<SgIcon icon='search'/>}
                                 onChange={handleChange}
                                 value={searchQuery}
@@ -265,10 +265,7 @@ export default function SgTemplateHeader(props) {
                             <SgInput
                                 size='extraSmall'
                                 labelHidden={true}
-                                placeholder={<SgHelperTranslate
-                                    defaultText={'Axtar'}
-                                    translatedText={staticContent?.header__search__button}
-                                />}
+                                placeholder={staticContent?.header__search__button}
                                 prefix={<SgIcon icon='search' />}
                                 onChange={handleChange}
                                 value={searchQuery}
