@@ -4,11 +4,15 @@ import SgShareSocialMedia from "@/components/ui/ShareSocialMedia/ShareSocialMedi
 import moment from "moment";
 import {SgIcon} from "@/components/ui/Icon";
 import {useEffect, useState} from "react";
+import {useRouter} from "next/router";
+import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SgPageEventsInner(props) {
-	const { data } = props;
+	const { data, staticContent } = props;
 	const { title, date, content, location, post_values } = data;
 	const itemContent = post_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {});
+	const router = useRouter();
+	const {locale} = router
 
 	const [thisLocation, setThisLocation] = useState(null);
 	useEffect(() => {
@@ -73,54 +77,74 @@ export default function SgPageEventsInner(props) {
 
 							<div className={[styles['sg--page--eventsInner-content']].join(' ').trim()}>
 								<div className={[styles['sg--page--eventsInner-details']].join(' ').trim()}>
-									<div className={[styles['sg--page--eventsInner-details-item']].join(' ').trim()}>
-										<div
-											className={[styles['sg--page--eventsInner-details-item--icon']].join(' ').trim()}>
-											<SgIcon
-												icon='calendar'
-											/>
+									{itemContent?.date?.value ?
+										<div className={[styles['sg--page--eventsInner-details-item']].join(' ').trim()}>
+											<div
+												className={[styles['sg--page--eventsInner-details-item--icon']].join(' ').trim()}>
+												<SgIcon
+													icon='calendar'
+												/>
+											</div>
+											<div
+												className={[styles['sg--page--eventsInner-details-item--title']].join(' ').trim()}>
+												<SgHelperTranslate
+													defaultText={'Tarix'}
+													translatedText={staticContent?.eventInner__detailsDate__text}
+												/>
+											</div>
+											<div
+												className={[styles['sg--page--eventsInner-details-item--description']].join(' ').trim()}>
+												{moment(itemContent?.date?.value).locale(locale).format('MMMM DD, YYYY')}
+											</div>
 										</div>
-										<div
-											className={[styles['sg--page--eventsInner-details-item--title']].join(' ').trim()}>
-											Tarix
+										: null
+									}
+									{itemContent?.time?.value ?
+										<div className={[styles['sg--page--eventsInner-details-item']].join(' ').trim()}>
+											<div
+												className={[styles['sg--page--eventsInner-details-item--icon']].join(' ').trim()}>
+												<SgIcon
+													icon='clock'
+												/>
+											</div>
+											<div
+												className={[styles['sg--page--eventsInner-details-item--title']].join(' ').trim()}>
+
+												<SgHelperTranslate
+													defaultText={'Vaxt'}
+													translatedText={staticContent?.eventInner__detailsTime__text}
+												/>
+											</div>
+											<div
+												className={[styles['sg--page--eventsInner-details-item--description']].join(' ').trim()}>
+												{itemContent?.time?.value}
+											</div>
 										</div>
-										<div
-											className={[styles['sg--page--eventsInner-details-item--description']].join(' ').trim()}>
-											{moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
+										: null
+									}
+									{itemContent?.location?.value ?
+										<div className={[styles['sg--page--eventsInner-details-item']].join(' ').trim()}>
+											<div
+												className={[styles['sg--page--eventsInner-details-item--icon']].join(' ').trim()}>
+												<SgIcon
+													icon='location'
+												/>
+											</div>
+											<div
+												className={[styles['sg--page--eventsInner-details-item--title']].join(' ').trim()}>
+
+												<SgHelperTranslate
+													defaultText={'Yer'}
+													translatedText={staticContent?.eventInner__detailsLocation__text}
+												/>
+											</div>
+											<div
+												className={[styles['sg--page--eventsInner-details-item--description']].join(' ').trim()}>
+												{itemContent?.location?.value}
+											</div>
 										</div>
-									</div>
-									<div className={[styles['sg--page--eventsInner-details-item']].join(' ').trim()}>
-										<div
-											className={[styles['sg--page--eventsInner-details-item--icon']].join(' ').trim()}>
-											<SgIcon
-												icon='clock'
-											/>
-										</div>
-										<div
-											className={[styles['sg--page--eventsInner-details-item--title']].join(' ').trim()}>
-											Vaxt
-										</div>
-										<div
-											className={[styles['sg--page--eventsInner-details-item--description']].join(' ').trim()}>
-											{itemContent?.time?.value}
-										</div>
-									</div>
-									<div className={[styles['sg--page--eventsInner-details-item']].join(' ').trim()}>
-									<div
-											className={[styles['sg--page--eventsInner-details-item--icon']].join(' ').trim()}>
-											<SgIcon
-												icon='location'
-											/>
-										</div>
-										<div
-											className={[styles['sg--page--eventsInner-details-item--title']].join(' ').trim()}>
-											Yer
-										</div>
-										<div
-											className={[styles['sg--page--eventsInner-details-item--description']].join(' ').trim()}>
-											{itemContent?.location?.value}
-										</div>
-									</div>
+										: null
+									}
 								</div>
 								<div className={[styles['sg--page--eventsInner-head']].join(' ').trim()}>
 									<h2 className={[styles['sg--page--eventsInner-head--header']].join(' ').trim()}>

@@ -12,7 +12,7 @@ import SgPageCareerInner from "@/components/pages/CareerInner/CareerInner";
 
 
 export default function Index(props) {
-	const {pageData, page_id} = props;
+	const {pageData, page_id, staticContent} = props;
 	const {post = {}, page = {}} = pageData || {};
 	const {title, short_description, data_type = {}} = post || {};
 	const {inner_layout} = data_type || {};
@@ -24,6 +24,7 @@ export default function Index(props) {
 					<>
 						<SgPageNewsInner
 							data={data}
+							staticContent={staticContent}
 						/>
 					</>
 				)
@@ -33,6 +34,7 @@ export default function Index(props) {
 					<>
 						<SgPageNewsInner
 							data={data}
+							staticContent={staticContent}
 						/>
 
 						<SgSectionNewsContent
@@ -48,6 +50,7 @@ export default function Index(props) {
 								morePath: `/page/${page?.id}`,
 								list: []
 							}}
+							staticContent={staticContent}
 						/>
 					</>
 				)
@@ -57,6 +60,7 @@ export default function Index(props) {
 					<>
 						<SgPageEventsInner
 							data={data}
+							staticContent={staticContent}
 						/>
 					</>
 				)
@@ -66,6 +70,7 @@ export default function Index(props) {
 					<>
 						<SgPageEventsInner
 							data={data}
+							staticContent={staticContent}
 						/>
 
 						<SgSectionEventsContent
@@ -81,6 +86,7 @@ export default function Index(props) {
 								morePath: `/page/${page?.id}`,
 								list: []
 							}}
+							staticContent={staticContent}
 						/>
 					</>
 				)
@@ -90,6 +96,7 @@ export default function Index(props) {
 					<>
 						<SgPageCollaboratorsInner
 							data={data}
+							staticContent={staticContent}
 						/>
 					</>
 				)
@@ -99,6 +106,7 @@ export default function Index(props) {
 					<>
 						<SgPageCareerInner
 							data={data}
+							staticContent={staticContent}
 						/>
 					</>
 				)
@@ -123,6 +131,7 @@ export default function Index(props) {
 								morePath: `/page/${page?.id}`,
 								list: []
 							}}
+							staticContent={staticContent}
 						/>
 					</>
 				)

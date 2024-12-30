@@ -22,6 +22,8 @@ export default function SgSectionNewsContent(props) {
 
     const [ userFilters, setUserFilters ] = useState({})
     const [ errors, setErrors ] = useState({})
+    const router = useRouter();
+    const {locale} = router
 
     function setUserFilterFn(e) {
         changeData(e, userFilters, setUserFilters, errors, setErrors)
@@ -127,11 +129,12 @@ export default function SgSectionNewsContent(props) {
                                         return (
                                             <div className={'col-lg-4 col-6 lg:px-[12px] px-[10px]'} key={index}>
                                                 <SgNewsItem
+                                                    staticContent={staticContent}
                                                     image={item?.image}
                                                     header={item?.title}
                                                     path={`/page/${page_id}/${item?.id}`}
-                                                    date={moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
-                                                    time={moment(itemContent?.time?.value).format('HH:mm')}
+                                                    date={itemContent?.date?.value ? moment(itemContent?.date?.value).locale(locale).format('MMMM DD, YYYY') : null}
+                                                    time={itemContent?.time?.value ? moment(itemContent?.time?.value).locale(locale).format('HH:mm') : null}
                                                     ratio={{
                                                         width: 284,
                                                         height: 137

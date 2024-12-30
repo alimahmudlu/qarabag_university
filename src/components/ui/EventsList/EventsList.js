@@ -2,9 +2,13 @@ import styles from '@/components/ui/EventsList/EventsList.module.scss';
 import Image from "next/image";
 import SgEventItem from "@/components/ui/EventItem";
 import moment from "moment";
+import {useRouter} from "next/router";
 
 export default function SgEventsList(props) {
     const { list, image, text, page_id,staticContent } = props;
+    const router = useRouter();
+    const {locale} = router;
+
     return (
         <>
             <div className={[styles['sg--eventsList']].join(' ').trim()}>
@@ -24,7 +28,7 @@ export default function SgEventsList(props) {
                                     additions={[
                                         {
                                             icon: 'calendar',
-                                            text: moment(itemContent?.date?.value).format('MMMM DD, YYYY')
+                                            text: moment(itemContent?.date?.value).locale(locale).format('MMMM DD, YYYY')
                                         },
                                         {
                                             icon: 'clock',

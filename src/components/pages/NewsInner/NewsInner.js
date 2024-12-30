@@ -4,6 +4,7 @@ import SgShareSocialMedia from "@/components/ui/ShareSocialMedia/ShareSocialMedi
 import moment from "moment";
 import {useEffect, useState} from "react";
 import readingTime from "reading-time";
+import {useRouter} from "next/router";
 
 
 export default function SgPageNewsInner(props) {
@@ -12,6 +13,8 @@ export default function SgPageNewsInner(props) {
 	const { title, content, post_values = [] } = data || {};
 	const itemContent = post_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {});
 	const [thisLocation, setThisLocation] = useState(null);
+	const router = useRouter();
+	const {locale} = router
 
 	useEffect(() => {
 		setThisLocation((typeof window !== "undefined" && window && location) ? location : '')
@@ -32,7 +35,7 @@ export default function SgPageNewsInner(props) {
 							<div className={[styles['sg--page--newsInner-details']].join(' ').trim()}>
 								{(itemContent?.date?.value || itemContent?.announcementDate?.value ) ?
 									<div className={[styles['sg--page--newsInner-details-item']].join(' ').trim()}>
-										{moment(itemContent?.date?.value || itemContent?.announcementDate?.value).format('MMMM DD, YYYY')}
+										{moment(itemContent?.date?.value || itemContent?.announcementDate?.value).locale(locale).format('MMMM DD, YYYY')}
 									</div>
 									: ''
 								}

@@ -8,6 +8,7 @@ import {useEffect, useState} from "react";
 import ApiService from "@/services/ApiService";
 import {SITE_POST_LIST_ROUTE} from "@/configs/apiRoutes";
 import {changeData} from "@/utils/changeData";
+import {useRouter} from "next/router";
 
 export default function SgSectionEventsContentBanner(props) {
     const {id, data, style, mainData, page_id} = props;
@@ -20,6 +21,8 @@ export default function SgSectionEventsContentBanner(props) {
 
     const [ userFilters, setUserFilters ] = useState({})
     const [ errors, setErrors ] = useState({})
+    const router = useRouter();
+    const {locale} = router
 
     function setUserFilterFn(e) {
         changeData(e, userFilters, setUserFilters, errors, setErrors)
@@ -67,48 +70,51 @@ export default function SgSectionEventsContentBanner(props) {
                     <SectionBody>
                         <div className='row'>
                             <div className='col-lg-12'>
-                                <SgSlider
-                                    withOutOverflow={true}
-                                    arrow={true}
-                                    sliderSettings={{
-                                        "slidesToShow": 2,
-                                        "slidesToScroll": 1,
+                                {(postList || []).length > 0 ?
+                                    <SgSlider
+                                        withOutOverflow={true}
+                                        arrow={true}
+                                        sliderSettings={{
+                                            "slidesToShow": 2,
+                                            "slidesToScroll": 1,
 
-                                        infinite: false,
-                                        arrows: false,
-                                        dots: false,
-                                        responsive: [
-                                            {
-                                                breakpoint: 992,
-                                                settings:
-                                                    {
-                                                        slidesToShow: 1,
-                                                        slidesToScroll: 1
-                                                    }
-                                            }
-                                        ]
-                                    }}
-                                    items={(postList || []).map((item, index) => {
-                                        const itemContent = item?.post_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {});
-                                        return (
-                                            <SgEventsSliderItem
-                                                key={index}
-                                                header={item?.title}
-                                                image={item?.image}
-                                                ratio={
-                                                    {
-                                                        width: 473,
-                                                        height: 268
-                                                    }
+                                            infinite: false,
+                                            arrows: false,
+                                            dots: false,
+                                            responsive: [
+                                                {
+                                                    breakpoint: 992,
+                                                    settings:
+                                                        {
+                                                            slidesToShow: 1,
+                                                            slidesToScroll: 1
+                                                        }
                                                 }
-                                                date={moment(itemContent?.date?.value).format('MMMM DD, YYYY')}
-                                                time={itemContent?.time?.value}
-                                                location={itemContent?.location?.value}
-                                                path={`/page/${page_id}/${item?.id}`}
-                                            />
-                                        )
-                                    })}
-                                />
+                                            ]
+                                        }}
+                                        items={(postList || []).map((item, index) => {
+                                            const itemContent = item?.post_values.reduce((a, v) => ({ ...a, [v.meta_key?.alias]: v}), {});
+                                            return (
+                                                <SgEventsSliderItem
+                                                    key={index}
+                                                    header={item?.title}
+                                                    image={item?.image}
+                                                    ratio={
+                                                        {
+                                                            width: 473,
+                                                            height: 268
+                                                        }
+                                                    }
+                                                    date={moment(itemContent?.date?.value).locale(locale).format('MMMM DD, YYYY')}
+                                                    time={itemContent?.time?.value}
+                                                    location={itemContent?.location?.value}
+                                                    path={`/page/${page_id}/${item?.id}`}
+                                                />
+                                            )
+                                        })}
+                                    />
+                                    : null
+                                }
                             </div>
 
                         </div>

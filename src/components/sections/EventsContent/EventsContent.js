@@ -23,6 +23,8 @@ export default function SgSectionEventsContent(props) {
 
     const [ userFilters, setUserFilters ] = useState({})
     const [ errors, setErrors ] = useState({})
+    const router = useRouter();
+    const {locale} = router
 
     function setUserFilterFn(e) {
         changeData(e, userFilters, setUserFilters, errors, setErrors)
@@ -132,7 +134,7 @@ export default function SgSectionEventsContent(props) {
                                                     additions={[
                                                         {
                                                             icon: 'calendar',
-                                                            text: moment(itemContent?.date?.value).format('MMMM DD, YYYY')
+                                                            text: moment(itemContent?.date?.value).locale(locale).format('MMMM DD, YYYY')
                                                         },
                                                         {
                                                             icon: 'clock',

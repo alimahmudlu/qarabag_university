@@ -45,7 +45,7 @@ export default function Index() {
     }
 
     function handleEditItem() {
-        ApiService.put(`${STATIC_CONTENT_EDIT_ROUTE}/${selectedRow.id}/translate`, selectedRow, {headers: {"Content-Language": locale}}).then(response => {
+        ApiService.put(`${STATIC_CONTENT_EDIT_ROUTE}/${selectedRow.id}`, selectedRow, {headers: {"Content-Language": locale}}).then(response => {
             toggleEditItemModal()
             setFilters({...filters})
         }).catch(error => {

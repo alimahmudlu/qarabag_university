@@ -4,6 +4,7 @@ import {SITE_PAGE_SHOW_ROUTE} from "@/configs/apiRoutes";
 import SgSectionMainHero from "@/components/sections/MainHero";
 import SgTemplateGetPageWidgets from "@/components/templates/GetPageWidgets/GetPageWidgets";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
+import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function Index(props) {
     const {pageData, page_id, inner = true, staticContent} = props;
@@ -23,7 +24,10 @@ export default function Index(props) {
                 header={title || ''}
                 breadcrumb={[
                     {
-                        name: 'Ana səhifə',
+                        name: <SgHelperTranslate
+                            defaultText={'Ana səhifə'}
+                            translatedText={staticContent?.heroBreadcrumb__mainPage__text}
+                        />,
                         to: '/'
                     },
                     {

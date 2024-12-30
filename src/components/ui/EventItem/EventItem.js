@@ -3,21 +3,22 @@ import {SgIcon} from "@/components/ui/Icon";
 import moment from "moment";
 import {SgButton} from "@/components/ui/Button";
 import SgHelperTranslate from "@/components/helper/Translate";
+import {useRouter} from "next/router";
 
-export default function SgEventItem(props) {
+export default function SgEventItem(props) {3
     const {date, additions = [], title, path, staticContent} = props;
-
-    console.log(date, title, 'dateeee')
+    const router = useRouter();
+    const {locale} = router
 
     return (
         <>
             <div className={[styles['sg--eventItem']].join(' ').trim()}>
                 <div className={[styles['sg--eventItem-date']].join(' ').trim()}>
                     <div className={[styles['sg--eventItem-date--day']].join(' ').trim()}>
-                        {date ? moment(date).format('DD') : moment().format('DD')}
+                        {date ? moment(date).locale(locale).format('DD') : moment().locale(locale).format('DD')}
                     </div>
                     <div className={[styles['sg--eventItem-date--month']].join(' ').trim()}>
-                        {date ? moment(date).format('MMMM') : moment().format('MMMM')}
+                        {date ? moment(date).locale(locale).format('MMMM') : moment().locale(locale).format('MMMM')}
                     </div>
                 </div>
                 <div className={[styles['sg--eventItem-body']].join(' ').trim()}>

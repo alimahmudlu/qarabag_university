@@ -9,6 +9,7 @@ import {useRouter} from "next/router";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 import SgTemplateScrollToTop from "@/components/templates/ScrollToTop";
 import { GoogleAnalytics } from '@next/third-parties/google'
+import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function SiteLayout(props) {
     const { children, menus, languages, settings, locale,staticContent } = props;
@@ -108,7 +109,10 @@ export default function SiteLayout(props) {
                         }))}
                         contact={[
                             {
-                                header: 'Əlaqə',
+                                header: <SgHelperTranslate
+                                    defaultText={'Əlaqə'}
+                                    translatedText={staticContent?.footer__contact__text}
+                                />,
                                 list: [
                                     ...((settings || {})?.address || []).map(el => ({
                                         name: el?.title,

@@ -33,7 +33,7 @@ export default function SgSectionTabLinkContent( props ) {
             >
                 <SectionBlock>
                     <SectionBody>
-                        <div className='row'>
+                        <div className='row gap-y-[20px]'>
                             <div className='col-lg-4'>
                                 <SgTab>
                                     {(pageList || []).map((item, index) => {
