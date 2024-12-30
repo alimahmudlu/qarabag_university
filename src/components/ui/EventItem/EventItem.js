@@ -5,7 +5,7 @@ import {SgButton} from "@/components/ui/Button";
 import SgHelperTranslate from "@/components/helper/Translate";
 import {useRouter} from "next/router";
 
-export default function SgEventItem(props) {3
+export default function SgEventItem(props) {
     const {date, additions = [], title, path, staticContent} = props;
     const router = useRouter();
     const {locale} = router

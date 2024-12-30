@@ -9,6 +9,7 @@ import SgSectionEventsContent from "@/components/sections/EventsContent";
 import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 import SgPageCollaboratorsInner from "@/components/pages/CollaboratorsInner";
 import SgPageCareerInner from "@/components/pages/CareerInner/CareerInner";
+import SgHelperTranslate from "@/components/helper/Translate";
 
 
 export default function Index(props) {
@@ -152,7 +153,10 @@ export default function Index(props) {
 				header={page?.title || title || ''}
 				breadcrumb={[
 					{
-						name: 'Ana səhifə',
+						name: <SgHelperTranslate
+							defaultText={'Ana səhifə'}
+							translatedText={staticContent?.heroBreadcrumb__mainPage__text}
+						/>,
 						to: '/'
 					},
 					{
