@@ -97,8 +97,11 @@ export default function SgSectionNewsContent(props) {
                                             size='small'
                                             name='post_date'
                                             id='post_date'
-                                            label='GG/AA/YYYY'
-                                            placeholder='GG/AA/YYYY'
+                                            label={<SgHelperTranslate
+                                                defaultText={'Tarix'}
+                                                translatedText={staticContent?.newsFilterBanner__date__input}
+                                            />}
+                                            placeholder={staticContent?.newsFilterBanner__date__input}
                                             dateFormat='DD-MM-YYYY'
                                             onChange={setUserFilterFn}
                                             value={userFilters?.post_date}
