@@ -45,7 +45,7 @@ export default function Index(props) {
 							page_id={page_id}
 							data={{
 								image: '',
-								title: `Daha çox ${page?.title}`,
+								title: `${staticContent?.newsInner__more__title} ${page?.title}`,
 								description: '',
 								filter: false,
 								morePath: `/page/${page?.id}`,
@@ -81,7 +81,7 @@ export default function Index(props) {
 							page_id={page_id}
 							data={{
 								image: '',
-								title: `Daha çox ${page?.title}`,
+								title: `${staticContent?.newsInner__more__title} ${page?.title}`,
 								description: '',
 								filter: false,
 								morePath: `/page/${page?.id}`,
@@ -126,7 +126,7 @@ export default function Index(props) {
 							page_id={page_id}
 							data={{
 								image: '',
-								title: `Daha çox ${page?.title}`,
+								title: `${staticContent?.newsInner__more__title} ${page?.title}`,
 								description: '',
 								filter: false,
 								morePath: `/page/${page?.id}`,

@@ -35,9 +35,7 @@ export default function SgTemplateFileManagerModal(props) {
 		selectMode: 'single',
 		events: {
 			afterSelect: (selectedFiles) => {
-				console.log('lol', selectedFiles)
 				if (fileSubmit && selectedFiles.files.length > 0) {
-					console.log('lol')
 					fileSubmit(selectedFiles.files);
 				}
 			},
