@@ -1,6 +1,7 @@
 import styles from "@/components/sections/MainHero/MainHero.module.scss";
 import {Section, SectionBody} from "@/components/ui/Section";
-import heroImage from "@/assets/images/KarabakhUniversityBanner2.png";
+// import heroImage from "@/assets/images/KarabakhUniversityBanner2.png";
+import heroImage from "@/assets/images/KarabakhUniversityBanner3.png";
 import Image from "next/image";
 import {SgBreadcrumb} from "@/components/ui/Breadcrumb";
 
