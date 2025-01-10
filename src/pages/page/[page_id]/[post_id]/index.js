@@ -151,6 +151,7 @@ export default function Index(props) {
 				id='mainHero'
 				inner={true}
 				header={page?.title || title || ''}
+				image={post?.cover_image ? post?.cover_image : (page?.cover_image ? page?.cover_image : ((settings || {})?.meta || []).find(el => el.meta === 'defaultBannerImage')?.value)}
 				breadcrumb={[
 					{
 						name: <SgHelperTranslate
