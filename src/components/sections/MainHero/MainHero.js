@@ -1,12 +1,12 @@
 import styles from "@/components/sections/MainHero/MainHero.module.scss";
 import {Section, SectionBody} from "@/components/ui/Section";
-// import heroImage from "@/assets/images/KarabakhUniversityBanner2.png";
-import heroImage from "@/assets/images/KarabakhUniversityBanner3.png";
+import heroImage from "@/assets/images/KarabakhUniversityBanner2.png";
+// import heroImage from "@/assets/images/KarabakhUniversityBanner3.png";
 import Image from "next/image";
 import {SgBreadcrumb} from "@/components/ui/Breadcrumb";
 
 export default function SgSectionMainHero(props) {
-    const {id, cover_image, inner = false, header, breadcrumb = []} = props;
+    const {id, image, inner = false, header, breadcrumb = []} = props;
 
     return (
         <>
@@ -17,7 +17,8 @@ export default function SgSectionMainHero(props) {
                 <div className={[styles['sg--section--mainHero-absolute']].join(' ').trim()}>
                     {inner ?
                         <Image width='2000' height='2000'
-                               src={cover_image ? cover_image : heroImage}
+                               alt={header || 'Hero Banner is undefined content'}
+                               src={image ? image : heroImage}
                                className={[styles['sg--section--mainHero-absolute--background']].join(' ').trim()}
                         />
                         :

@@ -27,6 +27,7 @@ import {
 import {appWithTranslation} from "next-i18next";
 import {GoogleAnalytics} from "@next/third-parties/google";
 import ScrollAdjuster from "@/utils/ScrollAdjuster";
+import { PagesProgressBar as ProgressBar } from 'next-nprogress-bar';
 
 Site_App.getInitialProps = async (props) => {
     const initialProps = await App.getInitialProps(props)
@@ -111,6 +112,12 @@ function Site_App({ Component, pageProps: {session, ...pageProps}, menus, langua
                     <ScrollAdjuster />
                     <Component {...pageProps} menus={menus} languages={languages} settings={settings} locale={locale} staticContent={staticContent} />
                     <GoogleAnalytics gaId="G-E5VK6Q1Z41" />
+                    <ProgressBar
+                        height="2px"
+                        color="#F6F6F6"
+                        options={{ showSpinner: false }}
+                        shallowRouting
+                    />
                 </>
                 , menus, languages, settings, locale, staticContent
             )}

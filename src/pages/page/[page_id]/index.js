@@ -7,7 +7,7 @@ import GetGenerateMetadata from "@/utils/getGenerateMetadata";
 import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function Index(props) {
-    const {pageData, page_id, inner = true, staticContent} = props;
+    const {pageData, page_id, inner = true, staticContent, settings} = props;
     const {title, cover_image, short_description, id, page_widgets} = pageData || {};
 
     return (
@@ -21,7 +21,7 @@ export default function Index(props) {
             <SgSectionMainHero
                 id='mainHero'
                 inner={inner}
-                image={cover_image}
+                image={cover_image ? cover_image : ((settings || {})?.meta || []).find(el => el.meta === 'defaultBannerImage')?.value}
                 header={title || ''}
                 breadcrumb={[
                     {
