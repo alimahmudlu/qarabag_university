@@ -117,16 +117,24 @@ export default function SgSectionSearchSection(props) {
                                 </div>
                             </div>
                             <div className={[styles['sg--section--searchSection-operations']].join(' ').trim()}>
-                                <div
-                                    className={[styles['sg--section--searchSection-operations--count']].join(' ').trim()}>
+                                <div className={[styles['sg--section--searchSection-operations--count']].join(' ').trim()}>
                                     <SgHelperTranslate
                                         defaultText={'Təxmini nəticə: '}
                                         translatedText={staticContent?.searchSection__header__title}
                                     /> {(searchData || []).length }
                                 </div>
-                                <div
-                                    className={[styles['sg--section--searchSection-operations--sort']].join(' ').trim()}>
+                                <div className={[styles['sg--section--searchSection-operations--sort']].join(' ').trim()}>
+                                    <SgInput
+                                        id='sort'
+                                        name='sort'
+                                        size='extraSmall'
+                                        labelHidden={true}
+                                        placeholder={staticContent?.searchSection__sort__title || 'Sırala:'}
+                                        label={staticContent?.searchSection__sort__title || 'Sırala:'}
+                                        onChange={handleChange}
+                                        value={userFilters?.sort || ""}
 
+                                    />
                                 </div>
                             </div>
                             <div className={[styles['sg--section--searchSection-body']].join(' ').trim()}>
