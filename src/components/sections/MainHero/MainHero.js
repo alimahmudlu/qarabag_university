@@ -6,7 +6,7 @@ import Image from "next/image";
 import {SgBreadcrumb} from "@/components/ui/Breadcrumb";
 
 export default function SgSectionMainHero(props) {
-    const {id, inner = false, header, breadcrumb = []} = props;
+    const {id, cover_image, inner = false, header, breadcrumb = []} = props;
 
     return (
         <>
@@ -17,7 +17,7 @@ export default function SgSectionMainHero(props) {
                 <div className={[styles['sg--section--mainHero-absolute']].join(' ').trim()}>
                     {inner ?
                         <Image width='2000' height='2000'
-                               src={heroImage}
+                               src={cover_image ? cover_image : heroImage}
                                className={[styles['sg--section--mainHero-absolute--background']].join(' ').trim()}
                         />
                         :

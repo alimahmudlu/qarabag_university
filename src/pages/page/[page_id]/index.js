@@ -8,7 +8,7 @@ import SgHelperTranslate from "@/components/helper/Translate";
 
 export default function Index(props) {
     const {pageData, page_id, inner = true, staticContent} = props;
-    const {title, short_description, id, page_widgets} = pageData || {};
+    const {title, cover_image, short_description, id, page_widgets} = pageData || {};
 
     return (
         <>
@@ -21,6 +21,7 @@ export default function Index(props) {
             <SgSectionMainHero
                 id='mainHero'
                 inner={inner}
+                image={cover_image}
                 header={title || ''}
                 breadcrumb={[
                     {
