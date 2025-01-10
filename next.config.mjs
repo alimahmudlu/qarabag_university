@@ -39,6 +39,10 @@ const nextConfig = {
     ]
   },
 
+  experimental: {
+    largePageDataBytes: 512 * 100000,
+  },
+
   i18n: {
     localeDetection: false,
     locales: ['az', 'en', 'ru'],

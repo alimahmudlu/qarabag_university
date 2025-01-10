@@ -2,7 +2,7 @@ import {MainLayout} from "@/admin/components/layouts";
 import {SgPage, SgPageBody, SgPageFooter, SgPageHead} from "@/admin/components/ui/Page";
 import {SgButton} from "@/admin/components/ui/Button";
 import {useEffect, useState} from "react";
-import {SgFormGroup, SgInput} from "@/admin/components/ui/Form";
+import {SgFile, SgFormGroup, SgInput} from "@/admin/components/ui/Form";
 import {changeData} from "@/admin/utils/changeData";
 import SgButtonGroup from "@/admin/components/ui/ButtonGroup/ButtonGroup";
 import SgWidgetsFilter from "@/admin/components/ui/WidgetsFilter";
@@ -298,6 +298,27 @@ export default function Index() {
                                     isInvalid={valueErrors.protected}
                                     variant='select'
                                     options={protectOptions}
+                                />
+                            </SgFormGroup>
+                            <SgFormGroup>
+                                <SgFile
+                                    label='Banner Image'
+                                    onChange={toggleFileManagerModal}
+                                    value={data.cover_image}
+                                    id='cover_image'
+                                    name='cover_image'
+                                    isInvalid={valueErrors.cover_image}
+
+                                    fileManager={{
+                                        type: 'png',
+                                        multiple: false,
+                                        toggleFileManagerModal: toggleFileManagerModal,
+                                        fileManagerModal: fileManagerModal,
+                                        data: data,
+                                        setData: setData,
+                                        errors: valueErrors,
+                                        setErrors: setValueErrors,
+                                    }}
                                 />
                             </SgFormGroup>
 

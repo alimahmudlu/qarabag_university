@@ -222,6 +222,27 @@ export default function Index() {
                                 />
                             </SgFormGroup>
                             <SgFormGroup>
+                                <SgFile
+                                    label='Banner Image'
+                                    onChange={toggleFileManagerModal}
+                                    value={data.cover_image}
+                                    id='cover_image'
+                                    name='cover_image'
+                                    isInvalid={valueErrors.cover_image}
+
+                                    fileManager={{
+                                        type: 'png',
+                                        multiple: false,
+                                        toggleFileManagerModal: toggleFileManagerModal,
+                                        fileManagerModal: fileManagerModal,
+                                        data: data,
+                                        setData: setData,
+                                        errors: valueErrors,
+                                        setErrors: setValueErrors,
+                                    }}
+                                />
+                            </SgFormGroup>
+                            <SgFormGroup>
                                 <SgInput
                                     name='data_type_id'
                                     id='data_type_id'
