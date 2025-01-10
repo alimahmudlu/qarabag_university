@@ -415,7 +415,10 @@ export default function Index() {
                         value={selectedWidgetDataTypeData.main_page_id || ''}
                         onChange={handleChangePopup}
                         variant='select'
-                        options={pagesListOptions}
+                        options={(pagesListOptions || []).map(el => ({
+                            ...el,
+                            name: `${el.id}. ${el.name}`
+                        }))}
                     />
                 </SgFormGroup>
 
