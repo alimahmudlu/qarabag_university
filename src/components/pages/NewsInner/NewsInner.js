@@ -63,7 +63,7 @@ export default function SgPageNewsInner(props) {
 												name: 'Telegram'
 											},
 											{
-												path: `https://wa.me/+994/?text=${thisLocation}`,
+												path: `https://wa.me/?text=${thisLocation}`,
 												icon: 'whatsapp-solid',
 												name: 'Whatsapp'
 											},
