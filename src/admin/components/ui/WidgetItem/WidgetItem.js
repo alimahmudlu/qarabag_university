@@ -48,7 +48,7 @@ export default function SgWidgetItem(props) {
 						<DragHandle
 							handleRemove={handleRemove}
 							index={index}
-							name={name}
+							name={`${name} - ${values?.title}`}
 						/>
 					</>
 				}
