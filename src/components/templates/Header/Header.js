@@ -49,6 +49,7 @@ export default function SgTemplateHeader(props) {
                                         <div key={index}
                                              className={[styles['sg--template--header-block-body-minor-social-item']].join(' ').trim()}>
                                             <Link href={item.path || ''}
+                                                  target='_blank'
                                                   className={[styles['sg--template--header-block-body-minor-social-item--link']].join(' ').trim()}>
                                                 {item.icon ?
                                                     <SgIcon icon={item.icon}/>

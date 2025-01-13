@@ -106,6 +106,7 @@ export default function SgTemplateFooter(props) {
                                         <div key={index}
                                              className={[styles['sg--template--footer-block-minor-social-item']].join(' ').trim()}>
                                             <Link href={item.path || ''}
+                                                  target='_blank'
                                                   className={[styles['sg--template--footer-block-minor-social-item--link']].join(' ').trim()}>
                                                 {item.icon ?
                                                     <SgIcon icon={item.icon}/>
