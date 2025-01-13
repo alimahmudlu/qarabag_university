@@ -15,4 +15,20 @@
             color: #707070;
         }
     }
+
+    @media (max-width: 992px) {
+        & {
+            gap: 16px;
+
+            &--column {
+                gap: 32px;
+            }
+
+            &-item {
+                &--link {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
 }

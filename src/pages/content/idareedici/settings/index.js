@@ -54,17 +54,18 @@ export default function Index() {
                                 header={title}
                                 description={`Edit '${title}' configurations`}
                                 path={`/content/idareedici/settings/${id}/${mainLanguageLocale}`}
-                                list={translate ?
-                                    (languageList || []).map((lang, i) => ({
-                                        row: i,
-                                        name: lang?.locale,
-                                        path: `/content/idareedici/settings/${id}/${lang?.locale}`,
-                                    }))
-                                    :
-                                    [{
-                                        name: 'List',
-                                        path: `/content/idareedici/settings/${id}/${mainLanguageLocale}`,
-                                    }]
+                                list={
+                                    // translate ?
+                                        (languageList || []).map((lang, i) => ({
+                                            row: i,
+                                            name: lang?.locale,
+                                            path: `/content/idareedici/settings/${id}/${lang?.locale}`,
+                                        }))
+                                        /*:
+                                        [{
+                                            name: 'List',
+                                            path: `/content/idareedici/settings/${id}/${mainLanguageLocale}`,
+                                        }]*/
                                 }
                             />
                         </div>

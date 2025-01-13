@@ -154,20 +154,41 @@
         font-weight: 400;
     }
 
-    .sg--sections--block-head-group--big .sg--sections--block-head-group--header {
+
+    .sg--sections--block-head-group--xs .sg--sections--block-head-group--header {
+        font-size: 18px;
+    }
+    .sg--sections--block-head-group--xs .sg--sections--block-head-group--description {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .sg--sections--block-head-group--sm .sg--sections--block-head-group--header {
+        font-size: 24px;
+    }
+    .sg--sections--block-head-group--sm .sg--sections--block-head-group--description {
+        font-size: 16px;
+        line-height: 28px;
+    }
+
+    .sg--sections--block-head-group--lg .sg--sections--block-head-group--header {
         font-size: 42px;
     }
-    .sg--sections--block-head-group--big .sg--sections--block-head-group--description {
+    .sg--sections--block-head-group--lg .sg--sections--block-head-group--description {
         font-size: 16px;
     }
-    .sg--sections--block-head-group--extraBig .sg--sections--block-head-group--header {
+
+    .sg--sections--block-head-group--xl .sg--sections--block-head-group--header {
         font-size: 58px;
         line-height: 70px;
     }
-    .sg--sections--block-head-group--extraBig .sg--sections--block-head-group--description {
+    .sg--sections--block-head-group--xl .sg--sections--block-head-group--description {
         font-size: 16px;
         line-height: 24px;
     }
+
+
+
     .sg--sections--block--center\:mobile .sg--sections--block-head--header {
         text-align: center;
     }

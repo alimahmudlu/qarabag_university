@@ -65,4 +65,58 @@
     &-body img {
         max-width: 100%;
     }
+
+    @media (max-width: 992px) {
+        & {
+            gap: 20px;
+
+            &-head {
+                &--header {
+                    font-size: 20px;
+                    font-weight: 500;
+                    line-height: 30px;
+                    letter-spacing: unset;
+                }
+            }
+
+            &-details {
+                flex-direction: column;
+
+                &-item {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 20px;
+
+                    font-size: 14px;
+                    line-height: 26px;
+
+                    &:not(:first-child)::before {
+                        content: unset;
+                    }
+                }
+            }
+
+            &-body {
+                color: var(--gray-text, #707070);
+                font-size: 14px;
+                line-height: 26px;
+
+                & p,
+                & span,
+                & div {
+                    color: var(--gray-text, #707070) !important;
+                    font-size: 14px !important;
+                    font-style: normal !important;
+                    font-weight: 400 !important;
+                    line-height: 26px !important;
+                    font-family: "Inter", sans-serif !important;
+                }
+            }
+
+            &-body img {
+                max-width: 100%;
+            }
+        }
+    }
 }

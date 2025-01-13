@@ -99,6 +99,15 @@
         & {
             &-content {
                 width: 100%;
+                gap: 20px;
+            }
+            &-head {
+                &--header {
+                    font-size: 20px;
+                    font-weight: 500;
+                    line-height: 30px; /* 131.818% */
+                    letter-spacing: unset;
+                }
             }
             &-social {
                 display: none;
@@ -106,30 +115,41 @@
 
             &-details {
                 justify-content: space-between;
-                gap: 25px;
+                gap: 20px;
 
                 &-item {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 9px;
+                    gap: 7px;
 
                     &--icon {
-                        font-size: 20px;
-                        color: var(--hookerGreen-color, #44766C);
+                        font-size: 16px;
                     }
                     &--title {
                         color: var(--black, #231F20);
-                        font-size: 16px;
-                        line-height: 19px;
+                        font-size: 14px;
+                        line-height: 21px;
                         letter-spacing: 0.09px;
                     }
                     &--description {
                         color: var(--gray-text, #707070);
-                        font-size: 16px;
+                        font-size: 12px;
                         line-height: 20px; /* 125% */
                         letter-spacing: 0.09px;
                     }
+                }
+            }
+
+            &-body {
+                font-size: 14px;
+                line-height: 26px;
+
+                & p,
+                & span,
+                & div {
+                    font-size: 14px !important;
+                    line-height: 26px !important;
                 }
             }
         }
