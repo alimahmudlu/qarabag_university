@@ -20,7 +20,7 @@ const SortableList = (props) => {
 
     return (
         <div className='widgets flex flex-column gap-[16px]'>
-            {(data?.page_widgets || []).map((widget, index) => {
+            {(data?.page_widgets || []).sort((a, b) => a?.row - b?.row).map((widget, index) => {
                 return (
                     <SortableItem
                         key={`item-${index}`}
