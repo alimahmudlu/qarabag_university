@@ -10,6 +10,8 @@ export default function SgEventItem(props) {
     const router = useRouter();
     const {locale} = router
 
+    console.log(staticContent)
+
     return (
         <>
             <div className={[styles['sg--eventItem']].join(' ').trim()}>

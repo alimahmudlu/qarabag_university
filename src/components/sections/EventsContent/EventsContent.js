@@ -134,6 +134,7 @@ export default function SgSectionEventsContent(props) {
                                                     title={item?.title}
                                                     path={`/page/${page_id}/${item.id}`}
                                                     date={itemContent?.date?.value}
+                                                    staticContent={staticContent}
                                                     additions={[
                                                         {
                                                             icon: 'calendar',
