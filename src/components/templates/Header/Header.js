@@ -145,7 +145,7 @@ export default function SgTemplateHeader(props) {
                                         />
                                     )
                                 })}
-                                <div
+                                {/*<div
                                     className={[styles['sg--template--header-block-body-main-menu-item'], 'd-none', 'd-lg-block'].join(' ').trim()}>
                                     <Link href='#'
                                           aria-label='Axtarış'
@@ -154,13 +154,13 @@ export default function SgTemplateHeader(props) {
                                     >
                                         <SgIcon icon={searchbar ? 'times' : 'search'}/>
                                     </Link>
-                                </div>
+                                </div>*/}
                             </div>
                         </div>
                     </div>
                     <div className={[styles['sg--template--header-block-mobile']].join(' ').trim()}>
                         <div className={[styles['sg--template--header-block-mobile-menu']].join(' ').trim()}>
-                            {(languages || []).length > 1 ?
+                            {/*{(languages || []).length > 1 ?
                                 <SgDropdown
                                     className={[styles['sg--template--header-block-body-minor-menu-item'], 'd-none', 'd-lg-block'].join(' ').trim()}
                                     itemClassName={styles['sg--template--header-block-body-minor-menu-item-subMenu-item']}
@@ -182,7 +182,7 @@ export default function SgTemplateHeader(props) {
                                     })}
                                 />
                                 : null
-                            }
+                            }*/}
                             {(languages || []).length > 1 ?
                                 <SgDropdown
                                     className={[styles['sg--template--header-block-mobile-menu-item']].join(' ').trim()}
@@ -206,7 +206,7 @@ export default function SgTemplateHeader(props) {
                                 />
                                 : ''
                             }
-                            <div
+                            {/*<div
                                 className={[styles['sg--template--header-block-mobile-menu-item']].join(' ').trim()}>
                                 <Link href='#'
                                       onClick={handleSearchbar}
@@ -214,7 +214,7 @@ export default function SgTemplateHeader(props) {
                                 >
                                     <SgIcon icon={searchbar ? 'times' : 'search'}/>
                                 </Link>
-                            </div>
+                            </div>*/}
                             <div
                                 className={[styles['sg--template--header-block-mobile-menu-item'], 'd-block', 'd-lg-none'].join(' ').trim()}>
                                 <Link href='#'

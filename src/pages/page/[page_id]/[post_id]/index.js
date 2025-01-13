@@ -13,7 +13,7 @@ import SgHelperTranslate from "@/components/helper/Translate";
 
 
 export default function Index(props) {
-	const {pageData, page_id, staticContent} = props;
+	const {pageData, page_id, staticContent, settings} = props;
 	const {post = {}, page = {}} = pageData || {};
 	const {title, short_description, data_type = {}} = post || {};
 	const {inner_layout} = data_type || {};

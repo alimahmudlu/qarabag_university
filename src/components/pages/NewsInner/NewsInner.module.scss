@@ -45,18 +45,16 @@
 
     &-body {
         color: var(--gray-text, #707070);
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 35px;
+        font-size: 18px !important;
+        font-style: normal !important;
+        line-height: 35px !important;
+        font-family: "Inter", sans-serif !important;
 
         & p,
         & span,
         & div {
             color: var(--gray-text, #707070) !important;
             font-size: 18px !important;
-            font-style: normal !important;
-            font-weight: 400 !important;
             line-height: 35px !important;
             font-family: "Inter", sans-serif !important;
         }
@@ -98,19 +96,16 @@
             }
 
             &-body {
-                color: var(--gray-text, #707070);
-                font-size: 14px;
-                line-height: 26px;
+                color: var(--gray-text, #707070) !important;
+                font-size: 14px !important;
+                line-height: 26px !important;
 
                 & p,
                 & span,
                 & div {
                     color: var(--gray-text, #707070) !important;
                     font-size: 14px !important;
-                    font-style: normal !important;
-                    font-weight: 400 !important;
                     line-height: 26px !important;
-                    font-family: "Inter", sans-serif !important;
                 }
             }
 
