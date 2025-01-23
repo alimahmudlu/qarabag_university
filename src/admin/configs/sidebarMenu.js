@@ -74,7 +74,7 @@ export const sidebarPrimaryMenu = [
             },
         ]
     },
-    {
+/*    {
         name: "Widgets",
         path: "/",
         icon: <SgIcon icon='type' />,
@@ -90,7 +90,7 @@ export const sidebarPrimaryMenu = [
                 icon: <SgIcon icon='plus' />,
             },
         ]
-    },
+    },*/
     {
         name: "Menus",
         path: "/",
