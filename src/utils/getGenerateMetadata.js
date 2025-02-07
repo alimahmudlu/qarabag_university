@@ -20,7 +20,10 @@ export default function GetGenerateMetadata({meta = {}}) {
             <meta name="theme-color" content="#44766C"/>
 
             <title>{meta.title || defaultMetas.title}</title>
+            <meta name="title" content={meta.title || defaultMetas.title}/>
             <meta name="description" content={meta.description || defaultMetas.description}/>
+            <meta property="og:url" content={meta.title || defaultMetas.title} />
+            <meta property="og:site_name" content={meta.title || defaultMetas.title} />
         </Head>
     )
 }
